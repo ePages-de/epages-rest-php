@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file represents the locales class.
+ */
 namespace ep6;
 /**
  * This is the static class for the localization.

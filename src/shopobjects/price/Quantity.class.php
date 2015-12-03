@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file represents the quantity class.
+ */
 namespace ep6;
 /**
  * This is the class for quantity objects.

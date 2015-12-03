@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file represents the product filter class.
+ */
 namespace ep6;
 /**
  * This is a product filter class to search products via the REST call "product". 

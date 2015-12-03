@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file represents the json handler class.
+ */
 namespace ep6;
 /**
  * This is a small simple handler to convert JSON into an array and otherwise.

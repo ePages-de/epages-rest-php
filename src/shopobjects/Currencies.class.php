@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file represents the currencies class.
+ */
 namespace ep6;
 /**
  * This is the static class for the currencies in the shop.

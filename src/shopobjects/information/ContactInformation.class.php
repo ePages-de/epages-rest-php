@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file represents the contact information class.
+ */
 namespace ep6;
 require_once("src/shopobjects/information/InformationTrait.class.php");
 /**

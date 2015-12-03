@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file represents the input validator class.
+ */
 namespace ep6;
 /**
  * This class, used by a static way, checks whether a value is valid.
@@ -129,7 +132,9 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter is an int with a range.
 	 *
-	 * @param int	$parameter	Int to check.
+	 * @param int $parameter Int to check.
+	 * @param int $minimum The minimum allowed number, null if there is no minimum.
+	 * @param int $maximum The maximum allowed number, null if there is no maximum.
 	 * @return boolean	True if the parameter is an int, false if not.
 	 */
 	public static function isRangedInt($parameter, $minimum = null, $maximum = null) {

@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file represents the logger class.
+ */
 namespace ep6;
 /**
  * This is a static object to log messages while executing.

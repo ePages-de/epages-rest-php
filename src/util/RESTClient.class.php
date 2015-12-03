@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file represents the rest client class.
+ */
 namespace ep6;
 /**
  * This is the pure REST client. It is used in a static way.

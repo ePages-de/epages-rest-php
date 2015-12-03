@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file represents the information trait.
+ */
 namespace ep6;
 /**
  * This is the interface for all information objects.

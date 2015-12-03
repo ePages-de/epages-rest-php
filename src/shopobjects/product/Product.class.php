@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file represents the product class.
+ */
 namespace ep6;
 /**
  * This is the product class for a product in the shop.

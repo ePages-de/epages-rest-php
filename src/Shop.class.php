@@ -1,4 +1,7 @@
 <?php
+/**
+ * This is the main class of the ep6client.
+ */
 namespace ep6;
 # include framework configuration
 require_once("src/configuration/config.php");
