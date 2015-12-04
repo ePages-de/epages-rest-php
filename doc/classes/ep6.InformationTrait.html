@@ -144,19 +144,19 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1866678762"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-208600525"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1866678762" class="accordion-body collapse in">
+            <div id="namespace-208600525" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1962932748"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1834460697"></a>
                                 <a href="../namespaces/ep6.html" style="margin-left: 30px; padding-left: 0">ep6</a>
             </div>
-            <div id="namespace-1962932748" class="accordion-body collapse ">
+            <div id="namespace-1834460697" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -276,7 +276,7 @@
                         <dt>File</dt>
                             <dd><a href="../files/shopobjects.information.InformationTrait.class.html"><div class="path-wrapper">shopobjects/information/InformationTrait.class.php</div></a></dd>
                                                 <dt>Package</dt>
-                            <dd><div class="namespace-wrapper">Default</div></dd>
+                            <dd><div class="namespace-wrapper">Shopobjects\Information</div></dd>
                                                 <dt>Class hierarchy</dt>
                             <dd class="hierarchy">
                                                                                                                                                                     <div class="namespace-wrapper">\ep6\InformationTrait</div>
@@ -289,7 +289,22 @@
                                                                         </dl>
                     <h2>Tags</h2>
                     <table class="table table-condensed">
-                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                since
+                            </th>
+                            <td>
+                                                                    
+                                                            </td>
+                        </tr>
                                         </table>
                 </aside>
             </div>
@@ -308,13 +323,13 @@
             <a id="property_NAME" name="property_NAME" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$NAME</h3>
-                <pre class="signature">$NAME : </pre>
-                <p><em>The names of the shop, language dependend.</em></p>
+                <pre class="signature">$NAME : array&lt;mixed,String&gt;</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                array&lt;mixed,String&gt;
+                &mdash; The names of the shop, language dependend.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -332,13 +347,13 @@
             <a id="property_NAVIGATIONCAPTION" name="property_NAVIGATIONCAPTION" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$NAVIGATIONCAPTION</h3>
-                <pre class="signature">$NAVIGATIONCAPTION : </pre>
-                <p><em>The navigation caption of the shop, language dependend.</em></p>
+                <pre class="signature">$NAVIGATIONCAPTION : array&lt;mixed,String&gt;</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                array&lt;mixed,String&gt;
+                &mdash; The navigation caption of the shop, language dependend.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -356,13 +371,13 @@
             <a id="property_DESCRIPTION" name="property_DESCRIPTION" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$DESCRIPTION</h3>
-                <pre class="signature">$DESCRIPTION : </pre>
-                <p><em>The description of the shop, language dependend.</em></p>
+                <pre class="signature">$DESCRIPTION : array&lt;mixed,String&gt;</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                array&lt;mixed,String&gt;
+                &mdash; The description of the shop, language dependend.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -388,15 +403,15 @@
             <article class="method">
                 <h3 class="public ">getDefaultName()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getDefaultName() : String</pre>
+                <pre class="signature" style="margin-right: 54px;">getDefaultName() : String|null</pre>
                 <p><em>Gets the name in the default localization.</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
-                    String
-                                            &mdash; <p>The name in the default localization.</p>
+                    String|null
+                                            &mdash; <p>The name in the default localization or null if the default name is unset.</p>
                                     				
                             </article>
         </div>
@@ -408,7 +423,30 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -419,7 +457,7 @@
             <article class="method">
                 <h3 class="public ">getName()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getName(String  <span class="argument">$locale</span>) : String</pre>
+                <pre class="signature" style="margin-right: 54px;">getName(String  <span class="argument">$locale</span>) : String|null</pre>
                 <p><em>Gets the name depended on the localization.</em></p>
                 
 
@@ -434,8 +472,8 @@
                 
                 
                                     <h4>Returns</h4>
-                    String
-                                            &mdash; <p>The localized name.</p>
+                    String|null
+                                            &mdash; <p>The localized name or null if the name is unset.</p>
                                     				
                             </article>
         </div>
@@ -447,7 +485,30 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -458,15 +519,15 @@
             <article class="method">
                 <h3 class="public ">getDefaultNavigationCaption()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getDefaultNavigationCaption() : String</pre>
+                <pre class="signature" style="margin-right: 54px;">getDefaultNavigationCaption() : String|null</pre>
                 <p><em>Gets the navigation caption in the default localization.</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
-                    String
-                                            &mdash; <p>The navigation caption in the default localization.</p>
+                    String|null
+                                            &mdash; <p>The navigation caption in the default localization or null if the default navigation caption is unset.</p>
                                     				
                             </article>
         </div>
@@ -478,7 +539,30 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -489,7 +573,7 @@
             <article class="method">
                 <h3 class="public ">getNavigationCaption()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getNavigationCaption(String  <span class="argument">$locale</span>) : String</pre>
+                <pre class="signature" style="margin-right: 54px;">getNavigationCaption(String  <span class="argument">$locale</span>) : String|null</pre>
                 <p><em>Gets the navigation caption depended on the localization.</em></p>
                 
 
@@ -504,8 +588,8 @@
                 
                 
                                     <h4>Returns</h4>
-                    String
-                                            &mdash; <p>The localized navigation caption.</p>
+                    String|null
+                                            &mdash; <p>The localized navigation caption or null if the navigation caption is unset.</p>
                                     				
                             </article>
         </div>
@@ -517,7 +601,30 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -528,15 +635,15 @@
             <article class="method">
                 <h3 class="public ">getDefaultDescription()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getDefaultDescription() : String</pre>
+                <pre class="signature" style="margin-right: 54px;">getDefaultDescription() : String|null</pre>
                 <p><em>Gets the description in the default localization.</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
-                    String
-                                            &mdash; <p>The description in the default localization.</p>
+                    String|null
+                                            &mdash; <p>The description in the default localization or null if the default description is unset.</p>
                                     				
                             </article>
         </div>
@@ -548,7 +655,30 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -559,7 +689,7 @@
             <article class="method">
                 <h3 class="public ">getDescription()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getDescription(String  <span class="argument">$locale</span>) : String</pre>
+                <pre class="signature" style="margin-right: 54px;">getDescription(String  <span class="argument">$locale</span>) : String|null</pre>
                 <p><em>Gets the description depended on the localization.</em></p>
                 
 
@@ -574,8 +704,8 @@
                 
                 
                                     <h4>Returns</h4>
-                    String
-                                            &mdash; <p>The localized description.</p>
+                    String|null
+                                            &mdash; <p>The localized description or null if the description is unset.</p>
                                     				
                             </article>
         </div>
@@ -587,7 +717,30 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -631,7 +784,30 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -670,7 +846,30 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -707,7 +906,22 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -718,7 +932,7 @@
             <article class="method">
                 <h3 class="private ">put()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">put(String  <span class="argument">$parameter</span>, String  <span class="argument">$value</span>, String  <span class="argument">$locale</span>) </pre>
+                <pre class="signature" style="margin-right: 54px;">put(String  <span class="argument">$parameter</span>, String  <span class="argument">$value</span>, String  <span class="argument">$locale</span>) : boolean</pre>
                 <p><em>Set a value via REST.</em></p>
                 
 
@@ -742,7 +956,10 @@
                                             </table>
                 
                 
-                				
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True, if set the value works, false if not.</p>
+                                    				
                             </article>
         </div>
         <aside class="span4 detailsbar">
@@ -754,7 +971,22 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -783,7 +1015,22 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -838,7 +1085,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on December 3rd, 2015 at 23:11.
+                    on December 4th, 2015 at 01:22.
                 </section>
             </section>
         </section>

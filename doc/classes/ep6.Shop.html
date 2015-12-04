@@ -144,19 +144,19 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1087248634"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-457772582"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1087248634" class="accordion-body collapse in">
+            <div id="namespace-457772582" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1765097975"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2021435682"></a>
                                 <a href="../namespaces/ep6.html" style="margin-left: 30px; padding-left: 0">ep6</a>
             </div>
-            <div id="namespace-1765097975" class="accordion-body collapse ">
+            <div id="namespace-2021435682" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -207,10 +207,20 @@
 
                     <h1><small>\ep6</small>Shop</h1>
                     <p><em>This is the epages 6 shop object.</em></p>
-                    <p>Create a new epage 6 Shop object with:
-shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                     
-                                        
+                    
+                                                                        <h3>Examples</h3>
+                                                                            <h4>Create a new epage 6 shop object and disconnect.</h4>
+                            <pre class="pre-scrollable">&lt;?php
+require_once(&quot;library/ep6client.phar&quot;);
+
+// This new shop object will connect to my.shop.domain/ShopName with https
+$shop = new ep6\Shop(&quot;my.shop.domain&quot;, &quot;ShopName&quot;, &quot;AUTHTOKEN&quot;, true);
+
+// The connection exists until the shop variable will be destroyes
+unset($shop);
+?&gt;</pre>
+                                                                
                     <section id="summary">
                         <h2>Summary</h2>
                         <section class="row-fluid heading">
@@ -265,7 +275,7 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                                                                     <a href="../classes/ep6.Shop.html#property_contactInformation" class="">$contactInformation</a><br />
                                                                     <a href="../classes/ep6.Shop.html#property_privacyPolicyInformation" class="">$privacyPolicyInformation</a><br />
                                                                     <a href="../classes/ep6.Shop.html#property_rightsOfWithdrawalInformation" class="">$rightsOfWithdrawalInformation</a><br />
-                                                                    <a href="../classes/ep6.Shop.html#property_shippinhInformation" class="">$shippinhInformation</a><br />
+                                                                    <a href="../classes/ep6.Shop.html#property_shippingInformation" class="">$shippingInformation</a><br />
                                                                     <a href="../classes/ep6.Shop.html#property_termsAndConditionInformation" class="">$termsAndConditionInformation</a><br />
                                                             </section>
                             <section class="span4">
@@ -281,7 +291,7 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                         <dt>File</dt>
                             <dd><a href="../files/Shop.class.html"><div class="path-wrapper">Shop.class.php</div></a></dd>
                                                 <dt>Package</dt>
-                            <dd><div class="namespace-wrapper">Default</div></dd>
+                            <dd><div class="namespace-wrapper">ep6</div></dd>
                                                 <dt>Class hierarchy</dt>
                             <dd class="hierarchy">
                                                                                                                                                                     <div class="namespace-wrapper">\ep6\Shop</div>
@@ -294,7 +304,22 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                                                                         </dl>
                     <h2>Tags</h2>
                     <table class="table table-condensed">
-                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                since
+                            </th>
+                            <td>
+                                                                    
+                                                            </td>
+                        </tr>
                                         </table>
                 </aside>
             </div>
@@ -313,13 +338,13 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
             <a id="property_contactInformation" name="property_contactInformation" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$contactInformation</h3>
-                <pre class="signature">$contactInformation : </pre>
-                <p><em>The contact information.</em></p>
+                <pre class="signature">$contactInformation : \ep6\ContactInformation|null</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                <a href="../classes/ep6.ContactInformation.html">\ep6\ContactInformation</a>|null
+                &mdash; The contact information object.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -337,13 +362,13 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
             <a id="property_privacyPolicyInformation" name="property_privacyPolicyInformation" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$privacyPolicyInformation</h3>
-                <pre class="signature">$privacyPolicyInformation : </pre>
-                <p><em>The privacy policy information.</em></p>
+                <pre class="signature">$privacyPolicyInformation : \ep6\PrivacyPolicyInformation|null</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                <a href="../classes/ep6.PrivacyPolicyInformation.html">\ep6\PrivacyPolicyInformation</a>|null
+                &mdash; The privacy policy information object.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -361,13 +386,13 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
             <a id="property_rightsOfWithdrawalInformation" name="property_rightsOfWithdrawalInformation" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$rightsOfWithdrawalInformation</h3>
-                <pre class="signature">$rightsOfWithdrawalInformation : </pre>
-                <p><em>The rights of withdrawal information.</em></p>
+                <pre class="signature">$rightsOfWithdrawalInformation : \ep6\RightsOfWithdrawalInformation|null</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                <a href="../classes/ep6.RightsOfWithdrawalInformation.html">\ep6\RightsOfWithdrawalInformation</a>|null
+                &mdash; The rights of withdrawal information object.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -382,16 +407,16 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
 
                                     <div class="row-fluid">
         <div class="span8 content class">
-            <a id="property_shippinhInformation" name="property_shippinhInformation" class="anchor"></a>
+            <a id="property_shippingInformation" name="property_shippingInformation" class="anchor"></a>
             <article class="property">
-                <h3 class="private ">$shippinhInformation</h3>
-                <pre class="signature">$shippinhInformation : </pre>
-                <p><em>The shippinh information.</em></p>
+                <h3 class="private ">$shippingInformation</h3>
+                <pre class="signature">$shippingInformation : \ep6\ShippingInformation|null</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                <a href="../classes/ep6.ShippingInformation.html">\ep6\ShippingInformation</a>|null
+                &mdash; The shipping information object.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -409,13 +434,13 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
             <a id="property_termsAndConditionInformation" name="property_termsAndConditionInformation" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$termsAndConditionInformation</h3>
-                <pre class="signature">$termsAndConditionInformation : </pre>
-                <p><em>The terms and condition information.</em></p>
+                <pre class="signature">$termsAndConditionInformation : \ep6\TermsAndConditionInformation|null</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                <a href="../classes/ep6.TermsAndConditionInformation.html">\ep6\TermsAndConditionInformation</a>|null
+                &mdash; The terms and condition information object.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -442,7 +467,7 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                 <h3 class="public ">__construct()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">__construct(String  <span class="argument">$host</span>, String  <span class="argument">$shop</span>, String  <span class="argument">$authToken</span>, boolean  <span class="argument">$isssl = true</span>) </pre>
-                <p><em>The constructor for the main class.</em></p>
+                <p><em>The constructor for the shop class.</em></p>
                 
 
                                     <h4>Parameters</h4>
@@ -479,7 +504,38 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            source
+                        </th>
+                        <td>
+                                                                                            <p>Calls the REST client and connect.</p>
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -505,7 +561,38 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            source
+                        </th>
+                        <td>
+                                                                                            <p>Disconnect the REST client.</p>
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -518,7 +605,7 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
                 <pre class="signature" style="margin-right: 54px;">printStatus() </pre>
                 <p><em>Prints the connection status via &quot;FORCE&quot;.</em></p>
-                
+                <p>This function will print the current values of the REST client.</p>
 
                 
                 
@@ -531,7 +618,30 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -542,15 +652,15 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
             <article class="method">
                 <h3 class="public ">getDefaultLocales()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getDefaultLocales() : String</pre>
+                <pre class="signature" style="margin-right: 54px;">getDefaultLocales() : String|null</pre>
                 <p><em>Returns the default localization.</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
-                    String
-                                            &mdash; <p>Default localization.</p>
+                    String|null
+                                            &mdash; <p>Default localization or null if the REST call does fail.</p>
                                     				
                             </article>
         </div>
@@ -560,7 +670,30 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -571,15 +704,15 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
             <article class="method">
                 <h3 class="public ">getLocales()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getLocales() : array</pre>
+                <pre class="signature" style="margin-right: 54px;">getLocales() : array&lt;mixed,mixed&gt;|null</pre>
                 <p><em>Returns all localizations.</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
-                    array
-                                            &mdash; <p>All localizations.</p>
+                    array&lt;mixed,mixed&gt;|null
+                                            &mdash; <p>All localizations in an array or null if the REST call does fail.</p>
                                     				
                             </article>
         </div>
@@ -589,7 +722,30 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -600,15 +756,15 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
             <article class="method">
                 <h3 class="public ">getDefaultCurrencies()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getDefaultCurrencies() : String</pre>
+                <pre class="signature" style="margin-right: 54px;">getDefaultCurrencies() : String|null</pre>
                 <p><em>Returns the default currencies.</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
-                    String
-                                            &mdash; <p>Default currencies.</p>
+                    String|null
+                                            &mdash; <p>Default currencies or null if the REST call does fail.</p>
                                     				
                             </article>
         </div>
@@ -618,7 +774,30 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -629,15 +808,15 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
             <article class="method">
                 <h3 class="public ">getCurrencies()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getCurrencies() : array</pre>
+                <pre class="signature" style="margin-right: 54px;">getCurrencies() : array&lt;mixed,mixed&gt;|null</pre>
                 <p><em>Returns all currencies.</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
-                    array
-                                            &mdash; <p>All currencies.</p>
+                    array&lt;mixed,mixed&gt;|null
+                                            &mdash; <p>All currencies in an array or null if the REST call will fail.</p>
                                     				
                             </article>
         </div>
@@ -647,7 +826,30 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -658,15 +860,15 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
             <article class="method">
                 <h3 class="public ">getContactInformation()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getContactInformation() : \ep6\ContactInformation</pre>
+                <pre class="signature" style="margin-right: 54px;">getContactInformation() : \ep6\ContactInformation|null</pre>
                 <p><em>Get the contact information.</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
-                    <a href="../classes/ep6.ContactInformation.html">\ep6\ContactInformation</a>
-                                            &mdash; <p>The contact information of the shop.</p>
+                    <a href="../classes/ep6.ContactInformation.html">\ep6\ContactInformation</a>|null
+                                            &mdash; <p>The contact information of the shop or null if the REST call will fail.</p>
                                     				
                             </article>
         </div>
@@ -676,7 +878,30 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -687,15 +912,15 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
             <article class="method">
                 <h3 class="public ">getPrivacyPolicyInformation()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getPrivacyPolicyInformation() : \ep6\PrivacyPolicyInformation</pre>
+                <pre class="signature" style="margin-right: 54px;">getPrivacyPolicyInformation() : \ep6\PrivacyPolicyInformation|null</pre>
                 <p><em>Get the privacy policy information.</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
-                    <a href="../classes/ep6.PrivacyPolicyInformation.html">\ep6\PrivacyPolicyInformation</a>
-                                            &mdash; <p>The privacy policy information of the shop.</p>
+                    <a href="../classes/ep6.PrivacyPolicyInformation.html">\ep6\PrivacyPolicyInformation</a>|null
+                                            &mdash; <p>The privacy policy information of the shop or null if the REST call will fail.</p>
                                     				
                             </article>
         </div>
@@ -705,7 +930,30 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -716,15 +964,15 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
             <article class="method">
                 <h3 class="public ">getRightsOfWithdrawalInformation()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getRightsOfWithdrawalInformation() : \ep6\RightsOfWithdrawalInformation</pre>
+                <pre class="signature" style="margin-right: 54px;">getRightsOfWithdrawalInformation() : \ep6\RightsOfWithdrawalInformation|null</pre>
                 <p><em>Get the rights of withdrawal information.</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
-                    <a href="../classes/ep6.RightsOfWithdrawalInformation.html">\ep6\RightsOfWithdrawalInformation</a>
-                                            &mdash; <p>The rights of withdrawal information of the shop.</p>
+                    <a href="../classes/ep6.RightsOfWithdrawalInformation.html">\ep6\RightsOfWithdrawalInformation</a>|null
+                                            &mdash; <p>The rights of withdrawal information of the shop or null if the REST call will fail.</p>
                                     				
                             </article>
         </div>
@@ -734,7 +982,30 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -745,15 +1016,15 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
             <article class="method">
                 <h3 class="public ">getShippingInformation()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getShippingInformation() : \ep6\ShippingInformation</pre>
+                <pre class="signature" style="margin-right: 54px;">getShippingInformation() : \ep6\ShippingInformation|null</pre>
                 <p><em>Get the shipping information.</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
-                    <a href="../classes/ep6.ShippingInformation.html">\ep6\ShippingInformation</a>
-                                            &mdash; <p>The shipping information of the shop.</p>
+                    <a href="../classes/ep6.ShippingInformation.html">\ep6\ShippingInformation</a>|null
+                                            &mdash; <p>The shipping information of the shop or null if the REST call fails.</p>
                                     				
                             </article>
         </div>
@@ -763,7 +1034,30 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -782,7 +1076,7 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                 
                                     <h4>Returns</h4>
                     \ep6\TermsAndCondiditonInformation
-                                            &mdash; <p>The terms and condition information of the shop.</p>
+                                            &mdash; <p>The terms and condition information of the shop or null if the REST call fails.</p>
                                     				
                             </article>
         </div>
@@ -792,7 +1086,30 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -847,7 +1164,7 @@ shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);</p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on December 3rd, 2015 at 23:11.
+                    on December 4th, 2015 at 01:22.
                 </section>
             </section>
         </section>

@@ -1,6 +1,9 @@
 <?php
 /**
  * This is the main class of the ep6client.
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
  */
 namespace ep6;
 # include framework configuration
@@ -28,43 +31,39 @@ require_once("src/shopobjects/price/PriceInfo.class.php");
 /**
  * This is the epages 6 shop object.
  *
- * Create a new epage 6 Shop object with:
- *   shop = new ep6\Shop(HOSTNAME, SHOP, AUTHTOKEN, ISSSL);
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
+ * @package ep6
+ * @example examples\connectingShop.php Create a new epage 6 shop object and disconnect.
  */
 class Shop {
 	
-	/**
-	 * The contact information.
-	 */
+	/** @var ContactInformation|null The contact information object. */
 	private static $contactInformation = null;
 	
-	/**
-	 * The privacy policy information.
-	 */
+	/** @var PrivacyPolicyInformation|null The privacy policy information object. */
 	private static $privacyPolicyInformation = null;
 	
-	/**
-	 * The rights of withdrawal information.
-	 */
+	/** @var RightsOfWithdrawalInformation|null The rights of withdrawal information object. */
 	private static $rightsOfWithdrawalInformation = null;
 	
-	/**
-	 * The shippinh information.
-	 */
-	private static $shippinhInformation = null;
+	/** @var ShippingInformation|null The shipping information object. */
+	private static $shippingInformation = null;
 	
-	/**
-	 * The terms and condition information.
-	 */
+	/** @var TermsAndConditionInformation|null The terms and condition information object. */
 	private static $termsAndConditionInformation = null;
 
 	/**
-	 * The constructor for the main class.
+	 * The constructor for the shop class.
 	 *
-	 * @param String	$host		The ePages host to connect.
-	 * @param String	$shop		The refered ePages shop.
-	 * @param String	$authToken	The authentificaton token to connect via REST.
-	 * @param boolean	$isssl		True, if you use SSL, false if not. Default value is true.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $host The ePages host to connect.
+	 * @param String $shop The refered ePages shop.
+	 * @param String $authToken The authentificaton token to connect via REST.
+	 * @param boolean $isssl True, if you use SSL, false if not. Default value is true.
+	 * @source 2 1 Calls the REST client and connect.
 	 */
 	function __construct($host, $shop, $authToken, $isssl = true) {
 
@@ -73,6 +72,11 @@ class Shop {
 
 	/**
 	 * The destructor for the main class.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @source 2 1 Disconnect the REST client.
 	 */
 	function __destruct() {
 
@@ -81,6 +85,12 @@ class Shop {
 
 	/**
 	 * Prints the connection status via "FORCE".
+	 *
+	 * This function will print the current values of the REST client.
+	 *
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
 	 */
 	public function printStatus() {
 
@@ -90,7 +100,10 @@ class Shop {
 	/**
 	 * Returns the default localization.
 	 *
-	 * @return String	Default localization.
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @return String|null Default localization or null if the REST call does fail.
 	 */
 	public function getDefaultLocales() {
 
@@ -100,7 +113,10 @@ class Shop {
 	/**
 	 * Returns all localizations.
 	 *
-	 * @return array	All localizations.
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @return mixed[]|null All localizations in an array or null if the REST call does fail.
 	 */
 	public function getLocales() {
 
@@ -110,7 +126,10 @@ class Shop {
 	/**
 	 * Returns the default currencies.
 	 *
-	 * @return String	Default currencies.
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @return String|null Default currencies or null if the REST call does fail.
 	 */
 	public function getDefaultCurrencies() {
 
@@ -120,7 +139,10 @@ class Shop {
 	/**
 	 * Returns all currencies.
 	 *
-	 * @return array	All currencies.
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @return mixed[]|null All currencies in an array or null if the REST call will fail.
 	 */
 	public function getCurrencies() {
 
@@ -130,7 +152,10 @@ class Shop {
 	/**
 	 * Get the contact information.
 	 *
-	 * @return ContactInformation	The contact information of the shop.
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @return ContactInformation|null The contact information of the shop or null if the REST call will fail.
 	 */
 	public function getContactInformation() {
 
@@ -143,7 +168,10 @@ class Shop {
 	/**
 	 * Get the privacy policy information.
 	 *
-	 * @return PrivacyPolicyInformation	The privacy policy information of the shop.
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @return PrivacyPolicyInformation|null The privacy policy information of the shop or null if the REST call will fail.
 	 */
 	public function getPrivacyPolicyInformation() {
 
@@ -156,7 +184,10 @@ class Shop {
 	/**
 	 * Get the rights of withdrawal information.
 	 *
-	 * @return RightsOfWithdrawalInformation	The rights of withdrawal information of the shop.
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @return RightsOfWithdrawalInformation|null The rights of withdrawal information of the shop or null if the REST call will fail.
 	 */
 	public function getRightsOfWithdrawalInformation() {
 
@@ -169,7 +200,10 @@ class Shop {
 	/**
 	 * Get the shipping information.
 	 *
-	 * @return ShippingInformation	The shipping information of the shop.
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @return ShippingInformation|null The shipping information of the shop or null if the REST call fails.
 	 */
 	public function getShippingInformation() {
 
@@ -182,7 +216,10 @@ class Shop {
 	/**
 	 * Get the terms and condition information.
 	 *
-	 * @return TermsAndCondiditonInformation	The terms and condition information of the shop.
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @return TermsAndCondiditonInformation The terms and condition information of the shop or null if the REST call fails.
 	 */
 	public function getTermsAndConditionInformation() {
 

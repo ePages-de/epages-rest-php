@@ -1,65 +1,58 @@
 <?php
 /**
  * This file represents the contact information class.
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
  */
 namespace ep6;
 require_once("src/shopobjects/information/InformationTrait.class.php");
 /**
  * This is the contact information object of the shop.
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
+ * @package ep6
+ * @subpackage Shopobjects\Information
+ * @see InformationTrait This trait has all information needed objects.
  */
 class ContactInformation {
 	
 	use InformationTrait;
 
-	/**
-	 * The REST path for contact information.
-	 */
+	/** @var String The REST path for contact information. */
 	private static $RESTPATH = "legal/contact-information";
 
-	/**
-	 * The title of the shop, language dependend.
-	 */
+	/** @var String[] The title of the shop, language dependend. */
 	private static $TITLE = array();
 	
-	/**
-	 * The short description of the shop, language dependend.
-	 */
+	/** @var String[] The short description of the shop, language dependend. */
 	private static $SHORTDESCRIPTION = array();
 	
-	/**
-	 * The company of the shop, language dependend.
-	 */
+	/** @var String[] The company of the shop, language dependend. */
 	private static $COMPANY = array();
 	
-	/**
-	 * The contact person of the shop, language dependend.
-	 */
+	/** @var String[] The contact person of the shop, language dependend. */
 	private static $CONTACTPERSON = array();
 	
-	/**
-	 * The job title of the contact person of the shop, language dependend.
-	 */
+	/** @var String[] The job title of the contact person of the shop, language dependend. */
 	private static $CONTACTPERSONJOBTITLE = array();
 	
-	/**
-	 * The address of the shop, language dependend.
-	 */
+	/** @var String[] The address of the shop, language dependend. */
 	private static $ADDRESS = array();
 	
-	/**
-	 * The phone number of the shop, language dependend.
-	 */
+	/** @var String[] The phone number of the shop, language dependend. */
 	private static $PHONE = array();
 	
-	/**
-	 * The email address of the shop, language dependend.
-	 */
+	/** @var String[] The email address of the shop, language dependend. */
 	private static $EMAIL = array();
 	
 	/**
 	 * Reload the REST information.
 	 *
-	 * @param String 	$locale The localization to load the information.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @param String $locale The localization to load the information.
 	 */
 	private static function load($locale) {
 
@@ -120,6 +113,9 @@ class ContactInformation {
 
 	/**
 	 * This function resets all locales values.
+	 * 
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
 	 */
 	private static function resetValues() {
 
@@ -139,7 +135,10 @@ class ContactInformation {
 	/**
 	 * Gets the title in the default localization.
 	 *
-	 * @return String	The title in the default localization.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String|null The title in the default localization or null if the default title is not set.
 	 */
 	public function getDefaultTitle() {
 		
@@ -154,8 +153,11 @@ class ContactInformation {
 	/**
 	 * Gets the title depended on the localization.
 	 *
-	 * @param String	$locale The locale String.
-	 * @return String	The localized title.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The locale String.
+	 * @return String|null The localized title or null if the localized title is not set.
 	 */
 	 public function getTitle($locale) {
 	 	
@@ -179,7 +181,10 @@ class ContactInformation {
 	/**
 	 * Gets the short description in the default localization.
 	 *
-	 * @return String	The short description in the default localization.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String|null The short description in the default localization or null if the short description is not set.
 	 */
 	public function getDefaultShortDescription() {
 		
@@ -194,8 +199,11 @@ class ContactInformation {
 	/**
 	 * Gets the short description depended on the localization.
 	 *
-	 * @param String	$locale The locale String.
-	 * @return String	The localized short description.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The locale String.
+	 * @return String|null The localized short description or null if the short description is not set.
 	 */
 	 public function getShortDescription($locale) {
 	 	
@@ -219,7 +227,10 @@ class ContactInformation {
 	/**
 	 * Gets the company in the default localization.
 	 *
-	 * @return String	The company in the default localization.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String|null The company in the default localization or null if the short description is not set.
 	 */
 	public function getDefaultCompany() {
 		
@@ -234,8 +245,11 @@ class ContactInformation {
 	/**
 	 * Gets the company depended on the localization.
 	 *
-	 * @param String	$locale The locale String.
-	 * @return String	The localized company.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The locale String.
+	 * @return String|null The localized company or null if the company is net set.
 	 */
 	 public function getCompany($locale) {
 	 	
@@ -259,7 +273,10 @@ class ContactInformation {
 	/**
 	 * Gets the contact person in the default localization.
 	 *
-	 * @return String	The contact person in the default localization.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String|null The contact person in the default localization or null if the contact person is not set.
 	 */
 	public function getDefaultContactPerson() {
 		
@@ -274,8 +291,11 @@ class ContactInformation {
 	/**
 	 * Gets the contact person depended on the localization.
 	 *
-	 * @param String	$locale The locale String.
-	 * @return String	The localized contact person.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The locale String.
+	 * @return String|null The localized contact person or null uf the contact person is not set.
 	 */
 	 public function getContactPerson($locale) {
 	 	
@@ -299,7 +319,10 @@ class ContactInformation {
 	/**
 	 * Gets the job title of the contact person in the default localization.
 	 *
-	 * @return String	The job title of the contact person in the default localization.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String|null The job title of the contact person in the default localization or null if the contact person job title is not set.
 	 */
 	public function getDefaultContactPersonJobTitle() {
 		
@@ -314,8 +337,11 @@ class ContactInformation {
 	/**
 	 * Gets the job title of the contact person depended on the localization.
 	 *
-	 * @param String	$locale The locale String.
-	 * @return String	The localized job title of the contact person.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The locale String.
+	 * @return String|null The localized job title of the contact person or null if the contact person job title is unset.
 	 */
 	 public function getContactPersonJobTitle($locale) {
 	 	
@@ -339,7 +365,10 @@ class ContactInformation {
 	/**
 	 * Gets the address in the default localization.
 	 *
-	 * @return String	The address in the default localization.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String|null The address in the default localization or null if the default address is not set.
 	 */
 	public function getDefaultAddress() {
 		
@@ -354,8 +383,11 @@ class ContactInformation {
 	/**
 	 * Gets the address depended on the localization.
 	 *
-	 * @param String	$locale The locale String.
-	 * @return String	The localized address.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The locale String.
+	 * @return String|null The localized address or null if the address is unset.
 	 */
 	 public function getAddress($locale) {
 	 	
@@ -379,7 +411,10 @@ class ContactInformation {
 	/**
 	 * Gets the phone number in the default localization.
 	 *
-	 * @return String	The phone number in the default localization.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String|null The phone number in the default localization or null if the default phone number is unset.
 	 */
 	public function getDefaultPhone() {
 		
@@ -394,8 +429,11 @@ class ContactInformation {
 	/**
 	 * Gets the phone number depended on the localization.
 	 *
-	 * @param String	$locale The locale String.
-	 * @return String	The localized phone number.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The locale String.
+	 * @return String|null The localized phone number or null if the phone number is unset.
 	 */
 	 public function getPhone($locale) {
 	 	
@@ -419,7 +457,10 @@ class ContactInformation {
 	/**
 	 * Gets the email in the default localization.
 	 *
-	 * @return String	The email in the default localization.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String|null The email in the default localization or null if the default email address is unset.
 	 */
 	public function getDefaultEmail() {
 		
@@ -434,8 +475,11 @@ class ContactInformation {
 	/**
 	 * Gets the email depended on the localization.
 	 *
-	 * @param String	$locale The locale String.
-	 * @return String	The localized email.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The locale String.
+	 * @return String|null The localized email or null if the email address is not set.
 	 */
 	 public function getEmail($locale) {
 	 	
