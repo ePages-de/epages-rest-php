@@ -15,16 +15,22 @@ echo "* <strong>BUILD_SCRIPT_VERSION</strong> " . $BUILD_SCRIPT_VERSION . $EOL_P
 echo "* <strong>FRAMEWORK_VERSION</strong> " . $FRAMEWORK_VERSION . $EOL_PRINT;
 echo "***********************************" . $EOL_PRINT . $EOL_PRINT;
 
-echo "<ul>";
-echo "<li><strong>Creating the .phar</strong></li>";
-$phar = new Phar('eP6RESTclient.phar');
+$filename = "eP6RESTclient-" . $FRAMEWORK_VERSION . ".phar";
 
-echo "<li><strong>Adding all files</strong></li>";
-$phar->buildFromDirectory('../src');
-
-echo "<li><strong>Create and set default stub</strong></li>";
-$phar->setStub($phar->createDefaultStub('Shop.class.php'));
-
-echo "</ul>";
-
+if (file_exists($filename)) {
+	echo "<strong>Version already exists. Delete this version of increase the version.</strong>";
+}
+else {
+	echo "<ul>";
+	echo "<li><strong>Creating the .phar</strong></li>";
+	$phar = new Phar($filename);
+	
+	echo "<li><strong>Adding all files</strong></li>";
+	$phar->buildFromDirectory('../src');
+	
+	echo "<li><strong>Create and set default stub</strong></li>";
+	$phar->setStub($phar->createDefaultStub('Shop.class.php'));
+	
+	echo "</ul>";
+}
 ?>

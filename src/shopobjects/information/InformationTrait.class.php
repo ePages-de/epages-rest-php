@@ -1,33 +1,37 @@
 <?php
 /**
  * This file represents the information trait.
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
  */
 namespace ep6;
 /**
  * This is the interface for all information objects.
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
+ * @package ep6
+ * @subpackage Shopobjects\Information
  */
 trait InformationTrait {
 	
-	/**
-	 * The names of the shop, language dependend.
-	 */
+	/** @var String[] The names of the shop, language dependend. */
 	private static $NAME = array();
 	
-	/**
-	 * The navigation caption of the shop, language dependend.
-	 */
+	/** @var String[] The navigation caption of the shop, language dependend. */
 	private static $NAVIGATIONCAPTION = array();
 	
-	/**
-	 * The description of the shop, language dependend.
-	 */
+	/** @var String[] The description of the shop, language dependend. */
 	private static $DESCRIPTION = array();
 
 	/**
 	 * Reload the REST information.
 	 * This is only a empty placeholder. The child class can override it.
 	 *
-	 * @param String 	$locale The localization to load the information.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @param String $locale The localization to load the information.
 	 */
 	private static function load($locale) {
 
@@ -70,10 +74,12 @@ trait InformationTrait {
 	/**
 	 * Set a value via REST.
 	 *
-	 * @param String	$parameter The key which should change.
-	 * @param String	$value The string to set.
-	 * @param String	$locale The localization String.
-	 * @param boolean	True, if set the value works, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @param String $parameter The key which should change.
+	 * @param String $value The string to set.
+	 * @param String $locale The localization String.
+	 * @return boolean True, if set the value works, false if not.
 	 */
 	private static function put($parameter, $value, $locale) {
 
@@ -127,6 +133,9 @@ trait InformationTrait {
 
 	/**
 	 * This function resets all locales values.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
 	 */
 	private static function resetValues() {
 
@@ -138,7 +147,10 @@ trait InformationTrait {
 	/**
 	 * Gets the name in the default localization.
 	 *
-	 * @return String	The name in the default localization.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String|null The name in the default localization or null if the default name is unset.
 	 */
 	public function getDefaultName() {
 		
@@ -153,8 +165,11 @@ trait InformationTrait {
 	/**
 	 * Gets the name depended on the localization.
 	 *
-	 * @param String	$locale The locale String.
-	 * @return String	The localized name.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The locale String.
+	 * @return String|null The localized name or null if the name is unset.
 	 */
 	 public function getName($locale) {
 	 	
@@ -178,7 +193,10 @@ trait InformationTrait {
 	/**
 	 * Gets the navigation caption in the default localization.
 	 *
-	 * @return String	The navigation caption in the default localization.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String|null The navigation caption in the default localization or null if the default navigation caption is unset.
 	 */
 	public function getDefaultNavigationCaption() {
 		
@@ -193,8 +211,11 @@ trait InformationTrait {
 	/**
 	 * Gets the navigation caption depended on the localization.
 	 *
-	 * @param String	$locale The locale String.
-	 * @return String	The localized navigation caption.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The locale String.
+	 * @return String|null The localized navigation caption or null if the navigation caption is unset.
 	 */
 	 public function getNavigationCaption($locale) {
 	 	
@@ -218,7 +239,10 @@ trait InformationTrait {
 	/**
 	 * Gets the description in the default localization.
 	 *
-	 * @return String	The description in the default localization.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String|null The description in the default localization or null if the default description is unset.
 	 */
 	public function getDefaultDescription() {
 		
@@ -233,8 +257,11 @@ trait InformationTrait {
 	/**
 	 * Gets the description depended on the localization.
 	 *
-	 * @param String	$locale The locale String.
-	 * @return String	The localized description.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The locale String.
+	 * @return String|null The localized description or null if the description is unset.
 	 */
 	 public function getDescription($locale) {
 	 	
@@ -258,9 +285,12 @@ trait InformationTrait {
 	/**
 	 * Sets the name depended on the localization.
 	 *
-	 * @param String	$value The string to set.
-	 * @param String	$locale The localization String.
-	 * @return boolean	True if the name is set, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $value The string to set.
+	 * @param String $locale The localization String.
+	 * @return boolean True if the name is set, false if not.
 	 */
 	 public function setName($value, $locale) {
 
@@ -280,9 +310,12 @@ trait InformationTrait {
 	/**
 	 * Sets the name depended on the localization.
 	 *
-	 * @param String	$value The string to set.
-	 * @param String	$locale The localization String.
-	 * @return boolean	True if the name is set, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $value The string to set.
+	 * @param String $locale The localization String.
+	 * @return boolean True if the name is set, false if not.
 	 */
 	 public function setDefaultName($value) {
 
