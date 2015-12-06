@@ -19,8 +19,8 @@ class Quantity {
 	/** @var float The amount of the quantity. */
 	private $amount = 0.0;
 	
-	/** @var String The unit of the quantity. */
-	private $unit = "";
+	/** @var String|null The unit of the quantity. */
+	private $unit = null;
 	
 	/**
 	 * This is the constructor of the quantity object.

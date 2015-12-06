@@ -19,11 +19,11 @@ class Price {
 	/** @var float The amount of the price. */
 	private $amount = 0.0;
 	
-	/** @var String The tax type of the price. */
-	private $taxType = "";
+	/** @var String|null The tax type of the price. */
+	private $taxType = null;
 	
-	/** @var String The curreny of the price. */
-	private $currency = "";
+	/** @var String|null The curreny of the price. */
+	private $currency = null;
 	
 	/**
 	 * This is the constructor of the price object.
