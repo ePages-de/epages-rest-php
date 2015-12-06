@@ -26,7 +26,7 @@ class RESTClient {
 	private static $AUTHTOKEN;
 
 	/** @var boolean|null You use https or http? Default is true. */
-	private static $ISSSL;
+	private static $ISSSL = true;
 
 	/** @var boolean Boolean to log whether the client is connected or not. */
 	private static $ISCONNECTED = false;
@@ -249,6 +249,7 @@ class RESTClient {
 		self::$SHOP = "";
 		self::$AUTHTOKEN = "";
 		self::$ISCONNECTED = false;
+		self::$ISSSL = true;
 		return true;
 	}
 }
