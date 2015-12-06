@@ -3,9 +3,9 @@ This is the REST client to connect to an epages shop. You can use it as a develo
 
 ## Requirements
 To use this package it needs at least **PHP 5.4**.
-Download the PHP file archive (.phar) in **build** folder, copy it to your project folder and use it like:
+Download the PHP file archive (.phar) in **build** folder or in [relases area](https://github.com/dpauli/ep6client-php/releases), copy it to your project folder and use it like:
 ```php
-require("libraries/eP6RESTclient.phar");
+require("libraries/ep6client-0.0.1.phar");
 ```
 
 ## Version information
@@ -30,12 +30,14 @@ This are the information which are provided with the epages 6 REST client since 
 
 ## Code examples
 
+For more small examples see the [examples folder](https://github.com/dpauli/ep6client-php/tree/master/examples).
+
 ### Example 1
 
 This example get 100 products with a german localization and sort it with **name** attribute:
 
 ```php
-require_once("libraries/eP6RESTclient.phar");
+require_once("libraries/ep6client-0.0.1.phar");
 
 // set connection constants
 $HOST		= "www.meinshop.de";
@@ -61,19 +63,19 @@ foreach ($products as $product) {
 	echo "<p>";
 	echo "<img style=\"float:left\" src=\"" . $product->getSmallImage()->getOriginURL() . "\"/>";
 	echo "<strong>ProductID:</strong> " . $product->getID() . "<br/>";
-	echo "<strong>Beschreibung:</strong> " . htmlentities($product->getDescription("de_DE")) . "<br/><br/>";
-	echo "<strong>Diese Produkt wird ";
+	echo "<strong>Description:</strong> " . htmlentities($product->getDescription("de_DE")) . "<br/><br/>";
+	echo "<strong>This product is ";
 	if (!$product->isForSale()) {
-		echo "NICHT ";
+		echo "NOT ";
 	}
-	echo "verkauft und ist ";
+	echo "for sale and is ";
 	if ($product->isSpecialOffer()) {
-		echo "<u>ein</u> ";
+		echo "<u>a</u> ";
 	}
 	else {
-		echo "KEIN ";
+		echo "not a ";
 	}
-	echo "Spezialangebot</strong>";
+	echo "special offer.</strong>";
 	echo "</p><hr style=\"clear:both\"/>";
 }
 ```
@@ -83,7 +85,7 @@ foreach ($products as $product) {
 This example gets some shop information.
 
 ```php
-require_once("libraries/eP6RESTclient.phar");
+require_once("libraries/ep6client-0.0.1.phar");
 
 // set connection constants
 $HOST		= "www.meinshop.de";
@@ -110,7 +112,7 @@ echo $contactInformation->getName("de_DE");
 The library comes with a huge Logger. It is called ```ep6\Logger```.
 To use this (instead of the ```echo``` command) write
 ```php
-ep6\Logger::force("STRNG");
+ep6\Logger::force("Print this!");
 ```
 The force printer also can print arrays in a simple structure.
 
@@ -119,6 +121,7 @@ By default all notification messages are print. To change this use:
 ep6\Logger::setLogLevel("NOTIFICATION");	// shows all messages
 ep6\Logger::setLogLevel("WARNING");			// shows warning and error messages
 ep6\Logger::setLogLevel("ERROR");			// shows only error messages
+ep6\Logger::setLogLevel("NONE");			// don't log anything
 ```
 ### InputValidator
 
@@ -127,7 +130,7 @@ To validate data and check the value of an object there is a InputValidator clas
 ep6\InputValidator::isHost("www.test.de");
 ep6\InputValidator::isJSON("{}");
 ```
-All available functions will be documented soon.
+All InputValidator functions are found in the [doumentation](http://dbawdy.de/ep6client/doc/classes/ep6.InputValidator.html)
 
 ## Licence
 
