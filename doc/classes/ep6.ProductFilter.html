@@ -144,19 +144,19 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1514885180"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-904616050"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1514885180" class="accordion-body collapse in">
+            <div id="namespace-904616050" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-163055254"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-502439829"></a>
                                 <a href="../namespaces/ep6.html" style="margin-left: 30px; padding-left: 0">ep6</a>
             </div>
-            <div id="namespace-163055254" class="accordion-body collapse ">
+            <div id="namespace-502439829" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -226,6 +226,13 @@ $productFilter-&gt;setLocale(&quot;de_DE&quot;);
 
 // start filtering and get the products
 $products = $productFilter-&gt;getProducts();
+
+// its easy to create a filter with only one construct
+$filterAttribute = [
+				&quot;q&quot;			=&gt; &quot;bicycle&quot;,
+				&quot;locale&quot;	=&gt; &quot;de_DE&quot;
+				];
+$productFilter2 = new ep6\ProductFilter($filterAttribute);
 ?&gt;</pre>
                                                                 
                     <section id="summary">
@@ -243,6 +250,8 @@ $products = $productFilter-&gt;getProducts();
                         </section>
                         <section class="row-fluid public">
                             <section class="span4">
+                                                                    <a href="../classes/ep6.ProductFilter.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_setProductFilter" class="">setProductFilter()</a><br />
                                                                     <a href="../classes/ep6.ProductFilter.html#method_printFilter" class="">printFilter()</a><br />
                                                                     <a href="../classes/ep6.ProductFilter.html#method_hashCode" class="">hashCode()</a><br />
                                                                     <a href="../classes/ep6.ProductFilter.html#method_setLocale" class="">setLocale()</a><br />
@@ -606,6 +615,120 @@ $products = $productFilter-&gt;getProducts();
                 <div class="span8 content class"><h2>Methods</h2></div>
                 <aside class="span4 detailsbar"></aside>
             </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(array&lt;mixed,String&gt;  <span class="argument">$productFilterParameter = array()</span>) </pre>
+                <p><em>This is the constructor to prefill the product filter.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,String&gt;</td>
+                                <td>$productFilterParameter </td>
+                                <td><p>The values of a product filter.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.1                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setProductFilter" name="method_setProductFilter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setProductFilter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setProductFilter(array&lt;mixed,String&gt;  <span class="argument">$productFilterParameter</span>) </pre>
+                <p><em>Fill the product filter with a array.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,String&gt;</td>
+                                <td>$productFilterParameter </td>
+                                <td><p>The values of a product filter.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.1                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
 
                                     <div class="row-fluid">
         <div class="span8 content class">
@@ -1976,7 +2099,7 @@ $products = $productFilter-&gt;getProducts();
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on December 6th, 2015 at 21:08.
+                    on December 6th, 2015 at 23:07.
                 </section>
             </section>
         </section>

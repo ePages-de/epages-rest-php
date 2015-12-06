@@ -4,6 +4,6 @@
  *
  * @ignore
  */
-$FRAMEWORK_VERSION		= "0.0.0";	// The version of this Framework.
-$BUILD_SCRIPT_VERSION	= "0.0.0";	// The version of the build script.
+$FRAMEWORK_VERSION		= "0.0.1";	// The version of this Framework.
+$BUILD_SCRIPT_VERSION	= "0.0.1";	// The version of the build script.
 ?>

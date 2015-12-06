@@ -46,7 +46,7 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @api
-	 * @param productId	The product id to create a product.
+	 * @param mixed[] $productParameter The product to create as array.
 	 */
 	public function __construct($productParameter) {
 		
@@ -65,10 +65,6 @@ class Product {
 			}
 			
 
-		}
-		// if only the product id is known
-		else if (is_string($productParameter)) {
-			
 		}
 	}
 	

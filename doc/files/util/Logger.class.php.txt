@@ -59,7 +59,6 @@ class Logger {
 			return;
 		}
 		self::printMessage($message, "WARNING");
-		self::printStacktrace();
 	}
 
 	/**
@@ -76,7 +75,6 @@ class Logger {
 			return;
 		}
 		self::printMessage($message, "ERROR");
-		self::printStacktrace();
 	}
 
 	/**
@@ -121,8 +119,8 @@ class Logger {
 				}
 				else {
 					echo $message . "<br/>\n";
-
 				}
+				if ($level == "ERROR" || $level == "WARNING") self::printStacktrace();
 				break;
 		}
 	}
@@ -135,11 +133,17 @@ class Logger {
 	 */
 	private static function printStacktrace() {
 		$stack = debug_backtrace();
+		$messageNumber = 0;
 
 		foreach ($stack as $stackentry) {
-			echo "Function <strong>" . $stackentry['function'] . "</strong> ";
-			echo "(" . join(", ", $stackentry['args']) . ") ";
-			echo "called at <strong>" . $stackentry["file"] . "</strong> line " . $stackentry["line"] . "</br>";
+			// dont show the first 3 messages, because this are Logger functions
+			if ($messageNumber < 3) {
+				$messageNumber++;
+				continue;
+			}
+			echo "Function <strong>" . $stackentry['function'] . "</strong> (";
+			var_dump($stackentry['args']);
+			echo ") called at <strong>" . $stackentry["file"] . "</strong> line " . $stackentry["line"] . "</br>";
 		}
 	}
 
