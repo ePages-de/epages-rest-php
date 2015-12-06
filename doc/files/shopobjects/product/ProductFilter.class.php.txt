@@ -1,70 +1,58 @@
 <?php
 /**
  * This file represents the product filter class.
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
  */
 namespace ep6;
 /**
- * This is a product filter class to search products via the REST call "product". 
+ * This is a product filter class to search products via the REST call "product".
  *
- * Use it like the following code:
- *   $productFilter	= new ep6\ProductFilter();
- *   $productFilter->setQueryString("nameToSearch");
- *   $productFilter->getProducts();
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
+ * @package ep6
+ * @subpackage Shopobjects\Product
+ * @example examples\createProductFilter.php Create and use the product filter.
  */
 class ProductFilter {
 
-	/**
-	 * The REST path to the filter ressource.
-	 */
+	/** @var String The REST path to the filter ressource. */
 	const RESTPATH = "products";
 
-	/**
-	 * The localization of the product search result.
-	 */
+	/** @var String|null The localization of the product search result. */
 	private static $LOCALE;
 
-	/**
-	 * The currency of the product search result.
-	 */
+	/** @var String|null The currency of the product search result. */
 	private static $CURRENCY;
 
-	/**
-	 * The page of the product search result.
-	 */
+	/** @var int The page of the product search result. */
 	private static $PAGE = 1;
 
-	/**
-	 * The number of results per page of the product search result.
-	 */
+	/** @var int The number of results per page of the product search result. */
 	private static $RESULTSPERPAGE = 10;
 
-	/**
-	 * The sort direction of the product search result.
-	 */
+	/** @var String|null The sort direction of the product search result. */
 	private static $DIRECTION;
 
-	/**
-	 * The variable to sort the results of the product search result.
-	 */
+	/** @var String The variable to sort the results of the product search result. */
 	private static $SORT = "name";
 
-	/**
-	 * The search string of the product search result.
-	 */
+	/** @var String|null The search string of the product search result. */
 	private static $Q;
 
-	/**
-	 * The category id of the product search result.
-	 */
+	/** @var String|null The category id of the product search result. */
 	private static $CATEGORYID;
 
-	/**
-	 * The product ids of the product search result.
-	 */
+	/** @var String[] The product ids of the product search result. */
 	private static $IDS = array();
 	
 	/**
 	 * This function prints the filter in a NOTIFICATION message.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 */
 	public function printFilter() {
 		
@@ -86,7 +74,10 @@ class ProductFilter {
 	/**
 	 * This function returns the hash code of the object to equals the object.
 	 *
-	 * @return	String	Returns the hash code of the object.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String Returns the hash code of the object.
 	 */
 	public function hashCode() {
 		
@@ -107,8 +98,11 @@ class ProductFilter {
 	/**
 	 * This function sets the localization.
 	 *
-	 * @param String	$locale	The localiazion to filter.
-	 * @return	boolean	True if setting the locale works, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The localiazion to filter.
+	 * @return boolean True if setting the locale works, false if not.
 	 */
 	public function setLocale($locale) {
 		if (!InputValidator::isLocale($locale)) {
@@ -121,7 +115,10 @@ class ProductFilter {
 	/**
 	 * This function gets the localization.
 	 *
-	 * @return	String	The localization of this product filter.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String The localization of this product filter.
 	 */
 	public function getLocale() {
 		return self::$LOCALE;
@@ -130,8 +127,11 @@ class ProductFilter {
 	/**
 	 * This function sets the currency.
 	 *
-	 * @param String	$currency	The currency to filter.
-	 * @return	boolean	True if setting the currency works, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $currency The currency to filter.
+	 * @return boolean True if setting the currency works, false if not.
 	 */
 	public function setCurrency($currency) {
 		if (!InputValidator::isCurrency($currency)) {
@@ -144,7 +144,10 @@ class ProductFilter {
 	/**
 	 * This function gets the currency.
 	 *
-	 * @return	String	The currency of this product filter.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String The currency of this product filter.
 	 */
 	public function getCurrency() {
 		return self::$CURRENCY;
@@ -153,8 +156,11 @@ class ProductFilter {
 	/**
 	 * This function sets the page to show.
 	 *
-	 * @param int	$page	The page number to filter.
-	 * @return	boolean	True if setting the page works, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param int $page The page number to filter.
+	 * @return boolean True if setting the page works, false if not.
 	 */
 	public function setPage($page) {
 		if (!InputValidator::isRangedInt($page, 1)) {
@@ -167,7 +173,10 @@ class ProductFilter {
 	/**
 	 * This function gets the page.
 	 *
-	 * @return	int	The page number of this product filter.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return int The page number of this product filter.
 	 */
 	public function getPage() {
 		return self::$PAGE;
@@ -176,8 +185,11 @@ class ProductFilter {
 	/**
 	 * This function sets the results per page to show.
 	 *
-	 * @param int	$resultsPerPage	The results per page to filter.
-	 * @return	boolean	True if setting the results per page works, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param int $resultsPerPage The results per page to filter.
+	 * @return boolean True if setting the results per page works, false if not.
 	 */
 	public function setResultsPerPage($resultsPerPage) {
 		if (!InputValidator::isRangedInt($resultsPerPage, null, 100)) {
@@ -190,7 +202,10 @@ class ProductFilter {
 	/**
 	 * This function gets the results per page.
 	 *
-	 * @return	int	The results per page number of this product filter.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return int The results per page number of this product filter.
 	 */
 	public function getResultsPerPage() {
 		return self::$RESULTSPERPAGE;
@@ -199,8 +214,11 @@ class ProductFilter {
 	/**
 	 * This function sets the direction to show.
 	 *
-	 * @param String	$direction	The direction to filter.
-	 * @return	boolean	True if setting the direction works, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $direction The direction to filter.
+	 * @return boolean True if setting the direction works, false if not.
 	 */
 	public function setDirection($direction) {
 		if (!InputValidator::isProductDirection($direction)) {
@@ -213,7 +231,10 @@ class ProductFilter {
 	/**
 	 * This function gets the direction.
 	 *
-	 * @return	String	The direction of this product filter.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String The direction of this product filter.
 	 */
 	public function getDirection() {
 		return self::$DIRECTION;
@@ -222,8 +243,11 @@ class ProductFilter {
 	/**
 	 * This function sets the order parameter to show.
 	 *
-	 * @param String	$sort	The sort parameter to filter.
-	 * @return	boolean	True if setting the sort parameter works, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $sort The sort parameter to filter.
+	 * @return boolean True if setting the sort parameter works, false if not.
 	 */
 	public function setSort($sort) {
 		if (!InputValidator::isProductSort($sort)) {
@@ -236,7 +260,10 @@ class ProductFilter {
 	/**
 	 * This function gets the sort.
 	 *
-	 * @return	String	The sort of this product filter.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String The sort of this product filter.
 	 */
 	public function getSort() {
 		return self::$SORT;
@@ -245,8 +272,11 @@ class ProductFilter {
 	/**
 	 * This function sets the query search string to show.
 	 *
-	 * @param String	$q	The query search string to filter.
-	 * @return	boolean	True if setting the query search string works, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $q The query search string to filter.
+	 * @return boolean True if setting the query search string works, false if not.
 	 */
 	public function setQ($q) {
 		if (InputValidator::isEmpty($q)) {
@@ -259,7 +289,10 @@ class ProductFilter {
 	/**
 	 * This function gets the query search string.
 	 *
-	 * @return	String	The query search string of this product filter.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String The query search string of this product filter.
 	 */
 	public function getQ() {
 		return self::$Q;
@@ -268,8 +301,11 @@ class ProductFilter {
 	/**
 	 * This function sets the category ID to show.
 	 *
-	 * @param String	$categoryID	The category ID to filter.
-	 * @return	boolean	True if setting the category ID string works, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $categoryID	The category ID to filter.
+	 * @return boolean True if setting the category ID string works, false if not.
 	 */
 	public function setCategoryID($categoryID) {
 		if (InputValidator::isEmpty($categoryID)) {
@@ -282,7 +318,10 @@ class ProductFilter {
 	/**
 	 * This function gets the category ID string.
 	 *
-	 * @return	String	The category ID string of this product filter.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String The category ID string of this product filter.
 	 */
 	public function getCategoryID() {
 		return self::$CATEGORYID;
@@ -291,8 +330,11 @@ class ProductFilter {
 	/**
 	 * This function add a product ID from filter.
 	 *
-	 * @param String	$productID	The product ID to filter.
-	 * @return	boolean	True if setting the product ID string works, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $productID The product ID to filter.
+	 * @return boolean True if setting the product ID string works, false if not.
 	 */
 	public function setID($productID) {
 		if (InputValidator::isEmpty($productID) || count(self::$IDS) > 12 || in_array($productID, self::$IDS)) {
@@ -305,8 +347,11 @@ class ProductFilter {
 	/**
 	 * This function delete a product ID from filter.
 	 *
-	 * @param String	$productID	The product ID to unset from filter.
-	 * @return	boolean	True if unsetting the product ID string works, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $productID	The product ID to unset from filter.
+	 * @return boolean True if unsetting the product ID string works, false if not.
 	 */
 	public function unsetID($productID) {
 		if (InputValidator::isEmpty($productID) || !in_array($productID, self::$IDS)) {
@@ -318,6 +363,9 @@ class ProductFilter {
 
 	/**
 	 * This function reset all product IDs from filter.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 */
 	public function resetIDs() {
 		self::$IDS = array();
@@ -325,6 +373,9 @@ class ProductFilter {
 
 	/**
 	 * This function reset all product IDs from filter.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 */
 	public function resetFilter() {
 		
@@ -342,7 +393,10 @@ class ProductFilter {
 	/**
 	 * This function returns the products by using the product filter.
 	 *
-	 * @return array<Product>	Returns an array of products.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return Products[] Returns an array of products.
 	 */
 	public function getProducts() {
 		
@@ -385,7 +439,10 @@ class ProductFilter {
 	/**
 	 * This function returns the parameter as string. 
 	 *
-	 * @return String	The parameter build with this product filter.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String The parameter build with this product filter.
 	 */
 	private function getParameter() {
 

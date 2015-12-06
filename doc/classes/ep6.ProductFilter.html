@@ -144,19 +144,19 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1540128966"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1208237439"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1540128966" class="accordion-body collapse in">
+            <div id="namespace-1208237439" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1355436010"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1284398959"></a>
                                 <a href="../namespaces/ep6.html" style="margin-left: 30px; padding-left: 0">ep6</a>
             </div>
-            <div id="namespace-1355436010" class="accordion-body collapse ">
+            <div id="namespace-1284398959" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -207,12 +207,27 @@
 
                     <h1><small>\ep6</small>ProductFilter</h1>
                     <p><em>This is a product filter class to search products via the REST call &quot;product&quot;.</em></p>
-                    <p>Use it like the following code:
-$productFilter    = new ep6\ProductFilter();
-$productFilter-&gt;setQueryString(&quot;nameToSearch&quot;);
-$productFilter-&gt;getProducts();</p>
                     
-                                        
+                    
+                                                                        <h3>Examples</h3>
+                                                                            <h4>Create and use the product filter.</h4>
+                            <pre class="pre-scrollable">&lt;?php
+require_once(&quot;library/ep6client.phar&quot;);
+
+// Connect to a shop
+$shop = new ep6\Shop(&quot;my.shop.domain&quot;, &quot;ShopName&quot;, &quot;AUTHTOKEN&quot;, true);
+
+// create a product flter
+$productFilter = new ep6\ProductFilter();
+
+// search for biycle and set german localization
+$productFilter-&gt;setQueryString(&quot;bicycle&quot;);
+$productFilter-&gt;setLocale(&quot;de_DE&quot;);
+
+// start filtering and get the products
+$products = $productFilter-&gt;getProducts();
+?&gt;</pre>
+                                                                
                     <section id="summary">
                         <h2>Summary</h2>
                         <section class="row-fluid heading">
@@ -298,7 +313,7 @@ $productFilter-&gt;getProducts();</p>
                         <dt>File</dt>
                             <dd><a href="../files/shopobjects.product.ProductFilter.class.html"><div class="path-wrapper">shopobjects/product/ProductFilter.class.php</div></a></dd>
                                                 <dt>Package</dt>
-                            <dd><div class="namespace-wrapper">Default</div></dd>
+                            <dd><div class="namespace-wrapper">Shopobjects\Product</div></dd>
                                                 <dt>Class hierarchy</dt>
                             <dd class="hierarchy">
                                                                                                                                                                     <div class="namespace-wrapper">\ep6\ProductFilter</div>
@@ -311,7 +326,22 @@ $productFilter-&gt;getProducts();</p>
                                                                         </dl>
                     <h2>Tags</h2>
                     <table class="table table-condensed">
-                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                since
+                            </th>
+                            <td>
+                                                                    
+                                                            </td>
+                        </tr>
                                         </table>
                 </aside>
             </div>
@@ -330,7 +360,7 @@ $productFilter-&gt;getProducts();</p>
             <article id="constant_RESTPATH" class="constant">
                 <h3 class="">RESTPATH</h3>
                 <pre class="signature">RESTPATH</pre>
-                <p><em>The REST path to the filter ressource.</em></p>
+                <p><em></em></p>
                 
             </article>
         </div>
@@ -359,13 +389,13 @@ $productFilter-&gt;getProducts();</p>
             <a id="property_LOCALE" name="property_LOCALE" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$LOCALE</h3>
-                <pre class="signature">$LOCALE : </pre>
-                <p><em>The localization of the product search result.</em></p>
+                <pre class="signature">$LOCALE : String|null</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                String|null
+                &mdash; The localization of the product search result.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -383,13 +413,13 @@ $productFilter-&gt;getProducts();</p>
             <a id="property_CURRENCY" name="property_CURRENCY" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$CURRENCY</h3>
-                <pre class="signature">$CURRENCY : </pre>
-                <p><em>The currency of the product search result.</em></p>
+                <pre class="signature">$CURRENCY : String|null</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                String|null
+                &mdash; The currency of the product search result.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -407,13 +437,13 @@ $productFilter-&gt;getProducts();</p>
             <a id="property_PAGE" name="property_PAGE" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$PAGE</h3>
-                <pre class="signature">$PAGE : </pre>
-                <p><em>The page of the product search result.</em></p>
+                <pre class="signature">$PAGE : integer</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                integer
+                &mdash; The page of the product search result.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -431,13 +461,13 @@ $productFilter-&gt;getProducts();</p>
             <a id="property_RESULTSPERPAGE" name="property_RESULTSPERPAGE" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$RESULTSPERPAGE</h3>
-                <pre class="signature">$RESULTSPERPAGE : </pre>
-                <p><em>The number of results per page of the product search result.</em></p>
+                <pre class="signature">$RESULTSPERPAGE : integer</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                integer
+                &mdash; The number of results per page of the product search result.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -455,13 +485,13 @@ $productFilter-&gt;getProducts();</p>
             <a id="property_DIRECTION" name="property_DIRECTION" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$DIRECTION</h3>
-                <pre class="signature">$DIRECTION : </pre>
-                <p><em>The sort direction of the product search result.</em></p>
+                <pre class="signature">$DIRECTION : String|null</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                String|null
+                &mdash; The sort direction of the product search result.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -479,13 +509,13 @@ $productFilter-&gt;getProducts();</p>
             <a id="property_SORT" name="property_SORT" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$SORT</h3>
-                <pre class="signature">$SORT : </pre>
-                <p><em>The variable to sort the results of the product search result.</em></p>
+                <pre class="signature">$SORT : String</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                String
+                &mdash; The variable to sort the results of the product search result.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -503,13 +533,13 @@ $productFilter-&gt;getProducts();</p>
             <a id="property_Q" name="property_Q" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$Q</h3>
-                <pre class="signature">$Q : </pre>
-                <p><em>The search string of the product search result.</em></p>
+                <pre class="signature">$Q : String|null</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                String|null
+                &mdash; The search string of the product search result.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -527,13 +557,13 @@ $productFilter-&gt;getProducts();</p>
             <a id="property_CATEGORYID" name="property_CATEGORYID" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$CATEGORYID</h3>
-                <pre class="signature">$CATEGORYID : </pre>
-                <p><em>The category id of the product search result.</em></p>
+                <pre class="signature">$CATEGORYID : String|null</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                String|null
+                &mdash; The category id of the product search result.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -551,13 +581,13 @@ $productFilter-&gt;getProducts();</p>
             <a id="property_IDS" name="property_IDS" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$IDS</h3>
-                <pre class="signature">$IDS : </pre>
-                <p><em>The product ids of the product search result.</em></p>
+                <pre class="signature">$IDS : array&lt;mixed,String&gt;</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                array&lt;mixed,String&gt;
+                &mdash; The product ids of the product search result.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -598,7 +628,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -627,7 +680,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -664,7 +740,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -693,7 +792,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -730,7 +852,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -759,7 +904,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -796,7 +964,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -825,7 +1016,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -862,7 +1076,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -891,7 +1128,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -928,7 +1188,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -957,7 +1240,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -994,7 +1300,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -1023,7 +1352,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -1060,7 +1412,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -1089,7 +1464,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -1126,7 +1524,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -1155,7 +1576,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -1192,7 +1636,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -1229,7 +1696,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -1255,7 +1745,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -1281,7 +1794,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -1292,14 +1828,14 @@ $productFilter-&gt;getProducts();</p>
             <article class="method">
                 <h3 class="public ">getProducts()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">getProducts() : \ep6\array&lt;Product&gt;</pre>
+                <pre class="signature" style="margin-right: 54px;">getProducts() : array&lt;mixed,\ep6\Products&gt;</pre>
                 <p><em>This function returns the products by using the product filter.</em></p>
                 
 
                 
                 
                                     <h4>Returns</h4>
-                    \ep6\array<Product>
+                    array&lt;mixed,\ep6\Products&gt;
                                             &mdash; <p>Returns an array of products.</p>
                                     				
                             </article>
@@ -1310,7 +1846,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -1339,7 +1898,30 @@ $productFilter-&gt;getProducts();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -1394,7 +1976,7 @@ $productFilter-&gt;getProducts();</p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on December 4th, 2015 at 01:22.
+                    on December 6th, 2015 at 20:09.
                 </section>
             </section>
         </section>

@@ -1,35 +1,34 @@
 <?php
 /**
  * This file represents the logger class.
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
  */
 namespace ep6;
 /**
  * This is a static object to log messages while executing.
  *
- * Use it with:
- *   $Logger::notify("Notify this message");
- *
- * You can set the log level with:
- *   $Logger::setLogLevel("ERROR");
- *
- * You can set the output source with:
- *   $Logger::setOutput("SCREEN");
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
+ * @package ep6
+ * @subpackage Util
+ * @example examples\logMessages.php Use the Logger to log messages.
  */
 class Logger {
 
-	/**
-	 * The log level describes which error should be logged.
-	 */
+	/** @var String The log level describes which error should be logged. */
 	private static $LOGLEVEL = "NOTIFICATION";
 
-	/**
-	 * The output value is set to configure where logging message is made.
-	 */
+	/** @var String The output value is set to configure where logging message is made. */
 	private static $OUT = "SCREEN";
 
 	/**
 	 * This function prints notifications.
 	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 * @param String message The message to print.
 	 */
 	public static function notify($message) {
@@ -46,6 +45,9 @@ class Logger {
 	/**
 	 * This function prints warnings.
 	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 * @param String message The message to print.
 	 */
 	public static function warning($message) {
@@ -63,6 +65,9 @@ class Logger {
 	/**
 	 * This function prints errors.
 	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 * @param String message The message to print.
 	 */
 	public static function error($message) {
@@ -77,6 +82,9 @@ class Logger {
 	/**
 	 * This function definitly prints the message.
 	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 * @param String message The message to print.
 	 */
 	public static function force($message) {
@@ -90,6 +98,8 @@ class Logger {
 	/**
 	 * This function finally prints the message.
 	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
 	 * @param String message The message to print.
 	 * @param String level The message level.
 	 */
@@ -119,6 +129,9 @@ class Logger {
 
 	/**
 	 * This function prints the stacktrace.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
 	 */
 	private static function printStacktrace() {
 		$stack = debug_backtrace();
@@ -131,14 +144,19 @@ class Logger {
 	}
 
 	/**
-	 * This function sets the log level. The following elements are possible:
+	 * This function sets the log level.
+	 * 
+	 * The following elements are possible:
 	 * <ul>
-	 *   <li>NOTIFICATION</li>
-	 *   <li>WARNING</li>
-	 *   <li>ERROR</li>
-	 *   <li>NONE</li>
+	 *   <li><strong>NOTIFICATION</strong> - Print all log messages.</li>
+	 *   <li><strong>WARNING</strong> - Print warnings and more.</li>
+	 *   <li><strong>ERROR</strong> - Print only errors.</li>
+	 *   <li><strong>NONE</strong> - No log messages.</li>
 	 * </ul>
 	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 * @param String $level	The log level to set.
 	 */
 	public static function setLogLevel($level) {
@@ -149,12 +167,17 @@ class Logger {
 	}
 
 	/**
-	 * This function sets the output ressource. The following elements are possible.
+	 * This function sets the output ressource.
+	 * 
+	 * The following elements are possible.
 	 * <ul>
-	 *   <li>SCREEN</li>
+	 *   <li><strong>SCREEN</strong> - Print on running display (e.h. browser).</li>
 	 * </ul>
 	 *
-	 * @param String output The resource to output.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $out The resource to output.
 	 */
 	public static function setOutput($out) {
 		if (!InputValidator::isOutputRessource($out)) {

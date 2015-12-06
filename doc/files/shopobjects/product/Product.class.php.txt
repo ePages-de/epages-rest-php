@@ -1,56 +1,51 @@
 <?php
 /**
  * This file represents the product class.
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
  */
 namespace ep6;
 /**
  * This is the product class for a product in the shop.
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
+ * @package ep6
+ * @subpackage Shopobjects\Product
  */
 class Product {
 	
-	/**
-	 * The product Id.
-	 */
+	/** @var String The product ID. */
 	private $productID = "";
 	
-	/**
-	 * The language dependend name of the product.
-	 */
+	/** @var Strng[] The language dependend name of the product. */
 	private $name = array();
 	
-	/**
-	 * The language dependend short description.
-	 */
+	/** @var String[] The language dependend short description. */
 	private $shortDescription = array();
 	
-	/**
-	 * The language dependend description.
-	 */
+	/** @var String[] The language dependend description. */
 	private $description = array();
 	
-	/**
-	 * Is this product for sale?
-	 */
+	/** @var boolean Is this product for sale? */
 	private $forSale = true;
 	
-	/**
-	 * Is this product a special offer?
-	 */
+	/** @var boolean Is this product a special offer? */
 	private $specialOffer = false;
 	
-	/**
-	 * The language dependend text of availibility.
-	 */
+	/** @var String[] The language dependend text of availibility. */
 	private $availibilityText = array();
 	
-	/**
-	 * This are the images in the four different possibilities.
-	 */
+	/** @var Images[] This are the images in the four different possibilities. */
 	private $images = array();
 	
 	/**
 	 * This is the constructor of the product.
 	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 * @param productId	The product id to create a product.
 	 */
 	public function __construct($productParameter) {
@@ -80,7 +75,10 @@ class Product {
 	/**
 	 * Returns the product id.
 	 *
-	 * @return String	The product id.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return String The product id.
 	 */
 	public function getID() {
 		
@@ -90,8 +88,11 @@ class Product {
 	/**
 	 * Returns the name in a specific localization.
 	 *
-	 * @param locale	The localization of the requested name.
-	 * @return String	The name.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The localization of the requested name.
+	 * @return String The name.
 	 */
 	public function getName($locale) {
 		
@@ -101,8 +102,11 @@ class Product {
 	/**
 	 * Returns the short description in a specific localization.
 	 *
-	 * @param locale	The localization of the requested short description.
-	 * @return String	The short description.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The localization of the requested short description.
+	 * @return String The short description.
 	 */
 	public function getShortDescription($locale) {
 		
@@ -112,8 +116,11 @@ class Product {
 	/**
 	 * Returns the description in a specific localization.
 	 *
-	 * @param locale	The localization of the requested description.
-	 * @return String	The description.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The localization of the requested description.
+	 * @return String The description.
 	 */
 	public function getDescription($locale) {
 		
@@ -123,7 +130,10 @@ class Product {
 	/**
 	 * Returns true if it is for sale.
 	 *
-	 * @return boolean	True if it is for sale, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return boolean True if it is for sale, false if not.
 	 */
 	public function isForSale() {
 		
@@ -133,7 +143,10 @@ class Product {
 	/**
 	 * Returns true if it is a special offer.
 	 *
-	 * @return boolean	True if it is a special offer, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return boolean True if it is a special offer, false if not.
 	 */
 	public function isSpecialOffer() {
 		
@@ -143,8 +156,11 @@ class Product {
 	/**
 	 * Returns the availibility text in a specific localization.
 	 *
-	 * @param locale	The localization of the requested availibility text.
-	 * @return String	The availibility text.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $locale The localization of the requested availibility text.
+	 * @return String The availibility text.
 	 */
 	public function getAvailibilityText($locale) {
 
@@ -154,7 +170,10 @@ class Product {
 	/**
 	 * Returns the small image.
 	 *
-	 * @return Image	The small image.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return Image The small image.
 	 */
 	public function getSmallImage() {
 
@@ -164,7 +183,10 @@ class Product {
 	/**
 	 * Returns the medium image.
 	 *
-	 * @return Image	The medium image.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return Image The medium image.
 	 */
 	public function getMediumImage() {
 
@@ -174,7 +196,10 @@ class Product {
 	/**
 	 * Returns the large image.
 	 *
-	 * @return Image	The large image.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return Image The large image.
 	 */
 	public function getLargeImage() {
 
@@ -184,7 +209,10 @@ class Product {
 	/**
 	 * Returns the hot deal image.
 	 *
-	 * @return Image	The hot deal image.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @return Image The hot deal image.
 	 */
 	public function getHotDealImage() {
 

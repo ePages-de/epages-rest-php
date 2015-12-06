@@ -144,19 +144,19 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1942489190"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-107422928"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1942489190" class="accordion-body collapse in">
+            <div id="namespace-107422928" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-978941196"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1160844038"></a>
                                 <a href="../namespaces/ep6.html" style="margin-left: 30px; padding-left: 0">ep6</a>
             </div>
-            <div id="namespace-978941196" class="accordion-body collapse ">
+            <div id="namespace-1160844038" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -207,11 +207,23 @@
 
                     <h1><small>\ep6</small>Locales</h1>
                     <p><em>This is the static class for the localization.</em></p>
-                    <p>Use it like the following code:
-Locales::getDefault();
-Locales::getItems();</p>
                     
-                                        
+                    
+                                                                        <h3>Examples</h3>
+                                                                            <h4>Handle with locales.</h4>
+                            <pre class="pre-scrollable">&lt;?php
+require_once(&quot;library/ep6client.phar&quot;);
+
+// Connect to the shop.
+$shop = new ep6\Shop(&quot;my.shop.domain&quot;, &quot;ShopName&quot;, &quot;AUTHTOKEN&quot;, true);
+
+// Gets the default lcale in String.
+echo $shop-&gt;getDefaultLocales();
+
+// Gets all in the shop available locales in a array.
+$lcales = $shop-&gt;getLocales();
+?&gt;</pre>
+                                                                
                     <section id="summary">
                         <h2>Summary</h2>
                         <section class="row-fluid heading">
@@ -270,7 +282,7 @@ Locales::getItems();</p>
                         <dt>File</dt>
                             <dd><a href="../files/shopobjects.Locales.class.html"><div class="path-wrapper">shopobjects/Locales.class.php</div></a></dd>
                                                 <dt>Package</dt>
-                            <dd><div class="namespace-wrapper">Default</div></dd>
+                            <dd><div class="namespace-wrapper">ep6\Shopobjects</div></dd>
                                                 <dt>Class hierarchy</dt>
                             <dd class="hierarchy">
                                                                                                                                                                     <div class="namespace-wrapper">\ep6\Locales</div>
@@ -283,7 +295,22 @@ Locales::getItems();</p>
                                                                         </dl>
                     <h2>Tags</h2>
                     <table class="table table-condensed">
-                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                since
+                            </th>
+                            <td>
+                                                                    
+                                                            </td>
+                        </tr>
                                         </table>
                 </aside>
             </div>
@@ -302,7 +329,7 @@ Locales::getItems();</p>
             <article id="constant_RESTPATH" class="constant">
                 <h3 class="">RESTPATH</h3>
                 <pre class="signature">RESTPATH</pre>
-                <p><em>The REST path for localizations.</em></p>
+                <p><em></em></p>
                 
             </article>
         </div>
@@ -331,13 +358,13 @@ Locales::getItems();</p>
             <a id="property_DEFAULT" name="property_DEFAULT" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$DEFAULT</h3>
-                <pre class="signature">$DEFAULT : </pre>
-                <p><em>Space to save the default locales.</em></p>
+                <pre class="signature">$DEFAULT : String|null</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                String|null
+                &mdash; Space to save the default locales.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -355,13 +382,13 @@ Locales::getItems();</p>
             <a id="property_ITEMS" name="property_ITEMS" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$ITEMS</h3>
-                <pre class="signature">$ITEMS : </pre>
-                <p><em>Space to save the possible locales.</em></p>
+                <pre class="signature">$ITEMS : array&lt;mixed,String&gt;</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                array&lt;mixed,String&gt;
+                &mdash; Space to save the possible locales.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -403,7 +430,30 @@ Locales::getItems();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -433,7 +483,30 @@ Locales::getItems();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -463,7 +536,30 @@ Locales::getItems();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -490,7 +586,30 @@ Locales::getItems();</p>
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -545,7 +664,7 @@ Locales::getItems();</p>
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on December 4th, 2015 at 01:22.
+                    on December 6th, 2015 at 20:09.
                 </section>
             </section>
         </section>

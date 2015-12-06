@@ -1,74 +1,58 @@
 <?php
 /**
- * This file represents the rest client class.
+ * This file represents the REST client class.
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
  */
 namespace ep6;
 /**
  * This is the pure REST client. It is used in a static way.
  *
- * To connect or reconnect use:
- *   RESTClient::connect(HOSTNAME, SHOPNAME, AUTHTOKEN, ISSSL);
- *
- * To send a command use:
- *   RESTClient::send("products");
- *
- * To change the request method use:
- *   RESTClient::setRequestMethod("GET");
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
+ * @package ep6
+ * @subpackage Util
  */
 class RESTClient {
 
-	/**
-	 * The ePages host to connect.
-	 */
+	/** @var String|null The ePages host to connect. */
 	private static $HOST;
 
-	/**
-	 * The refered ePages ahop.
-	 */
+	/** @var String|null The refered ePages ahop. */
 	private static $SHOP;
 
-	/**
-	 * The authentification token (access token).
-	 */
+	/** @var String|null The authentification token (access token). */
 	private static $AUTHTOKEN;
 
-	/**
-	 * You use https or http? Default is true.
-	 */
+	/** @var boolean|null You use https or http? Default is true. */
 	private static $ISSSL;
 
-	/**
-	 * Boolean to log whether the client is connected or not.
-	 */
+	/** @var boolean Boolean to log whether the client is connected or not. */
 	private static $ISCONNECTED = false;
 
-	/**
-	 * The request method of the REST call.
-	 */
+	/** @var String The request method of the REST call. */
 	private static $HTTP_REQUEST_METHOD = "GET";
 
-	/**
-	 * The path to the REST ressource in the shop.
-	 */
+	/** @var String The path to the REST ressource in the shop. */
 	const PATHTOREST = "rs/shops";
 
-	/**
-	 * The accepted value of the response.
-	 */
+	/** @var String The accepted value of the response. */
 	const HTTP_ACCEPT = "application/vnd.epages.v1+json";
 
-	/**
-	 * The content type of the request.
-	 */
+	/** @var String The content type of the request. */
 	const HTTP_CONTENT_TYPE = "application/json";
 
 	/**
 	 * The constructor for the main class.
 	 *
-	 * @param String	$host		The ePages host to connect.
-	 * @param String	$shop		The refered ePages shop.
-	 * @param String	$authToken	The authentificaton token to connect via REST.
-	 * @param boolean	$isssl		True, if you use SSL, false if not. Default value is true.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $host The epages host to connect.
+	 * @param String $shop The refered ePages shop.
+	 * @param String $authToken The authentificaton token to connect via REST.
+	 * @param boolean $isssl True, if you use SSL, false if not. Default value is true.
 	 */
 	public static function connect($host, $shop, $authToken, $isssl) {
 
@@ -89,6 +73,10 @@ class RESTClient {
 
 	/**
 	 * This function prints the status of the REST client in a FORCE Logger message.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 */
 	public static function printStatus() {
 
@@ -107,10 +95,13 @@ class RESTClient {
 	/**
 	 * This send function sends a special command to the REST server.
 	 *
-	 * @param String	command		The path which is requested in the REST client.
-	 * @param String	locale		The localization to get.
-	 * @param String	postfields	Add specific parameters to the REST server.
-	 * @return String	The returned JSON object.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String command The path which is requested in the REST client.
+	 * @param String locale The localization to get.
+	 * @param String postfields Add specific parameters to the REST server.
+	 * @return String The returned JSON object.
 	 */
 	public static function sendWithLocalization($command, $locale, $postfields = array()) {
 		
@@ -124,9 +115,12 @@ class RESTClient {
 	/**
 	 * This send function sends a special command to the REST server with additional parameter.
 	 *
-	 * @param String	command		The path which is requested in the REST client.
-	 * @param String	postfields	Add specific parameters to the REST server.
-	 * @return array	The returned elements as array.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String command The path which is requested in the REST client.
+	 * @param String[] postfields Add specific parameters to the REST server.
+	 * @return mixed[] The returned elements as array.
 	 */
 	public static function send($command, $postfields = array()) {
 		
@@ -228,8 +222,11 @@ class RESTClient {
 	/**
 	 * Sets another request method.
 	 *
-	 * @param String	method	The request method the REST client should use.
-	 * @return boolean	True, if it works, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String method The request method the REST client should use.
+	 * @return boolean True, if it works, false if not.
 	 */
 	public static function setRequestMethod($method) {
 		if (!InputValidator::isRequestMethod($method)) {
@@ -241,6 +238,10 @@ class RESTClient {
 
 	/**
 	 * Disconnects and deletes all configuration data.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 */
 	public static function disconnect() {
 		

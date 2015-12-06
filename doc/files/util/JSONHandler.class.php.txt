@@ -1,21 +1,27 @@
 <?php
 /**
  * This file represents the json handler class.
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
  */
 namespace ep6;
 /**
  * This is a small simple handler to convert JSON into an array and otherwise.
  *
- * Call this class as a static object like:
- *   JSONHandler::parseJSON(JSON);
- *   JSONHandler::createJSON(ARRAY);
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
+ * @package ep6
+ * @subpackage Util
  */
 class JSONHandler {
 	/**
 	 * Call this function with the JSON in parameter.
 	 *
-	 * @param String	$JSON	The JSON string to parse.
-	 * @return array	The array of the JSON element or null if there is an error.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @param String $JSON The JSON string to parse.
+	 * @return array The array of the JSON element or null if there is an error.
 	 */
 	public static function parseJSON($JSON) {
 
@@ -37,8 +43,10 @@ class JSONHandler {
 	/**
 	 * Call this function to create a JSON string from a array.
 	 *
-	 * @param array 	$array	The array to make a JSON.
-	 * @return String	The JSON string.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @param array $array The array to make a JSON.
+	 * @return String The JSON string.
 	 */
 	public static function createJSON($array) {
 

@@ -1,34 +1,37 @@
 <?php
 /**
  * This file represents the locales class.
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
  */
 namespace ep6;
 /**
  * This is the static class for the localization.
  *
- * Use it like the following code:
- *   Locales::getDefault();
- *   Locales::getItems();
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
+ * @package ep6
+ * @subpackage Shopobjects
+ * @example examples\handleWithLocales.php Handle with locales.
  */
 class Locales {
 	
-	/**
-	 * The REST path for localizations.
-	 */
+	/** @var String The REST path for localizations. */
 	const RESTPATH = "locales";
 	
-	/**
-	 * Space to save the default locales.
-	 */
+	/** @var String|null Space to save the default locales. */
 	private static $DEFAULT = null;
 	
-	/**
-	 * Space to save the possible locales.
-	 */
+	/** @var String[] Space to save the possible locales. */
 	private static $ITEMS = array();
 	
 	/**
 	 * Gets the default and possible locales of the shop.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 */
 	private static function load() {
 
@@ -62,6 +65,10 @@ class Locales {
 
 	/**
 	 * This function resets all locales values.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 */
 	public static function resetValues() {
 
@@ -72,6 +79,9 @@ class Locales {
 	/**
 	 * Gets the default localization.
 	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 * @return The default localization of the shop.
 	 */
 	public static function getDefault() {
@@ -85,6 +95,9 @@ class Locales {
 	/**
 	 * Gets the activated localizations.
 	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 * @return The possible localizations of the shop.
 	 */
 	public static function getItems() {

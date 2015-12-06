@@ -1,21 +1,30 @@
 <?php
 /**
  * This file represents the input validator class.
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
  */
 namespace ep6;
 /**
  * This class, used by a static way, checks whether a value is valid.
  *
- * To check whether a value is a host use:
- *   InputValidator::isHost(HOSTNAME);
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.0.0
+ * @package ep6
+ * @subpackage Util
+ * @example examples\useValidator.php Test input values with the static Validator object.
  */
 class InputValidator {
 
 	/**
 	 * Checks whether a parameter is a host.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @return boolean	True if the string is a host, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $parameter String to check.
+	 * @return boolean True if the string is a host, false if not.
 	 */
 	public static function isHost($parameter) {
 
@@ -25,10 +34,12 @@ class InputValidator {
 
 	/**
 	 * Checks whether a parameter is a shop.
-	 * TODO: Finalize this function.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @return boolean	True if the string is a shop, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $parameter String to check.
+	 * @return boolean True if the string is a shop, false if not.
 	 */
 	public static function isShop($parameter) {
 		
@@ -39,8 +50,11 @@ class InputValidator {
 	 * Checks whether a parameter is a OAuth authentification token.
 	 * TODO: Finalize this function.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @return boolean	True if the string is a OAuth authentification token, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $parameter String to check.
+	 * @return boolean True if the string is a OAuth authentification token, false if not.
 	 */
 	public static function isAuthToken($parameter) {
 		
@@ -50,8 +64,11 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter is a localization string.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @return boolean	True if the string is a localization string, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $parameter String to check.
+	 * @return boolean True if the string is a localization string, false if not.
 	 */
 	public static function isLocale($parameter) {
 		
@@ -62,8 +79,11 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter is a currency string.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @return boolean	True if the string is a currency string, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $parameter String to check.
+	 * @return boolean True if the string is a currency string, false if not.
 	 */
 	public static function isCurrency($parameter) {
 		
@@ -74,8 +94,11 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter is a HTTP request method.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @return boolean	True if the string is a HTTP request method, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $parameter String to check.
+	 * @return boolean True if the string is a HTTP request method, false if not.
 	 */
 	public static function isRequestMethod($parameter) {
 
@@ -86,8 +109,11 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter is an output ressource.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @return boolean	True if the string is an output ressource, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $parameter String to check.
+	 * @return boolean True if the string is an output ressource, false if not.
 	 */
 	public static function isOutputRessource($parameter) {
 
@@ -98,8 +124,11 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter is a log level.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @return boolean	True if the string is a log level, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $parameter String to check.
+	 * @return boolean True if the string is a log level, false if not.
 	 */
 	public static function isLogLevel($parameter) {
 
@@ -110,8 +139,11 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter is a REST command.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @return boolean	True if the string is a REST command, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $parameter String to check.
+	 * @return boolean True if the string is a REST command, false if not.
 	 */
 	public static function isRESTCommand($parameter) {
 
@@ -121,8 +153,11 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter is a JSON string.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @return boolean	True if the string is a JSON string, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $parameter String to check.
+	 * @return boolean True if the string is a JSON string, false if not.
 	 */
 	public static function isJSON($parameter) {
 
@@ -132,10 +167,13 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter is an int with a range.
 	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
 	 * @param int $parameter Int to check.
-	 * @param int $minimum The minimum allowed number, null if there is no minimum.
-	 * @param int $maximum The maximum allowed number, null if there is no maximum.
-	 * @return boolean	True if the parameter is an int, false if not.
+	 * @param int|null $minimum The minimum allowed number, null if there is no minimum.
+	 * @param int|null $maximum The maximum allowed number, null if there is no maximum.
+	 * @return boolean True if the parameter is an int, false if not.
 	 */
 	public static function isRangedInt($parameter, $minimum = null, $maximum = null) {
 
@@ -147,8 +185,11 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter is a product sort direction.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @return boolean	True if the parameter is a product sort direction, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $parameter String to check.
+	 * @return boolean True if the parameter is a product sort direction, false if not.
 	 */
 	public static function isProductDirection($parameter) {
 
@@ -159,8 +200,11 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter is a product sort parameter.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @return boolean	True if the parameter is a product sort parameter, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $parameter String to check.
+	 * @return boolean True if the parameter is a product sort parameter, false if not.
 	 */
 	public static function isProductSort($parameter) {
 
@@ -171,8 +215,11 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter is a valid product id.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @return boolean	True if the parameter is a valid product id, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $parameter String to check.
+	 * @return boolean True if the parameter is a valid product id, false if not.
 	 */
 	public static function isProductId($parameter) {
 
@@ -182,8 +229,11 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter is an int.
 	 *
-	 * @param int	$parameter	Int to check.
-	 * @return boolean	True if the parameter is an int, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param int $parameter Int to check.
+	 * @return boolean True if the parameter is an int, false if not.
 	 */
 	public static function isInt($parameter) {
 
@@ -193,8 +243,11 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter is an array.
 	 *
-	 * @param array	$parameter	Array to check.
-	 * @return boolean	True if the parameter is an array, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param array $parameter Array to check.
+	 * @return boolean True if the parameter is an array, false if not.
 	 */
 	public static function isArray($parameter) {
 
@@ -204,8 +257,11 @@ class InputValidator {
 	/**
 	 * Checks whether a paramter is empty or null.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @return boolean	True if the parameter is empty or null, false if not.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @api
+	 * @param String $parameter String to check.
+	 * @return boolean True if the parameter is empty or null, false if not.
 	 */
 	public static function isEmpty($parameter) {
 
@@ -215,10 +271,10 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter match a regex.
 	 *
-	 * @param String	$parameter	String to check.
-	 * @param String	$regex		The regex to check.
-	 * @param String	$type		The type which is validated.
-	 * @return boolean	True if the string validates, false if not.
+	 * @param String $parameter String to check.
+	 * @param String $regex	 The regex to check.
+	 * @param String $type The type which is validated.
+	 * @return boolean True if the string validates, false if not.
 	 */
 	private static function isMatchRegex($parameter, $regex, $type) {
 

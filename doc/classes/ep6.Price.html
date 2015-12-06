@@ -144,19 +144,19 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-631770173"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-2100050649"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-631770173" class="accordion-body collapse in">
+            <div id="namespace-2100050649" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                                                     <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1730211702"></a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-469394079"></a>
                                 <a href="../namespaces/ep6.html" style="margin-left: 30px; padding-left: 0">ep6</a>
             </div>
-            <div id="namespace-1730211702" class="accordion-body collapse ">
+            <div id="namespace-469394079" class="accordion-body collapse ">
                 <div class="accordion-inner">
 
                     
@@ -267,7 +267,7 @@
                         <dt>File</dt>
                             <dd><a href="../files/shopobjects.price.Price.class.html"><div class="path-wrapper">shopobjects/price/Price.class.php</div></a></dd>
                                                 <dt>Package</dt>
-                            <dd><div class="namespace-wrapper">Default</div></dd>
+                            <dd><div class="namespace-wrapper">Shopobjects\Price</div></dd>
                                                 <dt>Class hierarchy</dt>
                             <dd class="hierarchy">
                                                                                                                                                                     <div class="namespace-wrapper">\ep6\Price</div>
@@ -280,7 +280,22 @@
                                                                         </dl>
                     <h2>Tags</h2>
                     <table class="table table-condensed">
-                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                since
+                            </th>
+                            <td>
+                                                                    
+                                                            </td>
+                        </tr>
                                         </table>
                 </aside>
             </div>
@@ -299,13 +314,13 @@
             <a id="property_amount" name="property_amount" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$amount</h3>
-                <pre class="signature">$amount : </pre>
-                <p><em>The amount of the price.</em></p>
+                <pre class="signature">$amount : float</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                float
+                &mdash; The amount of the price.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -323,13 +338,13 @@
             <a id="property_taxType" name="property_taxType" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$taxType</h3>
-                <pre class="signature">$taxType : </pre>
-                <p><em>The tax type of the price.</em></p>
+                <pre class="signature">$taxType : String</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                String
+                &mdash; The tax type of the price.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -347,13 +362,13 @@
             <a id="property_currency" name="property_currency" class="anchor"></a>
             <article class="property">
                 <h3 class="private ">$currency</h3>
-                <pre class="signature">$currency : </pre>
-                <p><em>The curreny of the price.</em></p>
+                <pre class="signature">$currency : String</pre>
+                <p><em></em></p>
                 
 
                                 <h4>Type</h4>
-                
-                                            </article>
+                String
+                &mdash; The curreny of the price.                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -379,26 +394,26 @@
             <article class="method">
                 <h3 class="public ">__construct()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">__construct(  <span class="argument">$amount</span>,   <span class="argument">$currency</span>,   <span class="argument">$taxType</span>) </pre>
+                <pre class="signature" style="margin-right: 54px;">__construct(float  <span class="argument">$amount</span>, String  <span class="argument">$currency</span>, String  <span class="argument">$taxType</span>) </pre>
                 <p><em>This is the constructor of the price object.</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
+                                <td>float</td>
                                 <td>$amount </td>
-                                <td></td>
+                                <td><p>The price value.</p></td>
                             </tr>
                                                     <tr>
-                                <td></td>
+                                <td>String</td>
                                 <td>$currency </td>
-                                <td></td>
+                                <td><p>The currency of the price.</p></td>
                             </tr>
                                                     <tr>
-                                <td></td>
+                                <td>String</td>
                                 <td>$taxType </td>
-                                <td></td>
+                                <td><p>The tax type, can be &quot;GROSS&quot; or &quot;NET&quot;.</p></td>
                             </tr>
                                             </table>
                 
@@ -412,7 +427,30 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            api
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -467,7 +505,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on December 4th, 2015 at 01:22.
+                    on December 6th, 2015 at 20:09.
                 </section>
             </section>
         </section>
