@@ -13,4 +13,11 @@ $productFilter->setLocale("de_DE");
 
 // start filtering and get the products
 $products = $productFilter->getProducts();
+
+// its easy to create a filter with only one construct
+$filterAttribute = [
+				"q"			=> "bicycle",
+				"locale"	=> "de_DE"
+				];
+$productFilter2 = new ep6\ProductFilter($filterAttribute);
 ?>

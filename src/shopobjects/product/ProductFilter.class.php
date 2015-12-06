@@ -48,6 +48,62 @@ class ProductFilter {
 	private static $IDS = array();
 	
 	/**
+	 * This is the constructor to prefill the product filter.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.1
+	 * @api
+	 * @param String[] $productFilterParameter The values of a product filter.
+	 */
+	public function __construct($productFilterParameter = array()) {
+
+		if (!empty($productFilterParameter)) {
+			$this->setProductFilter($productFilterParameter);
+		}
+	}
+	
+	/**
+	 * Fill the product filter with a array.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.1
+	 * @api
+	 * @param String[] $productFilterParameter The values of a product filter.
+	 */
+	public function setProductFilter($productFilterParameter) {
+		
+		foreach ($productFilterParameter as $key => $parameter) {
+			if ($key == "locale") {
+				$this->setLocale($parameter);
+			}
+			else if($key == "currency") {
+				$this->setCurrency($parameter);
+			}
+			else if($key == "page") {
+				$this->setPage($parameter);
+			}
+			else if($key == "resultsPerPage") {
+				$this->setResultsPerPage($parameter);
+			}
+			else if($key == "direction") {
+				$this->setDirection($parameter);
+			}
+			else if($key == "sort") {
+				$this->setSort($parameter);
+			}
+			else if($key == "q") {
+				$this->setQ($parameter);
+			}
+			else if($key == "categoryID") {
+				$this->setCategoryID($parameter);
+			}
+			else {
+				Logger::warning("Unknown attribute <i>" . $key . "</i> in product filter attribute.");
+			}
+		}
+	}
+	
+	/**
 	 * This function prints the filter in a NOTIFICATION message.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
