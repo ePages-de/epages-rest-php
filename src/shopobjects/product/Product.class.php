@@ -16,8 +16,8 @@ namespace ep6;
  */
 class Product {
 	
-	/** @var String The product ID. */
-	private $productID = "";
+	/** @var String|null The product ID. */
+	private $productID = null;
 	
 	/** @var Strng[] The language dependend name of the product. */
 	private $name = array();
