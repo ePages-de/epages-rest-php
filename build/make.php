@@ -15,7 +15,7 @@ echo "* <strong>BUILD_SCRIPT_VERSION</strong> " . $BUILD_SCRIPT_VERSION . $EOL_P
 echo "* <strong>FRAMEWORK_VERSION</strong> " . $FRAMEWORK_VERSION . $EOL_PRINT;
 echo "***********************************" . $EOL_PRINT . $EOL_PRINT;
 
-$filename = "eP6RESTclient-" . $FRAMEWORK_VERSION . ".phar";
+$filename = "ep6client-" . $FRAMEWORK_VERSION . ".phar";
 
 if (file_exists($filename)) {
 	echo "<strong>Version already exists. Delete this version of increase the version.</strong>";
