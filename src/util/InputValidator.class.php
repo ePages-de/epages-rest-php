@@ -160,8 +160,8 @@ class InputValidator {
 	 * @return boolean True if the string is a JSON string, false if not.
 	 */
 	public static function isJSON($parameter) {
-
-		return !self::isEmpty($parameter);
+		return !is_null(json_decode($parameter))
+			&& !self::isEmpty($parameter);
 	}
 
 	/**
