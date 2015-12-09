@@ -16,11 +16,8 @@ namespace ep6;
  */
 class PriceWithQuantity extends Price {
 		
-	/** @var float The amount of the quantity. */
-	private $amount = 0.0;
-	
-	/** @var String|null The unit of the quantity. */
-	private $unit = null;
+	/** @var mixed[] The quantity. */
+	private $quantity = array();
 	
 	/**
 	 * This is the constructor of the price with quantity object.
@@ -36,8 +33,12 @@ class PriceWithQuantity extends Price {
 		parent::__construct($priceParameter);
 		if (InputValidator::isArray($quantityParameter)) {
 			
-			$this->amount = $quantityParameter['amount'];
-			$this->unit = $quantityParameter['unit'];
+			if (!InputValidator::isEmptyArrayKey($quantityParameter, "amount")) {
+				$this->quantity['amount'] = $quantityParameter['amount'];
+			}
+			if (!InputValidator::isEmptyArrayKey($quantityParameter, "unit")) {
+				$this->quantity['unit'] = $quantityParameter['unit'];
+			}
 		}
 	}
 }

@@ -38,9 +38,15 @@ class Price {
 		
 		if (InputValidator::isArray($priceParameter)) {
 			
-			$this->amount = $priceParameter['amount'];
-			$this->taxType = $priceParameter['taxType'];
-			$this->currency = $priceParameter['currency'];
+			if (!InputValidator::isEmptyArrayKey($priceParameter, "amount")) {
+				$this->amount = $priceParameter['amount'];
+			}
+			if (!InputValidator::isEmptyArrayKey($priceParameter, "taxType")) {
+				$this->taxType = $priceParameter['taxType'];
+			}
+			if (!InputValidator::isEmptyArrayKey($priceParameter, "currency")) {
+				$this->currency = $priceParameter['currency'];
+			}
 		}
 	}
 }

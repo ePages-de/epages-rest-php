@@ -57,7 +57,8 @@ class ProductFilter {
 	 */
 	public function __construct($productFilterParameter = array()) {
 
-		if (!InputValidator::isEmptyArray($productFilterParameter)) {
+		if (InputValidator::isArray($productFilterParameter) &&
+			!InputValidator::isEmptyArray($productFilterParameter)) {
 			$this->setProductFilter($productFilterParameter);
 		}
 	}
@@ -71,6 +72,11 @@ class ProductFilter {
 	 * @param String[] $productFilterParameter The values of a product filter.
 	 */
 	public function setProductFilter($productFilterParameter) {
+		
+		if (!InputValidator::isArray($productFilterParameter) ||
+			InputValidator::isEmptyArray($productFilterParameter)) {
+			return;
+		}
 		
 		foreach ($productFilterParameter as $key => $parameter) {
 			if ($key == "locale") {

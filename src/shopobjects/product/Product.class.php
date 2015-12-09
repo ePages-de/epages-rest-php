@@ -69,29 +69,77 @@ class Product {
 	 * @param mixed[] $productParameter The product to create as array.
 	 */
 	public function __construct($productParameter) {
-		
+
+		if (!InputValidator::isArray($productParameter) ||
+			InputValidator::isEmptyArray($productParameter)) {
+			return;
+		}
+
 		// if the product comes from the shop API
-		if (InputValidator::isArray($productParameter)) {
-		 	
+		if (InputValidator::isArray($productParameter) &&
+			!InputValidator::isEmptyArrayKey($productParameter, "productId")) {
+			
 			$this->productID = $productParameter['productId'];
-			$this->name[$productParameter['locale']] = $productParameter['name'];
-			$this->shortDescription[$productParameter['locale']] = $productParameter['shortDescription'];
-			$this->description[$productParameter['locale']] = $productParameter['description'];
-			$this->forSale = $productParameter['forSale'];
-			$this->specialOffer = $productParameter['specialOffer'];
-			$this->availibilityText[$productParameter['locale']] = $productParameter['availabilityText'];
+			
+			// load locale depended content
+			if (!InputValidator::isEmptyArrayKey($productParameter, "forSale")) {
+				$this->forSale = $productParameter['forSale'];
+			}
+			if (!InputValidator::isEmptyArrayKey($productParameter, "specialOffer")) {
+				$this->specialOffer = $productParameter['specialOffer'];
+			}
+			
+			// if you have a localization
+			if (!InputValidator::isEmptyArrayKey($productParameter, "locale")) {
+
+				if (!InputValidator::isEmptyArrayKey($productParameter, "name")) {
+					$this->name[$productParameter['locale']] = $productParameter['name'];
+				}
+				if (!InputValidator::isEmptyArrayKey($productParameter, "shortDescription")) {
+					$this->shortDescription[$productParameter['locale']] = $productParameter['shortDescription'];
+				}
+				if (!InputValidator::isEmptyArrayKey($productParameter, "description")) {
+					$this->description[$productParameter['locale']] = $productParameter['description'];
+				}
+				if (!InputValidator::isEmptyArrayKey($productParameter, "availabilityText")) {
+					$this->availabilityText[$productParameter['locale']] = $productParameter['availabilityText'];
+				}
+			}
+			
+			// parse images
 			foreach ($productParameter['images'] as $image) {
-				$this->images[$image['classifier']] = new Image($image['url']);
+				if (InputValidator::isArray($image) &&
+					!InputValidator::isEmptyArrayKey($image, "classifier") &&
+					!InputValidator::isEmptyArrayKey($image, "url")) {
+					$this->images[$image['classifier']] = new Image($image['url']);
+				}
 			}
 
-			// save price
-			$priceInformation = $productParameter['priceInfo'];
-			$this->price = new PriceWithQuantity($priceInformation['price'], $priceInformation['quantity']);
-			$this->depositPrice = new Price($priceInformation['depositPrice']);
-			$this->ecoParticipationPrice = new Price($priceInformation['ecoParticipationPrice']);
-			$this->withDepositPrice = new Price($priceInformation['priceWithDeposits']);
-			$this->manufactorPrice = new Price($priceInformation['manufactorPrice']);
-			$this->basePrice = new Price($priceInformation['basePrice']);
+			// parse price
+			if (!InputValidator::isEmptyArrayKey($productParameter, "priceInfo")) {
+				
+				$priceInformation = $productParameter['priceInfo'];
+				
+				if (!InputValidator::isEmptyArrayKey($priceInformation, "price") &&
+					!InputValidator::isEmptyArrayKey($priceInformation, "quantity")) {
+					$this->price = new PriceWithQuantity($priceInformation['price'], $priceInformation['quantity']);
+				}
+				if (!InputValidator::isEmptyArrayKey($priceInformation, "depositPrice")) {
+					$this->depositPrice = new Price($priceInformation['depositPrice']);
+				}
+				if (!InputValidator::isEmptyArrayKey($priceInformation, "ecoParticipationPrice")) {
+					$this->ecoParticipationPrice = new Price($priceInformation['ecoParticipationPrice']);
+				}
+				if (!InputValidator::isEmptyArrayKey($priceInformation, "priceWithDeposits")) {
+					$this->withDepositPrice = new Price($priceInformation['priceWithDeposits']);
+				}
+				if (!InputValidator::isEmptyArrayKey($priceInformation, "manufactorPrice")) {
+					$this->manufactorPrice = new Price($priceInformation['manufactorPrice']);
+				}
+				if (!InputValidator::isEmptyArrayKey($priceInformation, "basePrice")) {
+					$this->basePrice = new Price($priceInformation['basePrice']);
+				}
+			}
 		}
 	}
 	
@@ -119,7 +167,7 @@ class Product {
 	 */
 	public function getName($locale) {
 		
-		return array_key_exists($locale, $this->name) ? $this->name[$locale] : null;
+		return !InputValidator::isEmptyArrayKey($this->name, $locale) ? $this->name[$locale] : null;
 	}
 	
 	/**
@@ -133,7 +181,7 @@ class Product {
 	 */
 	public function getShortDescription($locale) {
 		
-		return array_key_exists($locale, $this->shortDescription) ? $this->shortDescription[$locale] : null;
+		return !InputValidator::isEmptyArrayKey($this->shortDescription, $locale) ? $this->shortDescription[$locale] : null;
 	}
 	
 	/**
@@ -147,7 +195,7 @@ class Product {
 	 */
 	public function getDescription($locale) {
 		
-		return array_key_exists($locale, $this->description) ? $this->description[$locale] : null;
+		return !InputValidator::isEmptyArrayKey($this->description, $locale) ? $this->description[$locale] : null;
 	}
 	
 	/**
@@ -187,7 +235,7 @@ class Product {
 	 */
 	public function getAvailibilityText($locale) {
 
-		return array_key_exists($locale, $this->availibilityText) ? $this->availibilityText[$locale] : null;
+		return !InputValidator::isEmptyArrayKey($this->availibilityText, $locale) ? $this->availibilityText[$locale] : null;
 	}
 	
 	/**
@@ -200,7 +248,7 @@ class Product {
 	 */
 	public function getSmallImage() {
 
-		return array_key_exists("Small", $this->images) ? $this->images["Small"] : null;
+		return !InputValidator::isEmptyArrayKey($this->images, "Small") ? $this->images["Small"] : null;
 	}
 	
 	/**
@@ -213,7 +261,7 @@ class Product {
 	 */
 	public function getMediumImage() {
 
-		return array_key_exists("Medium", $this->images) ? $this->images["Medium"] : null;
+		return !InputValidator::isEmptyArrayKey($this->images, "Medium") ? $this->images["Medium"] : null;
 	}
 	
 	/**
@@ -226,7 +274,7 @@ class Product {
 	 */
 	public function getLargeImage() {
 
-		return array_key_exists("Large", $this->images) ? $this->images["Large"] : null;
+		return !InputValidator::isEmptyArrayKey($this->images, "Large") ? $this->images["Large"] : null;
 	}
 	
 	/**
@@ -239,7 +287,7 @@ class Product {
 	 */
 	public function getHotDealImage() {
 
-		return array_key_exists("HotDeal", $this->images) ? $this->images["HotDeal"] : null;
+		return !InputValidator::isEmptyArrayKey($this->images, "HotDeal") ? $this->images["HotDeal"] : null;
 	}
 }
 
