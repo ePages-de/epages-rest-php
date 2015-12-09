@@ -38,7 +38,8 @@ class Logger {
 		
 		if (InputValidator::isEmpty($message) ||
 			self::$LOGLEVEL == LogLevel::ERROR ||
-			self::$LOGLEVEL == LogLevel::WARNING) {
+			self::$LOGLEVEL == LogLevel::WARNING ||
+			self::$LOGLEVEL == LogLevel::NONE) {
 			return;
 		}
 		self::printMessage($message, LogLevel::NOTIFICATION);
@@ -56,7 +57,8 @@ class Logger {
 	public static function warning($message) {
 		
 		if (InputValidator::isEmpty($message) ||
-			self::$LOGLEVEL == LogLevel::ERROR) {
+			self::$LOGLEVEL == LogLevel::ERROR ||
+			self::$LOGLEVEL == LogLevel::NONE) {
 			return;
 		}
 		self::printMessage($message, LogLevel::WARNING);
@@ -73,7 +75,8 @@ class Logger {
 	 */
 	public static function error($message) {
 		
-		if (InputValidator::isEmpty($message)) {
+		if (InputValidator::isEmpty($message) ||
+			self::$LOGLEVEL == LogLevel::NONE) {
 			return;
 		}
 		self::printMessage($message, LogLevel::ERROR);

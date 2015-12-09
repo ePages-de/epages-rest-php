@@ -11,7 +11,7 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
- * @since 0.2.0 Add price information.
+ * @since 0.1.0 Add price information.
  * @package ep6
  * @subpackage Shopobjects\Product
  */
@@ -64,7 +64,7 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.2.0 Add price information.
+	 * @since 0.1.0 Add price information.
 	 * @api
 	 * @param mixed[] $productParameter The product to create as array.
 	 */

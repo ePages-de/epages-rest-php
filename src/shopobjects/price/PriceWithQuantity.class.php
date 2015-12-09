@@ -3,14 +3,14 @@
  * This file represents the price with quantity class.
  *
  * @author David Pauli <contact@david-pauli.de>
- * @since 0.2.0
+ * @since 0.1.0
  */
 namespace ep6;
 /**
  * This is the class for prices which has a quantity.
  *
  * @author David Pauli <contact@david-pauli.de>
- * @since 0.2.0
+ * @since 0.1.0
  * @package ep6
  * @subpackage Shopobjects\Price
  */
@@ -27,7 +27,7 @@ class PriceWithQuantity extends Price {
 	 *
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.2.0
+	 * @since 0.1.0
 	 * @param mixed[] $priceParameter The price parameter.
 	 * @param mixed[] $quantityParameter The quantity parameter.
 	 */

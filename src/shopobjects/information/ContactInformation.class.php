@@ -57,13 +57,9 @@ class ContactInformation {
 	private static function load($locale) {
 
 		// if request method is blocked
-		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
+		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET) ||
+			!InputValidator::isLocale($locale)) {
 			return;
-		}
-	 	
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return null;
 		}
 		
 		$content = RESTClient::sendWithLocalization(self::$RESTPATH, $locale);
@@ -76,37 +72,37 @@ class ContactInformation {
 		// reset values
 		self::resetValues();
 		
-		if (array_key_exists("name", $content)) {
+		if (!InputValidator::isEmptyArrayKey($content, "name")) {
 			self::$NAME[$locale] = $content["name"];
 		}
-		if (array_key_exists("title", $content)) {
+		if (!InputValidator::isEmptyArrayKey($content, "title")) {
 			self::$TITLE[$locale] = $content["title"];
 		}
-		if (array_key_exists("navigationCaption", $content)) {
+		if (!InputValidator::isEmptyArrayKey($content, "navigationCaption")) {
 			self::$NAVIGATIONCAPTION[$locale] = $content["navigationCaption"];
 		}
-		if (array_key_exists("shortDescription", $content)) {
+		if (!InputValidator::isEmptyArrayKey($content, "shortDescription")) {
 			self::$SHORTDESCRIPTION[$locale] = $content["shortDescription"];
 		}
-		if (array_key_exists("description", $content)) {
+		if (!InputValidator::isEmptyArrayKey($content, "description")) {
 			self::$DESCRIPTION[$locale] = $content["description"];
 		}
-		if (array_key_exists("company", $content)) {
+		if (!InputValidator::isEmptyArrayKey($content, "company")) {
 			self::$COMPANY[$locale] = $content["company"];
 		}
-		if (array_key_exists("contactPerson", $content)) {
+		if (!InputValidator::isEmptyArrayKey($content, "contactPerson")) {
 			self::$CONTACTPERSON[$locale] = $content["contactPerson"];
 		}
-		if (array_key_exists("contactPersonJobTitle", $content)) {
+		if (!InputValidator::isEmptyArrayKey($content, "contactPersonJobTitle")) {
 			self::$CONTACTPERSONJOBTITLE[$locale] = $content["contactPersonJobTitle"];
 		}
-		if (array_key_exists("address", $content)) {
+		if (!InputValidator::isEmptyArrayKey($content, "address")) {
 			self::$ADDRESS[$locale] = $content["address"];
 		}
-		if (array_key_exists("phone", $content)) {
+		if (!InputValidator::isEmptyArrayKey($content, "phone")) {
 			self::$PHONE[$locale] = $content["phone"];
 		}
-		if (array_key_exists("email", $content)) {
+		if (!InputValidator::isEmptyArrayKey($content, "email")) {
 			self::$EMAIL[$locale] = $content["email"];
 		}
 	}
@@ -143,7 +139,7 @@ class ContactInformation {
 	public function getDefaultTitle() {
 		
 		// if no default language is visible
-		if (empty(Locales::getDefault())) {
+		if (InputValidator::isEmpty(Locales::getDefault())) {
 			return null;
 		}
 		
@@ -167,10 +163,10 @@ class ContactInformation {
 		}
 		
 		// if the localiation name is not set
-		if (empty(self::$TITLE) || !array_key_exists($locale, self::$TITLE)) {
+		if (InputValidator::isEmptyArrayKey(self::$TITLE, $locale)) {
 			self::load($locale);
 			// after reload the REST ressource it is empty again.
-			if (empty(self::$TITLE) || !array_key_exists($locale, self::$TITLE)) {
+			if (InputValidator::isEmptyArrayKey(self::$TITLE, $locale)) {
 				return null;
 			}
 		}
@@ -189,7 +185,7 @@ class ContactInformation {
 	public function getDefaultShortDescription() {
 		
 		// if no default language is visible
-		if (empty(Locales::getDefault())) {
+		if (InputValidator::isEmpty(Locales::getDefault())) {
 			return null;
 		}
 		
@@ -213,10 +209,10 @@ class ContactInformation {
 		}
 		
 		// if the localiation name is not set
-		if (empty(self::$SHORTDESCRIPTION) || !array_key_exists($locale, self::$SHORTDESCRIPTION)) {
+		if (InputValidator::isEmptyArrayKey(self::$SHORTDESCRIPTION, $locale)) {
 			self::load($locale);
 			// after reload the REST ressource it is empty again.
-			if (empty(self::$SHORTDESCRIPTION) || !array_key_exists($locale, self::$SHORTDESCRIPTION)) {
+			if (InputValidator::isEmptyArrayKey(self::$SHORTDESCRIPTION, $locale)) {
 				return null;
 			}
 		}
@@ -235,7 +231,7 @@ class ContactInformation {
 	public function getDefaultCompany() {
 		
 		// if no default language is visible
-		if (empty(Locales::getDefault())) {
+		if (InputValidator::isEmpty(Locales::getDefault())) {
 			return null;
 		}
 		
@@ -259,10 +255,10 @@ class ContactInformation {
 		}
 		
 		// if the localiation name is not set
-		if (empty(self::$COMPANY) || !array_key_exists($locale, self::$COMPANY)) {
+		if (InputValidator::isEmptyArrayKey(self::$COMPANY, $locale)) {
 			self::load($locale);
 			// after reload the REST ressource it is empty again.
-			if (empty(self::$COMPANY) || !array_key_exists($locale, self::$COMPANY)) {
+			if (InputValidator::isEmptyArrayKey(self::$COMPANY, $locale)) {
 				return null;
 			}
 		}
@@ -281,7 +277,7 @@ class ContactInformation {
 	public function getDefaultContactPerson() {
 		
 		// if no default language is visible
-		if (empty(Locales::getDefault())) {
+		if (InputValidator::isEmpty(Locales::getDefault())) {
 			return null;
 		}
 		
@@ -305,10 +301,10 @@ class ContactInformation {
 		}
 		
 		// if the localiation name is not set
-		if (empty(self::$CONTACTPERSON) || !array_key_exists($locale, self::$CONTACTPERSON)) {
+		if (InputValidator::isEmptyArrayKey(self::$CONTACTPERSON, $locale)) {
 			self::load($locale);
 			// after reload the REST ressource it is empty again.
-			if (empty(self::$CONTACTPERSON) || !array_key_exists($locale, self::$CONTACTPERSON)) {
+			if (InputValidator::isEmptyArrayKey(self::$CONTACTPERSON, $locale)) {
 				return null;
 			}
 		}
@@ -327,7 +323,7 @@ class ContactInformation {
 	public function getDefaultContactPersonJobTitle() {
 		
 		// if no default language is visible
-		if (empty(Locales::getDefault())) {
+		if (InputValidator::isEmpty(Locales::getDefault())) {
 			return null;
 		}
 		
@@ -351,10 +347,10 @@ class ContactInformation {
 		}
 		
 		// if the localiation name is not set
-		if (empty(self::$CONTACTPERSONJOBTITLE) || !array_key_exists($locale, self::$CONTACTPERSONJOBTITLE)) {
+		if (InputValidator::isEmptyArrayKey(self::$CONTACTPERSONJOBTITLE, $locale)) {
 			self::load($locale);
 			// after reload the REST ressource it is empty again.
-			if (empty(self::$CONTACTPERSONJOBTITLE) || !array_key_exists($locale, self::$CONTACTPERSONJOBTITLE)) {
+			if (InputValidator::isEmptyArrayKey(self::$CONTACTPERSONJOBTITLE, $locale)) {
 				return null;
 			}
 		}
@@ -373,7 +369,7 @@ class ContactInformation {
 	public function getDefaultAddress() {
 		
 		// if no default language is visible
-		if (empty(Locales::getDefault())) {
+		if (InputValidator::isEmpty(Locales::getDefault())) {
 			return null;
 		}
 		
@@ -397,10 +393,10 @@ class ContactInformation {
 		}
 		
 		// if the localiation name is not set
-		if (empty(self::$ADDRESS) || !array_key_exists($locale, self::$ADDRESS)) {
+		if (InputValidator::isEmptyArrayKey(self::$ADDRESS, $locale)) {
 			self::load($locale);
 			// after reload the REST ressource it is empty again.
-			if (empty(self::$ADDRESS) || !array_key_exists($locale, self::$ADDRESS)) {
+			if (InputValidator::isEmptyArrayKey(self::$ADDRESS, $locale)) {
 				return null;
 			}
 		}
@@ -419,7 +415,7 @@ class ContactInformation {
 	public function getDefaultPhone() {
 		
 		// if no default language is visible
-		if (empty(Locales::getDefault())) {
+		if (InputValidator::isEmpty(Locales::getDefault())) {
 			return null;
 		}
 		
@@ -443,10 +439,10 @@ class ContactInformation {
 		}
 		
 		// if the localiation name is not set
-		if (empty(self::$PHONE) || !array_key_exists($locale, self::$PHONE)) {
+		if (InputValidator::isEmptyArrayKey(self::$PHONE, $locale)) {
 			self::load($locale);
 			// after reload the REST ressource it is empty again.
-			if (empty(self::$PHONE) || !array_key_exists($locale, self::$PHONE)) {
+			if (InputValidator::isEmptyArrayKey(self::$PHONE, $locale)) {
 				return null;
 			}
 		}
@@ -465,7 +461,7 @@ class ContactInformation {
 	public function getDefaultEmail() {
 		
 		// if no default language is visible
-		if (empty(Locales::getDefault())) {
+		if (InputValidator::isEmpty(Locales::getDefault())) {
 			return null;
 		}
 		
@@ -489,10 +485,10 @@ class ContactInformation {
 		}
 		
 		// if the localiation name is not set
-		if (empty(self::$EMAIL) || !array_key_exists($locale, self::$EMAIL)) {
+		if (InputValidator::isEmptyArrayKey(self::$EMAIL, $locale)) {
 			self::load($locale);
 			// after reload the REST ressource it is empty again.
-			if (empty(self::$EMAIL) || !array_key_exists($locale, self::$EMAIL)) {
+			if (InputValidator::isEmptyArrayKey(self::$EMAIL, $locale)) {
 				return null;
 			}
 		}

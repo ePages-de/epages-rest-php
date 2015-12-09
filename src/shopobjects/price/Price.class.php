@@ -31,7 +31,7 @@ class Price {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.2.0 Add functionality to construct.
+	 * @since 0.1.0 Add functionality to construct.
 	 * @param mixed[] $priceParamter The price parameter.
 	 */
 	public function __construct($priceParameter) {

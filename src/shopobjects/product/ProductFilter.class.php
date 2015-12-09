@@ -57,7 +57,7 @@ class ProductFilter {
 	 */
 	public function __construct($productFilterParameter = array()) {
 
-		if (!empty($productFilterParameter)) {
+		if (!InputValidator::isEmptyArray($productFilterParameter)) {
 			$this->setProductFilter($productFilterParameter);
 		}
 	}
@@ -393,7 +393,9 @@ class ProductFilter {
 	 * @return boolean True if setting the product ID string works, false if not.
 	 */
 	public function setID($productID) {
-		if (InputValidator::isEmpty($productID) || count(self::$IDS) > 12 || in_array($productID, self::$IDS)) {
+		if (InputValidator::isEmpty($productID)
+			|| count(self::$IDS) > 12
+			|| in_array($productID, self::$IDS)) {
 			return false;
 		}
 		array_push(self::$IDS, $productID);
@@ -410,7 +412,8 @@ class ProductFilter {
 	 * @return boolean True if unsetting the product ID string works, false if not.
 	 */
 	public function unsetID($productID) {
-		if (InputValidator::isEmpty($productID) || !in_array($productID, self::$IDS)) {
+		if (InputValidator::isEmpty($productID)
+			|| !in_array($productID, self::$IDS)) {
 			return false;
 		}
 		unset(self::$IDS[array_search($productID, self::$IDS)]);
@@ -471,14 +474,16 @@ class ProductFilter {
 		}
 		
 		// if there is no results, page AND resultsPerPage element
-		if (!array_key_exists("results", $content) || !array_key_exists("page", $content) || !array_key_exists("resultsPerPage", $content)) {
+		if (InputValidator::isEmptyArrayKey($content, "results") ||
+			InputValidator::isEmptyArrayKey($content, "page") ||
+			InputValidator::isEmptyArrayKey($content, "resultsPerPage")) {
 		    Logger::error("Respond for " . self::RESTPATH . " can not be interpreted.");
 			return;
 		}
 		
 		$products = array();
 		// is there any product found: load the products.
-	 	if (array_key_exists("items", $content) && (sizeof($content['items']) != 0)) {
+	 	if (!InputValidator::isEmptyArrayKey($content, "items") && (sizeof($content['items']) != 0)) {
 	 		
 			foreach ($content['items'] as $item) {
 

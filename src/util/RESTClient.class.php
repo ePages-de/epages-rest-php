@@ -50,6 +50,7 @@ class RESTClient {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use disconnect function on wrong parameters.
 	 * @api
 	 * @param String $host The epages host to connect.
 	 * @param String $shop The refered ePages shop.
@@ -59,8 +60,10 @@ class RESTClient {
 	public static function connect($host, $shop, $authToken, $isssl) {
 
 		// check parameter
-		if (!InputValidator::isHost($host) || !InputValidator::isShop($shop) || !InputValidator::isAuthToken($authToken)) {
-			self::$ISCONNECTED = false;
+		if (!InputValidator::isHost($host) ||
+			!InputValidator::isShop($shop) ||
+			!InputValidator::isAuthToken($authToken)) {
+			self::disconnect();
 			return false;
 		}
 
@@ -102,13 +105,13 @@ class RESTClient {
 	 * @api
 	 * @param String command The path which is requested in the REST client.
 	 * @param String locale The localization to get.
-	 * @param String postfields Add specific parameters to the REST server.
-	 * @return String The returned JSON object.
+	 * @param mixed[] postfields Add specific parameters to the REST server.
+	 * @return String The returned JSON object or null if something goes wrong.
 	 */
 	public static function sendWithLocalization($command, $locale, $postfields = array()) {
 		
 		// cheeck parameters
-		if (!InputValidator::isRESTCommand($command) && !InputValidator::isLocale($locale) && !InputValidator::isArray($postfields)) {
+		if (!InputValidator::isLocale($locale)) {
 			return null;
 		}
 		return self::send($command . "?locale=" . $locale, $postfields);
@@ -127,13 +130,9 @@ class RESTClient {
 	 */
 	public static function send($command, $postfields = array()) {
 		
-		if (!InputValidator::isRESTCommand($command)) {
-			return null;
-		}
-		if (!self::$ISCONNECTED) {
-			return null;
-		}
-		if (!InputValidator::isArray($postfields)) {
+		if (!InputValidator::isRESTCommand($command) ||
+			!self::$ISCONNECTED ||
+			!InputValidator::isArray($postfields)) {
 			return null;
 		}
 

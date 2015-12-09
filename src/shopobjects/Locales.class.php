@@ -43,13 +43,9 @@ class Locales {
 
 		$content = RESTClient::send(self::RESTPATH);
 		
-		// if respond is empty
-		if (InputValidator::isEmpty($content)) {
-			return;
-		}
-		
-		// if there is no default AND items element
-		if (!array_key_exists("default", $content) || !array_key_exists("items", $content)) {
+		// if respond is empty or there are no default AND items element
+		if (InputValidator::isEmptyArrayKey($content, "default") ||
+			InputValidator::isEmptyArrayKey($content, "items")) {
 		    Logger::error("Respond for " . self::RESTPATH . " can not be interpreted.");
 			return;
 		}
@@ -82,15 +78,16 @@ class Locales {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use InputValidator to check values.
 	 * @api
 	 * @return The default localization of the shop.
 	 */
 	public static function getDefault() {
 		
-		if (self::$DEFAULT == null) {
+		if (InputValidator::isEmpty(self::$DEFAULT)) {
 			self::load();
 		}
-		return (self::$DEFAULT == null) ? null : self::$DEFAULT;
+		return InputValidator::isEmpty(self::$DEFAULT) ? null : self::$DEFAULT;
 	}
 	
 	/**
@@ -98,15 +95,16 @@ class Locales {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use InputValidator to check values.
 	 * @api
 	 * @return The possible localizations of the shop.
 	 */
 	public static function getItems() {
 		
-		if (empty(self::$ITEMS)) {
+		if (InputValidator::isEmptyArray(self::$ITEMS)) {
 			self::load();
 		}
-		return (empty(self::$ITEMS)) ? null : self::$ITEMS;
+		return (InputValidator::isEmptyArray(self::$ITEMS)) ? null : self::$ITEMS;
 	}
 
 }

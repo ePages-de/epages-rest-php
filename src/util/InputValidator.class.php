@@ -272,6 +272,35 @@ class InputValidator {
 	}
 
 	/**
+	 * Checks whether an array is empty or null.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @param mixed[] $parameter Array to check.
+	 * @return boolean True if the array is empty or null, false if not.
+	 */
+	public static function isEmptyArray($parameter) {
+
+		return (is_null($parameter) || empty($parameter));
+	}
+
+	/**
+	 * Checks whether an array key is unset.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @param mixed[] $array Array to check.
+	 * @param String $key Key to exists.
+	 * @return boolean True if the array key is unset, false if not.
+	 */
+	public static function isEmptyArrayKey($array, $key) {
+
+		return self::isEmptyArray($array) || !array_key_exists($key, $array);
+	}
+
+	/**
 	 * Checks whether a parameter match a regex.
 	 *
 	 * @param String $parameter String to check.

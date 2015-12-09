@@ -31,25 +31,18 @@ trait InformationTrait {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use HTTPRequestMethod enum.
 	 * @param String $locale The localization to load the information.
 	 */
 	private static function load($locale) {
 
-		// if the REST path empty -> this is the not the implementation
-		if (InputValidator::isEmpty(self::$RESTPATH)) {
+		// if the REST path empty -> this is the not the implementation or can't get something else
+		if (InputValidator::isEmpty(self::$RESTPATH) ||
+			!RESTClient::setRequestMethod(HTTPRequestMethod::GET) ||
+			!InputValidator::isLocale($locale)) {
 			return;
 		}
 
-		// if request method is blocked
-		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
-			return;
-		}
-	 	
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return;
-		}
-		
 		$content = RESTClient::sendWithLocalization(self::$RESTPATH, $locale);
 		
 		// if respond is empty
@@ -60,73 +53,13 @@ trait InformationTrait {
 		// reset values
 		self::resetValues();
 		
-		if (array_key_exists("name", $content)) {
+		if (!InputValidator::isEmptyArrayKey($content, "name")) {
 			self::$NAME[$locale] = $content["name"];
 		}
-		if (array_key_exists("navigationCaption", $content)) {
+		if (!InputValidator::isEmptyArrayKey($content, "navigationCaption")) {
 			self::$NAVIGATIONCAPTION[$locale] = $content["navigationCaption"];
 		}
-		if (array_key_exists("description", $content)) {
-			self::$DESCRIPTION[$locale] = $content["description"];
-		}
-	}
-
-	/**
-	 * Set a value via REST.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.0.0
-	 * @param String $parameter The key which should change.
-	 * @param String $value The string to set.
-	 * @param String $locale The localization String.
-	 * @return boolean True, if set the value works, false if not.
-	 */
-	private static function put($parameter, $value, $locale) {
-
-		// if the REST path empty -> this is the not the implementation
-		if (InputValidator::isEmpty(self::$RESTPATH)) {
-			return false;
-		}
-
-		// if request method is blocked
-		if (!RESTClient::setRequestMethod("PUT")) {
-			return false;
-		}
-	 	
-		// if the value is empty
-		if (InputValidator::isEmpty($value)) {
-			return false;
-		}
-	 	
-		// if the parameter is empty
-		if (InputValidator::isEmpty($parameter)) {
-			return false;
-		}
-	 	
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return false;
-		}
-		
-		$postfields = array($parameter => $value);
-		
-		$content = RESTClient::sendWithLocalization(self::$RESTPATH, $locale, $postfields);
-		
-		// if respond is empty
-		if (InputValidator::isEmpty($content)) {
-			return;
-		}
-		
-		// reset values
-		self::resetValues();
-		
-		if (array_key_exists("name", $content)) {
-			self::$NAME[$locale] = $content["name"];
-		}
-		if (array_key_exists("navigationCaption", $content)) {
-			self::$NAVIGATIONCAPTION[$locale] = $content["navigationCaption"];
-		}
-		if (array_key_exists("description", $content)) {
+		if (!InputValidator::isEmptyArrayKey($content, "description")) {
 			self::$DESCRIPTION[$locale] = $content["description"];
 		}
 	}
@@ -155,7 +88,7 @@ trait InformationTrait {
 	public function getDefaultName() {
 		
 		// if no default language is visible
-		if (empty(Locales::getDefault())) {
+		if (InputValidator::isEmpty(Locales::getDefault())) {
 			return null;
 		}
 		
@@ -179,10 +112,10 @@ trait InformationTrait {
 		}
 		
 		// if the localiation name is not set
-		if (empty(self::$NAME) || !array_key_exists($locale, self::$NAME)) {
+		if (InputValidator::isEmptyArrayKey(self::$NAME, $locale)) {
 			self::load($locale);
 			// after reload the REST ressource it is empty again.
-			if (empty(self::$NAME) || !array_key_exists($locale, self::$NAME)) {
+			if (InputValidator::isEmptyArrayKey(self::$NAME, $locale)) {
 				return null;
 			}
 		}
@@ -201,7 +134,7 @@ trait InformationTrait {
 	public function getDefaultNavigationCaption() {
 		
 		// if no default language is visible
-		if (empty(Locales::getDefault())) {
+		if (InputValidator::isEmpty(Locales::getDefault())) {
 			return null;
 		}
 		
@@ -225,10 +158,10 @@ trait InformationTrait {
 		}
 		
 		// if the localiation name is not set
-		if (empty(self::$NAVIGATIONCAPTION) || !array_key_exists($locale, self::$NAVIGATIONCAPTION)) {
+		if (InputValidator::isEmptyArrayKey(self::$NAVIGATIONCAPTION, $locale)) {
 			self::load($locale);
 			// after reload the REST ressource it is empty again.
-			if (empty(self::$NAVIGATIONCAPTION) || !array_key_exists($locale, self::$NAVIGATIONCAPTION)) {
+			if (InputValidator::isEmptyArrayKey(self::$NAVIGATIONCAPTION, $locale)) {
 				return null;
 			}
 		}
@@ -247,7 +180,7 @@ trait InformationTrait {
 	public function getDefaultDescription() {
 		
 		// if no default language is visible
-		if (empty(Locales::getDefault())) {
+		if (InputValidator::isEmpty(Locales::getDefault())) {
 			return null;
 		}
 		
@@ -271,55 +204,15 @@ trait InformationTrait {
 		}
 		
 		// if the localiation name is not set
-		if (empty(self::$DESCRIPTION) || !array_key_exists($locale, self::$DESCRIPTION)) {
+		if (InputValidator::isEmptyArrayKey(self::$DESCRIPTION, $locale)) {
 			self::load($locale);
 			// after reload the REST ressource it is empty again.
-			if (empty(self::$DESCRIPTION) || !array_key_exists($locale, self::$DESCRIPTION)) {
+			if (InputValidator::isEmptyArrayKey(self::$DESCRIPTION, $locale)) {
 				return null;
 			}
 		}
 		
 		return self::$DESCRIPTION[$locale];
-	}
-	
-	/**
-	 * Sets the name depended on the localization.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.0.0
-	 * @api
-	 * @param String $value The string to set.
-	 * @param String $locale The localization String.
-	 * @return boolean True if the name is set, false if not.
-	 */
-	 public function setName($value, $locale) {
-
-		// if the value is empty
-		if (InputValidator::isEmpty($value)) {
-			return false;
-		}
-
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return false;
-		}
-		
-		return self::put("name", $value, $locale);
-	}
-	
-	/**
-	 * Sets the name depended on the localization.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.0.0
-	 * @api
-	 * @param String $value The string to set.
-	 * @param String $locale The localization String.
-	 * @return boolean True if the name is set, false if not.
-	 */
-	 public function setDefaultName($value) {
-
-		self::setName($value, Locales::getDefault());
 	}
 }
 ?>

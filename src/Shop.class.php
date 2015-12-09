@@ -9,10 +9,10 @@ namespace ep6;
 # include framework configuration
 require_once("src/configuration/config.php");
 # include helpful objects, all are used in a static way
-require_once("src/util/Logger.class.php");
 require_once("src/util/InputValidator.class.php");
-require_once("src/util/RESTClient.class.php");
 require_once("src/util/JSONHandler.class.php");
+require_once("src/util/Logger.class.php");
+require_once("src/util/RESTClient.class.php");
 # include shopobjects
 require_once("src/shopobjects/Locales.class.php");
 require_once("src/shopobjects/Currencies.class.php");

@@ -1,6 +1,6 @@
 <?php
 /**
- * This file represents the json handler class.
+ * This file represents the JSON handler class.
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
@@ -21,7 +21,7 @@ class JSONHandler {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @param String $JSON The JSON string to parse.
-	 * @return array The array of the JSON element or null if there is an error.
+	 * @return mixed[] The array of the JSON element or null if there is an error.
 	 */
 	public static function parseJSON($JSON) {
 
@@ -45,7 +45,7 @@ class JSONHandler {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @param array $array The array to make a JSON.
+	 * @param mixed[] $array The array to make a JSON.
 	 * @return String The JSON string.
 	 */
 	public static function createJSON($array) {
