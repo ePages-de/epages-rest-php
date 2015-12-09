@@ -25,8 +25,7 @@ require_once("src/shopobjects/product/ProductFilter.class.php");
 require_once("src/shopobjects/product/Product.class.php");
 require_once("src/shopobjects/image/Image.class.php");
 require_once("src/shopobjects/price/Price.class.php");
-require_once("src/shopobjects/price/Quantity.class.php");
-require_once("src/shopobjects/price/PriceInfo.class.php");
+require_once("src/shopobjects/price/PriceWithQuantity.class.php");
 
 /**
  * This is the epages 6 shop object.

@@ -31,14 +31,16 @@ class Price {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @param float $amount The price value.
-	 * @param String $currency The currency of the price.
-	 * @param String $taxType The tax type, can be "GROSS" or "NET".
+	 * @since 0.2.0 Add functionality to construct.
+	 * @param mixed[] $priceParamter The price parameter.
 	 */
-	public function __construct($amount, $currency, $taxType) {
+	public function __construct($priceParameter) {
 		
-		if (!InputValidator::isFloat($amount) && !InputValidator::isCurrency($currency) && !InputValidator::isTaxType($taxType)) {
-			return;
+		if (InputValidator::isArray($priceParameter)) {
+			
+			$this->amount = $priceParameter['amount'];
+			$this->taxType = $priceParameter['taxType'];
+			$this->currency = $priceParameter['currency'];
 		}
 	}
 }

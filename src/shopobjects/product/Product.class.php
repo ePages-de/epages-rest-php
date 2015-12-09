@@ -11,6 +11,7 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
+ * @since 0.2.0 Add price information.
  * @package ep6
  * @subpackage Shopobjects\Product
  */
@@ -40,18 +41,37 @@ class Product {
 	/** @var Images[] This are the images in the four different possibilities. */
 	private $images = array();
 	
+	/** @var PriceWithQuantity|null Here the price is saved. */
+	private $price = null;
+	
+	/** @var Price|null Here the deposit price is saved. */
+	private $depositPrice = null;
+	
+	/** @var Price|null Here the eco participation price is saved. */
+	private $ecoParticipationPrice = null;
+	
+	/** @var Price|null Here the price with deposit is saved. */
+	private $withDepositPrice = null;
+	
+	/** @var Price|null Here the manufactor price is saved. */
+	private $manufactorPrice = null;
+	
+	/** @var Price|null Here the base price is saved. */
+	private $basePrice = null;
+	
 	/**
 	 * This is the constructor of the product.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.2.0 Add price information.
 	 * @api
 	 * @param mixed[] $productParameter The product to create as array.
 	 */
 	public function __construct($productParameter) {
 		
 		// if the product comes from the shop API
-		if (is_array($productParameter)) {
+		if (InputValidator::isArray($productParameter)) {
 		 	
 			$this->productID = $productParameter['productId'];
 			$this->name[$productParameter['locale']] = $productParameter['name'];
@@ -63,8 +83,15 @@ class Product {
 			foreach ($productParameter['images'] as $image) {
 				$this->images[$image['classifier']] = new Image($image['url']);
 			}
-			
 
+			// save price
+			$priceInformation = $productParameter['priceInfo'];
+			$this->price = new PriceWithQuantity($priceInformation['price'], $priceInformation['quantity']);
+			$this->depositPrice = new Price($priceInformation['depositPrice']);
+			$this->ecoParticipationPrice = new Price($priceInformation['ecoParticipationPrice']);
+			$this->withDepositPrice = new Price($priceInformation['priceWithDeposits']);
+			$this->manufactorPrice = new Price($priceInformation['manufactorPrice']);
+			$this->basePrice = new Price($priceInformation['basePrice']);
 		}
 	}
 	
