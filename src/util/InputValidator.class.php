@@ -117,7 +117,7 @@ class InputValidator {
 	 */
 	public static function isOutputRessource($parameter) {
 
-		return self::isMatchRegex($parameter, "/^(SCREEN)/", "output ressource")
+		return get_class($parameter) == "LogOutput"
 			&& !self::isEmpty($parameter);
 	}
 
@@ -132,7 +132,7 @@ class InputValidator {
 	 */
 	public static function isLogLevel($parameter) {
 
-		return self::isMatchRegex($parameter, "/^(NOTIFICATION|WARNING|ERROR|NONE)/", "log level")
+		return get_class($parameter) == "LogLevel"
 			&& !self::isEmpty($parameter);
 	}
 
