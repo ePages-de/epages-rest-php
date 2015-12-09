@@ -194,15 +194,15 @@ class Logger {
  */
 abstract class LogLevel {
 	/** @var String Use this to print all messages. **/
-	const NOTIFICATION = "notification";
+	const NOTIFICATION = "NOTIFICATION";
 	/** @var String Use this to print only warnings and errors. **/
-	const WARNING = "warning";
+	const WARNING = "WARNING";
 	/** @var String Use this to print only errors. **/
-	const ERROR = "error";
+	const ERROR = "ERROR";
 	/** @var String Use this to print no log messages. **/
-	const NONE = "none";
+	const NONE = "NONE";
 	/** @var String This is only used for intern reasons. **/
-	const FORCE = "force";
+	const FORCE = "FORCE";
 }
 
 /**
@@ -216,8 +216,8 @@ abstract class LogLevel {
  * @subpackage Util\Logger
  */
 abstract class LogOutput {
-	/** @var int Use this for print something on the screen. **/
-	const SCREEN = 0;
+	/** @var String Use this for print something on the screen. **/
+	const SCREEN = "SCREEN";
 }
 
 ?>

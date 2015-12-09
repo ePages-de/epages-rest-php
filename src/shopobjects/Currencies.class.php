@@ -31,12 +31,13 @@ class Currencies {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use HTTPRequestMethod enum
 	 * @api
 	 */
 	private static function load() {
 
 		// if request method is blocked
-		if (!RESTClient::setRequestMethod("GET")) {
+		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
 			return;
 		}
 

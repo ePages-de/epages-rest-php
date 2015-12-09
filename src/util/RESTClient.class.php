@@ -4,6 +4,7 @@
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
+ * @since 0.1.0 USe HTTPRequestMethod enum.
  */
 namespace ep6;
 /**
@@ -11,6 +12,7 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
+ * @since 0.1.0 Use HTTPRequestMethod enum.
  * @package ep6
  * @subpackage Util
  */
@@ -31,8 +33,8 @@ class RESTClient {
 	/** @var boolean Boolean to log whether the client is connected or not. */
 	private static $ISCONNECTED = false;
 
-	/** @var String The request method of the REST call. */
-	private static $HTTP_REQUEST_METHOD = "GET";
+	/** @var HTTPRequestMethod The request method of the REST call. */
+	private static $HTTP_REQUEST_METHOD = HTTPRequestMethod::GET;
 
 	/** @var String The path to the REST ressource in the shop. */
 	const PATHTOREST = "rs/shops";
@@ -117,6 +119,7 @@ class RESTClient {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use HTTPRequestMethod enum.
 	 * @api
 	 * @param String command The path which is requested in the REST client.
 	 * @param String[] postfields Add specific parameters to the REST server.
@@ -166,27 +169,27 @@ class RESTClient {
 		}
 		
 		switch (self::$HTTP_REQUEST_METHOD) {
-			case "GET":
+			case HTTPRequestMethod::GET:
 				curl_setopt($curl, CURLOPT_HTTPGET, 1);
 				break;
-			case "POST":
+			case HTTPRequestMethod::POST:
 				$JSONpostfield = JSONHandler::createJSON($postfields);
 				curl_setopt($curl, CURLOPT_POST, 1);
 				curl_setopt($curl, CURLOPT_POSTREDIR, 0);	// don't post on redirects
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $JSONpostfield);
 				break;
-			case "PUT":
+			case HTTPRequestMethod::PUT:
 				$JSONpostfield = JSONHandler::createJSON($postfields);
 				array_push($headers, "Content-Length: " . strlen($JSONpostfield));
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $JSONpostfield);
 				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PUT');
 				break;
-			case "DELETE":
+			case HTTPRequestMethod::DELETE:
 				$JSONpostfield = JSONHandler::createJSON($postfields);
 				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $JSONpostfield);
 				break;
-			case "PATCH":
+			case HTTPRequestMethod::PATCH:
 				$JSONpostfield = JSONHandler::createJSON($postfields);
 				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PATCH");
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $JSONpostfield);
@@ -224,8 +227,9 @@ class RESTClient {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use HTTPRequestMethod enum.
 	 * @api
-	 * @param String method The request method the REST client should use.
+	 * @param HTTPRequestMethod method The request method the REST client should use.
 	 * @return boolean True, if it works, false if not.
 	 */
 	public static function setRequestMethod($method) {
@@ -253,4 +257,28 @@ class RESTClient {
 		return true;
 	}
 }
+
+/**
+ * The HTTP request 'enum'.
+ *
+ * This are the possible HTTP request methods..
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.1.0
+ * @package ep6
+ * @subpackage Util\RESTClient
+ */
+abstract class HTTPRequestMethod {
+	/** @var String Use this for a GET request. **/
+	const GET = "GET";
+	/** @var String Use this for a POST request. **/
+	const POST = "POST";
+	/** @var String Use this for a PUT request. **/
+	const PUT = "PUT";
+	/** @var String Use this for a DELETE request. **/
+	const DELETE = "DELETE";
+	/** @var String Use this for a PATCH request. **/
+	const PATCH = "PATCH";
+}
+
 ?>

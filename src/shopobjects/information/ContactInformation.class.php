@@ -57,7 +57,7 @@ class ContactInformation {
 	private static function load($locale) {
 
 		// if request method is blocked
-		if (!RESTClient::setRequestMethod("GET")) {
+		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
 			return;
 		}
 	 	

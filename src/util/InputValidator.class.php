@@ -96,6 +96,7 @@ class InputValidator {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use HTTPRequestMethod enum.
 	 * @api
 	 * @param String $parameter String to check.
 	 * @return boolean True if the string is a HTTP request method, false if not.
@@ -111,13 +112,14 @@ class InputValidator {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use LogOutput enum.
 	 * @api
 	 * @param String $parameter String to check.
 	 * @return boolean True if the string is an output ressource, false if not.
 	 */
 	public static function isOutputRessource($parameter) {
 
-		return get_class($parameter) == "LogOutput"
+		return self::isMatchRegex($parameter, "/^(SCREEN)/", "output ressource")
 			&& !self::isEmpty($parameter);
 	}
 
@@ -126,13 +128,14 @@ class InputValidator {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use LogLevel enum.
 	 * @api
 	 * @param String $parameter String to check.
 	 * @return boolean True if the string is a log level, false if not.
 	 */
 	public static function isLogLevel($parameter) {
 
-		return get_class($parameter) == "LogLevel"
+		return self::isMatchRegex($parameter, "/^(NOTIFICATION|WARNING|ERROR|NONE)/", "log level")
 			&& !self::isEmpty($parameter);
 	}
 
