@@ -1,4 +1,7 @@
 # 0.0.2 (09.12.2015)
+
+This release does not have relevant changes in the productive code and is not downloadable.
+
 ## Enhancements
 - #26 Add CHANGELOG.md.
 
