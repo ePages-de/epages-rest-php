@@ -16,8 +16,11 @@ namespace ep6;
  */
 class PriceWithQuantity extends Price {
 		
-	/** @var mixed[] The quantity. */
-	private $quantity = array();
+	/** @var int The quantity amount. */
+	private $quantityAmount = null;
+		
+	/** @var mixed[] The localized quantity unit. */
+	private $quantityUnit = array();
 	
 	/**
 	 * This is the constructor of the price with quantity object.
@@ -27,19 +30,55 @@ class PriceWithQuantity extends Price {
 	 * @since 0.1.0
 	 * @param mixed[] $priceParameter The price parameter.
 	 * @param mixed[] $quantityParameter The quantity parameter.
+	 * @param String $locale The localization parameter.
 	 */
-	public function __construct($priceParameter, $quantityParameter) {
-		
+	public function __construct($priceParameter, $quantityParameter, $locale) {
+
 		parent::__construct($priceParameter);
+
 		if (InputValidator::isArray($quantityParameter)) {
 			
 			if (!InputValidator::isEmptyArrayKey($quantityParameter, "amount")) {
-				$this->quantity['amount'] = $quantityParameter['amount'];
+				$this->quantityAmount = $quantityParameter['amount'];
 			}
-			if (!InputValidator::isEmptyArrayKey($quantityParameter, "unit")) {
-				$this->quantity['unit'] = $quantityParameter['unit'];
+
+			if (InputValidator::isLocale($locale)) {
+				if (!InputValidator::isEmptyArrayKey($quantityParameter, "unit")) {
+					$this->quantityUnit[$locale] = $quantityParameter['unit'];
+				}
 			}
 		}
+	}
+
+	/**
+	 * Returns the quantity amount.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @return String Gets the quantity amount.
+	 */
+	public function getQuantityAmount() {
+
+		return $this->quantityAmount;
+	}
+
+	/**
+	 * Returns the quantity unit.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @param String $locale The localization.
+	 * @return String Gets the quantity unit.
+	 */
+	public function getQuantityUnit($locale) {
+
+		if (!InputValidator::isLocale($locale)) {
+			return;
+		}
+
+		return !InputValidator::isEmptyArrayKey($this->quantityUnit, $locale) ? $this->quantityUnit[$locale] : null;
 	}
 }
 ?>

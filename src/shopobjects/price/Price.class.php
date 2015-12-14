@@ -49,5 +49,44 @@ class Price {
 			}
 		}
 	}
+
+	/**
+	 * Returns the amount.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @return float Gets the amount.
+	 */
+	public function getAmount() {
+
+		return $this->amount;
+	}
+
+	/**
+	 * Returns the tax type.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @return String Gets the tax type.
+	 */
+	public function getTaxType() {
+
+		return $this->taxType;
+	}
+
+	/**
+	 * Returns the currency.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @return Sttring Gets the currency.
+	 */
+	public function getCurrency() {
+
+		return $this->currency;
+	}
 }
 ?>

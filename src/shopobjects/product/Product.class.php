@@ -121,8 +121,9 @@ class Product {
 				$priceInformation = $productParameter['priceInfo'];
 				
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "price") &&
-					!InputValidator::isEmptyArrayKey($priceInformation, "quantity")) {
-					$this->price = new PriceWithQuantity($priceInformation['price'], $priceInformation['quantity']);
+					!InputValidator::isEmptyArrayKey($priceInformation, "quantity") &&
+					!InputValidator::isEmptyArrayKey($productParameter, "locale")) {
+					$this->price = new PriceWithQuantity($priceInformation['price'], $priceInformation['quantity'], $productParameter["locale"]);
 				}
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "depositPrice")) {
 					$this->depositPrice = new Price($priceInformation['depositPrice']);
@@ -288,6 +289,84 @@ class Product {
 	public function getHotDealImage() {
 
 		return !InputValidator::isEmptyArrayKey($this->images, "HotDeal") ? $this->images["HotDeal"] : null;
+	}
+	
+	/**
+	 * Returns the price with quantity.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @return PriceWithQuantity Gets the price with quantity.
+	 */
+	public function getPrice() {
+
+		return $this->price;
+	}
+
+	/**
+	 * Returns the deposit price.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @return Price Gets the deposit price.
+	 */
+	public function getDepositPrice() {
+
+		return $this->depositPrice;
+	}
+
+	/**
+	 * Returns the eco participation price.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @return Price Gets the eco participation price.
+	 */
+	public function getEcoParticipationPrice() {
+
+		return $this->ecoParticipationPrice;
+	}
+
+	/**
+	 * Returns the with deposit price.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @return Price Gets the with deposit price.
+	 */
+	public function getWithDepositPrice() {
+
+		return $this->withDepositPrice;
+	}
+
+	/**
+	 * Returns the manufactor price.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @return Price Gets the manufactor price.
+	 */
+	public function getManufactorPrice() {
+
+		return $this->manufactorPrice;
+	}
+
+	/**
+	 * Returns the base price.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @return Price Gets the base price.
+	 */
+	public function getBasePrice() {
+
+		return $this->basePrice;
 	}
 }
 
