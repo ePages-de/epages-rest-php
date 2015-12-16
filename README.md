@@ -3,7 +3,7 @@ This is the REST client to connect to an epages shop. You can use it as a develo
 
 ## Requirements
 To use this package it needs at least **PHP 5.4**.
-Download the PHP file archive (.phar) in **build** folder or in [relases area](https://github.com/dpauli/ep6client-php/releases), copy it to your project folder and use it like:
+Download the PHP file archive (.phar) in **build** folder or in [releases area](https://github.com/dpauli/ep6client-php/releases), copy it to your project folder and use it like:
 ```php
 require("libraries/ep6client-0.0.1.phar");
 ```
