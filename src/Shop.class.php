@@ -7,25 +7,26 @@
  */
 namespace ep6;
 # include framework configuration
-require_once("src/configuration/config.php");
+require_once(__DIR__ . "/configuration/config.php");
 # include helpful objects, all are used in a static way
-require_once("src/util/InputValidator.class.php");
-require_once("src/util/JSONHandler.class.php");
-require_once("src/util/Logger.class.php");
-require_once("src/util/RESTClient.class.php");
+require_once(__DIR__ . "/util/InputValidator.class.php");
+require_once(__DIR__ . "/util/JSONHandler.class.php");
+require_once(__DIR__ . "/util/Logger.class.php");
+require_once(__DIR__ . "/util/RESTClient.class.php");
 # include shopobjects
-require_once("src/shopobjects/Locales.class.php");
-require_once("src/shopobjects/Currencies.class.php");
-require_once("src/shopobjects/information/ContactInformation.class.php");
-require_once("src/shopobjects/information/PrivacyPolicyInformation.class.php");
-require_once("src/shopobjects/information/RightsOfWithdrawalInformation.class.php");
-require_once("src/shopobjects/information/TermsAndConditionInformation.class.php");
-require_once("src/shopobjects/information/ShippingInformation.class.php");
-require_once("src/shopobjects/product/ProductFilter.class.php");
-require_once("src/shopobjects/product/Product.class.php");
-require_once("src/shopobjects/image/Image.class.php");
-require_once("src/shopobjects/price/Price.class.php");
-require_once("src/shopobjects/price/PriceWithQuantity.class.php");
+require_once(__DIR__ . "/shopobjects/Locales.class.php");
+require_once(__DIR__ . "/shopobjects/Currencies.class.php");
+require_once(__DIR__ . "/shopobjects/information/InformationTrait.class.php");
+require_once(__DIR__ . "/shopobjects/information/ContactInformation.class.php");
+require_once(__DIR__ . "/shopobjects/information/PrivacyPolicyInformation.class.php");
+require_once(__DIR__ . "/shopobjects/information/RightsOfWithdrawalInformation.class.php");
+require_once(__DIR__ . "/shopobjects/information/TermsAndConditionInformation.class.php");
+require_once(__DIR__ . "/shopobjects/information/ShippingInformation.class.php");
+require_once(__DIR__ . "/shopobjects/product/ProductFilter.class.php");
+require_once(__DIR__ . "/shopobjects/product/Product.class.php");
+require_once(__DIR__ . "/shopobjects/image/Image.class.php");
+require_once(__DIR__ . "/shopobjects/price/Price.class.php");
+require_once(__DIR__ . "/shopobjects/price/PriceWithQuantity.class.php");
 
 /**
  * This is the epages 6 shop object.
