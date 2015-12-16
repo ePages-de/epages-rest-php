@@ -6,7 +6,6 @@
  * @since 0.0.0
  */
 namespace ep6;
-require_once("src/shopobjects/information/InformationTrait.class.php");
 /**
  * This class is needed for the shipping information in the shop.
  *
