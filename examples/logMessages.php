@@ -1,5 +1,5 @@
 <?php
-require_once("library/ep6client.phar");
+require_once("library/epages-rest-php.phar");
 
 // Set the logger to the wished log level.
 // Default is: NOTIFICATION, so all messages will be print.
