@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class ep6\Shop</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-ep6.html">
+						ep6					</a>
+
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-ep6.ContactInformation.html">ContactInformation</a></li>
+				<li><a href="class-ep6.Currencies.html">Currencies</a></li>
+				<li><a href="class-ep6.HTTPRequestMethod.html">HTTPRequestMethod</a></li>
+				<li><a href="class-ep6.Image.html">Image</a></li>
+				<li><a href="class-ep6.InputValidator.html">InputValidator</a></li>
+				<li><a href="class-ep6.JSONHandler.html">JSONHandler</a></li>
+				<li><a href="class-ep6.Locales.html">Locales</a></li>
+				<li><a href="class-ep6.Logger.html">Logger</a></li>
+				<li><a href="class-ep6.LogLevel.html">LogLevel</a></li>
+				<li><a href="class-ep6.LogOutput.html">LogOutput</a></li>
+				<li><a href="class-ep6.Price.html">Price</a></li>
+				<li><a href="class-ep6.PriceWithQuantity.html">PriceWithQuantity</a></li>
+				<li><a href="class-ep6.PrivacyPolicyInformation.html">PrivacyPolicyInformation</a></li>
+				<li><a href="class-ep6.Product.html">Product</a></li>
+				<li><a href="class-ep6.ProductFilter.html">ProductFilter</a></li>
+				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
+				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
+				<li><a href="class-ep6.ShippingInformation.html">ShippingInformation</a></li>
+				<li class="active"><a href="class-ep6.Shop.html">Shop</a></li>
+				<li><a href="class-ep6.TermsAndConditionInformation.html">TermsAndConditionInformation</a></li>
+			</ul>
+
+
+			<h3>Traits</h3>
+			<ul>
+				<li><a href="class-ep6.InformationTrait.html">InformationTrait</a></li>
+			</ul>
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-ep6.html" title="Summary of ep6"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+			<li>
+				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+			</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Shop</h1>
+
+
+	<div class="description">
+	<p>This is the epages 6 shop object.</p>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-ep6.html">ep6</a><br>
+		<b>Package:</b> ep6<br>
+
+				<b>Author:</b>
+				David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				<b>Since:</b>
+				0.0.0<br>
+				<b>Example:</b>
+				examples\connectingShop.php Create a new epage 6 shop object and disconnect.<br>
+			<b>Located at</b> <a href="source-class-ep6.Shop.html#31-232" title="Go to source code">Shop.class.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-ep6.Shop.html#56-71" title="Go to source code">__construct</a>( <span>String <var>$host</var></span>, <span>String <var>$shop</var></span>, <span>String <var>$authToken</var></span>, <span>boolean <var>$isssl</var> = <span class="php-keyword1">true</span></span> )</code>
+
+		<div class="description short">
+			<p>The constructor for the shop class.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>The constructor for the shop class.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$host</var></dt>
+					<dd>The ePages host to connect.</dd>
+					<dt><var>$shop</var></dt>
+					<dd>The refered ePages shop.</dd>
+					<dt><var>$authToken</var></dt>
+					<dd>The authentificaton token to connect via REST.</dd>
+					<dt><var>$isssl</var></dt>
+					<dd>True, if you use SSL, false if not. Default value is true.</dd>
+				</dl></div>
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+				<h4>Source</h4>
+				<div class="list">
+						2 1 Calls the REST client and connect.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__destruct" id="___destruct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___destruct">#</a>
+		<code><a href="source-class-ep6.Shop.html#73-84" title="Go to source code">__destruct</a>( )</code>
+
+		<div class="description short">
+			<p>The destructor for the main class.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>The destructor for the main class.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+				<h4>Source</h4>
+				<div class="list">
+						2 1 Disconnect the REST client.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="printStatus" id="_printStatus">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_printStatus">#</a>
+		<code><a href="source-class-ep6.Shop.html#86-98" title="Go to source code">printStatus</a>( )</code>
+
+		<div class="description short">
+			<p>Prints the connection status via "FORCE".</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Prints the connection status via "FORCE".</p>
+
+<p>This function will print the current values of the REST client.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getDefaultLocales" id="_getDefaultLocales">
+
+		<td class="attributes"><code>
+			 public 
+
+			String|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getDefaultLocales">#</a>
+		<code><a href="source-class-ep6.Shop.html#100-111" title="Go to source code">getDefaultLocales</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the default localization.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the default localization.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String|null<br>Default localization or null if the REST call does fail.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getLocales" id="_getLocales">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed[]|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLocales">#</a>
+		<code><a href="source-class-ep6.Shop.html#113-124" title="Go to source code">getLocales</a>( )</code>
+
+		<div class="description short">
+			<p>Returns all localizations.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns all localizations.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					mixed[]|null<br>All localizations in an array or null if the REST call does fail.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getDefaultCurrencies" id="_getDefaultCurrencies">
+
+		<td class="attributes"><code>
+			 public 
+
+			String|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getDefaultCurrencies">#</a>
+		<code><a href="source-class-ep6.Shop.html#126-137" title="Go to source code">getDefaultCurrencies</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the default currencies.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the default currencies.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String|null<br>Default currencies or null if the REST call does fail.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCurrencies" id="_getCurrencies">
+
+		<td class="attributes"><code>
+			 public 
+
+			mixed[]|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCurrencies">#</a>
+		<code><a href="source-class-ep6.Shop.html#139-150" title="Go to source code">getCurrencies</a>( )</code>
+
+		<div class="description short">
+			<p>Returns all currencies.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns all currencies.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					mixed[]|null<br>All currencies in an array or null if the REST call will fail.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getContactInformation" id="_getContactInformation">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.ContactInformation.html">ep6\ContactInformation</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getContactInformation">#</a>
+		<code><a href="source-class-ep6.Shop.html#152-166" title="Go to source code">getContactInformation</a>( )</code>
+
+		<div class="description short">
+			<p>Get the contact information.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the contact information.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.ContactInformation.html">ep6\ContactInformation</a></code>|null<br>The contact information of the shop or null if the REST call will fail.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getPrivacyPolicyInformation" id="_getPrivacyPolicyInformation">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.PrivacyPolicyInformation.html">ep6\PrivacyPolicyInformation</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getPrivacyPolicyInformation">#</a>
+		<code><a href="source-class-ep6.Shop.html#168-182" title="Go to source code">getPrivacyPolicyInformation</a>( )</code>
+
+		<div class="description short">
+			<p>Get the privacy policy information.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the privacy policy information.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.PrivacyPolicyInformation.html">ep6\PrivacyPolicyInformation</a></code>|null<br>The privacy policy information of the shop or null if the REST call will fail.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getRightsOfWithdrawalInformation" id="_getRightsOfWithdrawalInformation">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.RightsOfWithdrawalInformation.html">ep6\RightsOfWithdrawalInformation</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getRightsOfWithdrawalInformation">#</a>
+		<code><a href="source-class-ep6.Shop.html#184-198" title="Go to source code">getRightsOfWithdrawalInformation</a>( )</code>
+
+		<div class="description short">
+			<p>Get the rights of withdrawal information.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the rights of withdrawal information.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.RightsOfWithdrawalInformation.html">ep6\RightsOfWithdrawalInformation</a></code>|null<br>The rights of withdrawal information of the shop or null if the REST call will fail.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getShippingInformation" id="_getShippingInformation">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.ShippingInformation.html">ep6\ShippingInformation</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getShippingInformation">#</a>
+		<code><a href="source-class-ep6.Shop.html#200-214" title="Go to source code">getShippingInformation</a>( )</code>
+
+		<div class="description short">
+			<p>Get the shipping information.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the shipping information.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.ShippingInformation.html">ep6\ShippingInformation</a></code>|null<br>The shipping information of the shop or null if the REST call fails.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getTermsAndConditionInformation" id="_getTermsAndConditionInformation">
+
+		<td class="attributes"><code>
+			 public 
+
+			TermsAndCondiditonInformation
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getTermsAndConditionInformation">#</a>
+		<code><a href="source-class-ep6.Shop.html#216-230" title="Go to source code">getTermsAndConditionInformation</a>( )</code>
+
+		<div class="description short">
+			<p>Get the terms and condition information.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Get the terms and condition information.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					TermsAndCondiditonInformation<br>The terms and condition information of the shop or null if the REST call fails.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
