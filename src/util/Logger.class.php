@@ -158,12 +158,31 @@ class Logger {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use LogLevel enum.
+	 * @since 0.3.0 Set php error reporting automatically in developing systems.
 	 * @api
 	 * @param LogLevel $level The log level to set.
 	 */
 	public static function setLogLevel($level) {
 		if (!InputValidator::isLogLevel($level)) {
 			return;
+		}
+
+		// set PHP error reporting
+		switch ($level) {
+			case LogLevel::ERROR:
+				error_reporting(E_ERROR);
+				ini_set("display_errors", 1);
+				break;
+			case LogLevel::NOTIFICATION:
+				error_reporting(E_ALL);
+				ini_set("display_errors", 1);
+				break;
+			case LogLevel::WARNING:
+				error_reporting(E_WARNING);
+				ini_set("display_errors", 1);
+				break;
+			default:
+				ini_set("display_errors", 0);
 		}
 		self::$LOGLEVEL = $level;
 	}
