@@ -1,3 +1,14 @@
+# 0.0.3 (17.12.2015)
+
+## Enhancements
+- #42 Change project to name *epages-rest-php*.
+- #44 Automatically set error_reporting on set the ep6\Logger.
+- #47 Create the documentation with another engine.
+
+## Bugfixes
+- #39 Fix typo in REAME.
+- #43 Fixing relative path problem.
+
 # 0.0.2 (09.12.2015)
 
 This release does not have relevant changes in the productive code and is not downloadable.
