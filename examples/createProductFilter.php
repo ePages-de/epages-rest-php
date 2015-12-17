@@ -1,5 +1,5 @@
 <?php
-require_once("library/ep6client.phar");
+require_once("library/epages-rest-php.phar");
 
 // Connect to a shop
 $shop = new ep6\Shop("my.shop.domain", "ShopName", "AUTHTOKEN", true);

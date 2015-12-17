@@ -16,6 +16,7 @@ echo "* <strong>FRAMEWORK_VERSION</strong> " . $FRAMEWORK_VERSION . $EOL_PRINT;
 echo "***********************************" . $EOL_PRINT . $EOL_PRINT;
 
 $filename = "epages-rest-php-" . $FRAMEWORK_VERSION . ".phar";
+$latestFilename = "epages-rest-php.phar";
 
 if (file_exists($filename)) {
 	echo "<strong>Version already exists. Delete this version of increase the version.</strong>";
@@ -30,6 +31,12 @@ else {
 	
 	echo "<li><strong>Create and set default stub</strong></li>";
 	$phar->setStub($phar->createDefaultStub('Shop.class.php'));
+	
+	echo "<li><strong>Delete the latest file</strong></li>";
+	unlink($latestFilename);
+	
+	echo "<li><strong>Copy to latest</strong></li>";
+	copy($filename, $latestFilename);
 	
 	echo "</ul>";
 }

@@ -1,15 +1,24 @@
-# epages 6 REST client
-This is the REST client to connect to an epages shop. You can use it as a developer for epages app. Register at the [epages developer page](https://developer.epages.com) for a free development account.
+# epages REST SDK
+This is the REST SDK to connect to an epages shop. You can use it as a developer for develop epages apps. Register at the [epages developer page](https://developer.epages.com) for a free development account.
 
 ## Requirements
 To use this package it needs at least **PHP 5.4**.
-Download the PHP file archive (.phar) in **build** folder or in [releases area](https://github.com/dpauli/ep6client-php/releases), copy it to your project folder and use it like:
+Download or update the latest REST SDK it via command line.
+```
+wget https://raw.githubusercontent.com/ePages-de/epages-rest-php/master/build/epages-rest-php.phar -O epages-rest-php.phar
+```
+Its also possible to download the PHP file archive manually. Took the latest **.phar** release in the [releases area](https://github.com/ePages-de/epages-rest-php/releases).
+
+## Installation
+To use the SDK only include it.
+For developing reasons its useful to print all notifications and informations on the screen. **Warning:** Its not recommended to do this in live system!
 ```php
-require("libraries/ep6client-0.0.1.phar");
+require_once("libraries/epages-rest-php.phar");
+ep6\Logger::setLogLevel(ep6\LogLevel::NOTIFICATION);
 ```
 
 ## Version information
-This are the information which are provided with the epages 6 REST client since now.
+This are the information which are provided with the epages REST SDK since now.
 
 | Feature | GET | PUT | POST | DELETE | PATCH | information |
 | --- | :---: | :---: | :---: | :---: | :---: | --- |
@@ -30,14 +39,15 @@ This are the information which are provided with the epages 6 REST client since 
 
 ## Code examples
 
-For more small examples see the [examples folder](https://github.com/dpauli/ep6client-php/tree/master/examples).
+For more small examples see the [examples folder](https://github.com/ePages-de/epages-rest-php/tree/master/examples).
 
 ### Example 1
 
 This example get 100 products with a german localization and sort it with **name** attribute:
 
 ```php
-require_once("libraries/ep6client-0.0.1.phar");
+require_once("libraries/epages-rest-client.phar");
+ep6\Logger::setLogLevel(ep6\LogLevel::NOTIFICATION);
 
 // set connection constants
 $HOST		= "www.meinshop.de";
@@ -85,7 +95,8 @@ foreach ($products as $product) {
 This example gets some shop information.
 
 ```php
-require_once("libraries/ep6client-0.0.1.phar");
+require_once("libraries/epages-rest-php.phar");
+ep6\Logger::setLogLevel(ep6\LogLevel::NOTIFICATION);
 
 // set connection constants
 $HOST		= "www.meinshop.de";
@@ -130,7 +141,10 @@ To validate data and check the value of an object there is a InputValidator clas
 ep6\InputValidator::isHost("www.test.de");
 ep6\InputValidator::isJSON("{}");
 ```
-All InputValidator functions are found in the [doumentation](http://dbawdy.de/ep6client/doc/classes/ep6.InputValidator.html)
+All InputValidator functions are found in the [doumentation](http://dbawdy.de/epages-rest-php/doc/class-ep6.InputValidator.html)
+
+## Function reference
+The complete reference is located [here](http://dbawdy.de/epages-rest-php/doc).
 
 ## Licence
 

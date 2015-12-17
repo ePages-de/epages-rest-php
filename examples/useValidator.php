@@ -1,5 +1,5 @@
 <?php
-require_once("library/ep6client.phar");
+require_once("library/epages-rest-php.phar");
 
 // Check if the uri is a host
 ep6\InputValidator::isHost("meineurl.de");
