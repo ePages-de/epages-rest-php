@@ -147,7 +147,7 @@ class ContactInformation {
 			return;
 		}
 
-		self::load();
+		self::load($locale);
 	}
 
 	/**

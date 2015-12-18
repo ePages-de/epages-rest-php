@@ -22,5 +22,8 @@ class TermsAndConditionInformation {
 	/** @var String The REST path for terms and condition. */
 	private static $RESTPATH = "legal/terms-and-conditions";
 
+	/** @var int Timestamp in ms when the next request needs to be done. */
+	private static $NEXT_REQUEST_TIMESTAMP = 0;
+
 }
 ?>
