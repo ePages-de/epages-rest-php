@@ -11,6 +11,7 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
+ * @since 0.1.0 Add a timestamp to save the next allowed REST call.
  * @package ep6
  * @subpackage Shopobjects
  * @example examples\handleWithCurrencies.php Handle with currencies.
@@ -25,6 +26,9 @@ class Currencies {
 	
 	/** @var String[] Space to save the possible currencies. */
 	private static $ITEMS = array();
+	
+	/** @var int Timestamp in ms when the next request needs to be done. */
+	private static $NEXT_REQUEST_TIMESTAMP = 0;
 	
 	/**
 	 * Gets the default and possible currencies of the shop.
@@ -58,6 +62,10 @@ class Currencies {
 		
 		// parse the possible currencies
 		self::$ITEMS = $content["items"];
+		
+		// update timestamp when make the next request
+		$timestamp = (int) (microtime(true) * 1000);
+		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
 	}
 
 	/**
@@ -72,22 +80,41 @@ class Currencies {
 		self::$DEFAULT = null;
 		self::$ITEMS = array();
 	}
+
+	/**
+	 * This function checks whether a reload is needed.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 */
+	private static function reload() {
+
+		$timestamp = (int) (microtime(true) * 1000);
+
+		// if the value is empty
+		if (!InputValidator::isEmpty(self::$DEFAULT) &&
+			!InputValidator::isEmpty(self::$ITEMS) &&
+			self::$NEXT_REQUEST_TIMESTAMP > $timestamp) {
+			return;
+		}
+
+		self::load();
+	}
 	
 	/**
 	 * Gets the default currency.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.1.0 Use InputValidator to check values.
+	 * @since 0.1.0 Use a reload function.
 	 * @api
 	 * @return The default currencies of the shop.
 	 */
 	public static function getDefault() {
 		
-		if (InputValidator::isEmpty(self::$DEFAULT)) {
-			self::load();
-		}
-		return (InputValidator::isEmpty(self::$DEFAULT)) ? null : self::$DEFAULT;
+		self::reload();
+		return self::$DEFAULT;
 	}
 	
 	/**
@@ -95,16 +122,14 @@ class Currencies {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.1.0 Use InputValidator to check values.
+	 * @since 0.1.0 Use a reload function.
 	 * @api
 	 * @return The possible currencies of the shop.
 	 */
 	public static function getItems() {
 		
-		if (InputValidator::isEmptyArray(self::$ITEMS)) {
-			self::load();
-		}
-		return (InputValidator::isEmptyArray(self::$ITEMS)) ? null : self::$ITEMS;
+		self::reload();
+		return self::$ITEMS;
 	}
 
 }

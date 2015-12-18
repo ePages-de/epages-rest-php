@@ -4,7 +4,7 @@
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
- * @since 0.1.0 Add LogLevel and LogOutput classes.
+ * @since 0.0.1 Add LogLevel and LogOutput classes.
  */
 namespace ep6;
 /**
@@ -12,7 +12,7 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
- * @since 0.1.0 Use LogLevel and LogOutput
+ * @since 0.0.1 Use LogLevel and LogOutput
  * @package ep6
  * @subpackage Util
  * @example examples\logMessages.php Use the Logger to log messages.
@@ -30,7 +30,7 @@ class Logger {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.1.0 Use LogLevel
+	 * @since 0.0.1 Use LogLevel
 	 * @api
 	 * @param String $message The message to print.
 	 */
@@ -50,7 +50,7 @@ class Logger {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.1.0 Use LogLevel
+	 * @since 0.0.1 Use LogLevel
 	 * @api
 	 * @param String $message The message to print.
 	 */
@@ -69,7 +69,7 @@ class Logger {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.1.0 Use LogLevel
+	 * @since 0.0.1 Use LogLevel
 	 * @api
 	 * @param String $message The message to print.
 	 */
@@ -87,7 +87,7 @@ class Logger {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.1.0 Use LogLevel
+	 * @since 0.0.1 Use LogLevel
 	 * @api
 	 * @param String $message The message to print.
 	 */
@@ -104,7 +104,7 @@ class Logger {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.1.0 Restructor the output message.
+	 * @since 0.0.1 Restructor the output message.
 	 * @param String $message The message to print.
 	 * @param LogLevel $level The message level.
 	 */
@@ -134,7 +134,7 @@ class Logger {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.1.0 Format a little bit.
+	 * @since 0.0.1 Format a little bit.
 	 */
 	private static function printStacktrace() {
 		$stack = debug_backtrace();
@@ -157,8 +157,8 @@ class Logger {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.1.0 Use LogLevel enum.
-	 * @since 0.3.0 Set php error reporting automatically in developing systems.
+	 * @since 0.0.1 Use LogLevel enum.
+	 * @since 0.0.3 Set php error reporting automatically in developing systems.
 	 * @api
 	 * @param LogLevel $level The log level to set.
 	 */
@@ -192,7 +192,7 @@ class Logger {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.1.0 Use LogOutput enum.
+	 * @since 0.0.1 Use LogOutput enum.
 	 * @api
 	 * @param LogOutput $out The resource to output.
 	 */
@@ -210,7 +210,7 @@ class Logger {
  * Use this to define which log messages should be printed.
  *
  * @author David Pauli <contact@david-pauli.de>
- * @since 0.1.0
+ * @since 0.0.1
  * @package ep6
  * @subpackage Util\Logger
  */
@@ -233,7 +233,7 @@ abstract class LogLevel {
  * Use this to define where the log messages should be printed.
  *
  * @author David Pauli <contact@david-pauli.de>
- * @since 0.1.0
+ * @since 0.0.1
  * @package ep6
  * @subpackage Util\Logger
  */

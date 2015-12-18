@@ -11,6 +11,7 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
+ * @since 0.1.0 Add a timestamp to save the next allowed REST call.
  * @package ep6
  * @subpackage Shopobjects\Information
  */
@@ -31,7 +32,7 @@ trait InformationTrait {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.1.0 Use HTTPRequestMethod enum.
+	 * @since 0.0.1 Use HTTPRequestMethod enum.
 	 * @param String $locale The localization to load the information.
 	 */
 	private static function load($locale) {
@@ -62,6 +63,37 @@ trait InformationTrait {
 		if (!InputValidator::isEmptyArrayKey($content, "description")) {
 			self::$DESCRIPTION[$locale] = $content["description"];
 		}
+		
+		// update timestamp when make the next request
+		$timestamp = (int) (microtime(true) * 1000);
+		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
+	}
+
+	/**
+	 * This function checks whether a reload is needed.
+	 *
+	 * @param String $locale The localization of the reloadable content.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 */
+	private static function reload($locale) {
+
+		if (!InputValidator::isLocale($locale)) {
+			return;
+		}
+
+		$timestamp = (int) (microtime(true) * 1000);
+
+		// if the value is empty
+		if (!InputValidator::isEmptyArrayKey(self::$NAME, $locale) &&
+			!InputValidator::isEmptyArrayKey(self::$NAVIGATIONCAPTION, $locale) &&
+			!InputValidator::isEmptyArrayKey(self::$DESCRIPTION, $locale) &&
+			self::$NEXT_REQUEST_TIMESTAMP > $timestamp) {
+			return;
+		}
+
+		self::load();
 	}
 
 	/**
@@ -100,6 +132,7 @@ trait InformationTrait {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a reload function.
 	 * @api
 	 * @param String $locale The locale String.
 	 * @return String|null The localized name or null if the name is unset.
@@ -111,13 +144,11 @@ trait InformationTrait {
 			return null;
 		}
 		
-		// if the localiation name is not set
+		self::reload($locale);
+
+		// after reload the REST ressource it is empty again.
 		if (InputValidator::isEmptyArrayKey(self::$NAME, $locale)) {
-			self::load($locale);
-			// after reload the REST ressource it is empty again.
-			if (InputValidator::isEmptyArrayKey(self::$NAME, $locale)) {
-				return null;
-			}
+			return null;
 		}
 		
 		return self::$NAME[$locale];
@@ -146,6 +177,7 @@ trait InformationTrait {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a reload function.
 	 * @api
 	 * @param String $locale The locale String.
 	 * @return String|null The localized navigation caption or null if the navigation caption is unset.
@@ -157,13 +189,11 @@ trait InformationTrait {
 			return null;
 		}
 		
-		// if the localiation name is not set
+		self::reload($locale);
+		
+		// after reload the REST ressource it is empty again.
 		if (InputValidator::isEmptyArrayKey(self::$NAVIGATIONCAPTION, $locale)) {
-			self::load($locale);
-			// after reload the REST ressource it is empty again.
-			if (InputValidator::isEmptyArrayKey(self::$NAVIGATIONCAPTION, $locale)) {
-				return null;
-			}
+			return null;
 		}
 		
 		return self::$NAVIGATIONCAPTION[$locale];
@@ -192,6 +222,7 @@ trait InformationTrait {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a reload function.
 	 * @api
 	 * @param String $locale The locale String.
 	 * @return String|null The localized description or null if the description is unset.
@@ -203,13 +234,11 @@ trait InformationTrait {
 			return null;
 		}
 		
-		// if the localiation name is not set
+		self::reload($locale);
+		
+		// after reload the REST ressource it is empty again.
 		if (InputValidator::isEmptyArrayKey(self::$DESCRIPTION, $locale)) {
-			self::load($locale);
-			// after reload the REST ressource it is empty again.
-			if (InputValidator::isEmptyArrayKey(self::$DESCRIPTION, $locale)) {
-				return null;
-			}
+			return null;
 		}
 		
 		return self::$DESCRIPTION[$locale];
