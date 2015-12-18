@@ -2,8 +2,11 @@
 
 namespace ep6;
 
-class RESTClientTest extends \UnitTestCase {
+class RESTClientTest extends \PHPUnit_Framework_TestCase {
 
+	/**
+	 * @group utility
+	 */
     function testConnection()
     {
         $this->assertFalse(@RESTClient::connect());
@@ -14,11 +17,9 @@ class RESTClientTest extends \UnitTestCase {
         $this->assertTrue(@RESTClient::connect("www.google.de", "Shopname", "AuthToken", true));
     }
 
-    function testDisconnect()
-    {
-        $this->assertTrue(@RESTClient::disconnect());
-    }
-
+	/**
+	 * @group utility
+	 */
     function testSetRequestMethod()
     {
         $this->assertFalse(@RESTClient::setRequestMethod());
@@ -29,6 +30,9 @@ class RESTClientTest extends \UnitTestCase {
         $this->assertTrue(@RESTClient::setRequestMethod("DELETE"));
     }
 
+	/**
+	 * @group utility
+	 */
     function testSend()
     {
         @RESTClient::setRequestMethod();
@@ -40,10 +44,10 @@ class RESTClientTest extends \UnitTestCase {
 
         @RESTClient::disconnect();
         @RESTClient::setRequestMethod("GET");
-        $this->assertFalse(@RESTClient::send("locale"));
+        $this->assertNull(@RESTClient::send("locale"));
 
         @RESTClient::setRequestMethod("NOTVALID");
-        $this->assertFalse(@RESTClient::send("locale"));
+        $this->assertNull(@RESTClient::send("locale"));
 
     }
 

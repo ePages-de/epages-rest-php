@@ -93,7 +93,7 @@ trait InformationTrait {
 			return;
 		}
 
-		self::load();
+		self::load($locale);
 	}
 
 	/**

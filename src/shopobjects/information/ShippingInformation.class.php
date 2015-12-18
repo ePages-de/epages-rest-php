@@ -22,5 +22,8 @@ class ShippingInformation {
 	/** @var String The REST path for shipping information. */
 	private static $RESTPATH = "legal/shipping-information";
 
+	/** @var int Timestamp in ms when the next request needs to be done. */
+	private static $NEXT_REQUEST_TIMESTAMP = 0;
+
 }
 ?>

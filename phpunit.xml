@@ -1,0 +1,46 @@
+<phpunit bootstrap="src/Shop.class.php" colors="always">
+ 	<testsuites>
+		<testsuite name="REST client Test">
+			<file>tests/RESTClientTest.php</file>
+		</testsuite>
+		<testsuite name="Shop Test">
+			<file>tests/ShopTest.php</file>
+		</testsuite>
+		<testsuite name="Input validator Test">
+			<file>tests/InputValidator.php</file>
+		</testsuite>
+		<testsuite name="JSON handler Test">
+			<file>tests/JSONHandlerTest.php</file>
+		</testsuite>
+		<testsuite name="Logger Test">
+			<file>tests/LoggerTest.php</file>
+		</testsuite>
+		<testsuite name="Currencies Test">
+			<file>tests/CurrenciesTest.php</file>
+		</testsuite>
+		<testsuite name="Locales Test">
+			<file>tests/LocalesTest.php</file>
+		</testsuite>
+		<testsuite name="Contact information Test">
+			<file>tests/ContactInformationTest.php</file>
+		</testsuite>
+		<testsuite name="Privacy policy information Test">
+			<file>tests/PrivacyPolicyInformatonTest.php</file>
+		</testsuite>
+		<testsuite name="Rights of withdrawal information Test">
+			<file>tests/RightsOfWithdrawalInformationTest.php</file>
+		</testsuite>
+		<testsuite name="Shipping information Test">
+			<file>tests/ShippingInformationTest.php</file>
+		</testsuite>
+		<testsuite name="Terms and condition information Test">
+			<file>tests/TermsAndConditionInformationTest.php</file>
+		</testsuite>
+	</testsuites>
+	<groups>
+		<include>
+			<group>utility</group>
+			<group>shopobjects</group>
+		</include>
+	</groups>
+</phpunit>

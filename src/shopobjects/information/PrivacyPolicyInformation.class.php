@@ -22,5 +22,8 @@ class PrivacyPolicyInformation {
 	/** @var String The REST path for privacy policy. */
 	private static $RESTPATH = "legal/privacy-policy";
 
+	/** @var int Timestamp in ms when the next request needs to be done. */
+	private static $NEXT_REQUEST_TIMESTAMP = 0;
+
 }
 ?>
