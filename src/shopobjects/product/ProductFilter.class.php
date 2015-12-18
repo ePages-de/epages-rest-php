@@ -46,7 +46,7 @@ class ProductFilter {
 
 	/** @var String[] The product ids of the product search result. */
 	private static $IDS = array();
-	
+
 	/**
 	 * This is the constructor to prefill the product filter.
 	 *
@@ -62,7 +62,7 @@ class ProductFilter {
 			$this->setProductFilter($productFilterParameter);
 		}
 	}
-	
+
 	/**
 	 * Fill the product filter with a array.
 	 *
@@ -72,12 +72,12 @@ class ProductFilter {
 	 * @param String[] $productFilterParameter The values of a product filter.
 	 */
 	public function setProductFilter($productFilterParameter) {
-		
+
 		if (!InputValidator::isArray($productFilterParameter) ||
 			InputValidator::isEmptyArray($productFilterParameter)) {
 			return;
 		}
-		
+
 		foreach ($productFilterParameter as $key => $parameter) {
 			if ($key == "locale") {
 				$this->setLocale($parameter);
@@ -108,7 +108,7 @@ class ProductFilter {
 			}
 		}
 	}
-	
+
 	/**
 	 * This function prints the filter in a NOTIFICATION message.
 	 *
@@ -117,7 +117,7 @@ class ProductFilter {
 	 * @api
 	 */
 	public function printFilter() {
-		
+
 		$message = array();
 		if (!InputValidator::isEmpty(self::$LOCALE)) array_push($message, "Locale: " . self::$LOCALE);
 		if (!InputValidator::isEmpty(self::$CURRENCY)) array_push($message, "Currency: " . self::$CURRENCY);
@@ -132,7 +132,7 @@ class ProductFilter {
 		}
 		Logger::force($message);
 	}
-	
+
 	/**
 	 * This function returns the hash code of the object to equals the object.
 	 *
@@ -142,7 +142,7 @@ class ProductFilter {
 	 * @return String Returns the hash code of the object.
 	 */
 	public function hashCode() {
-		
+
 		$message = self::$LOCALE
 			. self::$CURRENCY
 			. self::$PAGE
@@ -150,13 +150,13 @@ class ProductFilter {
 			. self::$DIRECTION
 			. self::$SORT
 			. self::$Q
-			. self::$CATEGORYID;		
+			. self::$CATEGORYID;
 		foreach (self::$IDS as $id) {
 			$message .= $id;
 		}
 		return hash("sha512", $message);
 	}
-	
+
 	/**
 	 * This function sets the localization.
 	 *
@@ -173,7 +173,7 @@ class ProductFilter {
 		self::$LOCALE = $locale;
 		return true;
 	}
-	
+
 	/**
 	 * This function gets the localization.
 	 *
@@ -185,7 +185,7 @@ class ProductFilter {
 	public function getLocale() {
 		return self::$LOCALE;
 	}
-	
+
 	/**
 	 * This function sets the currency.
 	 *
@@ -202,7 +202,7 @@ class ProductFilter {
 		self::$CURRENCY = $currency;
 		return true;
 	}
-	
+
 	/**
 	 * This function gets the currency.
 	 *
@@ -214,7 +214,7 @@ class ProductFilter {
 	public function getCurrency() {
 		return self::$CURRENCY;
 	}
-	
+
 	/**
 	 * This function sets the page to show.
 	 *
@@ -231,7 +231,7 @@ class ProductFilter {
 		self::$PAGE = $page;
 		return true;
 	}
-	
+
 	/**
 	 * This function gets the page.
 	 *
@@ -243,7 +243,7 @@ class ProductFilter {
 	public function getPage() {
 		return self::$PAGE;
 	}
-	
+
 	/**
 	 * This function sets the results per page to show.
 	 *
@@ -260,7 +260,7 @@ class ProductFilter {
 		self::$RESULTSPERPAGE = $resultsPerPage;
 		return true;
 	}
-	
+
 	/**
 	 * This function gets the results per page.
 	 *
@@ -272,7 +272,7 @@ class ProductFilter {
 	public function getResultsPerPage() {
 		return self::$RESULTSPERPAGE;
 	}
-	
+
 	/**
 	 * This function sets the direction to show.
 	 *
@@ -289,7 +289,7 @@ class ProductFilter {
 		self::$DIRECTION = $direction;
 		return true;
 	}
-	
+
 	/**
 	 * This function gets the direction.
 	 *
@@ -301,7 +301,7 @@ class ProductFilter {
 	public function getDirection() {
 		return self::$DIRECTION;
 	}
-	
+
 	/**
 	 * This function sets the order parameter to show.
 	 *
@@ -318,7 +318,7 @@ class ProductFilter {
 		self::$SORT = $sort;
 		return true;
 	}
-	
+
 	/**
 	 * This function gets the sort.
 	 *
@@ -330,7 +330,7 @@ class ProductFilter {
 	public function getSort() {
 		return self::$SORT;
 	}
-	
+
 	/**
 	 * This function sets the query search string to show.
 	 *
@@ -347,7 +347,7 @@ class ProductFilter {
 		self::$Q = $q;
 		return true;
 	}
-	
+
 	/**
 	 * This function gets the query search string.
 	 *
@@ -359,7 +359,7 @@ class ProductFilter {
 	public function getQ() {
 		return self::$Q;
 	}
-	
+
 	/**
 	 * This function sets the category ID to show.
 	 *
@@ -376,7 +376,7 @@ class ProductFilter {
 		self::$CATEGORYID = $categoryID;
 		return true;
 	}
-	
+
 	/**
 	 * This function gets the category ID string.
 	 *
@@ -388,7 +388,7 @@ class ProductFilter {
 	public function getCategoryID() {
 		return self::$CATEGORYID;
 	}
-	
+
 	/**
 	 * This function add a product ID from filter.
 	 *
@@ -443,7 +443,7 @@ class ProductFilter {
 	 * @api
 	 */
 	public function resetFilter() {
-		
+
 		self::$LOCALE = null;
 		self::$CURRENCY = null;
 		self::$PAGE = 1;
@@ -464,21 +464,21 @@ class ProductFilter {
 	 * @return Products[] Returns an array of products.
 	 */
 	public function getProducts() {
-		
+
 		$parameter = self::getParameter();
-		
+
 		// if request method is blocked
 		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
 			return;
 		}
 
 		$content = RESTClient::send(self::RESTPATH . "?" . $parameter);
-		
+
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
 			return;
 		}
-		
+
 		// if there is no results, page AND resultsPerPage element
 		if (InputValidator::isEmptyArrayKey($content, "results") ||
 			InputValidator::isEmptyArrayKey($content, "page") ||
@@ -486,11 +486,11 @@ class ProductFilter {
 		    Logger::error("Respond for " . self::RESTPATH . " can not be interpreted.");
 			return;
 		}
-		
+
 		$products = array();
 		// is there any product found: load the products.
 	 	if (!InputValidator::isEmptyArrayKey($content, "items") && (sizeof($content['items']) != 0)) {
-	 		
+
 			foreach ($content['items'] as $item) {
 
 				// add the localization in the product array
@@ -504,7 +504,7 @@ class ProductFilter {
 	}
 
 	/**
-	 * This function returns the parameter as string. 
+	 * This function returns the parameter as string.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0

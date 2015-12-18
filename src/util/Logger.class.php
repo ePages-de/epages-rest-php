@@ -35,7 +35,7 @@ class Logger {
 	 * @param String $message The message to print.
 	 */
 	public static function notify($message) {
-		
+
 		if (InputValidator::isEmpty($message) ||
 			self::$LOGLEVEL == LogLevel::ERROR ||
 			self::$LOGLEVEL == LogLevel::WARNING ||
@@ -55,7 +55,7 @@ class Logger {
 	 * @param String $message The message to print.
 	 */
 	public static function warning($message) {
-		
+
 		if (InputValidator::isEmpty($message) ||
 			self::$LOGLEVEL == LogLevel::ERROR ||
 			self::$LOGLEVEL == LogLevel::NONE) {
@@ -74,7 +74,7 @@ class Logger {
 	 * @param String $message The message to print.
 	 */
 	public static function error($message) {
-		
+
 		if (InputValidator::isEmpty($message) ||
 			self::$LOGLEVEL == LogLevel::NONE) {
 			return;
@@ -92,7 +92,7 @@ class Logger {
 	 * @param String $message The message to print.
 	 */
 	public static function force($message) {
-		
+
 		if (InputValidator::isEmpty($message)) {
 			return;
 		}

@@ -25,19 +25,19 @@ else {
 	echo "<ul>";
 	echo "<li><strong>Creating the .phar</strong></li>";
 	$phar = new Phar($filename);
-	
+
 	echo "<li><strong>Adding all files</strong></li>";
 	$phar->buildFromDirectory('../src');
-	
+
 	echo "<li><strong>Create and set default stub</strong></li>";
 	$phar->setStub($phar->createDefaultStub('Shop.class.php'));
-	
+
 	echo "<li><strong>Delete the latest file</strong></li>";
 	unlink($latestFilename);
-	
+
 	echo "<li><strong>Copy to latest</strong></li>";
 	copy($filename, $latestFilename);
-	
+
 	echo "</ul>";
 }
 ?>

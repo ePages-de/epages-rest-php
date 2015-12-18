@@ -15,13 +15,13 @@ namespace ep6;
  * @subpackage Shopobjects\Price
  */
 class PriceWithQuantity extends Price {
-		
+
 	/** @var int The quantity amount. */
 	private $quantityAmount = null;
-		
+
 	/** @var mixed[] The localized quantity unit. */
 	private $quantityUnit = array();
-	
+
 	/**
 	 * This is the constructor of the price with quantity object.
 	 *
@@ -37,7 +37,7 @@ class PriceWithQuantity extends Price {
 		parent::__construct($priceParameter);
 
 		if (InputValidator::isArray($quantityParameter)) {
-			
+
 			if (!InputValidator::isEmptyArrayKey($quantityParameter, "amount")) {
 				$this->quantityAmount = $quantityParameter['amount'];
 			}

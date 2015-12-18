@@ -16,11 +16,11 @@ namespace ep6;
  * @see InformationTrait This trait has all information needed objects.
  */
 class TermsAndConditionInformation {
-	
+
 	use InformationTrait;
 
 	/** @var String The REST path for terms and condition. */
 	private static $RESTPATH = "legal/terms-and-conditions";
-	
+
 }
 ?>

@@ -16,11 +16,11 @@ namespace ep6;
  * @see InformationTrait This trait has all information needed objects.
  */
 class PrivacyPolicyInformation {
-	
+
 	use InformationTrait;
 
 	/** @var String The REST path for privacy policy. */
 	private static $RESTPATH = "legal/privacy-policy";
-	
+
 }
 ?>

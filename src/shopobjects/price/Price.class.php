@@ -15,16 +15,16 @@ namespace ep6;
  * @subpackage Shopobjects\Price
  */
 class Price {
-	
+
 	/** @var float The amount of the price. */
 	private $amount = 0.0;
-	
+
 	/** @var String|null The tax type of the price. */
 	private $taxType = null;
-	
+
 	/** @var String|null The curreny of the price. */
 	private $currency = null;
-	
+
 	/**
 	 * This is the constructor of the price object.
 	 *
@@ -35,9 +35,9 @@ class Price {
 	 * @param mixed[] $priceParamter The price parameter.
 	 */
 	public function __construct($priceParameter) {
-		
+
 		if (InputValidator::isArray($priceParameter)) {
-			
+
 			if (!InputValidator::isEmptyArrayKey($priceParameter, "amount")) {
 				$this->amount = $priceParameter['amount'];
 			}
