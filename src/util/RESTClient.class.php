@@ -4,7 +4,7 @@
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
- * @since 0.1.0 USe HTTPRequestMethod enum.
+ * @since 0.0.1 Add HTTPRequestMethod enum.
  */
 namespace ep6;
 /**
@@ -12,7 +12,8 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
- * @since 0.1.0 Use HTTPRequestMethod enum.
+ * @since 0.0.3 Use HTTPRequestMethod enum.
+ * @since 0.1.0 Add a recommended wait time for the next request.
  * @package ep6
  * @subpackage Util
  */
@@ -45,12 +46,15 @@ class RESTClient {
 	/** @var String The content type of the request. */
 	const HTTP_CONTENT_TYPE = "application/json";
 
+	/** @var int The time in ms the shop object should wait until the next request. */
+	const NEXT_RESPONSE_WAIT_TIME = 600;
+
 	/**
 	 * The constructor for the main class.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.1.0 Use disconnect function on wrong parameters.
+	 * @since 0.0.1 Use disconnect function on wrong parameters.
 	 * @api
 	 * @param String $host The epages host to connect.
 	 * @param String $shop The refered ePages shop.
@@ -122,7 +126,7 @@ class RESTClient {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @since 0.1.0 Use HTTPRequestMethod enum.
+	 * @since 0.0.1 Use HTTPRequestMethod enum.
 	 * @api
 	 * @param String command The path which is requested in the REST client.
 	 * @param String[] postfields Add specific parameters to the REST server.
@@ -263,7 +267,7 @@ class RESTClient {
  * This are the possible HTTP request methods..
  *
  * @author David Pauli <contact@david-pauli.de>
- * @since 0.1.0
+ * @since 0.0.1
  * @package ep6
  * @subpackage Util\RESTClient
  */

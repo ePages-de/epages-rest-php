@@ -11,6 +11,7 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
+ * @since 0.1.0 Add a timestamp to save the next allowed REST call.
  * @package ep6
  * @subpackage Shopobjects\Information
  * @see InformationTrait This trait has all information needed objects.
@@ -46,11 +47,15 @@ class ContactInformation {
 	/** @var String[] The email address of the shop, language dependend. */
 	private static $EMAIL = array();
 	
+	/** @var int Timestamp in ms when the next request needs to be done. */
+	private static $NEXT_REQUEST_TIMESTAMP = 0;
+	
 	/**
 	 * Reload the REST information.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.0.1 Use HTTPRequestMethod enum.
 	 * @param String $locale The localization to load the information.
 	 */
 	private static function load($locale) {
@@ -104,6 +109,45 @@ class ContactInformation {
 		if (!InputValidator::isEmptyArrayKey($content, "email")) {
 			self::$EMAIL[$locale] = $content["email"];
 		}
+		
+		// update timestamp when make the next request
+		$timestamp = (int) (microtime(true) * 1000);
+		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
+	}
+
+	/**
+	 * This function checks whether a reload is needed.
+	 *
+	 * @param String $locale The localization of the reloadable content.
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 */
+	private static function reload($locale) {
+
+		if (!InputValidator::isLocale($locale)) {
+			return;
+		}
+
+		$timestamp = (int) (microtime(true) * 1000);
+
+		// if the value is empty
+		if (!InputValidator::isEmptyArrayKey(self::$NAME, $locale) &&
+			!InputValidator::isEmptyArrayKey(self::$NAVIGATIONCAPTION, $locale) &&
+			!InputValidator::isEmptyArrayKey(self::$DESCRIPTION, $locale) &&
+			!InputValidator::isEmptyArrayKey(self::$TITLE, $locale) &&
+			!InputValidator::isEmptyArrayKey(self::$SHORTDESCRIPTION, $locale) &&
+			!InputValidator::isEmptyArrayKey(self::$COMPANY, $locale) &&
+			!InputValidator::isEmptyArrayKey(self::$CONTACTPERSON, $locale) &&
+			!InputValidator::isEmptyArrayKey(self::$CONTACTPERSONJOBTITLE, $locale) &&
+			!InputValidator::isEmptyArrayKey(self::$ADDRESS, $locale) &&
+			!InputValidator::isEmptyArrayKey(self::$PHONE, $locale) &&
+			!InputValidator::isEmptyArrayKey(self::$EMAIL, $locale) &&
+			self::$NEXT_REQUEST_TIMESTAMP > $timestamp) {
+			return;
+		}
+
+		self::load();
 	}
 
 	/**
@@ -150,6 +194,7 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a reload function.
 	 * @api
 	 * @param String $locale The locale String.
 	 * @return String|null The localized title or null if the localized title is not set.
@@ -161,13 +206,11 @@ class ContactInformation {
 			return null;
 		}
 		
-		// if the localiation name is not set
+		self::reload($locale);
+		
+		// after reload the REST ressource it is empty again.
 		if (InputValidator::isEmptyArrayKey(self::$TITLE, $locale)) {
-			self::load($locale);
-			// after reload the REST ressource it is empty again.
-			if (InputValidator::isEmptyArrayKey(self::$TITLE, $locale)) {
-				return null;
-			}
+			return null;
 		}
 		
 		return self::$TITLE[$locale];
@@ -196,6 +239,7 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a reload function.
 	 * @api
 	 * @param String $locale The locale String.
 	 * @return String|null The localized short description or null if the short description is not set.
@@ -207,13 +251,11 @@ class ContactInformation {
 			return null;
 		}
 		
-		// if the localiation name is not set
+		self::reload($locale);
+		
+		// after reload the REST ressource it is empty again.
 		if (InputValidator::isEmptyArrayKey(self::$SHORTDESCRIPTION, $locale)) {
-			self::load($locale);
-			// after reload the REST ressource it is empty again.
-			if (InputValidator::isEmptyArrayKey(self::$SHORTDESCRIPTION, $locale)) {
-				return null;
-			}
+			return null;
 		}
 		
 		return self::$SHORTDESCRIPTION[$locale];
@@ -242,6 +284,7 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a reload function.
 	 * @api
 	 * @param String $locale The locale String.
 	 * @return String|null The localized company or null if the company is net set.
@@ -253,13 +296,11 @@ class ContactInformation {
 			return null;
 		}
 		
-		// if the localiation name is not set
+		self::load($locale);
+		
+		// after reload the REST ressource it is empty again.
 		if (InputValidator::isEmptyArrayKey(self::$COMPANY, $locale)) {
-			self::load($locale);
-			// after reload the REST ressource it is empty again.
-			if (InputValidator::isEmptyArrayKey(self::$COMPANY, $locale)) {
-				return null;
-			}
+			return null;
 		}
 		
 		return self::$COMPANY[$locale];
@@ -288,6 +329,7 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a reload function.
 	 * @api
 	 * @param String $locale The locale String.
 	 * @return String|null The localized contact person or null uf the contact person is not set.
@@ -299,13 +341,11 @@ class ContactInformation {
 			return null;
 		}
 		
-		// if the localiation name is not set
+		self::reload($locale);
+		
+		// after reload the REST ressource it is empty again.
 		if (InputValidator::isEmptyArrayKey(self::$CONTACTPERSON, $locale)) {
-			self::load($locale);
-			// after reload the REST ressource it is empty again.
-			if (InputValidator::isEmptyArrayKey(self::$CONTACTPERSON, $locale)) {
-				return null;
-			}
+			return null;
 		}
 		
 		return self::$CONTACTPERSON[$locale];
@@ -334,6 +374,7 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a reload function.
 	 * @api
 	 * @param String $locale The locale String.
 	 * @return String|null The localized job title of the contact person or null if the contact person job title is unset.
@@ -345,13 +386,11 @@ class ContactInformation {
 			return null;
 		}
 		
-		// if the localiation name is not set
+		self::reload($locale);
+		
+		// after reload the REST ressource it is empty again.
 		if (InputValidator::isEmptyArrayKey(self::$CONTACTPERSONJOBTITLE, $locale)) {
-			self::load($locale);
-			// after reload the REST ressource it is empty again.
-			if (InputValidator::isEmptyArrayKey(self::$CONTACTPERSONJOBTITLE, $locale)) {
-				return null;
-			}
+			return null;
 		}
 		
 		return self::$CONTACTPERSONJOBTITLE[$locale];
@@ -380,6 +419,7 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a reload function.
 	 * @api
 	 * @param String $locale The locale String.
 	 * @return String|null The localized address or null if the address is unset.
@@ -391,13 +431,11 @@ class ContactInformation {
 			return null;
 		}
 		
-		// if the localiation name is not set
+		self::reload($locale);
+		
+		// after reload the REST ressource it is empty again.
 		if (InputValidator::isEmptyArrayKey(self::$ADDRESS, $locale)) {
-			self::load($locale);
-			// after reload the REST ressource it is empty again.
-			if (InputValidator::isEmptyArrayKey(self::$ADDRESS, $locale)) {
-				return null;
-			}
+			return null;
 		}
 		
 		return self::$ADDRESS[$locale];
@@ -426,6 +464,7 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a reload function.
 	 * @api
 	 * @param String $locale The locale String.
 	 * @return String|null The localized phone number or null if the phone number is unset.
@@ -437,13 +476,11 @@ class ContactInformation {
 			return null;
 		}
 		
-		// if the localiation name is not set
+		self::reload($locale);
+		
+		// after reload the REST ressource it is empty again.
 		if (InputValidator::isEmptyArrayKey(self::$PHONE, $locale)) {
-			self::load($locale);
-			// after reload the REST ressource it is empty again.
-			if (InputValidator::isEmptyArrayKey(self::$PHONE, $locale)) {
-				return null;
-			}
+			return null;
 		}
 		
 		return self::$PHONE[$locale];
@@ -472,6 +509,7 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a reload function.
 	 * @api
 	 * @param String $locale The locale String.
 	 * @return String|null The localized email or null if the email address is not set.
@@ -483,13 +521,11 @@ class ContactInformation {
 			return null;
 		}
 		
-		// if the localiation name is not set
+		self::reload($locale);
+		
+		// after reload the REST ressource it is empty again.
 		if (InputValidator::isEmptyArrayKey(self::$EMAIL, $locale)) {
-			self::load($locale);
-			// after reload the REST ressource it is empty again.
-			if (InputValidator::isEmptyArrayKey(self::$EMAIL, $locale)) {
-				return null;
-			}
+			return null;
 		}
 		
 		return self::$EMAIL[$locale];
