@@ -16,13 +16,13 @@ namespace ep6;
  * @subpackage Shopobjects\Information
  */
 trait InformationTrait {
-	
+
 	/** @var String[] The names of the shop, language dependend. */
 	private static $NAME = array();
-	
+
 	/** @var String[] The navigation caption of the shop, language dependend. */
 	private static $NAVIGATIONCAPTION = array();
-	
+
 	/** @var String[] The description of the shop, language dependend. */
 	private static $DESCRIPTION = array();
 
@@ -45,15 +45,15 @@ trait InformationTrait {
 		}
 
 		$content = RESTClient::sendWithLocalization(self::$RESTPATH, $locale);
-		
+
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
 			return;
 		}
-		
+
 		// reset values
 		self::resetValues();
-		
+
 		if (!InputValidator::isEmptyArrayKey($content, "name")) {
 			self::$NAME[$locale] = $content["name"];
 		}
@@ -63,7 +63,7 @@ trait InformationTrait {
 		if (!InputValidator::isEmptyArrayKey($content, "description")) {
 			self::$DESCRIPTION[$locale] = $content["description"];
 		}
-		
+
 		// update timestamp when make the next request
 		$timestamp = (int) (microtime(true) * 1000);
 		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
@@ -108,7 +108,7 @@ trait InformationTrait {
 		self::$NAVIGATIONCAPTION = array();
 		self::$DESCRIPTION = array();
 	}
-	
+
 	/**
 	 * Gets the name in the default localization.
 	 *
@@ -118,15 +118,15 @@ trait InformationTrait {
 	 * @return String|null The name in the default localization or null if the default name is unset.
 	 */
 	public function getDefaultName() {
-		
+
 		// if no default language is visible
 		if (InputValidator::isEmpty(Locales::getDefault())) {
 			return null;
 		}
-		
+
 		return self::getName(Locales::getDefault());
 	}
-	
+
 	/**
 	 * Gets the name depended on the localization.
 	 *
@@ -138,22 +138,22 @@ trait InformationTrait {
 	 * @return String|null The localized name or null if the name is unset.
 	 */
 	 public function getName($locale) {
-	 	
+
 		// if the locale parameter is not localization string
 		if (!InputValidator::isLocale($locale)) {
 			return null;
 		}
-		
+
 		self::reload($locale);
 
 		// after reload the REST ressource it is empty again.
 		if (InputValidator::isEmptyArrayKey(self::$NAME, $locale)) {
 			return null;
 		}
-		
+
 		return self::$NAME[$locale];
 	}
-	
+
 	/**
 	 * Gets the navigation caption in the default localization.
 	 *
@@ -163,15 +163,15 @@ trait InformationTrait {
 	 * @return String|null The navigation caption in the default localization or null if the default navigation caption is unset.
 	 */
 	public function getDefaultNavigationCaption() {
-		
+
 		// if no default language is visible
 		if (InputValidator::isEmpty(Locales::getDefault())) {
 			return null;
 		}
-		
+
 		return self::getNavigationCaption(Locales::getDefault());
 	}
-	
+
 	/**
 	 * Gets the navigation caption depended on the localization.
 	 *
@@ -183,22 +183,22 @@ trait InformationTrait {
 	 * @return String|null The localized navigation caption or null if the navigation caption is unset.
 	 */
 	 public function getNavigationCaption($locale) {
-	 	
+
 		// if the locale parameter is not localization string
 		if (!InputValidator::isLocale($locale)) {
 			return null;
 		}
-		
+
 		self::reload($locale);
-		
+
 		// after reload the REST ressource it is empty again.
 		if (InputValidator::isEmptyArrayKey(self::$NAVIGATIONCAPTION, $locale)) {
 			return null;
 		}
-		
+
 		return self::$NAVIGATIONCAPTION[$locale];
 	}
-	
+
 	/**
 	 * Gets the description in the default localization.
 	 *
@@ -208,15 +208,15 @@ trait InformationTrait {
 	 * @return String|null The description in the default localization or null if the default description is unset.
 	 */
 	public function getDefaultDescription() {
-		
+
 		// if no default language is visible
 		if (InputValidator::isEmpty(Locales::getDefault())) {
 			return null;
 		}
-		
+
 		return self::getDescription(Locales::getDefault());
 	}
-	
+
 	/**
 	 * Gets the description depended on the localization.
 	 *
@@ -228,19 +228,19 @@ trait InformationTrait {
 	 * @return String|null The localized description or null if the description is unset.
 	 */
 	 public function getDescription($locale) {
-	 	
+
 		// if the locale parameter is not localization string
 		if (!InputValidator::isLocale($locale)) {
 			return null;
 		}
-		
+
 		self::reload($locale);
-		
+
 		// after reload the REST ressource it is empty again.
 		if (InputValidator::isEmptyArrayKey(self::$DESCRIPTION, $locale)) {
 			return null;
 		}
-		
+
 		return self::$DESCRIPTION[$locale];
 	}
 }

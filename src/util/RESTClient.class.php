@@ -90,7 +90,7 @@ class RESTClient {
 	public static function printStatus() {
 
 		if (!self::$ISCONNECTED) {
-			Logger::force("The status of the REST client:<br/>" . 
+			Logger::force("The status of the REST client:<br/>" .
 				"<strong>You are not connected.</strong>");
 		}
 		else {
@@ -113,7 +113,7 @@ class RESTClient {
 	 * @return String The returned JSON object or null if something goes wrong.
 	 */
 	public static function sendWithLocalization($command, $locale, $postfields = array()) {
-		
+
 		// cheeck parameters
 		if (!InputValidator::isLocale($locale)) {
 			return null;
@@ -133,7 +133,7 @@ class RESTClient {
 	 * @return mixed[] The returned elements as array.
 	 */
 	public static function send($command, $postfields = array()) {
-		
+
 		if (!InputValidator::isRESTCommand($command) ||
 			!self::$ISCONNECTED ||
 			!InputValidator::isArray($postfields)) {
@@ -142,7 +142,7 @@ class RESTClient {
 
 		$protocol = self::$ISSSL ? "https" : "http";
 		$url = $protocol . "://" . self::$HOST . "/" . self::PATHTOREST . "/" . self::$SHOP . "/" . $command;
-		
+
 		$headers = array(
 			"Accept: " . self::HTTP_ACCEPT,
 			"Authorization: Bearer " . self::$AUTHTOKEN,
@@ -170,7 +170,7 @@ class RESTClient {
 			curl_setopt($curl, CURLOPT_PROTOCOLS, CURLPROTO_HTTP);
 			curl_setopt($curl, CURLOPT_REDIR_PROTOCOLS, CURLPROTO_HTTP);
 		}
-		
+
 		switch (self::$HTTP_REQUEST_METHOD) {
 			case HTTPRequestMethod::GET:
 				curl_setopt($curl, CURLOPT_HTTPGET, 1);
@@ -198,14 +198,14 @@ class RESTClient {
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $JSONpostfield);
 				break;
 		}
-		
-		curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);	
-		
+
+		curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
 		$response = curl_exec($curl);
 		$info = curl_getinfo($curl);
 		$error = curl_error($curl);
 		curl_close($curl);
-		
+
 		$logMessage = self::$HTTP_REQUEST_METHOD . " " . $info["url"] . "<br/>"
 					. "<strong>Response</strong>: " . $info["http_code"] . ": <pre>" . htmlspecialchars($response) . "</pre><br/>"
 					. "<strong>Content-Type</strong>: " . $info["content_type"] . "<br/>"
@@ -221,7 +221,7 @@ class RESTClient {
 			Logger::warning("Get wrong response: " . $info["http_code"]);
 			return null;
 		}
-		
+
 		return JSONHandler::parseJSON($response);
 	}
 
@@ -251,7 +251,7 @@ class RESTClient {
 	 * @api
 	 */
 	public static function disconnect() {
-		
+
 		self::$HOST = "";
 		self::$SHOP = "";
 		self::$AUTHTOKEN = "";

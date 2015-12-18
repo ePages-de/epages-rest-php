@@ -37,19 +37,19 @@ require_once(__DIR__ . "/shopobjects/price/PriceWithQuantity.class.php");
  * @example examples\connectingShop.php Create a new epage 6 shop object and disconnect.
  */
 class Shop {
-	
+
 	/** @var ContactInformation|null The contact information object. */
 	private static $contactInformation = null;
-	
+
 	/** @var PrivacyPolicyInformation|null The privacy policy information object. */
 	private static $privacyPolicyInformation = null;
-	
+
 	/** @var RightsOfWithdrawalInformation|null The rights of withdrawal information object. */
 	private static $rightsOfWithdrawalInformation = null;
-	
+
 	/** @var ShippingInformation|null The shipping information object. */
 	private static $shippingInformation = null;
-	
+
 	/** @var TermsAndConditionInformation|null The terms and condition information object. */
 	private static $termsAndConditionInformation = null;
 

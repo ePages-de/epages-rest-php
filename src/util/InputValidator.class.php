@@ -42,7 +42,7 @@ class InputValidator {
 	 * @return boolean True if the string is a shop, false if not.
 	 */
 	public static function isShop($parameter) {
-		
+
 		return !self::isEmpty($parameter);
 	}
 
@@ -57,7 +57,7 @@ class InputValidator {
 	 * @return boolean True if the string is a OAuth authentification token, false if not.
 	 */
 	public static function isAuthToken($parameter) {
-		
+
 		return !self::isEmpty($parameter);
 	}
 
@@ -71,7 +71,7 @@ class InputValidator {
 	 * @return boolean True if the string is a localization string, false if not.
 	 */
 	public static function isLocale($parameter) {
-		
+
 		return self::isMatchRegex($parameter, "/^[a-z]{2,4}_[A-Z]{2,3}$/", "Locale")
 			&& !self::isEmpty($parameter);
 	}
@@ -86,7 +86,7 @@ class InputValidator {
 	 * @return boolean True if the string is a currency string, false if not.
 	 */
 	public static function isCurrency($parameter) {
-		
+
 		return self::isMatchRegex($parameter, "/^[A-Z]{3}$/", "Currency")
 			&& !self::isEmpty($parameter);
 	}

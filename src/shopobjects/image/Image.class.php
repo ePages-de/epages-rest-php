@@ -16,10 +16,10 @@ namespace ep6;
  * @subpackage Shopobjects\Image
  */
 class Image {
-	
+
 	/** @var string This is the path to the origin URL. */
 	private $URL;
-	
+
 	/**
 	 * To create a new image object use this constructor with the original URL.
 	 *
@@ -30,7 +30,7 @@ class Image {
 	public function __construct($url) {
 		$this->URL = $url;
 	}
-	
+
 	/**
 	 * Gets the original URL of the image.
 	 *
@@ -40,5 +40,5 @@ class Image {
 	 */
 	public function getOriginURL() {
 		return $this->URL;
-	} 
+	}
 }

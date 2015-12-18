@@ -17,19 +17,19 @@ namespace ep6;
  * @example examples\handleWithLocales.php Handle with locales.
  */
 class Locales {
-	
+
 	/** @var String The REST path for localizations. */
 	const RESTPATH = "locales";
-	
+
 	/** @var String|null Space to save the default locales. */
 	private static $DEFAULT = null;
-	
+
 	/** @var String[] Space to save the possible locales. */
 	private static $ITEMS = array();
-	
+
 	/** @var int Timestamp in ms when the next request needs to be done. */
 	private static $NEXT_REQUEST_TIMESTAMP = 0;
-	
+
 	/**
 	 * Gets the default and possible locales of the shop.
 	 *
@@ -47,23 +47,23 @@ class Locales {
 		}
 
 		$content = RESTClient::send(self::RESTPATH);
-		
+
 		// if respond is empty or there are no default AND items element
 		if (InputValidator::isEmptyArrayKey($content, "default") ||
 			InputValidator::isEmptyArrayKey($content, "items")) {
 		    Logger::error("Respond for " . self::RESTPATH . " can not be interpreted.");
 			return;
 		}
-		
+
 		// reset values
 		self::resetValues();
-		
+
 		// save the default localization
 		self::$DEFAULT = $content["default"];
-		
+
 		// parse the possible localizations
 		self::$ITEMS = $content["items"];
-		
+
 		// update timestamp when make the next request
 		$timestamp = (int) (microtime(true) * 1000);
 		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
@@ -102,7 +102,7 @@ class Locales {
 
 		self::load();
 	}
-	
+
 	/**
 	 * Gets the default localization.
 	 *
@@ -113,11 +113,11 @@ class Locales {
 	 * @return The default localization of the shop.
 	 */
 	public static function getDefault() {
-		
+
 		self::reload();
 		return self::$DEFAULT;
 	}
-	
+
 	/**
 	 * Gets the activated localizations.
 	 *
@@ -128,7 +128,7 @@ class Locales {
 	 * @return The possible localizations of the shop.
 	 */
 	public static function getItems() {
-		
+
 		self::reload();
 		return self::$ITEMS;
 	}

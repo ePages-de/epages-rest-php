@@ -16,11 +16,11 @@ namespace ep6;
  * @see InformationTrait This trait has all information needed objects.
  */
 class ShippingInformation {
-	
+
 	use InformationTrait;
 
 	/** @var String The REST path for shipping information. */
 	private static $RESTPATH = "legal/shipping-information";
-	
+
 }
 ?>
