@@ -494,7 +494,7 @@ class ProductFilter {
 			foreach ($content['items'] as $item) {
 
 				// add the localization in the product array
-				$item['locale'] = InputValidator::isLocale(self::$LOCALE) ? self::$LOCALE : Locale::getDefault();
+				$item['locale'] = InputValidator::isLocale(self::$LOCALE) ? self::$LOCALE : Locales::getDefault();
 				$product = new Product($item);
 				array_push($products, $product);
 			}

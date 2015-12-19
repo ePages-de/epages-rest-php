@@ -310,7 +310,8 @@ class InputValidator {
 	 */
 	private static function isMatchRegex($parameter, $regex, $type) {
 
-		if(!preg_match($regex, $parameter)) {
+		if(!preg_match($regex, $parameter) &&
+			!self::isEmpty($parameter)) {
 			Logger::warning("<strong>InputValidator</strong> - This is not a <u>" . $type . "</u>: <i>" . $parameter . "</i>");
 		}
 		return preg_match($regex, $parameter);
