@@ -26,7 +26,7 @@ class RESTClient {
 	private static $SHOP;
 
 	/** @var String|null The authentification token (access token). */
-	private static $AUTHTOKEN;
+	private static $AUTHTOKEN = null;
 
 	/** @var boolean|null You use https or http? Default is true. */
 	private static $ISSSL = true;
@@ -65,8 +65,7 @@ class RESTClient {
 
 		// check parameter
 		if (!InputValidator::isHost($host) ||
-			!InputValidator::isShop($shop) ||
-			!InputValidator::isAuthToken($authToken)) {
+			!InputValidator::isShop($shop)) {
 			self::disconnect();
 			return false;
 		}
@@ -145,8 +144,11 @@ class RESTClient {
 
 		$headers = array(
 			"Accept: " . self::HTTP_ACCEPT,
-			"Authorization: Bearer " . self::$AUTHTOKEN,
 			"Content-Type: " . self::HTTP_CONTENT_TYPE);
+
+		if (InputValidator::isAuthToken(self::$AUTHTOKEN)) {
+			array_push($headers, "Authorization: Bearer " . self::$AUTHTOKEN);
+		}
 
 		$curl = curl_init($url);
 
@@ -254,7 +256,7 @@ class RESTClient {
 
 		self::$HOST = "";
 		self::$SHOP = "";
-		self::$AUTHTOKEN = "";
+		self::$AUTHTOKEN = null;
 		self::$ISCONNECTED = false;
 		self::$ISSSL = true;
 		return true;
