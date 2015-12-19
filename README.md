@@ -108,8 +108,8 @@ $ISSSL		= true;
 $shop = new ep6\Shop($HOST, $SHOP, $AUTHTOKEN, $ISSSL);
 
 // prints the default currency and localization
-echo ep6\Currencies::getDefault();
-echo ep6\Locales::getDefault();
+echo $shop->getDefaultLocales();
+echo $shop->getDefaultCurrencies();
 
 // prints the name of the contact information in default language and in german
 $contactInformation = $shop->getContactInformation();
