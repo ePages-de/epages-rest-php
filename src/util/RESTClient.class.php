@@ -126,6 +126,7 @@ class RESTClient {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.0.1 Use HTTPRequestMethod enum.
+	 * @since 0.1.0 Allow empty message body if the status code is 204.
 	 * @api
 	 * @param String command The path which is requested in the REST client.
 	 * @param String[] postfields Add specific parameters to the REST server.
@@ -215,7 +216,8 @@ class RESTClient {
 					. "<strong>Time</strong> (Total/Namelookup/Connect/Pretransfer/Starttransfer/Redirect): " . $info["total_time"] . " / " . $info["namelookup_time"] . " / " . $info["connect_time"] . " / " . $info["pretransfer_time"] . " / " . $info["starttransfer_time"] . " / " . $info["redirect_time"] . " seconds<br/>";
 		Logger::notify("<strong>HTTP-SEND</strong>:<br/>" . $logMessage);
 
-		if (!$response) {
+		// if message body is empty this is allowed with 204
+		if (!$response && $info["http_code"]!="204") {
 			Logger::error("Error with send REST client: " .$error);
 			return null;
 		}

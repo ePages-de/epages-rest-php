@@ -229,5 +229,25 @@ class Shop {
 		return self::$termsAndConditionInformation;
 	}
 
+	/**
+	 * Deletes a product.
+	 *
+	 * This function try to deletes the product in the shop. It also unset the given Product object.
+	 *
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @param Product The product to delete.
+	 * @return boolean True if the deletion works, false if not.
+	 */
+	public function deleteProduct(&$product) {
+
+		if ($product->delete()) {
+			$product = null;
+			return true;
+		}
+		return false;
+	}
+
 }
 ?>

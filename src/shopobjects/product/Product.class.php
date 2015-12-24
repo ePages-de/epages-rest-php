@@ -12,10 +12,14 @@ namespace ep6;
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
  * @since 0.1.0 Add price information.
+ * @since 0.1.0 Function to delete itself.
  * @package ep6
  * @subpackage Shopobjects\Product
  */
 class Product {
+
+	/** @var String The REST path to the product ressource. */
+	private static $RESTPATH = "products";
 
 	/** @var String|null The product ID. */
 	private $productID = null;
@@ -367,6 +371,27 @@ class Product {
 	public function getBasePrice() {
 
 		return $this->basePrice;
+	}
+
+	/**
+	 * Deletes itself.
+	 *
+	 * Dont use this function. To delete a product its better to use $shop->deleteProduct($product).
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @return boolean True if the deletion was successful, false if not.
+	 */
+	public function delete() {
+
+		// if request method is blocked
+		if (!RESTClient::setRequestMethod(HTTPRequestMethod::DELETE)) {
+			return false;
+		}
+
+		RESTClient::send(self::$RESTPATH . "/" . $this->productID);
+
+		return true;
 	}
 }
 
