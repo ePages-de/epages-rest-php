@@ -14,6 +14,7 @@ namespace ep6;
  * @since 0.1.0 Add price information.
  * @since 0.1.0 Function to delete itself.
  * @since 0.1.0 Delete different Locales.
+ * @since 0.1.0 Implement Slideshow functionality.
  * @package ep6
  * @subpackage Shopobjects\Product
  */
@@ -63,6 +64,9 @@ class Product {
 
 	/** @var Price|null Here the base price is saved. */
 	private $basePrice = null;
+
+	/** @var ProductSlideshow|null This object saves the slideshow. */
+	private $slideshow = null;
 
 	/**
 	 * This is the constructor of the product.
@@ -372,6 +376,26 @@ class Product {
 	public function getBasePrice() {
 
 		return $this->basePrice;
+	}
+
+	/**
+	 * Returns the slideshow.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @return ProductSlideshow Gets the product slideshow.
+	 */
+	public function getSlideshow() {
+
+		// if the slideshow is not loaded until now
+		if (InputValidator::isEmpty($this->slideshow)) {
+			$this->slideshow = new ProductSlideshow($this->productID);
+		}
+		else {
+			$this->slideshow->reload();
+		}
+		return $this->slideshow;
 	}
 
 	/**
