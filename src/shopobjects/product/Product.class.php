@@ -13,6 +13,7 @@ namespace ep6;
  * @since 0.0.0
  * @since 0.1.0 Add price information.
  * @since 0.1.0 Function to delete itself.
+ * @since 0.1.0 Delete different Locales.
  * @package ep6
  * @subpackage Shopobjects\Product
  */
@@ -24,14 +25,14 @@ class Product {
 	/** @var String|null The product ID. */
 	private $productID = null;
 
-	/** @var Strng[] The language dependend name of the product. */
-	private $name = array();
+	/** @var String|null The name of the product. */
+	private $name = null;
 
-	/** @var String[] The language dependend short description. */
-	private $shortDescription = array();
+	/** @var String|null The short description. */
+	private $shortDescription = null;
 
-	/** @var String[] The language dependend description. */
-	private $description = array();
+	/** @var String|null The description. */
+	private $description = null;
 
 	/** @var boolean Is this product for sale? */
 	private $forSale = true;
@@ -39,8 +40,8 @@ class Product {
 	/** @var boolean Is this product a special offer? */
 	private $specialOffer = false;
 
-	/** @var String[] The language dependend text of availibility. */
-	private $availibilityText = array();
+	/** @var String|null The text of availibility. */
+	private $availibilityText = null;
 
 	/** @var Images[] This are the images in the four different possibilities. */
 	private $images = array();
@@ -69,6 +70,7 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Add price information.
+	 * @since 0.1.0 Use a default Locale.
 	 * @api
 	 * @param mixed[] $productParameter The product to create as array.
 	 */
@@ -92,22 +94,17 @@ class Product {
 			if (!InputValidator::isEmptyArrayKey($productParameter, "specialOffer")) {
 				$this->specialOffer = $productParameter['specialOffer'];
 			}
-
-			// if you have a localization
-			if (!InputValidator::isEmptyArrayKey($productParameter, "locale")) {
-
-				if (!InputValidator::isEmptyArrayKey($productParameter, "name")) {
-					$this->name[$productParameter['locale']] = $productParameter['name'];
-				}
-				if (!InputValidator::isEmptyArrayKey($productParameter, "shortDescription")) {
-					$this->shortDescription[$productParameter['locale']] = $productParameter['shortDescription'];
-				}
-				if (!InputValidator::isEmptyArrayKey($productParameter, "description")) {
-					$this->description[$productParameter['locale']] = $productParameter['description'];
-				}
-				if (!InputValidator::isEmptyArrayKey($productParameter, "availabilityText")) {
-					$this->availabilityText[$productParameter['locale']] = $productParameter['availabilityText'];
-				}
+			if (!InputValidator::isEmptyArrayKey($productParameter, "name")) {
+				$this->name = $productParameter['name'];
+			}
+			if (!InputValidator::isEmptyArrayKey($productParameter, "shortDescription")) {
+				$this->shortDescription = $productParameter['shortDescription'];
+			}
+			if (!InputValidator::isEmptyArrayKey($productParameter, "description")) {
+				$this->description = $productParameter['description'];
+			}
+			if (!InputValidator::isEmptyArrayKey($productParameter, "availabilityText")) {
+				$this->availabilityText = $productParameter['availabilityText'];
 			}
 
 			// parse images
@@ -166,13 +163,14 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a default Locale.
 	 * @api
 	 * @param String $locale The localization of the requested name.
 	 * @return String The name.
 	 */
 	public function getName($locale) {
 
-		return !InputValidator::isEmptyArrayKey($this->name, $locale) ? $this->name[$locale] : null;
+		return $this->name;
 	}
 
 	/**
@@ -180,13 +178,14 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a default Locale.
 	 * @api
 	 * @param String $locale The localization of the requested short description.
 	 * @return String The short description.
 	 */
 	public function getShortDescription($locale) {
 
-		return !InputValidator::isEmptyArrayKey($this->shortDescription, $locale) ? $this->shortDescription[$locale] : null;
+		return $this->shortDescription;
 	}
 
 	/**
@@ -194,13 +193,14 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a default Locale.
 	 * @api
 	 * @param String $locale The localization of the requested description.
 	 * @return String The description.
 	 */
 	public function getDescription($locale) {
 
-		return !InputValidator::isEmptyArrayKey($this->description, $locale) ? $this->description[$locale] : null;
+		return $this->description;
 	}
 
 	/**
@@ -234,13 +234,14 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a default Locale.
 	 * @api
 	 * @param String $locale The localization of the requested availibility text.
 	 * @return String The availibility text.
 	 */
 	public function getAvailibilityText($locale) {
 
-		return !InputValidator::isEmptyArrayKey($this->availibilityText, $locale) ? $this->availibilityText[$locale] : null;
+		return $this->availibilityText;
 	}
 
 	/**

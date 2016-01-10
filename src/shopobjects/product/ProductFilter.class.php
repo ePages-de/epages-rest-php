@@ -11,6 +11,7 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
+ * @since 0.1.0 Use a default Locale and Currency.
  * @package ep6
  * @subpackage Shopobjects\Product
  * @example examples\createProductFilter.php Create and use the product filter.
@@ -19,12 +20,6 @@ class ProductFilter {
 
 	/** @var String The REST path to the filter ressource. */
 	const RESTPATH = "products";
-
-	/** @var String|null The localization of the product search result. */
-	private static $LOCALE;
-
-	/** @var String|null The currency of the product search result. */
-	private static $CURRENCY;
 
 	/** @var int The page of the product search result. */
 	private static $PAGE = 1;
@@ -68,6 +63,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.1
+	 * @since 0.1.0 Use a default Locale and Currency.
 	 * @api
 	 * @param String[] $productFilterParameter The values of a product filter.
 	 */
@@ -79,13 +75,7 @@ class ProductFilter {
 		}
 
 		foreach ($productFilterParameter as $key => $parameter) {
-			if ($key == "locale") {
-				$this->setLocale($parameter);
-			}
-			else if($key == "currency") {
-				$this->setCurrency($parameter);
-			}
-			else if($key == "page") {
+			if($key == "page") {
 				$this->setPage($parameter);
 			}
 			else if($key == "resultsPerPage") {
@@ -114,13 +104,12 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a default Locale and Currency.
 	 * @api
 	 */
 	public function printFilter() {
 
 		$message = array();
-		if (!InputValidator::isEmpty(self::$LOCALE)) array_push($message, "Locale: " . self::$LOCALE);
-		if (!InputValidator::isEmpty(self::$CURRENCY)) array_push($message, "Currency: " . self::$CURRENCY);
 		if (!InputValidator::isEmpty(self::$PAGE)) array_push($message, "Page: " . self::$PAGE);
 		if (!InputValidator::isEmpty(self::$RESULTSPERPAGE)) array_push($message, "Results per page: " . self::$RESULTSPERPAGE);
 		if (!InputValidator::isEmpty(self::$DIRECTION)) array_push($message, "Direction: " . self::$DIRECTION);
@@ -138,14 +127,13 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a default Locale and Currency.
 	 * @api
 	 * @return String Returns the hash code of the object.
 	 */
 	public function hashCode() {
 
-		$message = self::$LOCALE
-			. self::$CURRENCY
-			. self::$PAGE
+		$message = self::$PAGE
 			. self::$RESULTSPERPAGE
 			. self::$DIRECTION
 			. self::$SORT
@@ -162,16 +150,14 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecate because product filter now use shop configured Locale.
 	 * @api
+	 * @deprecated
 	 * @param String $locale The localiazion to filter.
 	 * @return boolean True if setting the locale works, false if not.
 	 */
 	public function setLocale($locale) {
-		if (!InputValidator::isLocale($locale)) {
-			return false;
-		}
-		self::$LOCALE = $locale;
-		return true;
+		return false;
 	}
 
 	/**
@@ -179,11 +165,13 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecate because product filter now use shop configured Locale.
 	 * @api
+	 * @deprecated
 	 * @return String The localization of this product filter.
 	 */
 	public function getLocale() {
-		return self::$LOCALE;
+		return Locales::getLocale();
 	}
 
 	/**
@@ -191,16 +179,14 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecate because product filter now use shop configured Currency.
 	 * @api
+	 * @deprecated
 	 * @param String $currency The currency to filter.
 	 * @return boolean True if setting the currency works, false if not.
 	 */
 	public function setCurrency($currency) {
-		if (!InputValidator::isCurrency($currency)) {
-			return false;
-		}
-		self::$CURRENCY = $currency;
-		return true;
+		return false;
 	}
 
 	/**
@@ -208,11 +194,13 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecate because product filter now use shop configured Currency.
 	 * @api
+	 * @deprecated
 	 * @return String The currency of this product filter.
 	 */
 	public function getCurrency() {
-		return self::$CURRENCY;
+		return Currencies::getCurrency();
 	}
 
 	/**
@@ -440,12 +428,11 @@ class ProductFilter {
 	 * This function reset all product IDs from filter.
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a default Locale and Currency.
 	 * @api
 	 */
 	public function resetFilter() {
 
-		self::$LOCALE = null;
-		self::$CURRENCY = null;
 		self::$PAGE = 1;
 		self::$RESULTSPERPAGE = 10;
 		self::$DIRECTION = null;
@@ -460,6 +447,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a default Locale.
 	 * @api
 	 * @return Products[] Returns an array of products.
 	 */
@@ -493,8 +481,6 @@ class ProductFilter {
 
 			foreach ($content['items'] as $item) {
 
-				// add the localization in the product array
-				$item['locale'] = InputValidator::isLocale(self::$LOCALE) ? self::$LOCALE : Locales::getDefault();
 				$product = new Product($item);
 				array_push($products, $product);
 			}
@@ -508,14 +494,15 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use a default Locale and Currency.
 	 * @api
 	 * @return String The parameter build with this product filter.
 	 */
 	private function getParameter() {
 
 		$parameter = array();
-		if (!InputValidator::isEmpty(self::$LOCALE)) array_push($parameter, "locale=" . self::$LOCALE);
-		if (!InputValidator::isEmpty(self::$CURRENCY)) array_push($parameter, "currency=" . self::$CURRENCY);
+		array_push($parameter, "locale=" . Locales::getLocale());
+		array_push($parameter, "currency=" . Currencies::getCurrency());
 		if (!InputValidator::isEmpty(self::$PAGE)) array_push($parameter, "page=" . self::$PAGE);
 		if (!InputValidator::isEmpty(self::$RESULTSPERPAGE)) array_push($parameter, "resultsPerPage=" . self::$RESULTSPERPAGE);
 		if (!InputValidator::isEmpty(self::$DIRECTION)) array_push($parameter, "direction=" . self::$DIRECTION);

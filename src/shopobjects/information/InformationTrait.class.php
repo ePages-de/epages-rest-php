@@ -12,19 +12,20 @@ namespace ep6;
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
  * @since 0.1.0 Add a timestamp to save the next allowed REST call.
+ * @since 0.1.0 Use a default Locale.
  * @package ep6
  * @subpackage Shopobjects\Information
  */
 trait InformationTrait {
 
-	/** @var String[] The names of the shop, language dependend. */
-	private static $NAME = array();
+	/** @var String|null The names of the shop, language dependend. */
+	private static $NAME = null;
 
-	/** @var String[] The navigation caption of the shop, language dependend. */
-	private static $NAVIGATIONCAPTION = array();
+	/** @var String|null The navigation caption of the shop, language dependend. */
+	private static $NAVIGATIONCAPTION = null;
 
-	/** @var String[] The description of the shop, language dependend. */
-	private static $DESCRIPTION = array();
+	/** @var String|null The description of the shop, language dependend. */
+	private static $DESCRIPTION = null;
 
 	/**
 	 * Reload the REST information.
@@ -33,18 +34,17 @@ trait InformationTrait {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.0.1 Use HTTPRequestMethod enum.
-	 * @param String $locale The localization to load the information.
+	 * @since 0.1.0 Use a default Locale.
 	 */
-	private static function load($locale) {
+	private static function load() {
 
 		// if the REST path empty -> this is the not the implementation or can't get something else
 		if (InputValidator::isEmpty(self::$RESTPATH) ||
-			!RESTClient::setRequestMethod(HTTPRequestMethod::GET) ||
-			!InputValidator::isLocale($locale)) {
+			!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
 			return;
 		}
 
-		$content = RESTClient::sendWithLocalization(self::$RESTPATH, $locale);
+		$content = RESTClient::sendWithLocalization(self::$RESTPATH, Locales::getLocale());
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
@@ -55,13 +55,13 @@ trait InformationTrait {
 		self::resetValues();
 
 		if (!InputValidator::isEmptyArrayKey($content, "name")) {
-			self::$NAME[$locale] = $content["name"];
+			self::$NAME = $content["name"];
 		}
 		if (!InputValidator::isEmptyArrayKey($content, "navigationCaption")) {
-			self::$NAVIGATIONCAPTION[$locale] = $content["navigationCaption"];
+			self::$NAVIGATIONCAPTION = $content["navigationCaption"];
 		}
 		if (!InputValidator::isEmptyArrayKey($content, "description")) {
-			self::$DESCRIPTION[$locale] = $content["description"];
+			self::$DESCRIPTION = $content["description"];
 		}
 
 		// update timestamp when make the next request
@@ -72,41 +72,37 @@ trait InformationTrait {
 	/**
 	 * This function checks whether a reload is needed.
 	 *
-	 * @param String $locale The localization of the reloadable content.
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @api
 	 */
-	private static function reload($locale) {
-
-		if (!InputValidator::isLocale($locale)) {
-			return;
-		}
+	private static function reload() {
 
 		$timestamp = (int) (microtime(true) * 1000);
 
 		// if the value is empty
-		if (!InputValidator::isEmptyArrayKey(self::$NAME, $locale) &&
-			!InputValidator::isEmptyArrayKey(self::$NAVIGATIONCAPTION, $locale) &&
-			!InputValidator::isEmptyArrayKey(self::$DESCRIPTION, $locale) &&
+		if (!InputValidator::isEmpty(self::$NAME) &&
+			!InputValidator::isEmpty(self::$NAVIGATIONCAPTION) &&
+			!InputValidator::isEmpty(self::$DESCRIPTION) &&
 			self::$NEXT_REQUEST_TIMESTAMP > $timestamp) {
 			return;
 		}
 
-		self::load($locale);
+		self::load();
 	}
 
 	/**
-	 * This function resets all locales values.
+	 * This function resets all values.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use the default Locale.
 	 */
 	private static function resetValues() {
 
-		self::$NAME = array();
-		self::$NAVIGATIONCAPTION = array();
-		self::$DESCRIPTION = array();
+		self::$NAME = null;
+		self::$NAVIGATIONCAPTION = null;
+		self::$DESCRIPTION = null;
 	}
 
 	/**
@@ -114,44 +110,30 @@ trait InformationTrait {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @api
+	 * @deprecated
 	 * @return String|null The name in the default localization or null if the default name is unset.
 	 */
 	public function getDefaultName() {
 
-		// if no default language is visible
-		if (InputValidator::isEmpty(Locales::getDefault())) {
-			return null;
-		}
-
-		return self::getName(Locales::getDefault());
+		return self::getName();
 	}
 
 	/**
-	 * Gets the name depended on the localization.
+	 * Gets the name.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.0 Use the default Locale.
 	 * @api
-	 * @param String $locale The locale String.
-	 * @return String|null The localized name or null if the name is unset.
+	 * @return String|null The name or null if the name is unset.
 	 */
-	 public function getName($locale) {
+	 public function getName() {
 
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return null;
-		}
-
-		self::reload($locale);
-
-		// after reload the REST ressource it is empty again.
-		if (InputValidator::isEmptyArrayKey(self::$NAME, $locale)) {
-			return null;
-		}
-
-		return self::$NAME[$locale];
+		self::reload();
+		return InputValidator::isEmpty(self::$NAME) ? null : self::$NAME;
 	}
 
 	/**
@@ -159,44 +141,30 @@ trait InformationTrait {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @api
+	 * @deprecated
 	 * @return String|null The navigation caption in the default localization or null if the default navigation caption is unset.
 	 */
 	public function getDefaultNavigationCaption() {
 
-		// if no default language is visible
-		if (InputValidator::isEmpty(Locales::getDefault())) {
-			return null;
-		}
-
-		return self::getNavigationCaption(Locales::getDefault());
+		return self::getNavigationCaption();
 	}
 
 	/**
-	 * Gets the navigation caption depended on the localization.
+	 * Gets the navigation caption.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.0 Use the default Locale.
 	 * @api
-	 * @param String $locale The locale String.
-	 * @return String|null The localized navigation caption or null if the navigation caption is unset.
+	 * @return String|null The navigation caption or null if the navigation caption is unset.
 	 */
-	 public function getNavigationCaption($locale) {
-
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return null;
-		}
+	 public function getNavigationCaption() {
 
 		self::reload($locale);
-
-		// after reload the REST ressource it is empty again.
-		if (InputValidator::isEmptyArrayKey(self::$NAVIGATIONCAPTION, $locale)) {
-			return null;
-		}
-
-		return self::$NAVIGATIONCAPTION[$locale];
+		return InputValidator::isEmpty(self::$NAVIGATIONCAPTION) ? null : self::$NAVIGATIONCAPTION;
 	}
 
 	/**
@@ -204,44 +172,30 @@ trait InformationTrait {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @api
+	 * @deprecated
 	 * @return String|null The description in the default localization or null if the default description is unset.
 	 */
 	public function getDefaultDescription() {
 
-		// if no default language is visible
-		if (InputValidator::isEmpty(Locales::getDefault())) {
-			return null;
-		}
-
-		return self::getDescription(Locales::getDefault());
+		return self::getDescription();
 	}
 
 	/**
-	 * Gets the description depended on the localization.
+	 * Gets the description.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.0 Use the default Locale.
 	 * @api
-	 * @param String $locale The locale String.
 	 * @return String|null The localized description or null if the description is unset.
 	 */
-	 public function getDescription($locale) {
-
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return null;
-		}
+	 public function getDescription() {
 
 		self::reload($locale);
-
-		// after reload the REST ressource it is empty again.
-		if (InputValidator::isEmptyArrayKey(self::$DESCRIPTION, $locale)) {
-			return null;
-		}
-
-		return self::$DESCRIPTION[$locale];
+		return InputValidator::isEmpty(self::$DESCRIPTION) ? null : self::$DESCRIPTION;
 	}
 }
 ?>

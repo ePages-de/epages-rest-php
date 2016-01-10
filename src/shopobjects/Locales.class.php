@@ -12,6 +12,7 @@ namespace ep6;
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
  * @since 0.1.0 Add a timestamp to save the next allowed REST call.
+ * @since 0.1.0 Add configured used Locale.
  * @package ep6
  * @subpackage Shopobjects
  * @example examples\handleWithLocales.php Handle with locales.
@@ -27,6 +28,9 @@ class Locales {
 	/** @var String[] Space to save the possible locales. */
 	private static $ITEMS = array();
 
+	/** @var String|null Configured Locale. */
+	private static $USED = null;
+
 	/** @var int Timestamp in ms when the next request needs to be done. */
 	private static $NEXT_REQUEST_TIMESTAMP = 0;
 
@@ -37,6 +41,7 @@ class Locales {
 	 * @since 0.0.0
 	 * @since 0.0.1 Use HTTPRequestMethod enum.
 	 * @since 0.1.0 Save timestamp of the last request.
+ 	 * @since 0.1.0 Add configured used Locale.
 	 * @api
 	 */
 	private static function load() {
@@ -64,6 +69,11 @@ class Locales {
 		// parse the possible localizations
 		self::$ITEMS = $content["items"];
 
+		// set the configured shop Locale if it is empty.
+		if (InputValidator::isEmpty(self::$USED)) {
+			self::$USED = $content["default"];
+		}
+
 		// update timestamp when make the next request
 		$timestamp = (int) (microtime(true) * 1000);
 		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
@@ -74,12 +84,14 @@ class Locales {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+ 	 * @since 0.1.0 Reset used Locale.
 	 * @api
 	 */
 	public static function resetValues() {
 
 		self::$DEFAULT = null;
 		self::$ITEMS = array();
+		self::$USED = null;
 	}
 
 	/**
@@ -131,6 +143,39 @@ class Locales {
 
 		self::reload();
 		return self::$ITEMS;
+	}
+
+	/**
+	 * Gets the configured Locale.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @return The configured Locale which is used in REST calls.
+	 */
+	public static function getLocale() {
+
+		self::reload();
+		return self::$USED;
+	}
+
+	/**
+	 * Sets the configured Locale.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @param String $locale The new used Locale.
+	 * @return boolean True if set the Locale works, false if not.
+	 */
+	public static function setLocale($locale) {
+
+		self::reload();
+		if (array_key_exists($locale, self::$ITEMS)) {
+			self::$USED = $locale;
+			return true;
+		}
+		return false;
 	}
 
 }

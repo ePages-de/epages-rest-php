@@ -33,6 +33,7 @@ require_once(__DIR__ . "/shopobjects/price/PriceWithQuantity.class.php");
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
+ * @since 0.1.0 Configure the Locale and Currency to make REST calls.
  * @package ep6
  * @example examples\connectingShop.php Create a new epage 6 shop object and disconnect.
  */
@@ -147,6 +148,60 @@ class Shop {
 	public function getCurrencies() {
 
 		return Currencies::getItems();
+	}
+
+	/**
+	 * Returns configured Locale.
+	 *
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @return String|null The Locale which is configured for REST calls.
+	 */
+	public function getLocale() {
+
+		return Locales::getLocale();
+	}
+
+	/**
+	 * Set configured Locale.
+	 *
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @param String $locale The new used Locale.
+	 * @return boolean True if set the Locale works, false if not.
+	 */
+	public function setLocale($locale) {
+
+		return Locales::setLocale($locale);
+	}
+
+	/**
+	 * Returns configured Currency.
+	 *
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @return String|null The Currency which is configured for REST calls.
+	 */
+	public function getCurrency() {
+
+		return Currencies::getCurrency();
+	}
+
+	/**
+	 * Set configured Currency.
+	 *
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @param String $locale The new used Locale.
+	 * @return boolean True if set the Locale works, false if not.
+	 */
+	public function setCurrency($currency) {
+
+		return Currencies::setCurrency($currency);
 	}
 
 	/**
