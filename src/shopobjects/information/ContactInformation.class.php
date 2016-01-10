@@ -12,6 +12,7 @@ namespace ep6;
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
  * @since 0.1.0 Add a timestamp to save the next allowed REST call.
+ * @since 0.1.0 Use a default Locale.
  * @package ep6
  * @subpackage Shopobjects\Information
  * @see InformationTrait This trait has all information needed objects.
@@ -23,29 +24,29 @@ class ContactInformation {
 	/** @var String The REST path for contact information. */
 	private static $RESTPATH = "legal/contact-information";
 
-	/** @var String[] The title of the shop, language dependend. */
-	private static $TITLE = array();
+	/** @var String|null The title of the shop, language dependend. */
+	private static $TITLE = null;
 
-	/** @var String[] The short description of the shop, language dependend. */
-	private static $SHORTDESCRIPTION = array();
+	/** @var String|null The short description of the shop, language dependend. */
+	private static $SHORTDESCRIPTION = null;
 
-	/** @var String[] The company of the shop, language dependend. */
-	private static $COMPANY = array();
+	/** @var String|null The company of the shop, language dependend. */
+	private static $COMPANY = null;
 
-	/** @var String[] The contact person of the shop, language dependend. */
-	private static $CONTACTPERSON = array();
+	/** @var String|null The contact person of the shop, language dependend. */
+	private static $CONTACTPERSON = null;
 
-	/** @var String[] The job title of the contact person of the shop, language dependend. */
-	private static $CONTACTPERSONJOBTITLE = array();
+	/** @var String|null The job title of the contact person of the shop, language dependend. */
+	private static $CONTACTPERSONJOBTITLE = null;
 
-	/** @var String[] The address of the shop, language dependend. */
-	private static $ADDRESS = array();
+	/** @var String|null The address of the shop, language dependend. */
+	private static $ADDRESS = null;
 
-	/** @var String[] The phone number of the shop, language dependend. */
-	private static $PHONE = array();
+	/** @var String|null The phone number of the shop, language dependend. */
+	private static $PHONE = null;
 
-	/** @var String[] The email address of the shop, language dependend. */
-	private static $EMAIL = array();
+	/** @var String|null The email address of the shop, language dependend. */
+	private static $EMAIL = null;
 
 	/** @var int Timestamp in ms when the next request needs to be done. */
 	private static $NEXT_REQUEST_TIMESTAMP = 0;
@@ -56,17 +57,16 @@ class ContactInformation {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.0.1 Use HTTPRequestMethod enum.
-	 * @param String $locale The localization to load the information.
+	 * @since 0.1.0 Use a default Locale.
 	 */
-	private static function load($locale) {
+	private static function load() {
 
 		// if request method is blocked
-		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET) ||
-			!InputValidator::isLocale($locale)) {
+		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
 			return;
 		}
 
-		$content = RESTClient::sendWithLocalization(self::$RESTPATH, $locale);
+		$content = RESTClient::sendWithLocalization(self::$RESTPATH, Locales::getLocale());
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
@@ -77,37 +77,37 @@ class ContactInformation {
 		self::resetValues();
 
 		if (!InputValidator::isEmptyArrayKey($content, "name")) {
-			self::$NAME[$locale] = $content["name"];
+			self::$NAME = $content["name"];
 		}
 		if (!InputValidator::isEmptyArrayKey($content, "title")) {
-			self::$TITLE[$locale] = $content["title"];
+			self::$TITLE = $content["title"];
 		}
 		if (!InputValidator::isEmptyArrayKey($content, "navigationCaption")) {
-			self::$NAVIGATIONCAPTION[$locale] = $content["navigationCaption"];
+			self::$NAVIGATIONCAPTION = $content["navigationCaption"];
 		}
 		if (!InputValidator::isEmptyArrayKey($content, "shortDescription")) {
-			self::$SHORTDESCRIPTION[$locale] = $content["shortDescription"];
+			self::$SHORTDESCRIPTION = $content["shortDescription"];
 		}
 		if (!InputValidator::isEmptyArrayKey($content, "description")) {
-			self::$DESCRIPTION[$locale] = $content["description"];
+			self::$DESCRIPTION = $content["description"];
 		}
 		if (!InputValidator::isEmptyArrayKey($content, "company")) {
-			self::$COMPANY[$locale] = $content["company"];
+			self::$COMPANY = $content["company"];
 		}
 		if (!InputValidator::isEmptyArrayKey($content, "contactPerson")) {
-			self::$CONTACTPERSON[$locale] = $content["contactPerson"];
+			self::$CONTACTPERSON = $content["contactPerson"];
 		}
 		if (!InputValidator::isEmptyArrayKey($content, "contactPersonJobTitle")) {
-			self::$CONTACTPERSONJOBTITLE[$locale] = $content["contactPersonJobTitle"];
+			self::$CONTACTPERSONJOBTITLE = $content["contactPersonJobTitle"];
 		}
 		if (!InputValidator::isEmptyArrayKey($content, "address")) {
-			self::$ADDRESS[$locale] = $content["address"];
+			self::$ADDRESS = $content["address"];
 		}
 		if (!InputValidator::isEmptyArrayKey($content, "phone")) {
-			self::$PHONE[$locale] = $content["phone"];
+			self::$PHONE = $content["phone"];
 		}
 		if (!InputValidator::isEmptyArrayKey($content, "email")) {
-			self::$EMAIL[$locale] = $content["email"];
+			self::$EMAIL = $content["email"];
 		}
 
 		// update timestamp when make the next request
@@ -118,31 +118,26 @@ class ContactInformation {
 	/**
 	 * This function checks whether a reload is needed.
 	 *
-	 * @param String $locale The localization of the reloadable content.
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @api
 	 */
-	private static function reload($locale) {
-
-		if (!InputValidator::isLocale($locale)) {
-			return;
-		}
+	private static function reload() {
 
 		$timestamp = (int) (microtime(true) * 1000);
 
 		// if the value is empty
-		if (!InputValidator::isEmptyArrayKey(self::$NAME, $locale) &&
-			!InputValidator::isEmptyArrayKey(self::$NAVIGATIONCAPTION, $locale) &&
-			!InputValidator::isEmptyArrayKey(self::$DESCRIPTION, $locale) &&
-			!InputValidator::isEmptyArrayKey(self::$TITLE, $locale) &&
-			!InputValidator::isEmptyArrayKey(self::$SHORTDESCRIPTION, $locale) &&
-			!InputValidator::isEmptyArrayKey(self::$COMPANY, $locale) &&
-			!InputValidator::isEmptyArrayKey(self::$CONTACTPERSON, $locale) &&
-			!InputValidator::isEmptyArrayKey(self::$CONTACTPERSONJOBTITLE, $locale) &&
-			!InputValidator::isEmptyArrayKey(self::$ADDRESS, $locale) &&
-			!InputValidator::isEmptyArrayKey(self::$PHONE, $locale) &&
-			!InputValidator::isEmptyArrayKey(self::$EMAIL, $locale) &&
+		if (!InputValidator::isEmpty(self::$NAME) &&
+			!InputValidator::isEmpty(self::$NAVIGATIONCAPTION) &&
+			!InputValidator::isEmpty(self::$DESCRIPTION) &&
+			!InputValidator::isEmpty(self::$TITLE) &&
+			!InputValidator::isEmpty(self::$SHORTDESCRIPTION) &&
+			!InputValidator::isEmpty(self::$COMPANY) &&
+			!InputValidator::isEmpty(self::$CONTACTPERSON) &&
+			!InputValidator::isEmpty(self::$CONTACTPERSONJOBTITLE) &&
+			!InputValidator::isEmpty(self::$ADDRESS) &&
+			!InputValidator::isEmpty(self::$PHONE) &&
+			!InputValidator::isEmpty(self::$EMAIL) &&
 			self::$NEXT_REQUEST_TIMESTAMP > $timestamp) {
 			return;
 		}
@@ -158,17 +153,17 @@ class ContactInformation {
 	 */
 	private static function resetValues() {
 
-		self::$NAME = array();
-		self::$TITLE = array();
-		self::$NAVIGATIONCAPTION = array();
-		self::$SHORTDESCRIPTION = array();
-		self::$DESCRIPTION = array();
-		self::$COMPANY = array();
-		self::$CONTACTPERSON = array();
-		self::$CONTACTPERSONJOBTITLE = array();
-		self::$ADDRESS = array();
-		self::$PHONE = array();
-		self::$EMAIL = array();
+		self::$NAME = null;
+		self::$TITLE = null;
+		self::$NAVIGATIONCAPTION = null;
+		self::$SHORTDESCRIPTION = null;
+		self::$DESCRIPTION = null;
+		self::$COMPANY = null;
+		self::$CONTACTPERSON = null;
+		self::$CONTACTPERSONJOBTITLE = null;
+		self::$ADDRESS = null;
+		self::$PHONE = null;
+		self::$EMAIL = null;
 	}
 
 	/**
@@ -176,44 +171,30 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @api
+	 * @deprecated
 	 * @return String|null The title in the default localization or null if the default title is not set.
 	 */
 	public function getDefaultTitle() {
 
-		// if no default language is visible
-		if (InputValidator::isEmpty(Locales::getDefault())) {
-			return null;
-		}
-
-		return self::getTitle(Locales::getDefault());
+		return self::getTitle();
 	}
 
 	/**
-	 * Gets the title depended on the localization.
+	 * Gets the title.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.0 Use the default Locale.
 	 * @api
-	 * @param String $locale The locale String.
-	 * @return String|null The localized title or null if the localized title is not set.
+	 * @return String|null The title or null if the localized title is not set.
 	 */
-	 public function getTitle($locale) {
+	 public function getTitle() {
 
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return null;
-		}
-
-		self::reload($locale);
-
-		// after reload the REST ressource it is empty again.
-		if (InputValidator::isEmptyArrayKey(self::$TITLE, $locale)) {
-			return null;
-		}
-
-		return self::$TITLE[$locale];
+		self::reload();
+		return InputValidator::isEmpty(self::$TITLE) ? null : self::$TITLE;
 	}
 
 	/**
@@ -221,44 +202,30 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @api
+	 * @deprecated
 	 * @return String|null The short description in the default localization or null if the short description is not set.
 	 */
 	public function getDefaultShortDescription() {
 
-		// if no default language is visible
-		if (InputValidator::isEmpty(Locales::getDefault())) {
-			return null;
-		}
-
-		return self::getShortDescription(Locales::getDefault());
+		return self::getShortDescription();
 	}
 
 	/**
-	 * Gets the short description depended on the localization.
+	 * Gets the short description.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.0 Use the default Locale.
 	 * @api
-	 * @param String $locale The locale String.
-	 * @return String|null The localized short description or null if the short description is not set.
+	 * @return String|null The short description or null if the short description is not set.
 	 */
-	 public function getShortDescription($locale) {
+	 public function getShortDescription() {
 
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return null;
-		}
-
-		self::reload($locale);
-
-		// after reload the REST ressource it is empty again.
-		if (InputValidator::isEmptyArrayKey(self::$SHORTDESCRIPTION, $locale)) {
-			return null;
-		}
-
-		return self::$SHORTDESCRIPTION[$locale];
+		self::reload();
+		return InputValidator::isEmpty(self::$SHORTDESCRIPTION) ? null : self::$SHORTDESCRIPTION;
 	}
 
 	/**
@@ -266,44 +233,30 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @api
+	 * @deprecated
 	 * @return String|null The company in the default localization or null if the short description is not set.
 	 */
 	public function getDefaultCompany() {
 
-		// if no default language is visible
-		if (InputValidator::isEmpty(Locales::getDefault())) {
-			return null;
-		}
-
-		return self::getCompany(Locales::getDefault());
+		return self::getCompany();
 	}
 
 	/**
-	 * Gets the company depended on the localization.
+	 * Gets the company.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.0 Use the default Locale.
 	 * @api
-	 * @param String $locale The locale String.
-	 * @return String|null The localized company or null if the company is net set.
+	 * @return String|null The company or null if the company is net set.
 	 */
-	 public function getCompany($locale) {
+	 public function getCompany() {
 
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return null;
-		}
-
-		self::load($locale);
-
-		// after reload the REST ressource it is empty again.
-		if (InputValidator::isEmptyArrayKey(self::$COMPANY, $locale)) {
-			return null;
-		}
-
-		return self::$COMPANY[$locale];
+		self::load();
+		return InputValidator::isEmpty(self::$COMPANY) ? null : self::$COMPANY;
 	}
 
 	/**
@@ -311,44 +264,30 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @api
+	 * @deprecated
 	 * @return String|null The contact person in the default localization or null if the contact person is not set.
 	 */
 	public function getDefaultContactPerson() {
 
-		// if no default language is visible
-		if (InputValidator::isEmpty(Locales::getDefault())) {
-			return null;
-		}
-
-		return self::getContactPerson(Locales::getDefault());
+		return self::getContactPerson();
 	}
 
 	/**
-	 * Gets the contact person depended on the localization.
+	 * Gets the contact person.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.0 Use the default Locale.
 	 * @api
-	 * @param String $locale The locale String.
-	 * @return String|null The localized contact person or null uf the contact person is not set.
+	 * @return String|null The contact person or null uf the contact person is not set.
 	 */
-	 public function getContactPerson($locale) {
+	 public function getContactPerson() {
 
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return null;
-		}
-
-		self::reload($locale);
-
-		// after reload the REST ressource it is empty again.
-		if (InputValidator::isEmptyArrayKey(self::$CONTACTPERSON, $locale)) {
-			return null;
-		}
-
-		return self::$CONTACTPERSON[$locale];
+		self::reload();
+		return InputValidator::isEmpty(self::$CONTACTPERSON) ? null :self::$CONTACTPERSON;
 	}
 
 	/**
@@ -356,44 +295,30 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @api
+	 * @deprecated
 	 * @return String|null The job title of the contact person in the default localization or null if the contact person job title is not set.
 	 */
 	public function getDefaultContactPersonJobTitle() {
 
-		// if no default language is visible
-		if (InputValidator::isEmpty(Locales::getDefault())) {
-			return null;
-		}
-
-		return self::getContactPersonJobTitle(Locales::getDefault());
+		return self::getContactPersonJobTitle();
 	}
 
 	/**
-	 * Gets the job title of the contact person depended on the localization.
+	 * Gets the job title of the contact person.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.0 Use the default Locale.
 	 * @api
-	 * @param String $locale The locale String.
-	 * @return String|null The localized job title of the contact person or null if the contact person job title is unset.
+	 * @return String|null The job title of the contact person or null if the contact person job title is unset.
 	 */
-	 public function getContactPersonJobTitle($locale) {
+	 public function getContactPersonJobTitle() {
 
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return null;
-		}
-
-		self::reload($locale);
-
-		// after reload the REST ressource it is empty again.
-		if (InputValidator::isEmptyArrayKey(self::$CONTACTPERSONJOBTITLE, $locale)) {
-			return null;
-		}
-
-		return self::$CONTACTPERSONJOBTITLE[$locale];
+		self::reload();
+		return InputValidator::isEmpty(self::$CONTACTPERSONJOBTITLE) ? null : self::$CONTACTPERSONJOBTITLE;
 	}
 
 	/**
@@ -401,44 +326,30 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @api
+	 * @deprecated
 	 * @return String|null The address in the default localization or null if the default address is not set.
 	 */
 	public function getDefaultAddress() {
-
-		// if no default language is visible
-		if (InputValidator::isEmpty(Locales::getDefault())) {
-			return null;
-		}
 
 		return self::getAddress(Locales::getDefault());
 	}
 
 	/**
-	 * Gets the address depended on the localization.
+	 * Gets the address.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.0 Use the default Locale.
 	 * @api
-	 * @param String $locale The locale String.
-	 * @return String|null The localized address or null if the address is unset.
+	 * @return String|null The address or null if the address is unset.
 	 */
-	 public function getAddress($locale) {
+	 public function getAddress() {
 
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return null;
-		}
-
-		self::reload($locale);
-
-		// after reload the REST ressource it is empty again.
-		if (InputValidator::isEmptyArrayKey(self::$ADDRESS, $locale)) {
-			return null;
-		}
-
-		return self::$ADDRESS[$locale];
+		self::reload();
+		return InputValidator::isEmpty(self::$ADDRESS) ? null : self::$ADDRESS;
 	}
 
 	/**
@@ -446,44 +357,30 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @api
+	 * @deprecated
 	 * @return String|null The phone number in the default localization or null if the default phone number is unset.
 	 */
 	public function getDefaultPhone() {
 
-		// if no default language is visible
-		if (InputValidator::isEmpty(Locales::getDefault())) {
-			return null;
-		}
-
-		return self::getPhone(Locales::getDefault());
+		return self::getPhone();
 	}
 
 	/**
-	 * Gets the phone number depended on the localization.
+	 * Gets the phone number.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.0 Use the default Locale.
 	 * @api
-	 * @param String $locale The locale String.
-	 * @return String|null The localized phone number or null if the phone number is unset.
+	 * @return String|null The phone number or null if the phone number is unset.
 	 */
-	 public function getPhone($locale) {
+	 public function getPhone() {
 
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return null;
-		}
-
-		self::reload($locale);
-
-		// after reload the REST ressource it is empty again.
-		if (InputValidator::isEmptyArrayKey(self::$PHONE, $locale)) {
-			return null;
-		}
-
-		return self::$PHONE[$locale];
+		self::reload();
+		return InputValidator::isEmpty(self::$PHONE) ? null : self::$PHONE;
 	}
 
 	/**
@@ -491,44 +388,30 @@ class ContactInformation {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @api
+	 * @deprecated
 	 * @return String|null The email in the default localization or null if the default email address is unset.
 	 */
 	public function getDefaultEmail() {
-
-		// if no default language is visible
-		if (InputValidator::isEmpty(Locales::getDefault())) {
-			return null;
-		}
 
 		return self::getEmail(Locales::getDefault());
 	}
 
 	/**
-	 * Gets the email depended on the localization.
+	 * Gets the email.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.0 Use the default Locale.
 	 * @api
-	 * @param String $locale The locale String.
-	 * @return String|null The localized email or null if the email address is not set.
+	 * @return String|null The email or null if the email address is not set.
 	 */
-	 public function getEmail($locale) {
+	 public function getEmail() {
 
-		// if the locale parameter is not localization string
-		if (!InputValidator::isLocale($locale)) {
-			return null;
-		}
-
-		self::reload($locale);
-
-		// after reload the REST ressource it is empty again.
-		if (InputValidator::isEmptyArrayKey(self::$EMAIL, $locale)) {
-			return null;
-		}
-
-		return self::$EMAIL[$locale];
+		self::reload();
+		return InputValidator::isEmpty(self::$EMAIL) ? null : self::$EMAIL;
 	}
 }
 ?>
