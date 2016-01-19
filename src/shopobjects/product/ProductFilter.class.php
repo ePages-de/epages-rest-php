@@ -22,25 +22,25 @@ class ProductFilter {
 	const RESTPATH = "products";
 
 	/** @var int The page of the product search result. */
-	private static $PAGE = 1;
+	private $page = 1;
 
 	/** @var int The number of results per page of the product search result. */
-	private static $RESULTSPERPAGE = 10;
+	private $resultsPerPage = 10;
 
 	/** @var String|null The sort direction of the product search result. */
-	private static $DIRECTION;
+	private $direction;
 
 	/** @var String The variable to sort the results of the product search result. */
-	private static $SORT = "name";
+	private $sort = "name";
 
 	/** @var String|null The search string of the product search result. */
-	private static $Q;
+	private $q;
 
 	/** @var String|null The category id of the product search result. */
-	private static $CATEGORYID;
+	private $categoryID;
 
 	/** @var String[] The product ids of the product search result. */
-	private static $IDS = array();
+	private $IDs = array();
 
 	/**
 	 * This is the constructor to prefill the product filter.
@@ -110,13 +110,13 @@ class ProductFilter {
 	public function printFilter() {
 
 		$message = array();
-		if (!InputValidator::isEmpty(self::$PAGE)) array_push($message, "Page: " . self::$PAGE);
-		if (!InputValidator::isEmpty(self::$RESULTSPERPAGE)) array_push($message, "Results per page: " . self::$RESULTSPERPAGE);
-		if (!InputValidator::isEmpty(self::$DIRECTION)) array_push($message, "Direction: " . self::$DIRECTION);
-		if (!InputValidator::isEmpty(self::$SORT)) array_push($message, "Sort: " . self::$SORT);
-		if (!InputValidator::isEmpty(self::$Q)) array_push($message, "Search string: " . self::$Q);
-		if (!InputValidator::isEmpty(self::$CATEGORYID)) array_push($message, "Category ID: " . self::$CATEGORYID);
-		foreach (self::$IDS as $number => $id) {
+		if (!InputValidator::isEmpty($this->page)) array_push($message, "Page: " . $this->page);
+		if (!InputValidator::isEmpty($this->resultsPerPage)) array_push($message, "Results per page: " . $this->resultsPerPage);
+		if (!InputValidator::isEmpty($this->direction)) array_push($message, "Direction: " . $this->direction);
+		if (!InputValidator::isEmpty($this->sort)) array_push($message, "Sort: " . $this->sort);
+		if (!InputValidator::isEmpty($this->q)) array_push($message, "Search string: " . $this->q);
+		if (!InputValidator::isEmpty($this->categoryID)) array_push($message, "Category ID: " . $this->categoryID);
+		foreach ($this->IDs as $number => $id) {
 			array_push($message, "Product id" . $number . ": " . $id);
 		}
 		Logger::force($message);
@@ -133,13 +133,13 @@ class ProductFilter {
 	 */
 	public function hashCode() {
 
-		$message = self::$PAGE
-			. self::$RESULTSPERPAGE
-			. self::$DIRECTION
-			. self::$SORT
-			. self::$Q
-			. self::$CATEGORYID;
-		foreach (self::$IDS as $id) {
+		$message = $this->page
+			. $this->resultsPerPage
+			. $this->direction
+			. $this->sort
+			. $this->q
+			. $this->categoryID;
+		foreach ($this->IDs as $id) {
 			$message .= $id;
 		}
 		return hash("sha512", $message);
@@ -216,7 +216,7 @@ class ProductFilter {
 		if (!InputValidator::isRangedInt($page, 1)) {
 			return false;
 		}
-		self::$PAGE = $page;
+		$this->page = $page;
 		return true;
 	}
 
@@ -229,7 +229,7 @@ class ProductFilter {
 	 * @return int The page number of this product filter.
 	 */
 	public function getPage() {
-		return self::$PAGE;
+		return $this->page;
 	}
 
 	/**
@@ -245,7 +245,7 @@ class ProductFilter {
 		if (!InputValidator::isRangedInt($resultsPerPage, null, 100)) {
 			return false;
 		}
-		self::$RESULTSPERPAGE = $resultsPerPage;
+		$this->resultsPerPage = $resultsPerPage;
 		return true;
 	}
 
@@ -258,7 +258,7 @@ class ProductFilter {
 	 * @return int The results per page number of this product filter.
 	 */
 	public function getResultsPerPage() {
-		return self::$RESULTSPERPAGE;
+		return $this->resultsPerPage;
 	}
 
 	/**
@@ -274,7 +274,7 @@ class ProductFilter {
 		if (!InputValidator::isProductDirection($direction)) {
 			return false;
 		}
-		self::$DIRECTION = $direction;
+		$this->direction = $direction;
 		return true;
 	}
 
@@ -287,7 +287,7 @@ class ProductFilter {
 	 * @return String The direction of this product filter.
 	 */
 	public function getDirection() {
-		return self::$DIRECTION;
+		return $this->direction;
 	}
 
 	/**
@@ -303,7 +303,7 @@ class ProductFilter {
 		if (!InputValidator::isProductSort($sort)) {
 			return false;
 		}
-		self::$SORT = $sort;
+		$this->sort = $sort;
 		return true;
 	}
 
@@ -316,7 +316,7 @@ class ProductFilter {
 	 * @return String The sort of this product filter.
 	 */
 	public function getSort() {
-		return self::$SORT;
+		return $this->sort;
 	}
 
 	/**
@@ -332,7 +332,7 @@ class ProductFilter {
 		if (InputValidator::isEmpty($q)) {
 			return false;
 		}
-		self::$Q = $q;
+		$this->q = $q;
 		return true;
 	}
 
@@ -345,7 +345,7 @@ class ProductFilter {
 	 * @return String The query search string of this product filter.
 	 */
 	public function getQ() {
-		return self::$Q;
+		return $this->q;
 	}
 
 	/**
@@ -361,7 +361,7 @@ class ProductFilter {
 		if (InputValidator::isEmpty($categoryID)) {
 			return false;
 		}
-		self::$CATEGORYID = $categoryID;
+		$this->categoryID = $categoryID;
 		return true;
 	}
 
@@ -374,7 +374,7 @@ class ProductFilter {
 	 * @return String The category ID string of this product filter.
 	 */
 	public function getCategoryID() {
-		return self::$CATEGORYID;
+		return $this->categoryID;
 	}
 
 	/**
@@ -388,11 +388,11 @@ class ProductFilter {
 	 */
 	public function setID($productID) {
 		if (InputValidator::isEmpty($productID)
-			|| count(self::$IDS) > 12
-			|| in_array($productID, self::$IDS)) {
+			|| count($this->IDs) > 12
+			|| in_array($productID, $this->IDs)) {
 			return false;
 		}
-		array_push(self::$IDS, $productID);
+		array_push($this->IDs, $productID);
 		return true;
 	}
 
@@ -407,10 +407,10 @@ class ProductFilter {
 	 */
 	public function unsetID($productID) {
 		if (InputValidator::isEmpty($productID)
-			|| !in_array($productID, self::$IDS)) {
+			|| !in_array($productID, $this->IDs)) {
 			return false;
 		}
-		unset(self::$IDS[array_search($productID, self::$IDS)]);
+		unset($this->IDs[array_search($productID, $this->IDs)]);
 		return true;
 	}
 
@@ -421,7 +421,7 @@ class ProductFilter {
 	 * @api
 	 */
 	public function resetIDs() {
-		self::$IDS = array();
+		$this->IDs = array();
 	}
 
 	/**
@@ -433,13 +433,13 @@ class ProductFilter {
 	 */
 	public function resetFilter() {
 
-		self::$PAGE = 1;
-		self::$RESULTSPERPAGE = 10;
-		self::$DIRECTION = null;
-		self::$SORT = "name";
-		self::$Q = null;
-		self::$CATEGORYID = null;
-		self::$IDS = array();
+		$this->page = 1;
+		$this->resultsPerPage = 10;
+		$this->direction = null;
+		$this->sort = "name";
+		$this->q = null;
+		$this->categoryID = null;
+		$this->IDs = array();
 	}
 
 	/**
@@ -453,7 +453,7 @@ class ProductFilter {
 	 */
 	public function getProducts() {
 
-		$parameter = self::getParameter();
+		$parameter = $this->getParameter();
 
 		// if request method is blocked
 		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
@@ -503,13 +503,13 @@ class ProductFilter {
 		$parameter = array();
 		array_push($parameter, "locale=" . Locales::getLocale());
 		array_push($parameter, "currency=" . Currencies::getCurrency());
-		if (!InputValidator::isEmpty(self::$PAGE)) array_push($parameter, "page=" . self::$PAGE);
-		if (!InputValidator::isEmpty(self::$RESULTSPERPAGE)) array_push($parameter, "resultsPerPage=" . self::$RESULTSPERPAGE);
-		if (!InputValidator::isEmpty(self::$DIRECTION)) array_push($parameter, "direction=" . self::$DIRECTION);
-		if (!InputValidator::isEmpty(self::$SORT)) array_push($parameter, "sort=" . self::$SORT);
-		if (!InputValidator::isEmpty(self::$Q)) array_push($parameter, "q=" . self::$Q);
-		if (!InputValidator::isEmpty(self::$CATEGORYID)) array_push($parameter, "categoryId=" . self::$CATEGORYID);
-		foreach (self::$IDS as $number => $id) {
+		if (!InputValidator::isEmpty($this->page)) array_push($parameter, "page=" . $this->page);
+		if (!InputValidator::isEmpty($this->resultsPerPage)) array_push($parameter, "resultsPerPage=" . $this->resultsPerPage);
+		if (!InputValidator::isEmpty($this->direction)) array_push($parameter, "direction=" . $this->direction);
+		if (!InputValidator::isEmpty($this->sort)) array_push($parameter, "sort=" . $this->sort);
+		if (!InputValidator::isEmpty($this->q)) array_push($parameter, "q=" . $this->q);
+		if (!InputValidator::isEmpty($this->categoryID)) array_push($parameter, "categoryId=" . $this->categoryID);
+		foreach ($this->IDs as $number => $id) {
 			array_push($parameter, "id=" . $id);
 		}
 
