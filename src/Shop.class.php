@@ -24,6 +24,7 @@ require_once(__DIR__ . "/shopobjects/information/TermsAndConditionInformation.cl
 require_once(__DIR__ . "/shopobjects/information/ShippingInformation.class.php");
 require_once(__DIR__ . "/shopobjects/product/ProductFilter.class.php");
 require_once(__DIR__ . "/shopobjects/product/Product.class.php");
+require_once(__DIR__ . "/shopobjects/product/ProductSlideshow.class.php");
 require_once(__DIR__ . "/shopobjects/image/Image.class.php");
 require_once(__DIR__ . "/shopobjects/price/Price.class.php");
 require_once(__DIR__ . "/shopobjects/price/PriceWithQuantity.class.php");
