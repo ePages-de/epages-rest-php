@@ -7,7 +7,7 @@
  */
 namespace ep6;
 /**
- * This is the product slidshow class which saves all images of the slideshow.
+ * This is the product slideshow class which saves all images of the slideshow.
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.1.0
@@ -32,11 +32,23 @@ class ProductSlideshow {
 	 */
 	private $images = array();
 
-	/** @var String|null The space for the images. */
+	/** @var String|null The space for the product id. */
 	private $productID = null;
 
 	/** @var int Timestamp in ms when the next request needs to be done. */
 	private static $NEXT_REQUEST_TIMESTAMP = 0;
+
+	/**
+	 * Constructor of the Slideshow.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @param String $productID The product ID to get images.
+	 */
+	public function __construct($productID) {
+		$this->load($productID);
+	}
 
 	/**
 	 * This function gets the product images.
@@ -46,15 +58,13 @@ class ProductSlideshow {
 	 * @api
 	 * @param String $productID The product ID to get images.
 	 */
-	public function __construct($productID) {
+	private function load($productID) {
 
 		// if parameter is wrong or GET is blocked
 		if (!InputValidator::isProductId($productID) ||
 			!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
 			return;
 		}
-
-		$this->productID = $productID;
 
 		$content = RESTClient::send("products/" . $productID . "/" . self::$RESTPATH);
 
@@ -63,7 +73,7 @@ class ProductSlideshow {
 			return;
 		}
 
-		// if there is no results, page AND resultsPerPage element
+		// if there is items
 		if (InputValidator::isEmptyArrayKey($content, "items")) {
 		    Logger::error("Respond for product/" . $productID . "/" . self::RESTPATH . " can not be interpreted.");
 			return;
@@ -99,6 +109,8 @@ class ProductSlideshow {
 			}
 		}
 
+		$this->productID = $productID;
+
 		// update timestamp when make the next request
 		$timestamp = (int) (microtime(true) * 1000);
 		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
@@ -120,7 +132,7 @@ class ProductSlideshow {
 			return;
 		}
 
-		self::load($this->productID);
+		$this->load($this->productID);
 	}
 
 	/**
