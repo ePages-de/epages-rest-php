@@ -208,6 +208,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
 	 * @param int $page The page number to filter.
 	 * @return boolean True if setting the page works, false if not.
@@ -225,6 +226,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
 	 * @return int The page number of this product filter.
 	 */
@@ -237,6 +239,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
 	 * @param int $resultsPerPage The results per page to filter.
 	 * @return boolean True if setting the results per page works, false if not.
@@ -254,6 +257,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
 	 * @return int The results per page number of this product filter.
 	 */
@@ -266,6 +270,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
 	 * @param String $direction The direction to filter.
 	 * @return boolean True if setting the direction works, false if not.
@@ -283,6 +288,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
 	 * @return String The direction of this product filter.
 	 */
@@ -295,6 +301,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
 	 * @param String $sort The sort parameter to filter.
 	 * @return boolean True if setting the sort parameter works, false if not.
@@ -312,6 +319,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
 	 * @return String The sort of this product filter.
 	 */
@@ -324,6 +332,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
 	 * @param String $q The query search string to filter.
 	 * @return boolean True if setting the query search string works, false if not.
@@ -341,6 +350,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
 	 * @return String The query search string of this product filter.
 	 */
@@ -353,8 +363,9 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
-	 * @param String $categoryID	The category ID to filter.
+	 * @param String $categoryID The category ID to filter.
 	 * @return boolean True if setting the category ID string works, false if not.
 	 */
 	public function setCategoryID($categoryID) {
@@ -370,6 +381,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
 	 * @return String The category ID string of this product filter.
 	 */
@@ -382,6 +394,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
 	 * @param String $productID The product ID to filter.
 	 * @return boolean True if setting the product ID string works, false if not.
@@ -401,6 +414,7 @@ class ProductFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
 	 * @param String $productID	The product ID to unset from filter.
 	 * @return boolean True if unsetting the product ID string works, false if not.
@@ -418,6 +432,7 @@ class ProductFilter {
 	 * This function reset all product IDs from filter.
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Use attribute unstatic.
 	 * @api
 	 */
 	public function resetIDs() {

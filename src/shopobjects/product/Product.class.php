@@ -15,6 +15,7 @@ namespace ep6;
  * @since 0.1.0 Function to delete itself.
  * @since 0.1.0 Delete different Locales.
  * @since 0.1.0 Implement Slideshow functionality.
+ * @since 0.1.0 Implement attribute functionality.
  * @package ep6
  * @subpackage Shopobjects\Product
  */
@@ -67,6 +68,12 @@ class Product {
 
 	/** @var ProductSlideshow|null This object saves the slideshow. */
 	private $slideshow = null;
+
+	/** @var ProductAttribute[] This array saves all the attributes. */
+	private $attributes = array();
+
+	/** @var int Timestamp in ms when the next request needs to be done. */
+	private static $NEXT_REQUEST_TIMESTAMP = 0;
 
 	/**
 	 * This is the constructor of the product.
@@ -396,6 +403,90 @@ class Product {
 			$this->slideshow->reload();
 		}
 		return $this->slideshow;
+	}
+
+	/**
+	 * Returns the product attributes.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @return ProductAttributes[] Gets the product attributes in an array.
+	 */
+	public function getAttributes() {
+
+		$timestamp = (int) (microtime(true) * 1000);
+
+		// if the attribute is not loaded until now
+		if (InputValidator::isEmptyArray($this->attributes) ||
+			self::$NEXT_REQUEST_TIMESTAMP > $timestamp) {
+			$this->loadAttributes();
+		}
+		return $this->attributes;
+	}
+
+	/**
+	 * Returns the product attributes.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @param int $key The number of product attribute to get.
+	 * @return ProductAttributes|null Gets the required product attributes.
+	 */
+	public function getAttribute($key) {
+
+		$timestamp = (int) (microtime(true) * 1000);
+
+		// if the attribute is not loaded until now
+		if (InputValidator::isEmptyArrayKey($this->attributes, $key) ||
+			self::$NEXT_REQUEST_TIMESTAMP > $timestamp) {
+			$this->loadAttributes();
+		}
+
+		if (InputValidator::isEmptyArrayKey($this->attributes, $key)) {
+			return null;
+		}
+		return $this->attributes[$key];
+	}
+
+	/**
+	 * Loads the product attributes.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 */
+	private function loadAttributes() {
+
+		// if parameter is wrong or GET is blocked
+		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
+			return;
+		}
+
+		$content = RESTClient::send(self::$RESTPATH . "/" . $this->productID . "/custom-attributes");
+
+		// if respond is empty
+		if (InputValidator::isEmpty($content)) {
+			return;
+		}
+
+		// if there are items
+		if (InputValidator::isEmptyArrayKey($content, "items")) {
+		    Logger::error("Respond for " . self::RESTPATH . "/" . $this->productID . "/custom-attributes can not be interpreted.");
+			return;
+		}
+
+		// is there any attribute found: load the attribute.
+		foreach ($content['items'] as $number => $attribute) {
+
+			// parse every attribute
+			$this->attributes[$number] = new ProductAttribute($attribute);
+		}
+
+		// update timestamp when make the next request
+		$timestamp = (int) (microtime(true) * 1000);
+		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
 	}
 
 	/**
