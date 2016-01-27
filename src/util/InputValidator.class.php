@@ -11,6 +11,7 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
+ * @since 0.1.0 Add function to add float values.
  * @package ep6
  * @subpackage Util
  * @example examples\useValidator.php Test input values with the static Validator object.
@@ -186,6 +187,24 @@ class InputValidator {
 	}
 
 	/**
+	 * Checks whether a parameter is a float with a range.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @param float $parameter Float to check.
+	 * @param float|null $minimum The minimum allowed number, null if there is no minimum.
+	 * @param float|null $maximum The maximum allowed number, null if there is no maximum.
+	 * @return boolean True if the parameter is an int, false if not.
+	 */
+	public static function isRangedFloat($parameter, $minimum = null, $maximum = null) {
+
+		return self::isFloat($parameter)
+			&& (self::isFloat($minimum) ? $parameter >= $minimum : true)
+			&& (self::isFloat($maximum) ? $parameter <= $maximum : true);
+	}
+
+	/**
 	 * Checks whether a parameter is a product sort direction.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
@@ -230,6 +249,20 @@ class InputValidator {
 	}
 
 	/**
+	 * Checks whether a parameter is a float.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @param float $parameter Float to check.
+	 * @return boolean True if the parameter is a float, false if not.
+	 */
+	public static function isFloat($parameter) {
+
+		return is_float($parameter) && !self::isEmpty($parameter);
+	}
+
+	/**
 	 * Checks whether a parameter is an int.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
@@ -262,13 +295,14 @@ class InputValidator {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.0 Test if the parameter is also the correct type.
 	 * @api
 	 * @param String $parameter String to check.
 	 * @return boolean True if the parameter is empty or null, false if not.
 	 */
 	public static function isEmpty($parameter) {
 
-		return (is_null($parameter) || ($parameter == ""));
+		return (is_null($parameter) || ($parameter === ""));
 	}
 
 	/**

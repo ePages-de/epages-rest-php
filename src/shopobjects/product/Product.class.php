@@ -429,7 +429,7 @@ class Product {
 
 		// if the attribute is not loaded until now
 		if (InputValidator::isEmptyArray($this->attributes) ||
-			self::$NEXT_REQUEST_TIMESTAMP > $timestamp) {
+			self::$NEXT_REQUEST_TIMESTAMP < $timestamp) {
 			$this->loadAttributes();
 		}
 		return $this->attributes;
@@ -450,7 +450,7 @@ class Product {
 
 		// if the attribute is not loaded until now
 		if (InputValidator::isEmptyArrayKey($this->attributes, $key) ||
-			self::$NEXT_REQUEST_TIMESTAMP > $timestamp) {
+			self::$NEXT_REQUEST_TIMESTAMP < $timestamp) {
 			$this->loadAttributes();
 		}
 
@@ -512,9 +512,61 @@ class Product {
 
 		// if the attribute is not loaded until now
 		if (InputValidator::isEmpty($this->stockLevel) ||
-			self::$NEXT_REQUEST_TIMESTAMP > $timestamp) {
+			self::$NEXT_REQUEST_TIMESTAMP < $timestamp) {
 			$this->loadStockLevel();
 		}
+
+		return $this->stockLevel;
+	}
+
+	/**
+	 * Increases the stock level.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @param float $step The value the stock level should be increased, default value is 1.
+	 * @return float|null The new stock level of the product.
+	 */
+	public function increaseStockLevel($step = 1.0) {
+
+		$this->getStockLevel();
+
+		// cast int to float
+		if (InputValidator::isInt($step)) {
+			$step = (float) $step;
+		}
+
+		if (!InputValidator::isRangedFloat($step, 0.0)) {
+			return $this->stockLevel;
+		}
+		$this->changeStockLevel((float) $step);
+
+		return $this->stockLevel;
+	}
+
+	/**
+	 * Decreases the stock level.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @api
+	 * @param float $step The value the stock level should be decreased, default value is 1.
+	 * @return float|null The new stock level of the product.
+	 */
+	public function decreaseStockLevel($step = 1.0) {
+
+		$this->getStockLevel();
+
+		// cast int to float
+		if (InputValidator::isInt($step)) {
+			$step = (float) $step;
+		}
+
+		if (!InputValidator::isRangedFloat($step, 0.0)) {
+			return $this->stockLevel;
+		}
+		$this->changeStockLevel((float) $step * -1);
 
 		return $this->stockLevel;
 	}
@@ -533,6 +585,36 @@ class Product {
 		}
 
 		$content = RESTClient::send(self::$RESTPATH . "/" . $this->productID . "/" .  self::$RESTPATH_STOCKLEVEL);
+
+		// if respond is empty
+		if (InputValidator::isEmpty($content) ||
+			InputValidator::isEmptyArrayKey($content, "stocklevel")) {
+			return;
+		}
+
+		$this->stockLevel = (float) $content["stocklevel"];
+
+		// update timestamp when make the next request
+		$timestamp = (int) (microtime(true) * 1000);
+		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
+	}
+	/**
+	 * Loads the stock level.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @param float $step The step to change.
+	 */
+	private function changeStockLevel($step) {
+
+		// if parameter is wrong or GET is blocked
+		if (!RESTClient::setRequestMethod(HTTPRequestMethod::PUT) ||
+			!InputValidator::isFloat($step)) {
+			return;
+		}
+
+		$postfields = array("changeStocklevel" => $step);
+		$content = RESTClient::send(self::$RESTPATH . "/" . $this->productID . "/" .  self::$RESTPATH_STOCKLEVEL, $postfields);
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content) ||
