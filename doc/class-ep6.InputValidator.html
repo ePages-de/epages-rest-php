@@ -46,7 +46,9 @@
 				<li><a href="class-ep6.PriceWithQuantity.html">PriceWithQuantity</a></li>
 				<li><a href="class-ep6.PrivacyPolicyInformation.html">PrivacyPolicyInformation</a></li>
 				<li><a href="class-ep6.Product.html">Product</a></li>
+				<li><a href="class-ep6.ProductAttribute.html">ProductAttribute</a></li>
 				<li><a href="class-ep6.ProductFilter.html">ProductFilter</a></li>
+				<li><a href="class-ep6.ProductSlideshow.html">ProductSlideshow</a></li>
 				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
 				<li><a href="class-ep6.ShippingInformation.html">ShippingInformation</a></li>
@@ -88,9 +90,6 @@
 <span>Class</span>			</li>
 		</ul>
 		<ul>
-			<li>
-				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
-			</li>
 		</ul>
 		<ul>
 		</ul>
@@ -122,9 +121,11 @@
 				David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
 				<b>Since:</b>
 				0.0.0<br>
+				<b>Since:</b>
+				0.1.0 Add function to add float values.<br>
 				<b>Example:</b>
 				examples\useValidator.php Test input values with the static Validator object.<br>
-			<b>Located at</b> <a href="source-class-ep6.InputValidator.html#9-319" title="Go to source code">util/InputValidator.class.php</a>
+			<b>Located at</b> <a href="source-class-ep6.InputValidator.html#9-354" title="Go to source code">util/InputValidator.class.php</a>
 		<br>
 	</div>
 
@@ -144,7 +145,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isHost">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#20-33" title="Go to source code">isHost</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#21-34" title="Go to source code">isHost</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is a host.</p>
@@ -194,7 +195,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isShop">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#35-47" title="Go to source code">isShop</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#36-48" title="Go to source code">isShop</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is a shop.</p>
@@ -244,7 +245,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isAuthToken">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#49-62" title="Go to source code">isAuthToken</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#50-63" title="Go to source code">isAuthToken</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is a OAuth authentification token.
@@ -296,7 +297,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isLocale">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#64-77" title="Go to source code">isLocale</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#65-78" title="Go to source code">isLocale</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is a localization string.</p>
@@ -346,7 +347,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isCurrency">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#79-92" title="Go to source code">isCurrency</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#80-93" title="Go to source code">isCurrency</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is a currency string.</p>
@@ -396,7 +397,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isRequestMethod">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#94-108" title="Go to source code">isRequestMethod</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#95-109" title="Go to source code">isRequestMethod</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is a HTTP request method.</p>
@@ -447,7 +448,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isOutputRessource">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#110-124" title="Go to source code">isOutputRessource</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#111-125" title="Go to source code">isOutputRessource</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is an output ressource.</p>
@@ -498,7 +499,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isLogLevel">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#126-140" title="Go to source code">isLogLevel</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#127-141" title="Go to source code">isLogLevel</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is a log level.</p>
@@ -549,7 +550,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isRESTCommand">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#142-154" title="Go to source code">isRESTCommand</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#143-155" title="Go to source code">isRESTCommand</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is a REST command.</p>
@@ -599,7 +600,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isJSON">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#156-168" title="Go to source code">isJSON</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#157-169" title="Go to source code">isJSON</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is a JSON string.</p>
@@ -649,7 +650,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isRangedInt">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#170-186" title="Go to source code">isRangedInt</a>( <span>integer <var>$parameter</var></span>, <span>integer|null <var>$minimum</var> = <span class="php-keyword1">null</span></span>, <span>integer|null <var>$maximum</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#171-187" title="Go to source code">isRangedInt</a>( <span>integer <var>$parameter</var></span>, <span>integer|null <var>$minimum</var> = <span class="php-keyword1">null</span></span>, <span>integer|null <var>$maximum</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is an int with a range.</p>
@@ -691,6 +692,60 @@ TODO: Finalize this function.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="isRangedFloat" id="_isRangedFloat">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isRangedFloat">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#189-205" title="Go to source code">isRangedFloat</a>( <span>float <var>$parameter</var></span>, <span>float|null <var>$minimum</var> = <span class="php-keyword1">null</span></span>, <span>float|null <var>$maximum</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a float with a range.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a float with a range.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>Float to check.</dd>
+					<dt><var>$minimum</var></dt>
+					<dd>The minimum allowed number, null if there is no minimum.</dd>
+					<dt><var>$maximum</var></dt>
+					<dd>The maximum allowed number, null if there is no maximum.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the parameter is an int, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="isProductDirection" id="_isProductDirection">
 
 		<td class="attributes"><code>
@@ -703,7 +758,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isProductDirection">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#188-201" title="Go to source code">isProductDirection</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#207-220" title="Go to source code">isProductDirection</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is a product sort direction.</p>
@@ -753,7 +808,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isProductSort">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#203-216" title="Go to source code">isProductSort</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#222-235" title="Go to source code">isProductSort</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is a product sort parameter.</p>
@@ -803,7 +858,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isProductId">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#218-230" title="Go to source code">isProductId</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#237-249" title="Go to source code">isProductId</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is a valid product id.</p>
@@ -841,6 +896,56 @@ TODO: Finalize this function.</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="isFloat" id="_isFloat">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isFloat">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#251-263" title="Go to source code">isFloat</a>( <span>float <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a float.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a float.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>Float to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the parameter is a float, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="isInt" id="_isInt">
 
 		<td class="attributes"><code>
@@ -853,7 +958,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isInt">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#232-244" title="Go to source code">isInt</a>( <span>integer <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#265-277" title="Go to source code">isInt</a>( <span>integer <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is an int.</p>
@@ -903,7 +1008,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isArray">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#246-258" title="Go to source code">isArray</a>( <span>array <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#279-291" title="Go to source code">isArray</a>( <span>array <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is an array.</p>
@@ -953,7 +1058,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isEmpty">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#260-272" title="Go to source code">isEmpty</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#293-306" title="Go to source code">isEmpty</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a paramter is empty or null.</p>
@@ -982,6 +1087,7 @@ TODO: Finalize this function.</p>
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Test if the parameter is also the correct type.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -1003,7 +1109,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isEmptyArray">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#274-286" title="Go to source code">isEmptyArray</a>( <span>mixed[] <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#308-320" title="Go to source code">isEmptyArray</a>( <span>mixed[] <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether an array is empty or null.</p>
@@ -1053,7 +1159,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isEmptyArrayKey">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#288-301" title="Go to source code">isEmptyArrayKey</a>( <span>mixed[] <var>$array</var></span>, <span>String <var>$key</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#322-335" title="Go to source code">isEmptyArrayKey</a>( <span>mixed[] <var>$array</var></span>, <span>String <var>$key</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether an array key is unset.</p>

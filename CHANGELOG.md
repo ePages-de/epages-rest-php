@@ -1,3 +1,25 @@
+# 0.1.0 (28.01.2016)
+
+## Enhancements
+- #1 Get the product price.
+- #4 Delete a product.
+- #29 Gets the slideshow of a product.
+- #30 Get attributes and their values of the product.
+- #32 Get stock level of product.
+- #34 Set the stock level of product.
+- #36 Use *enums* for LogLevel and LogOutput.
+- #37 Use *enums* for HTTPRequestMethod.
+- #52 Extend the test suite - Step 1.
+- #63 You don't can set the requested Locale in get functions from now. Used Locale can be set in Shop object.
+
+## Bugfixes
+- #38 Precache shop values for a while.
+- #51 Allow requests without a AuthToken.
+- #53 Delete whitespaces on line ending.
+- #55 Fix README file.
+- #60 Fix product search without a defined Locale.
+- #66 Unstatic some variables and the productFilter class.
+
 # 0.0.3 (17.12.2015)
 
 ## Enhancements

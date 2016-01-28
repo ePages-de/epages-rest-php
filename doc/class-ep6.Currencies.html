@@ -46,7 +46,9 @@
 				<li><a href="class-ep6.PriceWithQuantity.html">PriceWithQuantity</a></li>
 				<li><a href="class-ep6.PrivacyPolicyInformation.html">PrivacyPolicyInformation</a></li>
 				<li><a href="class-ep6.Product.html">Product</a></li>
+				<li><a href="class-ep6.ProductAttribute.html">ProductAttribute</a></li>
 				<li><a href="class-ep6.ProductFilter.html">ProductFilter</a></li>
+				<li><a href="class-ep6.ProductSlideshow.html">ProductSlideshow</a></li>
 				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
 				<li><a href="class-ep6.ShippingInformation.html">ShippingInformation</a></li>
@@ -88,9 +90,6 @@
 <span>Class</span>			</li>
 		</ul>
 		<ul>
-			<li>
-				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
-			</li>
 		</ul>
 		<ul>
 		</ul>
@@ -122,9 +121,13 @@
 				David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
 				<b>Since:</b>
 				0.0.0<br>
+				<b>Since:</b>
+				0.1.0 Add a timestamp to save the next allowed REST call.<br>
+				<b>Since:</b>
+				0.1.0 Add configured used Currency.<br>
 				<b>Example:</b>
 				examples\handleWithCurrencies.php Handle with currencies.<br>
-			<b>Located at</b> <a href="source-class-ep6.Currencies.html#9-110" title="Go to source code">shopobjects/Currencies.class.php</a>
+			<b>Located at</b> <a href="source-class-ep6.Currencies.html#9-181" title="Go to source code">shopobjects/Currencies.class.php</a>
 		<br>
 	</div>
 
@@ -144,7 +147,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_resetValues">#</a>
-		<code><a href="source-class-ep6.Currencies.html#63-74" title="Go to source code">resetValues</a>( )</code>
+		<code><a href="source-class-ep6.Currencies.html#82-95" title="Go to source code">resetValues</a>( )</code>
 
 		<div class="description short">
 			<p>This function resets all curencies values.</p>
@@ -164,6 +167,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Reset used Currency.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -185,7 +189,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDefault">#</a>
-		<code><a href="source-class-ep6.Currencies.html#76-91" title="Go to source code">getDefault</a>( )</code>
+		<code><a href="source-class-ep6.Currencies.html#118-131" title="Go to source code">getDefault</a>( )</code>
 
 		<div class="description short">
 			<p>Gets the default currency.</p>
@@ -209,7 +213,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
-						0.1.0 Use InputValidator to check values.<br>
+						0.1.0 Use a reload function.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -231,7 +235,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getItems">#</a>
-		<code><a href="source-class-ep6.Currencies.html#93-108" title="Go to source code">getItems</a>( )</code>
+		<code><a href="source-class-ep6.Currencies.html#133-146" title="Go to source code">getItems</a>( )</code>
 
 		<div class="description short">
 			<p>Gets the activated currencies.</p>
@@ -255,7 +259,102 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
-						0.1.0 Use InputValidator to check values.<br>
+						0.1.0 Use a reload function.<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCurrency" id="_getCurrency">
+
+		<td class="attributes"><code>
+			 public static
+
+			The
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCurrency">#</a>
+		<code><a href="source-class-ep6.Currencies.html#148-160" title="Go to source code">getCurrency</a>( )</code>
+
+		<div class="description short">
+			<p>Gets the configured Currency.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Gets the configured Currency.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					The<br>configured Currency which is used in REST calls.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setCurrency" id="_setCurrency">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setCurrency">#</a>
+		<code><a href="source-class-ep6.Currencies.html#162-179" title="Go to source code">setCurrency</a>( <span>String <var>$currency</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets the configured Currency.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets the configured Currency.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$currency</var></dt>
+					<dd>The new used Locale.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if set the Currency works, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -281,7 +380,7 @@
 		<td class="attributes"><code>String</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-ep6.Currencies.html#20-21" title="Go to source code"><b>RESTPATH</b></a>
+				<a href="source-class-ep6.Currencies.html#22-23" title="Go to source code"><b>RESTPATH</b></a>
 			</code>
 
 			<div class="description short">

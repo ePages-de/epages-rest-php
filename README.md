@@ -22,18 +22,21 @@ This are the information which are provided with the epages REST SDK since now.
 
 | Feature | GET | PUT | POST | DELETE | PATCH | information |
 | --- | :---: | :---: | :---: | :---: | :---: | --- |
-| locales | **✔** | **-** | **-** | **-** | **?** |
+| carts | **✘** | **✘** | **✘** | **✘** | **?** |
+| categories | **✘** | **✘** | **-** | **-** | **?** |
 | currencies | **✔** | **-** | **-** | **-** | **?** |
 | legal | **✘** | **-** | **-** | **-** | **?** | won't do, it's not needed |
 | legal/contact-information | **✔** | **✘** | **-** | **-** | **?** |
 | legal/privacy-policy | **✔** | **✘** | **-** | **-** | **?** |
-| legal/terms-and-condition | **✔** | **✘** | **-** | **-** | **?** |
 | legal/rights-of-withdrawal | **✔** | **✘** | **-** | **-** | **?** |
 | legal/shipping-information | **✔** | **✘** | **-** | **-** | **?** |
-| products | **✔** | **-** | **-** | **-** | **?** |
+| legal/terms-and-condition | **✔** | **✘** | **-** | **-** | **?** |
+| locales | **✔** | **-** | **-** | **-** | **?** |
+| products | **✔** | **-** | **-** | **✔** | **?** |
+| products/<id>/custom-attributes | **✔** | **-** | **-** | **.** | **?** |
+| products/<id>/stock-level | **✔** | **✔** | **-** | **-** | **?** |
 | products/export | **✘** | **-** | **-** | **-** | **?** |
-| categories | **✘** | **✘** | **-** | **-** | **?** |
-| carts | **✘** | **✘** | **✘** | **✘** | **?** |
+| sales | **✘** | **✘** | **✘** | **✘** | **?** |
 | search/product-suggest | **✘** | **-** | **-** | **-** | **?** |
 | shpping-methods | **✘** | **-** | **-** | **-** | **?** |
 
@@ -69,11 +72,11 @@ $products = $productFilter->getProducts();
 // print the products
 foreach ($products as $product) {
 
-	echo "<h2>" . htmlentities($product->getName("de_DE")) . "</h2>";
+	echo "<h2>" . htmlentities($product->getName()) . "</h2>";
 	echo "<p>";
 	echo "<img style=\"float:left\" src=\"" . $product->getSmallImage()->getOriginURL() . "\"/>";
 	echo "<strong>ProductID:</strong> " . $product->getID() . "<br/>";
-	echo "<strong>Description:</strong> " . htmlentities($product->getDescription("de_DE")) . "<br/><br/>";
+	echo "<strong>Description:</strong> " . htmlentities($product->getDescription()) . "<br/><br/>";
 	echo "<strong>This product is ";
 	if (!$product->isForSale()) {
 		echo "NOT ";
@@ -114,7 +117,7 @@ echo $shop->getDefaultCurrencies();
 // prints the name of the contact information in default language and in german
 $contactInformation = $shop->getContactInformation();
 echo $contactInformation->getDefaultName();
-echo $contactInformation->getName("de_DE");
+echo $contactInformation->getName();
 ```
 
 ## Utilities
@@ -129,10 +132,10 @@ The force printer also can print arrays in a simple structure.
 
 By default all notification messages are print. To change this use:
 ```php
-ep6\Logger::setLogLevel("NOTIFICATION");	// shows all messages
-ep6\Logger::setLogLevel("WARNING");			// shows warning and error messages
-ep6\Logger::setLogLevel("ERROR");			// shows only error messages
-ep6\Logger::setLogLevel("NONE");			// don't log anything
+ep6\Logger::setLogLevel(ep6\LogLevel::NOTIFICATION);	// shows all messages
+ep6\Logger::setLogLevel(ep6\LogLevel::WARNING);			// shows warning and error messages
+ep6\Logger::setLogLevel(ep6\LogLevel::ERROR);			// shows only error messages
+ep6\Logger::setLogLevel(ep6\LogLevel::NONE);			// don't log anything
 ```
 ### InputValidator
 
