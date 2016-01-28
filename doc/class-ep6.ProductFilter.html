@@ -46,7 +46,9 @@
 				<li><a href="class-ep6.PriceWithQuantity.html">PriceWithQuantity</a></li>
 				<li><a href="class-ep6.PrivacyPolicyInformation.html">PrivacyPolicyInformation</a></li>
 				<li><a href="class-ep6.Product.html">Product</a></li>
+				<li><a href="class-ep6.ProductAttribute.html">ProductAttribute</a></li>
 				<li class="active"><a href="class-ep6.ProductFilter.html">ProductFilter</a></li>
+				<li><a href="class-ep6.ProductSlideshow.html">ProductSlideshow</a></li>
 				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
 				<li><a href="class-ep6.ShippingInformation.html">ShippingInformation</a></li>
@@ -88,9 +90,6 @@
 <span>Class</span>			</li>
 		</ul>
 		<ul>
-			<li>
-				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
-			</li>
 		</ul>
 		<ul>
 		</ul>
@@ -122,9 +121,11 @@
 				David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
 				<b>Since:</b>
 				0.0.0<br>
+				<b>Since:</b>
+				0.1.0 Use a default Locale and Currency.<br>
 				<b>Example:</b>
 				examples\createProductFilter.php Create and use the product filter.<br>
-			<b>Located at</b> <a href="source-class-ep6.ProductFilter.html#9-531" title="Go to source code">shopobjects/product/ProductFilter.class.php</a>
+			<b>Located at</b> <a href="source-class-ep6.ProductFilter.html#9-533" title="Go to source code">shopobjects/product/ProductFilter.class.php</a>
 		<br>
 	</div>
 
@@ -144,7 +145,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#50-64" title="Go to source code">__construct</a>( <span>String[] <var>$productFilterParameter</var> = <span class="php-keyword1">array</span>()</span> )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#45-59" title="Go to source code">__construct</a>( <span>String[] <var>$productFilterParameter</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 		<div class="description short">
 			<p>This is the constructor to prefill the product filter.</p>
@@ -190,7 +191,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setProductFilter">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#66-110" title="Go to source code">setProductFilter</a>( <span>String[] <var>$productFilterParameter</var></span> )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#61-100" title="Go to source code">setProductFilter</a>( <span>String[] <var>$productFilterParameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Fill the product filter with a array.</p>
@@ -215,6 +216,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.1<br>
+						0.1.0 Use a default Locale and Currency.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -236,7 +238,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_printFilter">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#112-134" title="Go to source code">printFilter</a>( )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#102-123" title="Go to source code">printFilter</a>( )</code>
 
 		<div class="description short">
 			<p>This function prints the filter in a NOTIFICATION message.</p>
@@ -256,6 +258,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use a default Locale and Currency.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -277,7 +280,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_hashCode">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#136-158" title="Go to source code">hashCode</a>( )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#125-146" title="Go to source code">hashCode</a>( )</code>
 
 		<div class="description short">
 			<p>This function returns the hash code of the object to equals the object.</p>
@@ -301,6 +304,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use a default Locale and Currency.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -310,7 +314,7 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="setLocale" id="_setLocale">
+	<tr data-order="setLocale" id="_setLocale" class="deprecated">
 
 		<td class="attributes"><code>
 			 public 
@@ -322,7 +326,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setLocale">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#160-175" title="Go to source code">setLocale</a>( <span>String <var>$locale</var></span> )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#148-161" title="Go to source code">setLocale</a>( <span>String <var>$locale</var></span> )</code>
 
 		<div class="description short">
 			<p>This function sets the localization.</p>
@@ -331,6 +335,9 @@
 		<div class="description detailed hidden">
 			<p>This function sets the localization.</p>
 
+				<h4>Deprecated</h4>
+				<div class="list">
+				</div>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
@@ -351,6 +358,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Deprecate because product filter now use shop configured Locale.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -360,7 +368,7 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getLocale" id="_getLocale">
+	<tr data-order="getLocale" id="_getLocale" class="deprecated">
 
 		<td class="attributes"><code>
 			 public 
@@ -372,7 +380,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getLocale">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#177-187" title="Go to source code">getLocale</a>( )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#163-175" title="Go to source code">getLocale</a>( )</code>
 
 		<div class="description short">
 			<p>This function gets the localization.</p>
@@ -381,6 +389,9 @@
 		<div class="description detailed hidden">
 			<p>This function gets the localization.</p>
 
+				<h4>Deprecated</h4>
+				<div class="list">
+				</div>
 
 
 				<h4>Returns</h4>
@@ -396,6 +407,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Deprecate because product filter now use shop configured Locale.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -405,7 +417,7 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="setCurrency" id="_setCurrency">
+	<tr data-order="setCurrency" id="_setCurrency" class="deprecated">
 
 		<td class="attributes"><code>
 			 public 
@@ -417,7 +429,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setCurrency">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#189-204" title="Go to source code">setCurrency</a>( <span>String <var>$currency</var></span> )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#177-190" title="Go to source code">setCurrency</a>( <span>String <var>$currency</var></span> )</code>
 
 		<div class="description short">
 			<p>This function sets the currency.</p>
@@ -426,6 +438,9 @@
 		<div class="description detailed hidden">
 			<p>This function sets the currency.</p>
 
+				<h4>Deprecated</h4>
+				<div class="list">
+				</div>
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
@@ -446,6 +461,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Deprecate because product filter now use shop configured Currency.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -455,7 +471,7 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getCurrency" id="_getCurrency">
+	<tr data-order="getCurrency" id="_getCurrency" class="deprecated">
 
 		<td class="attributes"><code>
 			 public 
@@ -467,7 +483,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getCurrency">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#206-216" title="Go to source code">getCurrency</a>( )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#192-204" title="Go to source code">getCurrency</a>( )</code>
 
 		<div class="description short">
 			<p>This function gets the currency.</p>
@@ -476,6 +492,9 @@
 		<div class="description detailed hidden">
 			<p>This function gets the currency.</p>
 
+				<h4>Deprecated</h4>
+				<div class="list">
+				</div>
 
 
 				<h4>Returns</h4>
@@ -491,6 +510,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Deprecate because product filter now use shop configured Currency.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -512,7 +532,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setPage">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#218-233" title="Go to source code">setPage</a>( <span>integer <var>$page</var></span> )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#206-222" title="Go to source code">setPage</a>( <span>integer <var>$page</var></span> )</code>
 
 		<div class="description short">
 			<p>This function sets the page to show.</p>
@@ -541,6 +561,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -562,7 +583,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getPage">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#235-245" title="Go to source code">getPage</a>( )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#224-235" title="Go to source code">getPage</a>( )</code>
 
 		<div class="description short">
 			<p>This function gets the page.</p>
@@ -586,6 +607,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -607,7 +629,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setResultsPerPage">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#247-262" title="Go to source code">setResultsPerPage</a>( <span>integer <var>$resultsPerPage</var></span> )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#237-253" title="Go to source code">setResultsPerPage</a>( <span>integer <var>$resultsPerPage</var></span> )</code>
 
 		<div class="description short">
 			<p>This function sets the results per page to show.</p>
@@ -636,6 +658,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -657,7 +680,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getResultsPerPage">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#264-274" title="Go to source code">getResultsPerPage</a>( )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#255-266" title="Go to source code">getResultsPerPage</a>( )</code>
 
 		<div class="description short">
 			<p>This function gets the results per page.</p>
@@ -681,6 +704,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -702,7 +726,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setDirection">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#276-291" title="Go to source code">setDirection</a>( <span>String <var>$direction</var></span> )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#268-284" title="Go to source code">setDirection</a>( <span>String <var>$direction</var></span> )</code>
 
 		<div class="description short">
 			<p>This function sets the direction to show.</p>
@@ -731,6 +755,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -752,7 +777,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDirection">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#293-303" title="Go to source code">getDirection</a>( )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#286-297" title="Go to source code">getDirection</a>( )</code>
 
 		<div class="description short">
 			<p>This function gets the direction.</p>
@@ -776,6 +801,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -797,7 +823,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setSort">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#305-320" title="Go to source code">setSort</a>( <span>String <var>$sort</var></span> )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#299-315" title="Go to source code">setSort</a>( <span>String <var>$sort</var></span> )</code>
 
 		<div class="description short">
 			<p>This function sets the order parameter to show.</p>
@@ -826,6 +852,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -847,7 +874,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSort">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#322-332" title="Go to source code">getSort</a>( )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#317-328" title="Go to source code">getSort</a>( )</code>
 
 		<div class="description short">
 			<p>This function gets the sort.</p>
@@ -871,6 +898,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -892,7 +920,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setQ">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#334-349" title="Go to source code">setQ</a>( <span>String <var>$q</var></span> )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#330-346" title="Go to source code">setQ</a>( <span>String <var>$q</var></span> )</code>
 
 		<div class="description short">
 			<p>This function sets the query search string to show.</p>
@@ -921,6 +949,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -942,7 +971,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getQ">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#351-361" title="Go to source code">getQ</a>( )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#348-359" title="Go to source code">getQ</a>( )</code>
 
 		<div class="description short">
 			<p>This function gets the query search string.</p>
@@ -966,6 +995,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -987,7 +1017,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setCategoryID">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#363-378" title="Go to source code">setCategoryID</a>( <span>String <var>$categoryID</var></span> )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#361-377" title="Go to source code">setCategoryID</a>( <span>String <var>$categoryID</var></span> )</code>
 
 		<div class="description short">
 			<p>This function sets the category ID to show.</p>
@@ -1016,6 +1046,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -1037,7 +1068,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getCategoryID">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#380-390" title="Go to source code">getCategoryID</a>( )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#379-390" title="Go to source code">getCategoryID</a>( )</code>
 
 		<div class="description short">
 			<p>This function gets the category ID string.</p>
@@ -1061,6 +1092,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -1082,7 +1114,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setID">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#392-409" title="Go to source code">setID</a>( <span>String <var>$productID</var></span> )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#392-410" title="Go to source code">setID</a>( <span>String <var>$productID</var></span> )</code>
 
 		<div class="description short">
 			<p>This function add a product ID from filter.</p>
@@ -1111,6 +1143,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -1132,7 +1165,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_unsetID">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#411-427" title="Go to source code">unsetID</a>( <span>String <var>$productID</var></span> )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#412-429" title="Go to source code">unsetID</a>( <span>String <var>$productID</var></span> )</code>
 
 		<div class="description short">
 			<p>This function delete a product ID from filter.</p>
@@ -1161,6 +1194,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -1182,7 +1216,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_resetIDs">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#429-437" title="Go to source code">resetIDs</a>( )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#431-440" title="Go to source code">resetIDs</a>( )</code>
 
 		<div class="description short">
 			<p>This function reset all product IDs from filter.</p>
@@ -1202,6 +1236,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -1223,7 +1258,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_resetFilter">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#439-456" title="Go to source code">resetFilter</a>( )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#442-458" title="Go to source code">resetFilter</a>( )</code>
 
 		<div class="description short">
 			<p>This function reset all product IDs from filter.</p>
@@ -1243,6 +1278,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use a default Locale and Currency.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -1264,7 +1300,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getProducts">#</a>
-		<code><a href="source-class-ep6.ProductFilter.html#458-504" title="Go to source code">getProducts</a>( )</code>
+		<code><a href="source-class-ep6.ProductFilter.html#460-505" title="Go to source code">getProducts</a>( )</code>
 
 		<div class="description short">
 			<p>This function returns the products by using the product filter.</p>
@@ -1288,6 +1324,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.0 Use a default Locale.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -1313,7 +1350,7 @@
 		<td class="attributes"><code>String</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-ep6.ProductFilter.html#20-21" title="Go to source code"><b>RESTPATH</b></a>
+				<a href="source-class-ep6.ProductFilter.html#21-22" title="Go to source code"><b>RESTPATH</b></a>
 			</code>
 
 			<div class="description short">

@@ -47,7 +47,9 @@
 				<li><a href="class-ep6.PriceWithQuantity.html">ep6\PriceWithQuantity</a></li>
 				<li><a href="class-ep6.PrivacyPolicyInformation.html">ep6\PrivacyPolicyInformation</a></li>
 				<li><a href="class-ep6.Product.html">ep6\Product</a></li>
+				<li><a href="class-ep6.ProductAttribute.html">ep6\ProductAttribute</a></li>
 				<li><a href="class-ep6.ProductFilter.html">ep6\ProductFilter</a></li>
+				<li><a href="class-ep6.ProductSlideshow.html">ep6\ProductSlideshow</a></li>
 				<li><a href="class-ep6.RESTClient.html">ep6\RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">ep6\RightsOfWithdrawalInformation</a></li>
 				<li><a href="class-ep6.ShippingInformation.html">ep6\ShippingInformation</a></li>
@@ -88,9 +90,6 @@
 <span>Class</span>			</li>
 		</ul>
 		<ul>
-			<li>
-				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
-			</li>
 		</ul>
 		<ul>
 		</ul>
@@ -113,13 +112,13 @@
 </span></span><span id="15" class="l"><a href="#15">15: </a><span class="php-comment"> * @subpackage Shopobjects\Price
 </span></span><span id="16" class="l"><a href="#16">16: </a><span class="php-comment"> */</span>
 </span><span id="17" class="l"><a href="#17">17: </a><span class="php-keyword1">class</span> PriceWithQuantity <span class="php-keyword1">extends</span> Price {
-</span><span id="18" class="l"><a href="#18">18: </a>        
+</span><span id="18" class="l"><a href="#18">18: </a>
 </span><span id="19" class="l"><a href="#19">19: </a>    <span class="php-comment">/** @var int The quantity amount. */</span>
 </span><span id="20" class="l"><a href="#20">20: </a>    <span class="php-keyword1">private</span> <span class="php-var">$quantityAmount</span> = <span class="php-keyword1">null</span>;
-</span><span id="21" class="l"><a href="#21">21: </a>        
+</span><span id="21" class="l"><a href="#21">21: </a>
 </span><span id="22" class="l"><a href="#22">22: </a>    <span class="php-comment">/** @var mixed[] The localized quantity unit. */</span>
 </span><span id="23" class="l"><a href="#23">23: </a>    <span class="php-keyword1">private</span> <span class="php-var">$quantityUnit</span> = <span class="php-keyword1">array</span>();
-</span><span id="24" class="l"><a href="#24">24: </a>    
+</span><span id="24" class="l"><a href="#24">24: </a>
 </span><span id="25" class="l"><a href="#25">25: </a>    <span class="php-comment">/**
 </span></span><span id="26" class="l"><a href="#26">26: </a><span class="php-comment">     * This is the constructor of the price with quantity object.
 </span></span><span id="27" class="l"><a href="#27">27: </a><span class="php-comment">     *
@@ -135,7 +134,7 @@
 </span><span id="37" class="l"><a href="#37">37: </a>        parent::__construct(<span class="php-var">$priceParameter</span>);
 </span><span id="38" class="l"><a href="#38">38: </a>
 </span><span id="39" class="l"><a href="#39">39: </a>        <span class="php-keyword1">if</span> (InputValidator::isArray(<span class="php-var">$quantityParameter</span>)) {
-</span><span id="40" class="l"><a href="#40">40: </a>            
+</span><span id="40" class="l"><a href="#40">40: </a>
 </span><span id="41" class="l"><a href="#41">41: </a>            <span class="php-keyword1">if</span> (!InputValidator::isEmptyArrayKey(<span class="php-var">$quantityParameter</span>, <span class="php-quote">&quot;amount&quot;</span>)) {
 </span><span id="42" class="l"><a href="#42">42: </a>                <span class="php-var">$this</span>-&gt;quantityAmount = <span class="php-var">$quantityParameter</span>[<span class="php-quote">'amount'</span>];
 </span><span id="43" class="l"><a href="#43">43: </a>            }
@@ -187,6 +186,6 @@
 </div>
 </div>
 <script src="resources/combined.js?529a709ba2f260c0942b04bd0ce7515798f1c6b1"></script>
-<script src="elementlist.js?66cd5a535b60652c3f32399c376297813ca1f9b5"></script>
+<script src="elementlist.js?1092ffd9b210de7cffec0731674dad7901950bf7"></script>
 </body>
 </html>

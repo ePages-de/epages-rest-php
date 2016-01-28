@@ -46,7 +46,9 @@
 				<li><a href="class-ep6.PriceWithQuantity.html">PriceWithQuantity</a></li>
 				<li><a href="class-ep6.PrivacyPolicyInformation.html">PrivacyPolicyInformation</a></li>
 				<li><a href="class-ep6.Product.html">Product</a></li>
+				<li><a href="class-ep6.ProductAttribute.html">ProductAttribute</a></li>
 				<li><a href="class-ep6.ProductFilter.html">ProductFilter</a></li>
+				<li><a href="class-ep6.ProductSlideshow.html">ProductSlideshow</a></li>
 				<li class="active"><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
 				<li><a href="class-ep6.ShippingInformation.html">ShippingInformation</a></li>
@@ -88,9 +90,6 @@
 <span>Class</span>			</li>
 		</ul>
 		<ul>
-			<li>
-				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
-			</li>
 		</ul>
 		<ul>
 		</ul>
@@ -123,8 +122,10 @@
 				<b>Since:</b>
 				0.0.0<br>
 				<b>Since:</b>
-				0.1.0 Use HTTPRequestMethod enum.<br>
-			<b>Located at</b> <a href="source-class-ep6.RESTClient.html#10-258" title="Go to source code">util/RESTClient.class.php</a>
+				0.0.3 Use HTTPRequestMethod enum.<br>
+				<b>Since:</b>
+				0.1.0 Add a recommended wait time for the next request.<br>
+			<b>Located at</b> <a href="source-class-ep6.RESTClient.html#10-266" title="Go to source code">util/RESTClient.class.php</a>
 		<br>
 	</div>
 
@@ -144,7 +145,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_connect">#</a>
-		<code><a href="source-class-ep6.RESTClient.html#48-77" title="Go to source code">connect</a>( <span>String <var>$host</var></span>, <span>String <var>$shop</var></span>, <span>String <var>$authToken</var></span>, <span>boolean <var>$isssl</var></span> )</code>
+		<code><a href="source-class-ep6.RESTClient.html#52-80" title="Go to source code">connect</a>( <span>String <var>$host</var></span>, <span>String <var>$shop</var></span>, <span>String <var>$authToken</var></span>, <span>boolean <var>$isssl</var></span> )</code>
 
 		<div class="description short">
 			<p>The constructor for the main class.</p>
@@ -175,7 +176,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
-						0.1.0 Use disconnect function on wrong parameters.<br>
+						0.0.1 Use disconnect function on wrong parameters.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -197,7 +198,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_printStatus">#</a>
-		<code><a href="source-class-ep6.RESTClient.html#79-98" title="Go to source code">printStatus</a>( )</code>
+		<code><a href="source-class-ep6.RESTClient.html#82-101" title="Go to source code">printStatus</a>( )</code>
 
 		<div class="description short">
 			<p>This function prints the status of the REST client in a FORCE Logger message.</p>
@@ -238,7 +239,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_sendWithLocalization">#</a>
-		<code><a href="source-class-ep6.RESTClient.html#100-118" title="Go to source code">sendWithLocalization</a>( <span>String <var>$command</var></span>, <span>String <var>$locale</var></span>, <span>mixed[] <var>$postfields</var> = <span class="php-keyword1">array</span>()</span> )</code>
+		<code><a href="source-class-ep6.RESTClient.html#103-121" title="Go to source code">sendWithLocalization</a>( <span>String <var>$command</var></span>, <span>String <var>$locale</var></span>, <span>mixed[] <var>$postfields</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 		<div class="description short">
 			<p>This send function sends a special command to the REST server.</p>
@@ -292,7 +293,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_send">#</a>
-		<code><a href="source-class-ep6.RESTClient.html#120-222" title="Go to source code">send</a>( <span>String <var>$command</var></span>, <span>String[] <var>$postfields</var> = <span class="php-keyword1">array</span>()</span> )</code>
+		<code><a href="source-class-ep6.RESTClient.html#123-230" title="Go to source code">send</a>( <span>String <var>$command</var></span>, <span>String[] <var>$postfields</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 		<div class="description short">
 			<p>This send function sends a special command to the REST server with additional parameter.</p>
@@ -323,7 +324,8 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
-						0.1.0 Use HTTPRequestMethod enum.<br>
+						0.0.1 Use HTTPRequestMethod enum.<br>
+						0.1.0 Allow empty message body if the status code is 204.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -345,7 +347,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setRequestMethod">#</a>
-		<code><a href="source-class-ep6.RESTClient.html#224-240" title="Go to source code">setRequestMethod</a>( <span><code><a href="class-ep6.HTTPRequestMethod.html">ep6\HTTPRequestMethod</a></code> <var>$method</var></span> )</code>
+		<code><a href="source-class-ep6.RESTClient.html#232-248" title="Go to source code">setRequestMethod</a>( <span><code><a href="class-ep6.HTTPRequestMethod.html">ep6\HTTPRequestMethod</a></code> <var>$method</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets another request method.</p>
@@ -396,7 +398,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_disconnect">#</a>
-		<code><a href="source-class-ep6.RESTClient.html#242-257" title="Go to source code">disconnect</a>( )</code>
+		<code><a href="source-class-ep6.RESTClient.html#250-265" title="Go to source code">disconnect</a>( )</code>
 
 		<div class="description short">
 			<p>Disconnects and deletes all configuration data.</p>
@@ -441,7 +443,7 @@
 		<td class="attributes"><code>String</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-ep6.RESTClient.html#39-40" title="Go to source code"><b>PATHTOREST</b></a>
+				<a href="source-class-ep6.RESTClient.html#40-41" title="Go to source code"><b>PATHTOREST</b></a>
 			</code>
 
 			<div class="description short">
@@ -465,7 +467,7 @@
 		<td class="attributes"><code>String</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-ep6.RESTClient.html#42-43" title="Go to source code"><b>HTTP_ACCEPT</b></a>
+				<a href="source-class-ep6.RESTClient.html#43-44" title="Go to source code"><b>HTTP_ACCEPT</b></a>
 			</code>
 
 			<div class="description short">
@@ -489,7 +491,7 @@
 		<td class="attributes"><code>String</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-ep6.RESTClient.html#45-46" title="Go to source code"><b>HTTP_CONTENT_TYPE</b></a>
+				<a href="source-class-ep6.RESTClient.html#46-47" title="Go to source code"><b>HTTP_CONTENT_TYPE</b></a>
 			</code>
 
 			<div class="description short">
@@ -505,6 +507,30 @@
 			<div>
 				<a href="#HTTP_CONTENT_TYPE" class="anchor">#</a>
 				<code><span class="php-quote">&quot;application/json&quot;</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="NEXT_RESPONSE_WAIT_TIME" id="NEXT_RESPONSE_WAIT_TIME">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-ep6.RESTClient.html#49-50" title="Go to source code"><b>NEXT_RESPONSE_WAIT_TIME</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#NEXT_RESPONSE_WAIT_TIME" class="anchor">#</a>
+				<code><span class="php-num">600</span></code>
 			</div>
 		</td>
 	</tr>

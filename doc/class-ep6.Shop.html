@@ -46,7 +46,9 @@
 				<li><a href="class-ep6.PriceWithQuantity.html">PriceWithQuantity</a></li>
 				<li><a href="class-ep6.PrivacyPolicyInformation.html">PrivacyPolicyInformation</a></li>
 				<li><a href="class-ep6.Product.html">Product</a></li>
+				<li><a href="class-ep6.ProductAttribute.html">ProductAttribute</a></li>
 				<li><a href="class-ep6.ProductFilter.html">ProductFilter</a></li>
+				<li><a href="class-ep6.ProductSlideshow.html">ProductSlideshow</a></li>
 				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
 				<li><a href="class-ep6.ShippingInformation.html">ShippingInformation</a></li>
@@ -88,9 +90,6 @@
 <span>Class</span>			</li>
 		</ul>
 		<ul>
-			<li>
-				<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
-			</li>
 		</ul>
 		<ul>
 		</ul>
@@ -122,9 +121,11 @@
 				David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
 				<b>Since:</b>
 				0.0.0<br>
+				<b>Since:</b>
+				0.1.0 Configure the Locale and Currency to make REST calls.<br>
 				<b>Example:</b>
 				examples\connectingShop.php Create a new epage 6 shop object and disconnect.<br>
-			<b>Located at</b> <a href="source-class-ep6.Shop.html#31-232" title="Go to source code">Shop.class.php</a>
+			<b>Located at</b> <a href="source-class-ep6.Shop.html#33-309" title="Go to source code">Shop.class.php</a>
 		<br>
 	</div>
 
@@ -144,7 +145,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-ep6.Shop.html#56-71" title="Go to source code">__construct</a>( <span>String <var>$host</var></span>, <span>String <var>$shop</var></span>, <span>String <var>$authToken</var></span>, <span>boolean <var>$isssl</var> = <span class="php-keyword1">true</span></span> )</code>
+		<code><a href="source-class-ep6.Shop.html#59-74" title="Go to source code">__construct</a>( <span>String <var>$host</var></span>, <span>String <var>$shop</var></span>, <span>String <var>$authToken</var></span>, <span>boolean <var>$isssl</var> = <span class="php-keyword1">true</span></span> )</code>
 
 		<div class="description short">
 			<p>The constructor for the shop class.</p>
@@ -200,7 +201,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___destruct">#</a>
-		<code><a href="source-class-ep6.Shop.html#73-84" title="Go to source code">__destruct</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#76-87" title="Go to source code">__destruct</a>( )</code>
 
 		<div class="description short">
 			<p>The destructor for the main class.</p>
@@ -245,7 +246,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_printStatus">#</a>
-		<code><a href="source-class-ep6.Shop.html#86-98" title="Go to source code">printStatus</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#89-101" title="Go to source code">printStatus</a>( )</code>
 
 		<div class="description short">
 			<p>Prints the connection status via "FORCE".</p>
@@ -288,7 +289,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDefaultLocales">#</a>
-		<code><a href="source-class-ep6.Shop.html#100-111" title="Go to source code">getDefaultLocales</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#103-114" title="Go to source code">getDefaultLocales</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the default localization.</p>
@@ -333,7 +334,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getLocales">#</a>
-		<code><a href="source-class-ep6.Shop.html#113-124" title="Go to source code">getLocales</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#116-127" title="Go to source code">getLocales</a>( )</code>
 
 		<div class="description short">
 			<p>Returns all localizations.</p>
@@ -378,7 +379,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDefaultCurrencies">#</a>
-		<code><a href="source-class-ep6.Shop.html#126-137" title="Go to source code">getDefaultCurrencies</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#129-140" title="Go to source code">getDefaultCurrencies</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the default currencies.</p>
@@ -423,7 +424,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getCurrencies">#</a>
-		<code><a href="source-class-ep6.Shop.html#139-150" title="Go to source code">getCurrencies</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#142-153" title="Go to source code">getCurrencies</a>( )</code>
 
 		<div class="description short">
 			<p>Returns all currencies.</p>
@@ -456,6 +457,196 @@
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="getLocale" id="_getLocale">
+
+		<td class="attributes"><code>
+			 public 
+
+			String|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLocale">#</a>
+		<code><a href="source-class-ep6.Shop.html#155-166" title="Go to source code">getLocale</a>( )</code>
+
+		<div class="description short">
+			<p>Returns configured Locale.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns configured Locale.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String|null<br>The Locale which is configured for REST calls.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setLocale" id="_setLocale">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setLocale">#</a>
+		<code><a href="source-class-ep6.Shop.html#168-180" title="Go to source code">setLocale</a>( <span>String <var>$locale</var></span> )</code>
+
+		<div class="description short">
+			<p>Set configured Locale.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set configured Locale.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$locale</var></dt>
+					<dd>The new used Locale.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if set the Locale works, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCurrency" id="_getCurrency">
+
+		<td class="attributes"><code>
+			 public 
+
+			String|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCurrency">#</a>
+		<code><a href="source-class-ep6.Shop.html#182-193" title="Go to source code">getCurrency</a>( )</code>
+
+		<div class="description short">
+			<p>Returns configured Currency.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns configured Currency.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String|null<br>The Currency which is configured for REST calls.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setCurrency" id="_setCurrency">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setCurrency">#</a>
+		<code><a href="source-class-ep6.Shop.html#195-207" title="Go to source code">setCurrency</a>( <span>String <var>$currency</var></span> )</code>
+
+		<div class="description short">
+			<p>Set configured Currency.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set configured Currency.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$currency</var></dt>
+					<dd>$locale The new used Locale.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if set the Locale works, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="getContactInformation" id="_getContactInformation">
 
 		<td class="attributes"><code>
@@ -468,7 +659,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContactInformation">#</a>
-		<code><a href="source-class-ep6.Shop.html#152-166" title="Go to source code">getContactInformation</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#209-223" title="Go to source code">getContactInformation</a>( )</code>
 
 		<div class="description short">
 			<p>Get the contact information.</p>
@@ -513,7 +704,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getPrivacyPolicyInformation">#</a>
-		<code><a href="source-class-ep6.Shop.html#168-182" title="Go to source code">getPrivacyPolicyInformation</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#225-239" title="Go to source code">getPrivacyPolicyInformation</a>( )</code>
 
 		<div class="description short">
 			<p>Get the privacy policy information.</p>
@@ -558,7 +749,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRightsOfWithdrawalInformation">#</a>
-		<code><a href="source-class-ep6.Shop.html#184-198" title="Go to source code">getRightsOfWithdrawalInformation</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#241-255" title="Go to source code">getRightsOfWithdrawalInformation</a>( )</code>
 
 		<div class="description short">
 			<p>Get the rights of withdrawal information.</p>
@@ -603,7 +794,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getShippingInformation">#</a>
-		<code><a href="source-class-ep6.Shop.html#200-214" title="Go to source code">getShippingInformation</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#257-271" title="Go to source code">getShippingInformation</a>( )</code>
 
 		<div class="description short">
 			<p>Get the shipping information.</p>
@@ -648,7 +839,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getTermsAndConditionInformation">#</a>
-		<code><a href="source-class-ep6.Shop.html#216-230" title="Go to source code">getTermsAndConditionInformation</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#273-287" title="Go to source code">getTermsAndConditionInformation</a>( )</code>
 
 		<div class="description short">
 			<p>Get the terms and condition information.</p>
@@ -672,6 +863,58 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="deleteProduct" id="_deleteProduct">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_deleteProduct">#</a>
+		<code><a href="source-class-ep6.Shop.html#289-307" title="Go to source code">deleteProduct</a>( <span><code><a href="class-ep6.Product.html">ep6\Product</a></code> <var>&amp; $product</var></span> )</code>
+
+		<div class="description short">
+			<p>Deletes a product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Deletes a product.</p>
+
+<p>This function try to deletes the product in the shop. It also unset the given Product object.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$product</var></dt>
+					<dd>product to delete.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the deletion works, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
