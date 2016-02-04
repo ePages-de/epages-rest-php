@@ -12,16 +12,17 @@ namespace ep6;
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.1.0
  * @since 0.1.1 This object is echoable.
+ * @since 0.1.1 Disallow the locale parameter.
  * @package ep6
  * @subpackage Shopobjects\Price
  */
 class PriceWithQuantity extends Price {
 
-	/** @var int The quantity amount. */
+	/** @var int|null The quantity amount. */
 	private $quantityAmount = null;
 
-	/** @var mixed[] The localized quantity unit. */
-	private $quantityUnit = array();
+	/** @var String|null The localized quantity unit. */
+	private $quantityUnit = null;
 
 	/**
 	 * This is the constructor of the price with quantity object.
@@ -29,11 +30,11 @@ class PriceWithQuantity extends Price {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 No locale parameter is needed
 	 * @param mixed[] $priceParameter The price parameter.
 	 * @param mixed[] $quantityParameter The quantity parameter.
-	 * @param String $locale The localization parameter.
 	 */
-	public function __construct($priceParameter, $quantityParameter, $locale) {
+	public function __construct($priceParameter, $quantityParameter) {
 
 		parent::__construct($priceParameter);
 
@@ -43,10 +44,8 @@ class PriceWithQuantity extends Price {
 				$this->quantityAmount = $quantityParameter['amount'];
 			}
 
-			if (InputValidator::isLocale($locale)) {
-				if (!InputValidator::isEmptyArrayKey($quantityParameter, "unit")) {
-					$this->quantityUnit[$locale] = $quantityParameter['unit'];
-				}
+			if (!InputValidator::isEmptyArrayKey($quantityParameter, "unit")) {
+				$this->quantityUnit = $quantityParameter['unit'];
 			}
 		}
 	}
@@ -69,17 +68,14 @@ class PriceWithQuantity extends Price {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 No locale parameter is needed.
 	 * @api
 	 * @param String $locale The localization.
 	 * @return String Gets the quantity unit.
 	 */
-	public function getQuantityUnit($locale) {
+	public function getQuantityUnit() {
 
-		if (!InputValidator::isLocale($locale)) {
-			return;
-		}
-
-		return !InputValidator::isEmptyArrayKey($this->quantityUnit, $locale) ? $this->quantityUnit[$locale] : null;
+		return $this->quantityUnit;
 	}
 
 	/**

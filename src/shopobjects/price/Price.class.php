@@ -12,19 +12,20 @@ namespace ep6;
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
  * @since 0.1.1 This object is echoable.
+ * @since 0.1.1 Set attribute to protected to use it in the child classes.
  * @package ep6
  * @subpackage Shopobjects\Price
  */
 class Price {
 
 	/** @var float The amount of the price. */
-	private $amount = 0.0;
+	protected $amount = 0.0;
 
 	/** @var String|null The tax type of the price. */
-	private $taxType = null;
+	protected $taxType = null;
 
 	/** @var String|null The curreny of the price. */
-	private $currency = null;
+	protected $currency = null;
 
 	/**
 	 * This is the constructor of the price object.
@@ -36,7 +37,6 @@ class Price {
 	 * @param mixed[] $priceParamter The price parameter.
 	 */
 	public function __construct($priceParameter) {
-
 		if (InputValidator::isArray($priceParameter)) {
 
 			if (!InputValidator::isEmptyArrayKey($priceParameter, "amount")) {
