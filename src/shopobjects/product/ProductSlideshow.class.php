@@ -12,6 +12,7 @@ namespace ep6;
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.1.0
  * @since 0.1.1 Can print the object itself.
+ * @since 0.1.1 Delete functionality to reload itself.
  * @api
  * @package ep6
  * @subpackage Shopobjects\Product
@@ -50,6 +51,7 @@ class ProductSlideshow {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Fix bug with nonsetted product URL and delete reload functionality.
 	 * @api
 	 * @param String $productID The product ID to get images.
 	 */
@@ -125,6 +127,7 @@ class ProductSlideshow {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Fix bug with returning image.
 	 * @api
 	 * @param int $image The image number to get
 	 * @return Image|null The thumbnail image.
@@ -144,6 +147,7 @@ class ProductSlideshow {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Fix bug with returning image.
 	 * @api
 	 * @param int $image The image number to get
 	 * @return Image|null The small image.
@@ -163,6 +167,7 @@ class ProductSlideshow {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Fix bug with returning image.
 	 * @api
 	 * @param int $image The image number to get
 	 * @return Image|null The hotdeal image.
@@ -182,6 +187,7 @@ class ProductSlideshow {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Fix bug with returning image.
 	 * @api
 	 * @param int $image The image number to get
 	 * @return Image|null The medium small image.
@@ -201,6 +207,7 @@ class ProductSlideshow {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Fix bug with returning image.
 	 * @api
 	 * @param int $image The image number to get
 	 * @return Image|null The medium image.
@@ -220,6 +227,7 @@ class ProductSlideshow {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Fix bug with returning image.
 	 * @api
 	 * @param int $image The image number to get
 	 * @return Image|null The medium large image.
@@ -239,6 +247,7 @@ class ProductSlideshow {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Fix bug with returning image.
 	 * @api
 	 * @param int $image The image number to get
 	 * @return Image|null The large image.

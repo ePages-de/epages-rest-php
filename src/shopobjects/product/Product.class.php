@@ -94,6 +94,7 @@ class Product {
 	 * @since 0.0.0
 	 * @since 0.1.0 Add price information.
 	 * @since 0.1.0 Use a default Locale.
+	 * @since 0.1.1 Dont use the locale parameter in calling the product price attribute.
 	 * @api
 	 * @param mixed[] $productParameter The product to create as array.
 	 */
@@ -145,9 +146,8 @@ class Product {
 				$priceInformation = $productParameter['priceInfo'];
 
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "price") &&
-					!InputValidator::isEmptyArrayKey($priceInformation, "quantity") &&
-					!InputValidator::isEmptyArrayKey($productParameter, "locale")) {
-					$this->price = new PriceWithQuantity($priceInformation['price'], $priceInformation['quantity'], $productParameter["locale"]);
+					!InputValidator::isEmptyArrayKey($priceInformation, "quantity")) {
+					$this->price = new PriceWithQuantity($priceInformation['price'], $priceInformation['quantity']);
 				}
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "depositPrice")) {
 					$this->depositPrice = new Price($priceInformation['depositPrice']);
