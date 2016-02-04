@@ -11,6 +11,7 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
+ * @since 0.1.1 Now the object can be echoed.
  * @api
  * @package ep6
  * @subpackage Shopobjects\Image
@@ -40,5 +41,19 @@ class Image {
 	 */
 	public function getOriginURL() {
 		return $this->URL;
+	}
+
+	/**
+	 * Prints the Image object as a string.
+	 *
+	 * This function returns the setted values of the Image object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @return String The Image as a string.
+	 */
+	public function __toString() {
+
+		return "<strong>URL:</strong> " . $this->URL . "<br/>";
 	}
 }

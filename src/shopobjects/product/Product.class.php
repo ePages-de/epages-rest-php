@@ -17,6 +17,7 @@ namespace ep6;
  * @since 0.1.0 Implement Slideshow functionality.
  * @since 0.1.0 Implement attribute functionality.
  * @since 0.1.0 Implement stock level functionality.
+ * @since 0.1.1 This object can be printed with echo.
  * @package ep6
  * @subpackage Shopobjects\Product
  */
@@ -648,6 +649,30 @@ class Product {
 		RESTClient::send(self::$RESTPATH . "/" . $this->productID);
 
 		return true;
+	}
+
+	/**
+	 * Prints the Product object as a string.
+	 *
+	 * This function returns the setted values of the Product object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @return String The Product as a string.
+	 */
+	public function __toString() {
+
+		return "<strong>Product ID:</strong> " . $this->productID . "<br/>" .
+				"<strong>Name:</strong> " . $this->name . "<br/>" .
+				"<strong>Short description:</strong> " . $this->shortDescription . "<br/>" .
+				"<strong>Description:</strong> " . $this->description . "<br/>" .
+				"<strong>For sale:</strong> " . $this->forSale . "<br/>" .
+				"<strong>Special offer:</strong> " . $this->specialOffer . "<br/>" .
+				"<strong>Availibility text:</strong> " . $this->availibilityText . "<br/>" .
+				"<strong>Images:</strong> " . $this->images . "<br/>" .
+				"<strong>Price:</strong> " . $this->price . "<br/>" .
+				"<strong>Deposit price:</strong> " . $this->depositPrice . "<br/>" .
+				"<strong>Ecoparticipation price:</strong> " . $this->ecoParticipationPrice . "<br/>";
 	}
 }
 

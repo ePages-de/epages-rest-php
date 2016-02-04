@@ -13,6 +13,7 @@ namespace ep6;
  * @since 0.0.0
  * @since 0.1.0 Add a timestamp to save the next allowed REST call.
  * @since 0.1.0 Use a default Locale.
+ * @since 0.1.1 The object can be echoed.
  * @package ep6
  * @subpackage Shopobjects\Information
  * @see InformationTrait This trait has all information needed objects.
@@ -412,6 +413,33 @@ class ContactInformation {
 
 		self::reload();
 		return InputValidator::isEmpty(self::$EMAIL) ? null : self::$EMAIL;
+	}
+
+	/**
+	 * Prints the Information object as a string.
+	 *
+	 * This function returns the setted values of the Information object.
+	 *
+	 * @api
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @return String The Information as a string.
+	 */
+	public function __toString() {
+
+
+		return "<strong>Name:</strong> " . self::$NAME . "<br/>" .
+				"<strong>Navigation caption:</strong> " . self::$NAVIGATIONCAPTION . "<br/>" .
+				"<strong>Description:</strong> " . self::$DESCRIPTION . "<br/>" .
+				"<strong>Title:</strong> " . self::$NAME . "<br/>" .
+				"<strong>Short description:</strong> " . self::$SHORTDESCRIPTION . "<br/>" .
+				"<strong>Company:</strong> " . self::$COMPANY . "<br/>" .
+				"<strong>Contact person:</strong> " . self::$CONTACTPERSON . "<br/>" .
+				"<strong>Contact person job title:</strong> " . self::$CONTACTPERSONJOBTITLE . "<br/>" .
+				"<strong>Address:</strong> " . self::$ADDRESS . "<br/>" .
+				"<strong>Phone:</strong> " . self::$PHONE . "<br/>" .
+				"<strong>Email:</strong> " . self::$EMAIL . "<br/>" .
+				"<strong>Next allowed request time:</strong> " . self::$NEXT_REQUEST_TIMESTAMP . "<br/>";
 	}
 }
 ?>

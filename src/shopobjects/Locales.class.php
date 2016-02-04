@@ -13,6 +13,7 @@ namespace ep6;
  * @since 0.0.0
  * @since 0.1.0 Add a timestamp to save the next allowed REST call.
  * @since 0.1.0 Add configured used Locale.
+ * @since 0.1.1 Now the object is echoable.
  * @package ep6
  * @subpackage Shopobjects
  * @example examples\handleWithLocales.php Handle with locales.
@@ -176,6 +177,23 @@ class Locales {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * Prints the Locales object as a string.
+	 *
+	 * This function returns the setted values of the Locales object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @return String The Locales as a string.
+	 */
+	public function __toString() {
+
+		return "<strong>Default locale:</strong> " . self::$DEFAULT . "<br/>" .
+				"<strong>Possible locales:</strong> " . self::$ITEMS . "<br/>" .
+				"<strong>Configured locale:</strong> " . self::$USED . "<br/>" .
+				"<strong>Next allowed request:</strong> " . self::$NEXT_REQUEST_TIMESTAMP . "<br/>";
 	}
 
 }
