@@ -36,6 +36,7 @@ require_once(__DIR__ . "/shopobjects/price/PriceWithQuantity.class.php");
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
  * @since 0.1.0 Configure the Locale and Currency to make REST calls.
+ * @since 0.1.1 Now the shop can be printed via echo.
  * @package ep6
  * @example examples\connectingShop.php Create a new epage 6 shop object and disconnect.
  */
@@ -91,13 +92,14 @@ class Shop {
 	 *
 	 * This function will print the current values of the REST client.
 	 *
-	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.1 Echo the object itself to see all values setted.
+	 * @deprecated Echo the object itself to see all values setted.
 	 */
 	public function printStatus() {
 
-		RESTClient::printStatus();
+		Logger::force(RESTClient);
 	}
 
 	/**
@@ -304,6 +306,19 @@ class Shop {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * Prints the shop as a string.
+	 *
+	 * This function returns the setted values of the shop object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @return String The Shop as a string.
+	 */
+	public function __toString() {
+		return RESTClient;
 	}
 
 }

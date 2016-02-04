@@ -202,6 +202,21 @@ class Logger {
 		}
 		self::$OUT = $out;
 	}
+
+	/**
+	 * Prints the Logger object as a string.
+	 *
+	 * This function returns the setted values of the Logger object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @return String The Logger as a string.
+	 */
+	public function __toString() {
+
+		return "<strong>Log level:</strong> " . self::$LOGLEVEL . "<br/>" .
+				"<strong>Output resource:</strong> " . self::$OUT . "<br/>";
+	}
 }
 
 /**

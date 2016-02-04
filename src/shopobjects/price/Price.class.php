@@ -11,6 +11,7 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
+ * @since 0.1.1 This object is echoable.
  * @package ep6
  * @subpackage Shopobjects\Price
  */
@@ -87,6 +88,22 @@ class Price {
 	public function getCurrency() {
 
 		return $this->currency;
+	}
+
+	/**
+	 * Prints the Price object as a string.
+	 *
+	 * This function returns the setted values of the Price object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @return String The Price as a string.
+	 */
+	public function __toString() {
+
+		return "<strong>Amount:</strong> " . $this->amount . "<br/>" .
+				"<strong>Tax type:</strong> " . $this->taxType . "<br/>" .
+				"<strong>Currency:</strong> " . $this->currency . "<br/>";
 	}
 }
 ?>

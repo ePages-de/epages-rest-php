@@ -11,6 +11,7 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.1.0
+ * @since 0.1.1 Can print the object itself.
  * @api
  * @package ep6
  * @subpackage Shopobjects\Product
@@ -36,7 +37,7 @@ class ProductSlideshow {
 	private $productID = null;
 
 	/** @var int Timestamp in ms when the next request needs to be done. */
-	private static $NEXT_REQUEST_TIMESTAMP = 0;
+	private $NEXT_REQUEST_TIMESTAMP = 0;
 
 	/**
 	 * Constructor of the Slideshow.
@@ -282,6 +283,22 @@ class ProductSlideshow {
 			return null;
 		}
 		return $this->images[$image]["Large"];
+	}
+
+	/**
+	 * Prints the Product slideshow object as a string.
+	 *
+	 * This function returns the setted values of the Product slideshow object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @return String The Product slideshow as a string.
+	 */
+	public function __toString() {
+
+		return "<strong>Images:</strong> " . $this->images . "<br/>" .
+				"<strong>Product ID:</strong> " . $this->productID . "<br/>" .
+				"<strong>Next allowed request time:</strong> " . self::$NEXT_REQUEST_TIMESTAMP . "<br/>";
 	}
 }
 ?>

@@ -12,6 +12,7 @@ namespace ep6;
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
  * @since 0.1.0 Use a default Locale and Currency.
+ * @since 0.1.1 The object can be echoed now.
  * @package ep6
  * @subpackage Shopobjects\Product
  * @example examples\createProductFilter.php Create and use the product filter.
@@ -100,26 +101,17 @@ class ProductFilter {
 	}
 
 	/**
-	 * This function prints the filter in a NOTIFICATION message.
+	 * This function prints the filter in a FORCE message.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale and Currency.
-	 * @api
+	 * @since 0.1.1 To print the product filter echo the object itself.
+	 * @deprecated To print the product filter echo the object itself.
 	 */
 	public function printFilter() {
 
-		$message = array();
-		if (!InputValidator::isEmpty($this->page)) array_push($message, "Page: " . $this->page);
-		if (!InputValidator::isEmpty($this->resultsPerPage)) array_push($message, "Results per page: " . $this->resultsPerPage);
-		if (!InputValidator::isEmpty($this->direction)) array_push($message, "Direction: " . $this->direction);
-		if (!InputValidator::isEmpty($this->sort)) array_push($message, "Sort: " . $this->sort);
-		if (!InputValidator::isEmpty($this->q)) array_push($message, "Search string: " . $this->q);
-		if (!InputValidator::isEmpty($this->categoryID)) array_push($message, "Category ID: " . $this->categoryID);
-		foreach ($this->IDs as $number => $id) {
-			array_push($message, "Product id" . $number . ": " . $id);
-		}
-		Logger::force($message);
+		Logger::force($this);
 	}
 
 	/**
@@ -529,6 +521,26 @@ class ProductFilter {
 		}
 
 		return implode("&", $parameter);
+	}
+
+	/**
+	 * Prints the Product attribute object as a string.
+	 *
+	 * This function returns the setted values of the Product attribute object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @return String The Product attribute as a string.
+	 */
+	public function __toString() {
+
+		return "<strong>Page:</strong> " . $this->page . "<br/>" .
+				"<strong>Results per page:</strong> " . $this->resultsPerPage . "<br/>" .
+				"<strong>Direction:</strong> " . $this->direction . "<br/>" .
+				"<strong>Sort:</strong> " . $this->sort . "<br/>" .
+				"<strong>Search string:</strong> " . $this->q . "<br/>" .
+				"<strong>Category ID:</strong> " . $this->categoryID . "<br/>" .
+				"<strong>Product IDs:</strong> " . $this->IDs . "<br/>";
 	}
 }
 ?>

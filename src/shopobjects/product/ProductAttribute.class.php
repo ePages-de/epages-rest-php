@@ -11,6 +11,7 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.1.0
+ * @since 0.1.1 The object can be echoed.
  * @api
  * @package ep6
  * @subpackage Shopobjects\Product
@@ -130,6 +131,24 @@ class ProductAttribute {
 	public function getValues() {
 
 		return $this->values;
+	}
+
+	/**
+	 * Prints the Product attribute object as a string.
+	 *
+	 * This function returns the setted values of the Product attribute object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @return String The Product attribute as a string.
+	 */
+	public function __toString() {
+
+		return "<strong>Internal name:</strong> " . $this->internName . "<br/>" .
+				"<strong>Name:</strong> " . $this->name . "<br/>" .
+				"<strong>Can have only one value:</strong> " . $this->oneValue . "<br/>" .
+				"<strong>Value type:</strong> " . $this->type . "<br/>" .
+				"<strong>Values:</strong> " . $this->values . "<br/>";
 	}
 }
 ?>

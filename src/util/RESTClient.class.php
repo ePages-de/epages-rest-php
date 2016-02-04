@@ -14,6 +14,7 @@ namespace ep6;
  * @since 0.0.0
  * @since 0.0.3 Use HTTPRequestMethod enum.
  * @since 0.1.0 Add a recommended wait time for the next request.
+ * @since 0.1.1 Now the object is printable via echo.
  * @package ep6
  * @subpackage Util
  */
@@ -84,20 +85,12 @@ class RESTClient {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
-	 * @api
+	 * @since 0.1.1 Echo the object itself to see all values setted.
+	 * @deprecated Echo the object itself to see all values setted.
 	 */
 	public static function printStatus() {
 
-		if (!self::$ISCONNECTED) {
-			Logger::force("The status of the REST client:<br/>" .
-				"<strong>You are not connected.</strong>");
-		}
-		else {
-			Logger::force("The status of the REST client:<br/>" .
-				"<strong>host</strong>: <i>" . self::$HOST . "</i><br/>" .
-				"<strong>shop</strong>: <i>" . self::$SHOP . "</i><br/>" .
-				"<strong>authToken</strong>: <i>" . self::$AUTHTOKEN . "</i>");
-		}
+		Logger::force(self);
 	}
 
 	/**
@@ -262,6 +255,27 @@ class RESTClient {
 		self::$ISCONNECTED = false;
 		self::$ISSSL = true;
 		return true;
+	}
+
+	/**
+	 * Prints the REST client as a string.
+	 *
+	 * This function returns the setted values of the REST client object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @return String The REST client as a string.
+	 */
+	public function __toString() {
+
+		if (!self::$ISCONNECTED) {
+			return "<strong>You are not connected.</strong>";
+		}
+		else {
+			return "<strong>Host</strong>: <i>" . self::$HOST . "</i><br/>" .
+				"<strong>Shop</strong>: <i>" . self::$SHOP . "</i><br/>" .
+				"<strong>AuthToken</strong>: <i>" . self::$AUTHTOKEN . "</i>";
+		};
 	}
 }
 

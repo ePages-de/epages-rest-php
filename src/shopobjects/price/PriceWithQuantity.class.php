@@ -11,6 +11,7 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.1.0
+ * @since 0.1.1 This object is echoable.
  * @package ep6
  * @subpackage Shopobjects\Price
  */
@@ -79,6 +80,24 @@ class PriceWithQuantity extends Price {
 		}
 
 		return !InputValidator::isEmptyArrayKey($this->quantityUnit, $locale) ? $this->quantityUnit[$locale] : null;
+	}
+
+	/**
+	 * Prints the Price with quantity object as a string.
+	 *
+	 * This function returns the setted values of the Price with quantity object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @return String The Price with quantity as a string.
+	 */
+	public function __toString() {
+
+		return "<strong>Amount:</strong> " . $this->amount . "<br/>" .
+				"<strong>Tax type:</strong> " . $this->taxType . "<br/>" .
+				"<strong>Currency:</strong> " . $this->currency . "<br/>" .
+				"<strong>Quantity amount:</strong> " . $this->quantityAmount . "<br/>" .
+				"<strong>Quantity unit:</strong> " . $this->quantityUnit . "<br/>";
 	}
 }
 ?>

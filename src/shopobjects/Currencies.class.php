@@ -13,6 +13,7 @@ namespace ep6;
  * @since 0.0.0
  * @since 0.1.0 Add a timestamp to save the next allowed REST call.
  * @since 0.1.0 Add configured used Currency.
+ * @since 0.1.1 Now the object is echoable.
  * @package ep6
  * @subpackage Shopobjects
  * @example examples\handleWithCurrencies.php Handle with currencies.
@@ -176,6 +177,23 @@ class Currencies {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * Prints the Currencies object as a string.
+	 *
+	 * This function returns the setted values of the Currencies object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @return String The Currencies as a string.
+	 */
+	public function __toString() {
+
+		return "<strong>Default currency:</strong> " . self::$DEFAULT . "<br/>" .
+				"<strong>Possible currencies:</strong> " . self::$ITEMS . "<br/>" .
+				"<strong>Configured currency:</strong> " . self::$USED . "<br/>" .
+				"<strong>Next allowed request:</strong> " . self::$NEXT_REQUEST_TIMESTAMP . "<br/>";
 	}
 
 }

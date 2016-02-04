@@ -13,6 +13,7 @@ namespace ep6;
  * @since 0.0.0
  * @since 0.1.0 Add a timestamp to save the next allowed REST call.
  * @since 0.1.0 Use a default Locale.
+ * @since 0.1.1 The information object can be echoed.
  * @package ep6
  * @subpackage Shopobjects\Information
  */
@@ -196,6 +197,22 @@ trait InformationTrait {
 
 		self::reload($locale);
 		return InputValidator::isEmpty(self::$DESCRIPTION) ? null : self::$DESCRIPTION;
+	}
+
+	/**
+	 * Prints the Information object as a string.
+	 *
+	 * This function returns the setted values of the Information object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @return String The Information as a string.
+	 */
+	public function __toString() {
+
+		return "<strong>Name:</strong> " . self::$NAME . "<br/>" .
+				"<strong>Navigation caption:</strong> " . self::$NAVIGATIONCAPTION . "<br/>" .
+				"<strong>Description:</strong> " . self::$DESCRIPTION . "<br/>";
 	}
 }
 ?>
