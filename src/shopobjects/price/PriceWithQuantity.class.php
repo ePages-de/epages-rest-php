@@ -81,7 +81,7 @@ class PriceWithQuantity extends Price {
 	/**
 	 * Prints the Price with quantity object as a string.
 	 *
-	 * This function returns the setted values of the Price with quantity object.
+	 * This function returns the setted attributes of the Price with quantity object.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.1
@@ -92,6 +92,7 @@ class PriceWithQuantity extends Price {
 		return "<strong>Amount:</strong> " . $this->amount . "<br/>" .
 				"<strong>Tax type:</strong> " . $this->taxType . "<br/>" .
 				"<strong>Currency:</strong> " . $this->currency . "<br/>" .
+				"<strong>Formatted:</strong> " . $this->formatted . "<br/>" .
 				"<strong>Quantity amount:</strong> " . $this->quantityAmount . "<br/>" .
 				"<strong>Quantity unit:</strong> " . $this->quantityUnit . "<br/>";
 	}
