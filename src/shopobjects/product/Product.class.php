@@ -402,6 +402,7 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Slideshows are not reloadable since now.
 	 * @api
 	 * @return ProductSlideshow Gets the product slideshow.
 	 */
@@ -410,9 +411,6 @@ class Product {
 		// if the slideshow is not loaded until now
 		if (InputValidator::isEmpty($this->slideshow)) {
 			$this->slideshow = new ProductSlideshow($this->productID);
-		}
-		else {
-			$this->slideshow->reload();
 		}
 		return $this->slideshow;
 	}

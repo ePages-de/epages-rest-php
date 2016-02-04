@@ -33,12 +33,6 @@ class ProductSlideshow {
 	 */
 	private $images = array();
 
-	/** @var String|null The space for the product id. */
-	private $productID = null;
-
-	/** @var int Timestamp in ms when the next request needs to be done. */
-	private $NEXT_REQUEST_TIMESTAMP = 0;
-
 	/**
 	 * Constructor of the Slideshow.
 	 *
@@ -88,12 +82,11 @@ class ProductSlideshow {
 
 				$object = null;
 				foreach ($image["sizes"] as $size) {
-
+					
 					// if there is "url" and "classifier" set in the image
 					if (!InputValidator::isEmptyArrayKey($size, "url") &&
 						!InputValidator::isEmptyArrayKey($size, "classifier")) {
-
-						$object[$size["classifier"]] == $size["url"];
+						$object[$size["classifier"]] = $size["url"];
 					}
 				}
 
@@ -109,31 +102,6 @@ class ProductSlideshow {
 				}
 			}
 		}
-
-		$this->productID = $productID;
-
-		// update timestamp when make the next request
-		$timestamp = (int) (microtime(true) * 1000);
-		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::$NEXT_RESPONSE_WAIT_TIME;
-	}
-
-	/**
-	 * This function checks whether a reload is needed.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.0
-	 * @api
-	 */
-	public static function reload() {
-
-		$timestamp = (int) (microtime(true) * 1000);
-
-		// if the value is empty
-		if (self::$NEXT_REQUEST_TIMESTAMP > $timestamp) {
-			return;
-		}
-
-		$this->load($this->productID);
 	}
 
 	/**
@@ -146,10 +114,10 @@ class ProductSlideshow {
 	 */
 	public function getCountImages() {
 
-		if (!InputValidator::isEmpty($this->images)) {
+		if (InputValidator::isEmpty($this->images)) {
 			return 0;
 		}
-		return sizeof($this->$images);
+		return sizeof($this->images);
 	}
 
 	/**
@@ -165,7 +133,7 @@ class ProductSlideshow {
 
 		if ($this->getCountImages() == 0 ||
 			!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1) ||
-			!InputValidator::isEmptyArrayKey($this->images[$image], "Thumbnail")) {
+			InputValidator::isEmptyArrayKey($this->images[$image], "Thumbnail")) {
 			return null;
 		}
 		return $this->images[$image]["Thumbnail"];
@@ -184,7 +152,7 @@ class ProductSlideshow {
 
 		if ($this->getCountImages() == 0 ||
 			!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1) ||
-			!InputValidator::isEmptyArrayKey($this->images[$image], "Small")) {
+			InputValidator::isEmptyArrayKey($this->images[$image], "Small")) {
 			return null;
 		}
 		return $this->images[$image]["Small"];
@@ -203,7 +171,7 @@ class ProductSlideshow {
 
 		if ($this->getCountImages() == 0 ||
 			!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1) ||
-			!InputValidator::isEmptyArrayKey($this->images[$image], "HotDeal")) {
+			InputValidator::isEmptyArrayKey($this->images[$image], "HotDeal")) {
 			return null;
 		}
 		return $this->images[$image]["HotDeal"];
@@ -222,7 +190,7 @@ class ProductSlideshow {
 
 		if ($this->getCountImages() == 0 ||
 			!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1) ||
-			!InputValidator::isEmptyArrayKey($this->images[$image], "MediumSmall")) {
+			InputValidator::isEmptyArrayKey($this->images[$image], "MediumSmall")) {
 			return null;
 		}
 		return $this->images[$image]["MediumSmall"];
@@ -241,7 +209,7 @@ class ProductSlideshow {
 
 		if ($this->getCountImages() == 0 ||
 			!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1) ||
-			!InputValidator::isEmptyArrayKey($this->images[$image], "Medium")) {
+			InputValidator::isEmptyArrayKey($this->images[$image], "Medium")) {
 			return null;
 		}
 		return $this->images[$image]["Medium"];
@@ -260,7 +228,7 @@ class ProductSlideshow {
 
 		if ($this->getCountImages() == 0 ||
 			!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1) ||
-			!InputValidator::isEmptyArrayKey($this->images[$image], "MediumLarge")) {
+			InputValidator::isEmptyArrayKey($this->images[$image], "MediumLarge")) {
 			return null;
 		}
 		return $this->images[$image]["MediumLarge"];
@@ -279,7 +247,7 @@ class ProductSlideshow {
 
 		if ($this->getCountImages() == 0 ||
 			!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1) ||
-			!InputValidator::isEmptyArrayKey($this->images[$image], "Large")) {
+			InputValidator::isEmptyArrayKey($this->images[$image], "Large")) {
 			return null;
 		}
 		return $this->images[$image]["Large"];
@@ -296,9 +264,7 @@ class ProductSlideshow {
 	 */
 	public function __toString() {
 
-		return "<strong>Images:</strong> " . $this->images . "<br/>" .
-				"<strong>Product ID:</strong> " . $this->productID . "<br/>" .
-				"<strong>Next allowed request time:</strong> " . self::$NEXT_REQUEST_TIMESTAMP . "<br/>";
+		return "<strong>Images:</strong> " . $this->images . "<br/>";
 	}
 }
 ?>
