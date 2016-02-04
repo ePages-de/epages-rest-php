@@ -15,6 +15,7 @@ namespace ep6;
  * @since 0.0.3 Use HTTPRequestMethod enum.
  * @since 0.1.0 Add a recommended wait time for the next request.
  * @since 0.1.1 Now the object is printable via echo.
+ * @since 0.1.1 Add function to change the wait time for next REST request.
  * @package ep6
  * @subpackage Util
  */
@@ -48,7 +49,7 @@ class RESTClient {
 	const HTTP_CONTENT_TYPE = "application/json";
 
 	/** @var int The time in ms the shop object should wait until the next request. */
-	const NEXT_RESPONSE_WAIT_TIME = 600;
+	public static $NEXT_RESPONSE_WAIT_TIME = 600;
 
 	/**
 	 * The constructor for the main class.
@@ -276,6 +277,25 @@ class RESTClient {
 				"<strong>Shop</strong>: <i>" . self::$SHOP . "</i><br/>" .
 				"<strong>AuthToken</strong>: <i>" . self::$AUTHTOKEN . "</i>";
 		};
+	}
+
+	/**
+	 * Change the time to wait with the next request.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @param int time The time in ms every reload needs to wait until get new information.
+	 * @return boolean True if the change works, false if not.
+	 * @api
+	 */
+	public static function setRequestWaitTime($time) {
+
+		if (!InputValidator::isRangedInt($time, 0)) {
+			return false;
+		}
+
+		self::$NEXT_RESPONSE_WAIT_TIME = $time;
+		return true;
 	}
 }
 

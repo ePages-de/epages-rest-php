@@ -77,7 +77,7 @@ class Locales {
 
 		// update timestamp when make the next request
 		$timestamp = (int) (microtime(true) * 1000);
-		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
+		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::$NEXT_RESPONSE_WAIT_TIME;
 	}
 
 	/**
