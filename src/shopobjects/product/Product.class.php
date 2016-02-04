@@ -18,6 +18,7 @@ namespace ep6;
  * @since 0.1.0 Implement attribute functionality.
  * @since 0.1.0 Implement stock level functionality.
  * @since 0.1.1 This object can be printed with echo.
+ * @since 0.1.1 Don't use locale parameter in get functions.
  * @package ep6
  * @subpackage Shopobjects\Product
  */
@@ -186,11 +187,11 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale.
+	 * @since 0.1.1 Fix to call function without locale parameter.
 	 * @api
-	 * @param String $locale The localization of the requested name.
 	 * @return String The name.
 	 */
-	public function getName($locale) {
+	public function getName() {
 
 		return $this->name;
 	}
@@ -201,11 +202,11 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale.
+	 * @since 0.1.1 Fix to call function without locale parameter.
 	 * @api
-	 * @param String $locale The localization of the requested short description.
 	 * @return String The short description.
 	 */
-	public function getShortDescription($locale) {
+	public function getShortDescription() {
 
 		return $this->shortDescription;
 	}
@@ -216,11 +217,11 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale.
+	 * @since 0.1.1 Fix to call function without locale parameter.
 	 * @api
-	 * @param String $locale The localization of the requested description.
 	 * @return String The description.
 	 */
-	public function getDescription($locale) {
+	public function getDescription() {
 
 		return $this->description;
 	}
@@ -257,11 +258,11 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale.
+	 * @since 0.1.1 Fix to call function without locale parameter.
 	 * @api
-	 * @param String $locale The localization of the requested availibility text.
 	 * @return String The availibility text.
 	 */
-	public function getAvailibilityText($locale) {
+	public function getAvailibilityText() {
 
 		return $this->availibilityText;
 	}
