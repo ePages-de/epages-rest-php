@@ -13,6 +13,7 @@ namespace ep6;
  * @since 0.1.0
  * @since 0.1.1 Can print the object itself.
  * @since 0.1.1 Delete functionality to reload itself.
+ * @since 0.1.1 Use unstatic objects.
  * @api
  * @package ep6
  * @subpackage Shopobjects\Product
@@ -20,7 +21,7 @@ namespace ep6;
 class ProductSlideshow {
 
 	/** @var String The REST path to the product slideshow ressource. */
-	private static $RESTPATH = "slideshow";
+	const RESTPATH = "slideshow";
 
 	/** @var Image[] The space for the images.
 	 *
@@ -52,6 +53,7 @@ class ProductSlideshow {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.1 Fix bug with nonsetted product URL and delete reload functionality.
+	 * @since 0.1.1 Use unstatic variables.
 	 * @api
 	 * @param String $productID The product ID to get images.
 	 */
@@ -63,7 +65,7 @@ class ProductSlideshow {
 			return;
 		}
 
-		$content = RESTClient::send("products/" . $productID . "/" . self::$RESTPATH);
+		$content = RESTClient::send("products/" . $productID . "/" . self::RESTPATH);
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
