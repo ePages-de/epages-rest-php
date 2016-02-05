@@ -19,19 +19,20 @@ namespace ep6;
  * @since 0.1.0 Implement stock level functionality.
  * @since 0.1.1 This object can be printed with echo.
  * @since 0.1.1 Don't use locale parameter in get functions.
+ * @since 0.1.1 Unstatic every attributes.
  * @package ep6
  * @subpackage Shopobjects\Product
  */
 class Product {
 
 	/** @var String The REST path to the product ressource. */
-	private static $RESTPATH = "products";
+	const RESTPATH = "products";
 
 	/** @var String The REST path to the product ressource. */
-	private static $RESTPATH_ATTRIBUTES = "custom-attributes";
+	const RESTPATH_ATTRIBUTES = "custom-attributes";
 
 	/** @var String The REST path to the product ressource. */
-	private static $RESTPATH_STOCKLEVEL = "stock-level";
+	const RESTPATH_STOCKLEVEL = "stock-level";
 
 	/** @var String|null The product ID. */
 	private $productID = null;
@@ -85,7 +86,7 @@ class Product {
 	private $stockLevel = null;
 
 	/** @var int Timestamp in ms when the next request needs to be done. */
-	private static $NEXT_REQUEST_TIMESTAMP = 0;
+	private $NEXT_REQUEST_TIMESTAMP = 0;
 
 	/**
 	 * This is the constructor of the product.
@@ -420,6 +421,7 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Unstatic every attributes.
 	 * @api
 	 * @return ProductAttributes[] Gets the product attributes in an array.
 	 */
@@ -429,7 +431,7 @@ class Product {
 
 		// if the attribute is not loaded until now
 		if (InputValidator::isEmptyArray($this->attributes) ||
-			self::$NEXT_REQUEST_TIMESTAMP < $timestamp) {
+			$this->NEXT_REQUEST_TIMESTAMP < $timestamp) {
 			$this->loadAttributes();
 		}
 		return $this->attributes;
@@ -450,7 +452,7 @@ class Product {
 
 		// if the attribute is not loaded until now
 		if (InputValidator::isEmptyArrayKey($this->attributes, $key) ||
-			self::$NEXT_REQUEST_TIMESTAMP < $timestamp) {
+			$this->NEXT_REQUEST_TIMESTAMP < $timestamp) {
 			$this->loadAttributes();
 		}
 
@@ -465,6 +467,7 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Unstatic every attributes.
 	 */
 	private function loadAttributes() {
 
@@ -473,7 +476,7 @@ class Product {
 			return;
 		}
 
-		$content = RESTClient::send(self::$RESTPATH . "/" . $this->productID . "/" .  self::$RESTPATH_ATTRIBUTES);
+		$content = RESTClient::send(self::RESTPATH . "/" . $this->productID . "/" .  self::RESTPATH_ATTRIBUTES);
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
@@ -482,7 +485,7 @@ class Product {
 
 		// if there are items
 		if (InputValidator::isEmptyArrayKey($content, "items")) {
-		    Logger::error("Respond for " . self::RESTPATH . "/" . $this->productID . "/" .  self::$RESTPATH_ATTRIBUTES . "can not be interpreted.");
+		    Logger::error("Respond for " . self::RESTPATH . "/" . $this->productID . "/" .  self::RESTPATH_ATTRIBUTES . "can not be interpreted.");
 			return;
 		}
 
@@ -495,7 +498,7 @@ class Product {
 
 		// update timestamp when make the next request
 		$timestamp = (int) (microtime(true) * 1000);
-		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::$NEXT_RESPONSE_WAIT_TIME;
+		$this->NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::$NEXT_RESPONSE_WAIT_TIME;
 	}
 
 	/**
@@ -503,6 +506,7 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Unstatic every attributes.
 	 * @api
 	 * @return float|null The stock level of the product.
 	 */
@@ -512,7 +516,7 @@ class Product {
 
 		// if the attribute is not loaded until now
 		if (InputValidator::isEmpty($this->stockLevel) ||
-			self::$NEXT_REQUEST_TIMESTAMP < $timestamp) {
+			$this->NEXT_REQUEST_TIMESTAMP < $timestamp) {
 			$this->loadStockLevel();
 		}
 
@@ -576,6 +580,7 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Unstatic every attributes.
 	 */
 	private function loadStockLevel() {
 
@@ -584,7 +589,7 @@ class Product {
 			return;
 		}
 
-		$content = RESTClient::send(self::$RESTPATH . "/" . $this->productID . "/" .  self::$RESTPATH_STOCKLEVEL);
+		$content = RESTClient::send(self::RESTPATH . "/" . $this->productID . "/" .  self::RESTPATH_STOCKLEVEL);
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content) ||
@@ -596,13 +601,14 @@ class Product {
 
 		// update timestamp when make the next request
 		$timestamp = (int) (microtime(true) * 1000);
-		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
+		$this->NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
 	}
 	/**
 	 * Loads the stock level.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Unstatic every attributes.
 	 * @param float $step The step to change.
 	 */
 	private function changeStockLevel($step) {
@@ -614,7 +620,7 @@ class Product {
 		}
 
 		$postfields = array("changeStocklevel" => $step);
-		$content = RESTClient::send(self::$RESTPATH . "/" . $this->productID . "/" .  self::$RESTPATH_STOCKLEVEL, $postfields);
+		$content = RESTClient::send(self::RESTPATH . "/" . $this->productID . "/" .  self::RESTPATH_STOCKLEVEL, $postfields);
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content) ||
@@ -626,7 +632,7 @@ class Product {
 
 		// update timestamp when make the next request
 		$timestamp = (int) (microtime(true) * 1000);
-		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
+		$this->NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
 	}
 
 	/**
@@ -636,6 +642,7 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Unstatic every attributes.
 	 * @return boolean True if the deletion was successful, false if not.
 	 */
 	public function delete() {
@@ -645,7 +652,7 @@ class Product {
 			return false;
 		}
 
-		RESTClient::send(self::$RESTPATH . "/" . $this->productID);
+		RESTClient::send(self::RESTPATH . "/" . $this->productID);
 
 		return true;
 	}

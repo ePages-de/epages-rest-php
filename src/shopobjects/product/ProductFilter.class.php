@@ -455,6 +455,7 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale.
+	 * @since 0.1.1 Unstatic every attributes.
 	 * @api
 	 * @return Products[] Returns an array of products.
 	 */

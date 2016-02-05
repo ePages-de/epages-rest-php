@@ -14,19 +14,20 @@ namespace ep6;
  * @since 0.1.0 Add a timestamp to save the next allowed REST call.
  * @since 0.1.0 Use a default Locale.
  * @since 0.1.1 The information object can be echoed.
+ * @since 0.1.1 Unstatic every attributes.
  * @package ep6
  * @subpackage Shopobjects\Information
  */
 trait InformationTrait {
 
 	/** @var String|null The names of the shop, language dependend. */
-	private static $NAME = null;
+	private $NAME = null;
 
 	/** @var String|null The navigation caption of the shop, language dependend. */
-	private static $NAVIGATIONCAPTION = null;
+	private $NAVIGATIONCAPTION = null;
 
 	/** @var String|null The description of the shop, language dependend. */
-	private static $DESCRIPTION = null;
+	private $DESCRIPTION = null;
 
 	/**
 	 * Reload the REST information.
@@ -36,16 +37,17 @@ trait InformationTrait {
 	 * @since 0.0.0
 	 * @since 0.0.1 Use HTTPRequestMethod enum.
 	 * @since 0.1.0 Use a default Locale.
+	 * @since 0.1.1 Unstatic every attributes.
 	 */
-	private static function load() {
+	private function load() {
 
 		// if the REST path empty -> this is the not the implementation or can't get something else
-		if (InputValidator::isEmpty(self::$RESTPATH) ||
+		if (InputValidator::isEmpty(self::RESTPATH) ||
 			!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
 			return;
 		}
 
-		$content = RESTClient::sendWithLocalization(self::$RESTPATH, Locales::getLocale());
+		$content = RESTClient::sendWithLocalization(self::RESTPATH, Locales::getLocale());
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
@@ -53,21 +55,21 @@ trait InformationTrait {
 		}
 
 		// reset values
-		self::resetValues();
+		$this->resetValues();
 
 		if (!InputValidator::isEmptyArrayKey($content, "name")) {
-			self::$NAME = $content["name"];
+			$this->NAME = $content["name"];
 		}
 		if (!InputValidator::isEmptyArrayKey($content, "navigationCaption")) {
-			self::$NAVIGATIONCAPTION = $content["navigationCaption"];
+			$this->NAVIGATIONCAPTION = $content["navigationCaption"];
 		}
 		if (!InputValidator::isEmptyArrayKey($content, "description")) {
-			self::$DESCRIPTION = $content["description"];
+			$this->DESCRIPTION = $content["description"];
 		}
 
 		// update timestamp when make the next request
 		$timestamp = (int) (microtime(true) * 1000);
-		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::$NEXT_RESPONSE_WAIT_TIME;
+		$this->NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::$NEXT_RESPONSE_WAIT_TIME;
 	}
 
 	/**
@@ -75,21 +77,22 @@ trait InformationTrait {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.1 Unstatic every attributes.
 	 * @api
 	 */
-	private static function reload() {
+	private function reload() {
 
 		$timestamp = (int) (microtime(true) * 1000);
 
 		// if the value is empty
-		if (!InputValidator::isEmpty(self::$NAME) &&
-			!InputValidator::isEmpty(self::$NAVIGATIONCAPTION) &&
-			!InputValidator::isEmpty(self::$DESCRIPTION) &&
-			self::$NEXT_REQUEST_TIMESTAMP > $timestamp) {
+		if (!InputValidator::isEmpty($this->NAME) &&
+			!InputValidator::isEmpty($this->NAVIGATIONCAPTION) &&
+			!InputValidator::isEmpty($this->DESCRIPTION) &&
+			$this->NEXT_REQUEST_TIMESTAMP > $timestamp) {
 			return;
 		}
 
-		self::load();
+		$this->load();
 	}
 
 	/**
@@ -98,12 +101,13 @@ trait InformationTrait {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use the default Locale.
+	 * @since 0.1.1 Unstatic every attributes.
 	 */
-	private static function resetValues() {
+	private function resetValues() {
 
-		self::$NAME = null;
-		self::$NAVIGATIONCAPTION = null;
-		self::$DESCRIPTION = null;
+		$this->NAME = null;
+		$this->NAVIGATIONCAPTION = null;
+		$this->DESCRIPTION = null;
 	}
 
 	/**
@@ -112,13 +116,14 @@ trait InformationTrait {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
+	 * @since 0.1.1 Unstatic every attributes.
 	 * @api
 	 * @deprecated
 	 * @return String|null The name in the default localization or null if the default name is unset.
 	 */
 	public function getDefaultName() {
 
-		return self::getName();
+		return $this->getName();
 	}
 
 	/**
@@ -128,13 +133,14 @@ trait InformationTrait {
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
 	 * @since 0.1.0 Use the default Locale.
+	 * @since 0.1.1 Unstatic every attributes.
 	 * @api
 	 * @return String|null The name or null if the name is unset.
 	 */
 	 public function getName() {
 
-		self::reload();
-		return InputValidator::isEmpty(self::$NAME) ? null : self::$NAME;
+		$this->reload();
+		return InputValidator::isEmpty($this->NAME) ? null : $this->NAME;
 	}
 
 	/**
@@ -143,13 +149,14 @@ trait InformationTrait {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
+	 * @since 0.1.1 Unstatic every attributes.
 	 * @api
 	 * @deprecated
 	 * @return String|null The navigation caption in the default localization or null if the default navigation caption is unset.
 	 */
 	public function getDefaultNavigationCaption() {
 
-		return self::getNavigationCaption();
+		return $this->getNavigationCaption();
 	}
 
 	/**
@@ -159,13 +166,14 @@ trait InformationTrait {
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
 	 * @since 0.1.0 Use the default Locale.
+	 * @since 0.1.1 Unstatic every attributes.
 	 * @api
 	 * @return String|null The navigation caption or null if the navigation caption is unset.
 	 */
 	 public function getNavigationCaption() {
 
-		self::reload($locale);
-		return InputValidator::isEmpty(self::$NAVIGATIONCAPTION) ? null : self::$NAVIGATIONCAPTION;
+		$this->reload($locale);
+		return InputValidator::isEmpty($this->NAVIGATIONCAPTION) ? null : $this->NAVIGATIONCAPTION;
 	}
 
 	/**
@@ -174,13 +182,14 @@ trait InformationTrait {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
+	 * @since 0.1.1 Unstatic every attributes.
 	 * @api
 	 * @deprecated
 	 * @return String|null The description in the default localization or null if the default description is unset.
 	 */
 	public function getDefaultDescription() {
 
-		return self::getDescription();
+		return $this->getDescription();
 	}
 
 	/**
@@ -190,13 +199,14 @@ trait InformationTrait {
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
 	 * @since 0.1.0 Use the default Locale.
+	 * @since 0.1.1 Unstatic every attributes.
 	 * @api
 	 * @return String|null The localized description or null if the description is unset.
 	 */
 	 public function getDescription() {
 
-		self::reload($locale);
-		return InputValidator::isEmpty(self::$DESCRIPTION) ? null : self::$DESCRIPTION;
+		$this->reload($locale);
+		return InputValidator::isEmpty($this->DESCRIPTION) ? null : $this->DESCRIPTION;
 	}
 
 	/**
@@ -210,9 +220,9 @@ trait InformationTrait {
 	 */
 	public function __toString() {
 
-		return "<strong>Name:</strong> " . self::$NAME . "<br/>" .
-				"<strong>Navigation caption:</strong> " . self::$NAVIGATIONCAPTION . "<br/>" .
-				"<strong>Description:</strong> " . self::$DESCRIPTION . "<br/>";
+		return "<strong>Name:</strong> " . $this->NAME . "<br/>" .
+				"<strong>Navigation caption:</strong> " . $this->NAVIGATIONCAPTION . "<br/>" .
+				"<strong>Description:</strong> " . $this->DESCRIPTION . "<br/>";
 	}
 }
 ?>
