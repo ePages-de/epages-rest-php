@@ -37,31 +37,42 @@ require_once(__DIR__ . "/shopobjects/price/PriceWithQuantity.class.php");
  * @since 0.0.0
  * @since 0.1.0 Configure the Locale and Currency to make REST calls.
  * @since 0.1.1 Now the shop can be printed via echo.
+ * @since 0.1.1 Save their own shop credentials and use Information objects unstatic.
  * @package ep6
  * @example examples\connectingShop.php Create a new epage 6 shop object and disconnect.
  */
 class Shop {
 
 	/** @var ContactInformation|null The contact information object. */
-	private static $contactInformation = null;
+	private $contactInformation = null;
 
 	/** @var PrivacyPolicyInformation|null The privacy policy information object. */
-	private static $privacyPolicyInformation = null;
+	private $privacyPolicyInformation = null;
 
 	/** @var RightsOfWithdrawalInformation|null The rights of withdrawal information object. */
-	private static $rightsOfWithdrawalInformation = null;
+	private $rightsOfWithdrawalInformation = null;
 
 	/** @var ShippingInformation|null The shipping information object. */
-	private static $shippingInformation = null;
+	private $shippingInformation = null;
 
-	/** @var TermsAndConditionInformation|null The terms and condition information object. */
-	private static $termsAndConditionInformation = null;
+	/** @var String|null The ePages host to connect. */
+	private $host = null;
+
+	/** @var String|null The refered ePages ahop. */
+	private $shop = null;
+
+	/** @var String|null The authentification token (access token). */
+	private $authToken = null;
+
+	/** @var boolean|null You use https or http? Default is true. */
+	private $isssl = true;
 
 	/**
 	 * The constructor for the shop class.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.1 Save the own login credentials.
 	 * @api
 	 * @param String $host The ePages host to connect.
 	 * @param String $shop The refered ePages shop.
@@ -71,7 +82,32 @@ class Shop {
 	 */
 	function __construct($host, $shop, $authToken, $isssl = true) {
 
-		RESTClient::connect($host, $shop, $authToken, $isssl);
+		if (!InputValidator::isHost($host) ||
+			!InputValidator::isShop($shop)) {
+			return;
+		}
+		
+		$this->host = $host;
+		$this->shop = $shop;
+		$this->authToken = $authToken;
+		$this->isssl = $isssl;
+
+		RESTClient::connect($this->host, $this->shop, $this->authToken, $this->isssl);
+	}
+
+	/**
+	 * Use this shop from now.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.1
+	 * @api
+	 */
+	function useShop() {
+
+		if (InputValidator::isEmpty($this->host) ||
+			InputValidator::isEmpty($this->shop)) {
+			RESTClient::disconnect($this->host, $this->shop, $this->authToken, $this->isssl);
+		}
 	}
 
 	/**
@@ -79,11 +115,16 @@ class Shop {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.1 Unset the own shop credentials.
 	 * @api
 	 * @source 2 1 Disconnect the REST client.
 	 */
 	function __destruct() {
 
+		$this->host = null;
+		$this->shop = null;
+		$this->authToken = null;
+		$this->isssl = null;
 		RESTClient::disconnect();
 	}
 
@@ -214,14 +255,15 @@ class Shop {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.1 Create an unstatic Information object.
 	 * @return ContactInformation|null The contact information of the shop or null if the REST call will fail.
 	 */
 	public function getContactInformation() {
 
-		if (self::$contactInformation==null) {
-			self::$contactInformation = new ContactInformation();
+		if ($this->contactInformation==null) {
+			$this->contactInformation = new ContactInformation();
 		}
-		return self::$contactInformation;
+		return $this->contactInformation;
 	}
 
 	/**
@@ -230,14 +272,15 @@ class Shop {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.1 Create an unstatic Information object.
 	 * @return PrivacyPolicyInformation|null The privacy policy information of the shop or null if the REST call will fail.
 	 */
 	public function getPrivacyPolicyInformation() {
 
-		if (self::$privacyPolicyInformation==null) {
-			self::$privacyPolicyInformation = new PrivacyPolicyInformation();
+		if ($this->privacyPolicyInformation==null) {
+			$this->privacyPolicyInformation = new PrivacyPolicyInformation();
 		}
-		return self::$privacyPolicyInformation;
+		return $this->privacyPolicyInformation;
 	}
 
 	/**
@@ -246,14 +289,15 @@ class Shop {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.1 Create an unstatic Information object.
 	 * @return RightsOfWithdrawalInformation|null The rights of withdrawal information of the shop or null if the REST call will fail.
 	 */
 	public function getRightsOfWithdrawalInformation() {
 
-		if (self::$rightsOfWithdrawalInformation==null) {
-			self::$rightsOfWithdrawalInformation = new RightsOfWithdrawalInformation();
+		if ($this->rightsOfWithdrawalInformation==null) {
+			$this->rightsOfWithdrawalInformation = new RightsOfWithdrawalInformation();
 		}
-		return self::$rightsOfWithdrawalInformation;
+		return $this->rightsOfWithdrawalInformation;
 	}
 
 	/**
@@ -262,14 +306,15 @@ class Shop {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.1 Create an unstatic Information object.
 	 * @return ShippingInformation|null The shipping information of the shop or null if the REST call fails.
 	 */
 	public function getShippingInformation() {
 
-		if (self::$shippingInformation==null) {
-			self::$shippingInformation = new ShippingInformation();
+		if ($this->shippingInformation==null) {
+			$this->shippingInformation = new ShippingInformation();
 		}
-		return self::$shippingInformation;
+		return $this->shippingInformation;
 	}
 
 	/**
@@ -278,14 +323,15 @@ class Shop {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.1 Create an unstatic Information object.
 	 * @return TermsAndCondiditonInformation The terms and condition information of the shop or null if the REST call fails.
 	 */
 	public function getTermsAndConditionInformation() {
 
-		if (self::$termsAndConditionInformation==null) {
-			self::$termsAndConditionInformation = new TermsAndConditionInformation();
+		if ($this->termsAndConditionInformation==null) {
+			$this->termsAndConditionInformation = new TermsAndConditionInformation();
 		}
-		return self::$termsAndConditionInformation;
+		return $this->termsAndConditionInformation;
 	}
 
 	/**

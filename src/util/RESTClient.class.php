@@ -16,16 +16,17 @@ namespace ep6;
  * @since 0.1.0 Add a recommended wait time for the next request.
  * @since 0.1.1 Now the object is printable via echo.
  * @since 0.1.1 Add function to change the wait time for next REST request.
+ * @since 0.1.1 Set $HOST and $SHOP to default value null.
  * @package ep6
  * @subpackage Util
  */
 class RESTClient {
 
 	/** @var String|null The ePages host to connect. */
-	private static $HOST;
+	private static $HOST = null;
 
 	/** @var String|null The refered ePages ahop. */
-	private static $SHOP;
+	private static $SHOP = null;
 
 	/** @var String|null The authentification token (access token). */
 	private static $AUTHTOKEN = null;
