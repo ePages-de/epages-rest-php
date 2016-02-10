@@ -1,0 +1,11 @@
+{
+	"name": "epages/rest-sdk",
+	"type": "SDK",
+	"description": "This is the REST SDK to connect to an epages shop. You can use it as a developer for develop epages apps.",
+    "keywords": ["ePages", "REST SDK"],
+    "homepage": "https://developer.epages.com/",
+    "license": "MIT",
+	"require": {
+        "php": ">=5.4.0"
+	}
+}
