@@ -541,7 +541,7 @@ class ProductFilter {
 				"<strong>Sort:</strong> " . $this->sort . "<br/>" .
 				"<strong>Search string:</strong> " . $this->q . "<br/>" .
 				"<strong>Category ID:</strong> " . $this->categoryID . "<br/>" .
-				"<strong>Product IDs:</strong> " . $this->IDs . "<br/>";
+				"<strong>Product IDs:</strong> " . print_r($this->IDs) . "<br/>";
 	}
 }
 ?>
