@@ -19,7 +19,7 @@ namespace ep6;
 class Image {
 
 	/** @var string This is the path to the origin URL. */
-	private $URL;
+	private $URL = null;
 
 	/**
 	 * To create a new image object use this constructor with the original URL.

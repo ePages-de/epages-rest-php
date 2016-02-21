@@ -275,7 +275,7 @@ class ProductSlideshow {
 	 */
 	public function __toString() {
 
-		return "<strong>Images:</strong> " . $this->images . "<br/>";
+		return "<strong>Images:</strong> " . print_r($this->images) . "<br/>";
 	}
 }
 ?>

@@ -354,18 +354,5 @@ class Shop {
 		return false;
 	}
 
-	/**
-	 * Prints the shop as a string.
-	 *
-	 * This function returns the setted values of the shop object.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.1
-	 * @return String The Shop as a string.
-	 */
-	public function __toString() {
-		return RESTClient;
-	}
-
 }
 ?>

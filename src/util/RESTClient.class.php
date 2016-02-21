@@ -260,27 +260,6 @@ class RESTClient {
 	}
 
 	/**
-	 * Prints the REST client as a string.
-	 *
-	 * This function returns the setted values of the REST client object.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.1
-	 * @return String The REST client as a string.
-	 */
-	public function __toString() {
-
-		if (!self::$ISCONNECTED) {
-			return "<strong>You are not connected.</strong>";
-		}
-		else {
-			return "<strong>Host</strong>: <i>" . self::$HOST . "</i><br/>" .
-				"<strong>Shop</strong>: <i>" . self::$SHOP . "</i><br/>" .
-				"<strong>AuthToken</strong>: <i>" . self::$AUTHTOKEN . "</i>";
-		};
-	}
-
-	/**
 	 * Change the time to wait with the next request.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>

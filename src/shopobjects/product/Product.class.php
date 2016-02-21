@@ -675,7 +675,7 @@ class Product {
 				"<strong>For sale:</strong> " . $this->forSale . "<br/>" .
 				"<strong>Special offer:</strong> " . $this->specialOffer . "<br/>" .
 				"<strong>Availibility text:</strong> " . $this->availibilityText . "<br/>" .
-				"<strong>Images:</strong> " . $this->images . "<br/>" .
+				"<strong>Images:</strong> " . print_r($this->images) . "<br/>" .
 				"<strong>Price:</strong> " . $this->price . "<br/>" .
 				"<strong>Deposit price:</strong> " . $this->depositPrice . "<br/>" .
 				"<strong>Ecoparticipation price:</strong> " . $this->ecoParticipationPrice . "<br/>";

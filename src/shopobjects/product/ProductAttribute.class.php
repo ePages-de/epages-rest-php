@@ -148,7 +148,7 @@ class ProductAttribute {
 				"<strong>Name:</strong> " . $this->name . "<br/>" .
 				"<strong>Can have only one value:</strong> " . $this->oneValue . "<br/>" .
 				"<strong>Value type:</strong> " . $this->type . "<br/>" .
-				"<strong>Values:</strong> " . $this->values . "<br/>";
+				"<strong>Values:</strong> " . print_r($this->values) . "<br/>";
 	}
 }
 ?>

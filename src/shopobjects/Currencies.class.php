@@ -179,22 +179,5 @@ class Currencies {
 		return false;
 	}
 
-	/**
-	 * Prints the Currencies object as a string.
-	 *
-	 * This function returns the setted values of the Currencies object.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.1
-	 * @return String The Currencies as a string.
-	 */
-	public function __toString() {
-
-		return "<strong>Default currency:</strong> " . self::$DEFAULT . "<br/>" .
-				"<strong>Possible currencies:</strong> " . self::$ITEMS . "<br/>" .
-				"<strong>Configured currency:</strong> " . self::$USED . "<br/>" .
-				"<strong>Next allowed request:</strong> " . self::$NEXT_REQUEST_TIMESTAMP . "<br/>";
-	}
-
 }
 ?>
