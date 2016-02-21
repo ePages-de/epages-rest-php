@@ -133,11 +133,13 @@ class Product {
 			}
 
 			// parse images
-			foreach ($productParameter['images'] as $image) {
-				if (InputValidator::isArray($image) &&
-					!InputValidator::isEmptyArrayKey($image, "classifier") &&
-					!InputValidator::isEmptyArrayKey($image, "url")) {
-					$this->images[$image['classifier']] = new Image($image['url']);
+			if (!InputValidator::isEmptyArrayKey($productParameter, "images")) {
+				foreach ($productParameter['images'] as $image) {
+					if (InputValidator::isArray($image) &&
+						!InputValidator::isEmptyArrayKey($image, "classifier") &&
+						!InputValidator::isEmptyArrayKey($image, "url")) {
+						$this->images[$image['classifier']] = new Image($image['url']);
+					}
 				}
 			}
 
@@ -601,7 +603,7 @@ class Product {
 
 		// update timestamp when make the next request
 		$timestamp = (int) (microtime(true) * 1000);
-		$this->NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
+		$this->NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::$NEXT_RESPONSE_WAIT_TIME;
 	}
 	/**
 	 * Loads the stock level.
@@ -632,7 +634,7 @@ class Product {
 
 		// update timestamp when make the next request
 		$timestamp = (int) (microtime(true) * 1000);
-		$this->NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::NEXT_RESPONSE_WAIT_TIME;
+		$this->NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::$NEXT_RESPONSE_WAIT_TIME;
 	}
 
 	/**
