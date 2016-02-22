@@ -123,9 +123,13 @@
 				0.0.0<br>
 				<b>Since:</b>
 				0.1.0 Configure the Locale and Currency to make REST calls.<br>
+				<b>Since:</b>
+				0.1.1 Now the shop can be printed via echo.<br>
+				<b>Since:</b>
+				0.1.1 Save their own shop credentials and use Information objects unstatic.<br>
 				<b>Example:</b>
 				examples\connectingShop.php Create a new epage 6 shop object and disconnect.<br>
-			<b>Located at</b> <a href="source-class-ep6.Shop.html#33-309" title="Go to source code">Shop.class.php</a>
+			<b>Located at</b> <a href="source-class-ep6.Shop.html#33-357" title="Go to source code">Shop.class.php</a>
 		<br>
 	</div>
 
@@ -145,7 +149,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-ep6.Shop.html#59-74" title="Go to source code">__construct</a>( <span>String <var>$host</var></span>, <span>String <var>$shop</var></span>, <span>String <var>$authToken</var></span>, <span>boolean <var>$isssl</var> = <span class="php-keyword1">true</span></span> )</code>
+		<code><a href="source-class-ep6.Shop.html#70-96" title="Go to source code">__construct</a>( <span>String <var>$host</var></span>, <span>String <var>$shop</var></span>, <span>String <var>$authToken</var></span>, <span>boolean <var>$isssl</var> = <span class="php-keyword1">true</span></span> )</code>
 
 		<div class="description short">
 			<p>The constructor for the shop class.</p>
@@ -176,6 +180,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.1 Save the own login credentials.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -183,6 +188,47 @@
 				<h4>Source</h4>
 				<div class="list">
 						2 1 Calls the REST client and connect.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="useShop" id="_useShop">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_useShop">#</a>
+		<code><a href="source-class-ep6.Shop.html#98-111" title="Go to source code">useShop</a>( )</code>
+
+		<div class="description short">
+			<p>Use this shop from now.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Use this shop from now.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.1<br>
+				</div>
+				<h4>Api</h4>
+				<div class="list">
 				</div>
 
 
@@ -201,7 +247,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___destruct">#</a>
-		<code><a href="source-class-ep6.Shop.html#76-87" title="Go to source code">__destruct</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#113-129" title="Go to source code">__destruct</a>( )</code>
 
 		<div class="description short">
 			<p>The destructor for the main class.</p>
@@ -221,6 +267,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.1 Unset the own shop credentials.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -234,7 +281,7 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="printStatus" id="_printStatus">
+	<tr data-order="printStatus" id="_printStatus" class="deprecated">
 
 		<td class="attributes"><code>
 			 public 
@@ -246,7 +293,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_printStatus">#</a>
-		<code><a href="source-class-ep6.Shop.html#89-101" title="Go to source code">printStatus</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#131-144" title="Go to source code">printStatus</a>( )</code>
 
 		<div class="description short">
 			<p>Prints the connection status via "FORCE".</p>
@@ -257,6 +304,10 @@
 
 <p>This function will print the current values of the REST client.</p>
 
+				<h4>Deprecated</h4>
+				<div class="list">
+						Echo the object itself to see all values setted.<br>
+				</div>
 
 
 
@@ -268,9 +319,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
+						0.1.1 Echo the object itself to see all values setted.<br>
 				</div>
 
 
@@ -289,7 +338,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDefaultLocales">#</a>
-		<code><a href="source-class-ep6.Shop.html#103-114" title="Go to source code">getDefaultLocales</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#146-157" title="Go to source code">getDefaultLocales</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the default localization.</p>
@@ -334,7 +383,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getLocales">#</a>
-		<code><a href="source-class-ep6.Shop.html#116-127" title="Go to source code">getLocales</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#159-170" title="Go to source code">getLocales</a>( )</code>
 
 		<div class="description short">
 			<p>Returns all localizations.</p>
@@ -379,7 +428,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDefaultCurrencies">#</a>
-		<code><a href="source-class-ep6.Shop.html#129-140" title="Go to source code">getDefaultCurrencies</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#172-183" title="Go to source code">getDefaultCurrencies</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the default currencies.</p>
@@ -424,7 +473,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getCurrencies">#</a>
-		<code><a href="source-class-ep6.Shop.html#142-153" title="Go to source code">getCurrencies</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#185-196" title="Go to source code">getCurrencies</a>( )</code>
 
 		<div class="description short">
 			<p>Returns all currencies.</p>
@@ -469,7 +518,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getLocale">#</a>
-		<code><a href="source-class-ep6.Shop.html#155-166" title="Go to source code">getLocale</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#198-209" title="Go to source code">getLocale</a>( )</code>
 
 		<div class="description short">
 			<p>Returns configured Locale.</p>
@@ -514,7 +563,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setLocale">#</a>
-		<code><a href="source-class-ep6.Shop.html#168-180" title="Go to source code">setLocale</a>( <span>String <var>$locale</var></span> )</code>
+		<code><a href="source-class-ep6.Shop.html#211-223" title="Go to source code">setLocale</a>( <span>String <var>$locale</var></span> )</code>
 
 		<div class="description short">
 			<p>Set configured Locale.</p>
@@ -564,7 +613,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getCurrency">#</a>
-		<code><a href="source-class-ep6.Shop.html#182-193" title="Go to source code">getCurrency</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#225-236" title="Go to source code">getCurrency</a>( )</code>
 
 		<div class="description short">
 			<p>Returns configured Currency.</p>
@@ -609,7 +658,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setCurrency">#</a>
-		<code><a href="source-class-ep6.Shop.html#195-207" title="Go to source code">setCurrency</a>( <span>String <var>$currency</var></span> )</code>
+		<code><a href="source-class-ep6.Shop.html#238-250" title="Go to source code">setCurrency</a>( <span>String <var>$currency</var></span> )</code>
 
 		<div class="description short">
 			<p>Set configured Currency.</p>
@@ -659,7 +708,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getContactInformation">#</a>
-		<code><a href="source-class-ep6.Shop.html#209-223" title="Go to source code">getContactInformation</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#252-267" title="Go to source code">getContactInformation</a>( )</code>
 
 		<div class="description short">
 			<p>Get the contact information.</p>
@@ -683,6 +732,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.1 Create an unstatic Information object.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -704,7 +754,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getPrivacyPolicyInformation">#</a>
-		<code><a href="source-class-ep6.Shop.html#225-239" title="Go to source code">getPrivacyPolicyInformation</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#269-284" title="Go to source code">getPrivacyPolicyInformation</a>( )</code>
 
 		<div class="description short">
 			<p>Get the privacy policy information.</p>
@@ -728,6 +778,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.1 Create an unstatic Information object.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -749,7 +800,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRightsOfWithdrawalInformation">#</a>
-		<code><a href="source-class-ep6.Shop.html#241-255" title="Go to source code">getRightsOfWithdrawalInformation</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#286-301" title="Go to source code">getRightsOfWithdrawalInformation</a>( )</code>
 
 		<div class="description short">
 			<p>Get the rights of withdrawal information.</p>
@@ -773,6 +824,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.1 Create an unstatic Information object.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -794,7 +846,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getShippingInformation">#</a>
-		<code><a href="source-class-ep6.Shop.html#257-271" title="Go to source code">getShippingInformation</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#303-318" title="Go to source code">getShippingInformation</a>( )</code>
 
 		<div class="description short">
 			<p>Get the shipping information.</p>
@@ -818,6 +870,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.1 Create an unstatic Information object.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -839,7 +892,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getTermsAndConditionInformation">#</a>
-		<code><a href="source-class-ep6.Shop.html#273-287" title="Go to source code">getTermsAndConditionInformation</a>( )</code>
+		<code><a href="source-class-ep6.Shop.html#320-335" title="Go to source code">getTermsAndConditionInformation</a>( )</code>
 
 		<div class="description short">
 			<p>Get the terms and condition information.</p>
@@ -863,6 +916,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
+						0.1.1 Create an unstatic Information object.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -884,7 +938,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_deleteProduct">#</a>
-		<code><a href="source-class-ep6.Shop.html#289-307" title="Go to source code">deleteProduct</a>( <span><code><a href="class-ep6.Product.html">ep6\Product</a></code> <var>&amp; $product</var></span> )</code>
+		<code><a href="source-class-ep6.Shop.html#337-355" title="Go to source code">deleteProduct</a>( <span><code><a href="class-ep6.Product.html">ep6\Product</a></code> <var>&amp; $product</var></span> )</code>
 
 		<div class="description short">
 			<p>Deletes a product.</p>

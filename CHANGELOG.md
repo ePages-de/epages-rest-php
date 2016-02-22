@@ -1,3 +1,20 @@
+# 0.1.1 (22.02.2016)
+
+## Features
+- #75 Enable setting the maximum wait time for next request.
+- #80 Save formatted value in price.
+
+## Bugfixes
+- #76 Delete locale parameter of product getName().
+- #78 and #87 Fix and refactor slideshow.
+- #79 Fix Product getPrice.
+- #82 Use Shop in an unstatic way.
+- #83 Unstatic many objects.
+- #86 Fix output of some __toString() functions.
+
+## Enhancements
+- #81 Use __toString() functions.
+
 # 0.1.0 (28.01.2016)
 
 ## Enhancements
