@@ -93,9 +93,7 @@ $products = $productFilter->getProducts();
 			<td>
 				<nobr>
 				<?php
-				echo $product->getPrice()->getAmount()
-					. " "
-					. $product->getPrice()->getCurrency()
+				echo $product->getPrice()->getFormatted()
 					. " / "
 					. $product->getPrice()->getQuantityAmount()
 					. " "

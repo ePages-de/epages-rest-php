@@ -121,9 +121,15 @@
 				David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
 				<b>Since:</b>
 				0.1.0<br>
+				<b>Since:</b>
+				0.1.1 Can print the object itself.<br>
+				<b>Since:</b>
+				0.1.1 Delete functionality to reload itself.<br>
+				<b>Since:</b>
+				0.1.1 Use unstatic objects.<br>
 				<b>Api</b>
 				<br>
-			<b>Located at</b> <a href="source-class-ep6.ProductSlideshow.html#9-286" title="Go to source code">shopobjects/product/ProductSlideshow.class.php</a>
+			<b>Located at</b> <a href="source-class-ep6.ProductSlideshow.html#9-280" title="Go to source code">shopobjects/product/ProductSlideshow.class.php</a>
 		<br>
 	</div>
 
@@ -143,7 +149,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#41-51" title="Go to source code">__construct</a>( <span>String <var>$productID</var></span> )</code>
+		<code><a href="source-class-ep6.ProductSlideshow.html#38-48" title="Go to source code">__construct</a>( <span>String <var>$productID</var></span> )</code>
 
 		<div class="description short">
 			<p>Constructor of the Slideshow.</p>
@@ -177,47 +183,6 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="reload" id="_reload">
-
-		<td class="attributes"><code>
-			 public static
-
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_reload">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#119-136" title="Go to source code">reload</a>( )</code>
-
-		<div class="description short">
-			<p>This function checks whether a reload is needed.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>This function checks whether a reload is needed.</p>
-
-
-
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="getCountImages" id="_getCountImages">
 
 		<td class="attributes"><code>
@@ -230,7 +195,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getCountImages">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#138-152" title="Go to source code">getCountImages</a>( )</code>
+		<code><a href="source-class-ep6.ProductSlideshow.html#111-125" title="Go to source code">getCountImages</a>( )</code>
 
 		<div class="description short">
 			<p>Gets the number of available images.</p>
@@ -275,7 +240,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getThumbnailImage">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#154-171" title="Go to source code">getThumbnailImage</a>( <span>integer <var>$image</var></span> )</code>
+		<code><a href="source-class-ep6.ProductSlideshow.html#127-145" title="Go to source code">getThumbnailImage</a>( <span>integer <var>$image</var></span> )</code>
 
 		<div class="description short">
 			<p>Returns a thumbnail image.</p>
@@ -304,6 +269,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.0<br>
+						0.1.1 Fix bug with returning image.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -325,7 +291,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSmallImage">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#173-190" title="Go to source code">getSmallImage</a>( <span>integer <var>$image</var></span> )</code>
+		<code><a href="source-class-ep6.ProductSlideshow.html#147-165" title="Go to source code">getSmallImage</a>( <span>integer <var>$image</var></span> )</code>
 
 		<div class="description short">
 			<p>Returns a small image.</p>
@@ -354,6 +320,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.0<br>
+						0.1.1 Fix bug with returning image.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -375,7 +342,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getHotDealImage">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#192-209" title="Go to source code">getHotDealImage</a>( <span>integer <var>$image</var></span> )</code>
+		<code><a href="source-class-ep6.ProductSlideshow.html#167-185" title="Go to source code">getHotDealImage</a>( <span>integer <var>$image</var></span> )</code>
 
 		<div class="description short">
 			<p>Returns a hotdeal image.</p>
@@ -404,6 +371,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.0<br>
+						0.1.1 Fix bug with returning image.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -425,7 +393,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMediumSmallImage">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#211-228" title="Go to source code">getMediumSmallImage</a>( <span>integer <var>$image</var></span> )</code>
+		<code><a href="source-class-ep6.ProductSlideshow.html#187-205" title="Go to source code">getMediumSmallImage</a>( <span>integer <var>$image</var></span> )</code>
 
 		<div class="description short">
 			<p>Returns a medium small image.</p>
@@ -454,6 +422,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.0<br>
+						0.1.1 Fix bug with returning image.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -475,7 +444,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMediumImage">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#230-247" title="Go to source code">getMediumImage</a>( <span>integer <var>$image</var></span> )</code>
+		<code><a href="source-class-ep6.ProductSlideshow.html#207-225" title="Go to source code">getMediumImage</a>( <span>integer <var>$image</var></span> )</code>
 
 		<div class="description short">
 			<p>Returns a medium image.</p>
@@ -504,6 +473,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.0<br>
+						0.1.1 Fix bug with returning image.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -525,7 +495,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMediumLargeImage">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#249-266" title="Go to source code">getMediumLargeImage</a>( <span>integer <var>$image</var></span> )</code>
+		<code><a href="source-class-ep6.ProductSlideshow.html#227-245" title="Go to source code">getMediumLargeImage</a>( <span>integer <var>$image</var></span> )</code>
 
 		<div class="description short">
 			<p>Returns a medium large image.</p>
@@ -554,6 +524,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.0<br>
+						0.1.1 Fix bug with returning image.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -575,7 +546,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getLargeImage">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#268-285" title="Go to source code">getLargeImage</a>( <span>integer <var>$image</var></span> )</code>
+		<code><a href="source-class-ep6.ProductSlideshow.html#247-265" title="Go to source code">getLargeImage</a>( <span>integer <var>$image</var></span> )</code>
 
 		<div class="description short">
 			<p>Returns a large image.</p>
@@ -604,9 +575,54 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.0<br>
+						0.1.1 Fix bug with returning image.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__toString" id="___toString">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___toString">#</a>
+		<code><a href="source-class-ep6.ProductSlideshow.html#267-279" title="Go to source code">__toString</a>( )</code>
+
+		<div class="description short">
+			<p>Prints the Product slideshow object as a string.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Prints the Product slideshow object as a string.</p>
+
+<p>This function returns the setted values of the Product slideshow object.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>The Product slideshow as a string.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.1<br>
 				</div>
 
 
@@ -622,6 +638,33 @@
 
 
 
+	<table class="summary constants" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="RESTPATH" id="RESTPATH">
+
+		<td class="attributes"><code>String</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-ep6.ProductSlideshow.html#23-24" title="Go to source code"><b>RESTPATH</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#RESTPATH" class="anchor">#</a>
+				<code><span class="php-quote">&quot;slideshow&quot;</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
 
 
 

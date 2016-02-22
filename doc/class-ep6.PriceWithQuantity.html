@@ -135,7 +135,11 @@
 				David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
 				<b>Since:</b>
 				0.1.0<br>
-			<b>Located at</b> <a href="source-class-ep6.PriceWithQuantity.html#9-83" title="Go to source code">shopobjects/price/PriceWithQuantity.class.php</a>
+				<b>Since:</b>
+				0.1.1 This object is echoable.<br>
+				<b>Since:</b>
+				0.1.1 Disallow the locale parameter.<br>
+			<b>Located at</b> <a href="source-class-ep6.PriceWithQuantity.html#9-99" title="Go to source code">shopobjects/price/PriceWithQuantity.class.php</a>
 		<br>
 	</div>
 
@@ -155,7 +159,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-ep6.PriceWithQuantity.html#25-51" title="Go to source code">__construct</a>( <span>mixed[] <var>$priceParameter</var></span>, <span>mixed[] <var>$quantityParameter</var></span>, <span>String <var>$locale</var></span> )</code>
+		<code><a href="source-class-ep6.PriceWithQuantity.html#27-51" title="Go to source code">__construct</a>( <span>mixed[] <var>$priceParameter</var></span>, <span>mixed[] <var>$quantityParameter</var></span> )</code>
 
 		<div class="description short">
 			<p>This is the constructor of the price with quantity object.</p>
@@ -171,8 +175,6 @@
 					<dd>The price parameter.</dd>
 					<dt><var>$quantityParameter</var></dt>
 					<dd>The quantity parameter.</dd>
-					<dt><var>$locale</var></dt>
-					<dd>The localization parameter.</dd>
 				</dl></div>
 
 
@@ -184,6 +186,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.0<br>
+						0.1.1 No locale parameter is needed<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
@@ -252,7 +255,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getQuantityUnit">#</a>
-		<code><a href="source-class-ep6.PriceWithQuantity.html#66-82" title="Go to source code">getQuantityUnit</a>( <span>String <var>$locale</var></span> )</code>
+		<code><a href="source-class-ep6.PriceWithQuantity.html#66-79" title="Go to source code">getQuantityUnit</a>( <span>String <var>$locale</var>,…</span> )</code>
 
 		<div class="description short">
 			<p>Returns the quantity unit.</p>
@@ -264,7 +267,7 @@
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$locale</var></dt>
+					<dt><var>$locale</var>,…</dt>
 					<dd>The localization.</dd>
 				</dl></div>
 
@@ -281,11 +284,58 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.0<br>
+						0.1.1 No locale parameter is needed.<br>
 				</div>
 				<h4>Api</h4>
 				<div class="list">
 				</div>
 
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="__toString" id="___toString">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___toString">#</a>
+		<code><a href="source-class-ep6.PriceWithQuantity.html#81-98" title="Go to source code">__toString</a>( )</code>
+
+		<div class="description short">
+			<p>Prints the Price with quantity object as a string.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Prints the Price with quantity object as a string.</p>
+
+<p>This function returns the setted attributes of the Price with quantity object.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>The Price with quantity as a string.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.1<br>
+				</div>
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-ep6.Price.html#___toString">ep6\Price::__toString()</a></code></div>
 
 		</div>
 		</div></td>
@@ -298,6 +348,7 @@
 		<td><code>
 			<a href="class-ep6.Price.html#_getAmount">getAmount()</a>, 
 			<a href="class-ep6.Price.html#_getCurrency">getCurrency()</a>, 
+			<a href="class-ep6.Price.html#_getFormatted">getFormatted()</a>, 
 			<a href="class-ep6.Price.html#_getTaxType">getTaxType()</a>
 		</code></td>
 	</tr>
@@ -314,6 +365,17 @@
 
 
 
+	<table class="summary inherited">
+	<caption>Properties inherited from <a href="class-ep6.Price.html#properties">ep6\Price</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ep6.Price.html#$amount"><var>$amount</var></a>, 
+			<a href="class-ep6.Price.html#$currency"><var>$currency</var></a>, 
+			<a href="class-ep6.Price.html#$formatted"><var>$formatted</var></a>, 
+			<a href="class-ep6.Price.html#$taxType"><var>$taxType</var></a>
+		</code></td>
+	</tr>
+	</table>
 
 
 
