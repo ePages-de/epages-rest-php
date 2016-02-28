@@ -122,6 +122,7 @@ class RESTClient {
 	 * @since 0.0.0
 	 * @since 0.0.1 Use HTTPRequestMethod enum.
 	 * @since 0.1.0 Allow empty message body if the status code is 204.
+	 * @since 0.1.2 Restructure the logging message and fix the PATCH call.
 	 * @api
 	 * @param String command The path which is requested in the REST client.
 	 * @param String[] postfields Add specific parameters to the REST server.
@@ -139,8 +140,8 @@ class RESTClient {
 		$url = $protocol . "://" . self::$HOST . "/" . self::PATHTOREST . "/" . self::$SHOP . "/" . $command;
 
 		$headers = array(
-			"Accept: " . self::HTTP_ACCEPT,
-			"Content-Type: " . self::HTTP_CONTENT_TYPE);
+				"Accept: " . self::HTTP_ACCEPT,
+				"Content-Type: " . self::HTTP_CONTENT_TYPE);
 
 		if (InputValidator::isAuthToken(self::$AUTHTOKEN)) {
 			array_push($headers, "Authorization: Bearer " . self::$AUTHTOKEN);
@@ -157,6 +158,7 @@ class RESTClient {
 		curl_setopt($curl, CURLOPT_CONNECTTIMEOUT_MS, 0);						// no connection timeout
 		curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_NONE);		// cURL will choose the http version
 		curl_setopt($curl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_WHATEVER);			// understand ipv4 and ipv6
+		curl_setopt($curl, CURLINFO_HEADER_OUT, 1);								// save the header in the log
 
 		if (self::$ISSSL) {
 			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);						// don't check the peer ssl cerrificate
@@ -191,7 +193,7 @@ class RESTClient {
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $JSONpostfield);
 				break;
 			case HTTPRequestMethod::PATCH:
-				$JSONpostfield = JSONHandler::createJSON($postfields);
+				$JSONpostfield = "[" . JSONHandler::createJSON($postfields) . "]";
 				curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PATCH");
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $JSONpostfield);
 				break;
@@ -204,7 +206,8 @@ class RESTClient {
 		$error = curl_error($curl);
 		curl_close($curl);
 
-		$logMessage = self::$HTTP_REQUEST_METHOD . " " . $info["url"] . "<br/>"
+		$logMessage = "<strong>Request</strong>: " . $info["request_header"]
+					. $JSONpostfield . "<br/><br/>"
 					. "<strong>Response</strong>: " . $info["http_code"] . ": <pre>" . htmlspecialchars($response) . "</pre><br/>"
 					. "<strong>Content-Type</strong>: " . $info["content_type"] . "<br/>"
 					. "<strong>Size</strong> (Header/Request): " . $info["header_size"] . "/" . $info["request_size"] . " Bytes<br/>"
@@ -282,7 +285,7 @@ class RESTClient {
 /**
  * The HTTP request 'enum'.
  *
- * This are the possible HTTP request methods..
+ * This are the possible HTTP request methods.
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.1

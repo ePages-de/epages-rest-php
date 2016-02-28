@@ -20,6 +20,7 @@ namespace ep6;
  * @since 0.1.1 This object can be printed with echo.
  * @since 0.1.1 Don't use locale parameter in get functions.
  * @since 0.1.1 Unstatic every attributes.
+ * @since 0.1.2 Insert the Setters.
  * @package ep6
  * @subpackage Shopobjects\Product
  */
@@ -58,22 +59,22 @@ class Product {
 	/** @var Images[] This are the images in the four different possibilities. */
 	private $images = array();
 
-	/** @var PriceWithQuantity|null Here the price is saved. */
+	/** @var ProductPriceWithQuantity|null Here the price is saved. */
 	private $price = null;
 
-	/** @var Price|null Here the deposit price is saved. */
+	/** @var ProductPrice|null Here the deposit price is saved. */
 	private $depositPrice = null;
 
-	/** @var Price|null Here the eco participation price is saved. */
+	/** @var ProductPrice|null Here the eco participation price is saved. */
 	private $ecoParticipationPrice = null;
 
-	/** @var Price|null Here the price with deposit is saved. */
+	/** @var ProductPrice|null Here the price with deposit is saved. */
 	private $withDepositPrice = null;
 
-	/** @var Price|null Here the manufactor price is saved. */
-	private $manufactorPrice = null;
+	/** @var ProductPrice|null Here the manufacturer price is saved. */
+	private $manufacturerPrice = null;
 
-	/** @var Price|null Here the base price is saved. */
+	/** @var ProductPrice|null Here the base price is saved. */
 	private $basePrice = null;
 
 	/** @var ProductSlideshow|null This object saves the slideshow. */
@@ -96,6 +97,7 @@ class Product {
 	 * @since 0.1.0 Add price information.
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Dont use the locale parameter in calling the product price attribute.
+	 * @since 0.1.2 Exclude the REST request to the load() function.
 	 * @api
 	 * @param mixed[] $productParameter The product to create as array.
 	 */
@@ -105,6 +107,19 @@ class Product {
 			InputValidator::isEmptyArray($productParameter)) {
 			return;
 		}
+		
+		self::load($productParameter);
+	}
+
+	/**
+	 * Loads the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param Array $product The product in an array.
+	 */
+	private function load($productParameter) {
 
 		// if the product comes from the shop API
 		if (InputValidator::isArray($productParameter) &&
@@ -150,22 +165,22 @@ class Product {
 
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "price") &&
 					!InputValidator::isEmptyArrayKey($priceInformation, "quantity")) {
-					$this->price = new PriceWithQuantity($priceInformation['price'], $priceInformation['quantity']);
+					$this->price = new ProductPriceWithQuantity($this->productID, ProductPriceType::PRICE, $priceInformation['price'], $priceInformation['quantity']);
 				}
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "depositPrice")) {
-					$this->depositPrice = new Price($priceInformation['depositPrice']);
+					$this->depositPrice = new ProductPrice($this->productID, ProductPriceType::DEPOSIT, $priceInformation['depositPrice']);
 				}
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "ecoParticipationPrice")) {
-					$this->ecoParticipationPrice = new Price($priceInformation['ecoParticipationPrice']);
+					$this->ecoParticipationPrice = new ProductPrice($this->productID, ProductPriceType::ECOPARTICIPATION, $priceInformation['ecoParticipationPrice']);
 				}
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "priceWithDeposits")) {
-					$this->withDepositPrice = new Price($priceInformation['priceWithDeposits']);
+					$this->withDepositPrice = new ProductPrice($this->productID, ProductPriceType::WITHDEPOSITS, $priceInformation['priceWithDeposits']);
 				}
-				if (!InputValidator::isEmptyArrayKey($priceInformation, "manufactorPrice")) {
-					$this->manufactorPrice = new Price($priceInformation['manufactorPrice']);
+				if (!InputValidator::isEmptyArrayKey($priceInformation, "manufacturerPrice")) {
+					$this->manufacturerPrice = new ProductPrice($this->productID, ProductPriceType::MANUFACTURER, $priceInformation['manufacturerPrice']);
 				}
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "basePrice")) {
-					$this->basePrice = new Price($priceInformation['basePrice']);
+					$this->basePrice = new ProductPrice($this->productID, ProductPriceType::BASE, $priceInformation['basePrice']);
 				}
 			}
 		}
@@ -185,7 +200,7 @@ class Product {
 	}
 
 	/**
-	 * Returns the name in a specific localization.
+	 * Returns the name.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
@@ -200,7 +215,45 @@ class Product {
 	}
 
 	/**
-	 * Returns the short description in a specific localization.
+	 * Sets the name of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param String $name The new name.
+	 */
+	public function setName($name) {
+
+		self::setAttribute("/name", $name);
+	}
+
+	/**
+	 * Deletes the name value of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 */
+	public function unsetName() {
+
+		self::unsetAttribute("/name");
+	}
+
+	/**
+	 * Sets the product number of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param String $number The new product number.
+	 */
+	public function setNumber($number) {
+
+		self::setAttribute("/productNumber", $number);
+	}
+
+	/**
+	 * Returns the short description.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
@@ -215,7 +268,7 @@ class Product {
 	}
 
 	/**
-	 * Returns the description in a specific localization.
+	 * Returns the description.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
@@ -227,6 +280,251 @@ class Product {
 	public function getDescription() {
 
 		return $this->description;
+	}
+
+	/**
+	 * Sets the description of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param String $description The new description.
+	 */
+	public function setDescription($description) {
+
+		self::setAttribute("/description", $dscription);
+	}
+
+	/**
+	 * Deletes the description value of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 */
+	public function unsetDescription() {
+
+		self::unsetAttribute("/description");
+	}
+
+	/**
+	 * Sets the short description of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param String $shortDescription The new short description.
+	 */
+	public function setShortDescription($shortDescription) {
+
+		self::setAttribute("/shortDescription", $shortDescription);
+	}
+
+	/**
+	 * Deletes the short description value of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 */
+	public function unsetShortDescription() {
+
+		self::unsetAttribute("/shortDescription");
+	}
+
+	/**
+	 * Sets the energy labels string of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param String $energyLabelsString The new energy labels string.
+	 */
+	public function setEnergyLabelsString($energyLabelsString) {
+
+		self::setAttribute("/energyLabelsString", $energyLabelsString);
+	}
+
+	/**
+	 * Deletes the energy labels string value of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 */
+	public function unsetEnergyLabelsString() {
+
+		self::unsetAttribute("/energyLabelsString");
+	}
+
+	/**
+	 * Sets the manufacturer of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param String $manufacturer The new manufacturer.
+	 */
+	public function setManufacturer($manufacturer) {
+
+		self::setAttribute("/manufacturer", $manufacturer);
+	}
+
+	/**
+	 * Deletes the manufacturer value of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 */
+	public function unsetManufacturer() {
+
+		self::unsetAttribute("/manufacturer");
+	}
+
+	/**
+	 * Sets the UPC of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param String $upc The new UPC.
+	 */
+	public function setUPC($upc) {
+
+		self::setAttribute("/upc", $upc);
+	}
+
+	/**
+	 * Deletes the UPC value of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 */
+	public function unsetUPC() {
+
+		self::unsetAttribute("/upc");
+	}
+
+	/**
+	 * Sets the EAN of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param String $ean The new EAN.
+	 */
+	public function setEAN($ean) {
+
+		self::setAttribute("/ean", $ean);
+	}
+
+	/**
+	 * Deletes the EAN value of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 */
+	public function unsetEAN() {
+
+		self::unsetAttribute("/ean");
+	}
+
+	/**
+	 * Sets the essential features of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param String $essentialFeatures The new essential features.
+	 */
+	public function setEssentialFeatures($essentialFeatures) {
+
+		self::setAttribute("/essentialFeatures", $essentialFeatures);
+	}
+
+	/**
+	 * Deletes the essential features value of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 */
+	public function unsetEssentialFeatures() {
+
+		self::unsetAttribute("/essentialFeatures");
+	}
+
+	/**
+	 * Sets the search keywords of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param String $searchKeywords The new $search keywords.
+	 */
+	public function setSearchKeywords($searchKeywords) {
+
+		self::setAttribute("/searchKeywords", $searchKeywords);
+	}
+
+	/**
+	 * Deletes the search keywords of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 */
+	public function unsetSearchKeywords() {
+
+		self::unsetAttribute("/searchKeywords");
+	}
+	
+	/**
+	 * Sets an attribute of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param String $path The path to this attribute.
+	 * @param String $value The new attribute value.
+	 */
+	private function setAttribute($path, $value) {
+
+		// if parameter is no string or PATCH does not work
+		if (!InputValidator::isString($value) || !RESTClient::setRequestMethod("PATCH")) {
+			return;
+		}
+		
+		$parameter = array("op" => "add", "path" => $path, "value" => $value);
+		$productParameter = RESTClient::send(self::RESTPATH . "/" . $this->productID, $parameter);
+		
+		// update the product
+		self::load($productParameter);
+	}
+	
+	/**
+	 * Unsets an attribute value of the product.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param String $path The path to this attribute.
+	 */
+	private function unsetAttribute($path) {
+
+		// if PATCH does not work
+		if (!RESTClient::setRequestMethod("PATCH")) {
+			return;
+		}
+		
+		$parameter = array("op" => "remove", "path" => $path);
+		$productParameter = RESTClient::send(self::RESTPATH, $parameter);
+		
+		// update the product
+		self::load($productParameter);		
 	}
 
 	/**
@@ -256,7 +554,7 @@ class Product {
 	}
 
 	/**
-	 * Returns the availibility text in a specific localization.
+	 * Returns the availibility text.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
@@ -323,12 +621,12 @@ class Product {
 	}
 
 	/**
-	 * Returns the price with quantity.
+	 * Returns the product price with quantity.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @api
-	 * @return PriceWithQuantity Gets the price with quantity.
+	 * @return ProductPriceWithQuantity Gets the product price with quantity.
 	 */
 	public function getPrice() {
 
@@ -341,7 +639,7 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @api
-	 * @return Price Gets the deposit price.
+	 * @return ProductPrice Gets the deposit price.
 	 */
 	public function getDepositPrice() {
 
@@ -354,7 +652,7 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @api
-	 * @return Price Gets the eco participation price.
+	 * @return ProductPrice Gets the eco participation price.
 	 */
 	public function getEcoParticipationPrice() {
 
@@ -367,7 +665,7 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @api
-	 * @return Price Gets the with deposit price.
+	 * @return ProductPrice Gets the with deposit price.
 	 */
 	public function getWithDepositPrice() {
 
@@ -375,16 +673,16 @@ class Product {
 	}
 
 	/**
-	 * Returns the manufactor price.
+	 * Returns the manufacturer price.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @api
-	 * @return Price Gets the manufactor price.
+	 * @return ProductPrice Gets the manufacturer price.
 	 */
-	public function getManufactorPrice() {
+	public function getManufacturerPrice() {
 
-		return $this->manufactorPrice;
+		return $this->manufacturerPrice;
 	}
 
 	/**
@@ -393,7 +691,7 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @api
-	 * @return Price Gets the base price.
+	 * @return ProductPrice Gets the base price.
 	 */
 	public function getBasePrice() {
 

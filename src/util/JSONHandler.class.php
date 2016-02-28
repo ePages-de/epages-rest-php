@@ -45,6 +45,7 @@ class JSONHandler {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.2 Extend the encoding with avoid encode slashes.
 	 * @param mixed[] $array The array to make a JSON.
 	 * @return String The JSON string.
 	 */
@@ -54,7 +55,7 @@ class JSONHandler {
 			return null;
 		}
 
-		$result = json_encode($array);
+		$result = json_encode($array, JSON_UNESCAPED_SLASHES);
 
 		if (!InputValidator::isJSON($result)) {
 			Logger::warning("There is an error with creating a JSON with the following array: <strong>" . json_last_error() . ": " . json_last_error_msg() . "</strong><br/>\n"

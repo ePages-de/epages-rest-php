@@ -19,10 +19,10 @@ namespace ep6;
 class PriceWithQuantity extends Price {
 
 	/** @var int|null The quantity amount. */
-	private $quantityAmount = null;
+	protected $quantityAmount = null;
 
 	/** @var String|null The localized quantity unit. */
-	private $quantityUnit = null;
+	protected $quantityUnit = null;
 
 	/**
 	 * This is the constructor of the price with quantity object.
