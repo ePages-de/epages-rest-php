@@ -291,6 +291,20 @@ class InputValidator {
 	}
 
 	/**
+	 * Checks whether a parameter is a string.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param String $parameter Parameter to check.
+	 * @return boolean True if the parameter is a string, false if not.
+	 */
+	public static function isString($parameter) {
+
+		return is_string($parameter) && !self::isEmpty($parameter);
+	}
+
+	/**
 	 * Checks whether a paramter is empty or null.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
