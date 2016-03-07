@@ -5,6 +5,7 @@
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
  * @since 0.0.1 Add LogLevel and LogOutput classes.
+ * @since 0.1.2 Move LogLevel and LogOutput enum to own files.
  */
 namespace ep6;
 /**
@@ -13,6 +14,7 @@ namespace ep6;
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
  * @since 0.0.1 Use LogLevel and LogOutput
+ * @since 0.1.2 Add functionality to print into files.
  * @package ep6
  * @subpackage Util
  * @example examples\logMessages.php Use the Logger to log messages.
@@ -25,12 +27,16 @@ class Logger {
 	/** @var LogOutput The output value is set to configure where logging message is made. */
 	private static $OUT = LogOutput::SCREEN;
 
+	/** @var String The default output file for printing log messages. */
+	private static $OUTPUT_FILE;
+
 	/**
 	 * This function prints notifications.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.0.1 Use LogLevel
+	 * @since 0.1.2 Call the printMessage function on another way.
 	 * @api
 	 * @param String $message The message to print.
 	 */
@@ -42,7 +48,7 @@ class Logger {
 			self::$LOGLEVEL == LogLevel::NONE) {
 			return;
 		}
-		self::printMessage($message, LogLevel::NOTIFICATION);
+		self::printMessage($message);
 	}
 
 	/**
@@ -51,6 +57,7 @@ class Logger {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.0.1 Use LogLevel
+	 * @since 0.1.2 Call the printMessage function on another way.
 	 * @api
 	 * @param String $message The message to print.
 	 */
@@ -61,7 +68,7 @@ class Logger {
 			self::$LOGLEVEL == LogLevel::NONE) {
 			return;
 		}
-		self::printMessage($message, LogLevel::WARNING);
+		self::printMessage($message, true);
 	}
 
 	/**
@@ -70,6 +77,7 @@ class Logger {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.0.1 Use LogLevel
+	 * @since 0.1.2 Call the printMessage function on another way.
 	 * @api
 	 * @param String $message The message to print.
 	 */
@@ -79,7 +87,7 @@ class Logger {
 			self::$LOGLEVEL == LogLevel::NONE) {
 			return;
 		}
-		self::printMessage($message, LogLevel::ERROR);
+		self::printMessage($message, true);
 	}
 
 	/**
@@ -88,6 +96,7 @@ class Logger {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.0.1 Use LogLevel
+	 * @since 0.1.2 Call the printMessage function on another way.
 	 * @api
 	 * @param String $message The message to print.
 	 */
@@ -96,7 +105,7 @@ class Logger {
 		if (InputValidator::isEmpty($message)) {
 			return;
 		}
-		self::printMessage($message, LogLevel::FORCE);
+		self::printMessage($message);
 	}
 
 	/**
@@ -105,51 +114,67 @@ class Logger {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.0.1 Restructor the output message.
+	 * @since 0.1.2 Restructure log message and print to file.
 	 * @param String $message The message to print.
-	 * @param LogLevel $level The message level.
+	 * @param boolean $showStacktrace = 'false' True if a stacktrace show be shown, false if not.
 	 */
-	private static function printMessage($message, $level) {
+	private static function printMessage($message, $showStacktrace = false) {
+		
+		// build output
+		$output = $_SERVER['REMOTE_ADDR'] . " - ";
+		$output .= "[" . date("d/M/Y:H:i:s O") . "] ";
+		// print message, if it is array or string
+		if (is_array($message)) {
+			$output .= "\n" . implode(",", $message);
+		}
+		else {
+			$output .= "\n" . $message;
+		}
+		// print stacktrace if its needed
+		if ($showStacktrace) {
+			$output .= "\nStacktrace:\n" . self::getStacktrace();
+		}
 
 		switch (self::$OUT) {
 			case LogOutput::SCREEN:
-				echo "<strong>*************** " . strtoupper($level) . " ***************</strong><pre>";
-
-				if (is_array($message)) {
-					var_dump($message);
-				}
-				else {
-					echo $message;
-				}
+				echo "<pre>";
+				echo $output;
 				echo "</pre>";
-
-				if ($level == LogLevel::ERROR || $level == LogLevel::WARNING) {
-					self::printStacktrace();
-				}
+				break;
+			case LogOutput::FILE:
+				$handle = fopen(self::$OUTPUT_FILE, "a");
+				fwrite($handle, $output);
+				fwrite($handle, "\n===\n\n");
+				fclose($handle);
 				break;
 		}
 	}
 
 	/**
-	 * This function prints the stacktrace.
+	 * This function returns the stacktrace.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.0.0
-	 * @since 0.0.1 Format a little bit.
+	 * @since 0.1.2
+	 * @return String The Stacktrace.
 	 */
-	private static function printStacktrace() {
+	private static function getStacktrace() {
 		$stack = debug_backtrace();
 		$messageNumber = 0;
+		$stacktrace = "";
 
 		foreach ($stack as $stackentry) {
-			// dont show the first 3 messages, because this are Logger functions
+			// dont show the first 3 messages, because this are intern Logger functions
 			if ($messageNumber < 3) {
 				$messageNumber++;
 				continue;
 			}
-			echo "<pre>Function <strong>" . $stackentry['function'] . "</strong>( ";
-			var_dump($stackentry['args']);
-			echo " ) called at <strong>" . $stackentry["file"] . "</strong> line " . $stackentry["line"] . "</pre>";
+			$stacktrace .= "function " . $stackentry['function'] . "(";
+			$stacktrace .= implode(",", $stackentry['args']);
+			$stacktrace .= ") called at " . $stackentry["file"] . " line " . $stackentry["line"];
+			$stacktrace .= "\n";
 		}
+
+		return $stacktrace;
 	}
 
 	/**
@@ -159,30 +184,13 @@ class Logger {
 	 * @since 0.0.0
 	 * @since 0.0.1 Use LogLevel enum.
 	 * @since 0.0.3 Set php error reporting automatically in developing systems.
+	 * @since 0.1.2 epages-rest-php log level will not take effect in PHP log level.
 	 * @api
 	 * @param LogLevel $level The log level to set.
 	 */
 	public static function setLogLevel($level) {
 		if (!InputValidator::isLogLevel($level)) {
 			return;
-		}
-
-		// set PHP error reporting
-		switch ($level) {
-			case LogLevel::ERROR:
-				error_reporting(E_ERROR);
-				ini_set("display_errors", 1);
-				break;
-			case LogLevel::NOTIFICATION:
-				error_reporting(E_ALL);
-				ini_set("display_errors", 1);
-				break;
-			case LogLevel::WARNING:
-				error_reporting(E_WARNING);
-				ini_set("display_errors", 1);
-				break;
-			default:
-				ini_set("display_errors", 0);
 		}
 		self::$LOGLEVEL = $level;
 	}
@@ -204,6 +212,21 @@ class Logger {
 	}
 
 	/**
+	 * This function sets the output file.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @param String $filename The filename of the new output file with path on the server.
+	 */
+	public static function setOutputFile($filename) {
+		if (InputValidator::isEmpty($filename)) {
+			return;
+		}
+		self::$OUTPUT_FILE = $filename;
+	}
+
+	/**
 	 * Prints the Logger object as a string.
 	 *
 	 * This function returns the setted values of the Logger object.
@@ -218,43 +241,4 @@ class Logger {
 				"<strong>Output resource:</strong> " . self::$OUT . "<br/>";
 	}
 }
-
-/**
- * The log level 'enum'.
- *
- * Use this to define which log messages should be printed.
- *
- * @author David Pauli <contact@david-pauli.de>
- * @since 0.0.1
- * @package ep6
- * @subpackage Util\Logger
- */
-abstract class LogLevel {
-	/** @var String Use this to print all messages. **/
-	const NOTIFICATION = "NOTIFICATION";
-	/** @var String Use this to print only warnings and errors. **/
-	const WARNING = "WARNING";
-	/** @var String Use this to print only errors. **/
-	const ERROR = "ERROR";
-	/** @var String Use this to print no log messages. **/
-	const NONE = "NONE";
-	/** @var String This is only used for intern reasons. **/
-	const FORCE = "FORCE";
-}
-
-/**
- * The log output 'enum'.
- *
- * Use this to define where the log messages should be printed.
- *
- * @author David Pauli <contact@david-pauli.de>
- * @since 0.0.1
- * @package ep6
- * @subpackage Util\Logger
- */
-abstract class LogOutput {
-	/** @var String Use this for print something on the screen. **/
-	const SCREEN = "SCREEN";
-}
-
 ?>
