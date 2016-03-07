@@ -12,6 +12,8 @@ require_once(__DIR__ . "/configuration/config.php");
 require_once(__DIR__ . "/util/InputValidator.class.php");
 require_once(__DIR__ . "/util/JSONHandler.class.php");
 require_once(__DIR__ . "/util/Logger.class.php");
+require_once(__DIR__ . "/util/LogLevel.enum.php");
+require_once(__DIR__ . "/util/LogOutput.enum.php");
 require_once(__DIR__ . "/util/RESTClient.class.php");
 # include shopobjects
 require_once(__DIR__ . "/shopobjects/Locales.class.php");

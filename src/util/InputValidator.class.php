@@ -114,13 +114,14 @@ class InputValidator {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use LogOutput enum.
+	 * @since 0.1.2 Add file output ressource.
 	 * @api
 	 * @param String $parameter String to check.
 	 * @return boolean True if the string is an output ressource, false if not.
 	 */
 	public static function isOutputRessource($parameter) {
 
-		return self::isMatchRegex($parameter, "/^(SCREEN)/", "output ressource")
+		return self::isMatchRegex($parameter, "/^(SCREEN|FILE)/", "output ressource")
 			&& !self::isEmpty($parameter);
 	}
 
@@ -351,6 +352,9 @@ class InputValidator {
 	/**
 	 * Checks whether a parameter match a regex.
 	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.0.0
+	 * @since 0.1.2 Don't throw a logging message.
 	 * @param String $parameter String to check.
 	 * @param String $regex	 The regex to check.
 	 * @param String $type The type which is validated.
@@ -358,10 +362,6 @@ class InputValidator {
 	 */
 	private static function isMatchRegex($parameter, $regex, $type) {
 
-		if(!preg_match($regex, $parameter) &&
-			!self::isEmpty($parameter)) {
-			Logger::warning("<strong>InputValidator</strong> - This is not a <u>" . $type . "</u>: <i>" . $parameter . "</i>");
-		}
 		return preg_match($regex, $parameter);
 	}
 

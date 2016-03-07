@@ -58,6 +58,7 @@ class RESTClient {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.0.1 Use disconnect function on wrong parameters.
+	 * @since 0.1.2 Throw warning with wrong parameters.
 	 * @api
 	 * @param String $host The epages host to connect.
 	 * @param String $shop The refered ePages shop.
@@ -69,6 +70,7 @@ class RESTClient {
 		// check parameter
 		if (!InputValidator::isHost($host) ||
 			!InputValidator::isShop($shop)) {
+			Logger::warning("ep6\RESTClient\nHost (" . $host . ") or Shop (" . $shop . ") are not valid.");
 			self::disconnect();
 			return false;
 		}
@@ -88,11 +90,12 @@ class RESTClient {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.1 Echo the object itself to see all values setted.
+	 * @since 0.1.2 Extend force print.
 	 * @deprecated Echo the object itself to see all values setted.
 	 */
 	public static function printStatus() {
 
-		Logger::force(self);
+		Logger::force("ep6\RESTClient\n" . self);
 	}
 
 	/**
@@ -100,6 +103,7 @@ class RESTClient {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.2 Throw warning with wrong parameters.
 	 * @api
 	 * @param String command The path which is requested in the REST client.
 	 * @param String locale The localization to get.
@@ -110,6 +114,7 @@ class RESTClient {
 
 		// cheeck parameters
 		if (!InputValidator::isLocale($locale)) {
+			Logger::warning("ep6\RESTClient\nLocale (" . $locale . ") is not valid.");
 			return null;
 		}
 		return self::send($command . "?locale=" . $locale, $postfields);
@@ -129,11 +134,17 @@ class RESTClient {
 	 * @return mixed[] The returned elements as array.
 	 */
 	public static function send($command, $postfields = array()) {
+		
+		$JSONpostfield = "";
 
 		if (!InputValidator::isRESTCommand($command) ||
-			!self::$ISCONNECTED ||
 			!InputValidator::isArray($postfields)) {
+			Logger::warning("ep6\RESTClient\nCommand (" . $command . ") or postfields (" . $postfields . ") are not valid.");
 			return null;
+		}
+		if (!self::$ISCONNECTED) {
+			Logger::warning("ep6\RESTClient\nClient is not connected.");
+			return null;			
 		}
 
 		$protocol = self::$ISSSL ? "https" : "http";
@@ -206,21 +217,23 @@ class RESTClient {
 		$error = curl_error($curl);
 		curl_close($curl);
 
-		$logMessage = "<strong>Request</strong>: " . $info["request_header"]
-					. $JSONpostfield . "<br/><br/>"
-					. "<strong>Response</strong>: " . $info["http_code"] . ": <pre>" . htmlspecialchars($response) . "</pre><br/>"
-					. "<strong>Content-Type</strong>: " . $info["content_type"] . "<br/>"
-					. "<strong>Size</strong> (Header/Request): " . $info["header_size"] . "/" . $info["request_size"] . " Bytes<br/>"
-					. "<strong>Time</strong> (Total/Namelookup/Connect/Pretransfer/Starttransfer/Redirect): " . $info["total_time"] . " / " . $info["namelookup_time"] . " / " . $info["connect_time"] . " / " . $info["pretransfer_time"] . " / " . $info["starttransfer_time"] . " / " . $info["redirect_time"] . " seconds<br/>";
-		Logger::notify("<strong>HTTP-SEND</strong>:<br/>" . $logMessage);
+		$logMessage = "Request:\n"
+					. "Parameters: " . $JSONpostfield . "\n"
+					. $info["request_header"]
+					. "Response:\n"
+					. $info["http_code"] . ": " . $response . "\n"
+					. "Content-Type: " . $info["content_type"] . "\n"
+					. "Size (Header/Request): " . $info["header_size"] . "/" . $info["request_size"] . " Bytes\n"
+					. "Time (Total/Namelookup/Connect/Pretransfer/Starttransfer/Redirect): " . $info["total_time"] . " / " . $info["namelookup_time"] . " / " . $info["connect_time"] . " / " . $info["pretransfer_time"] . " / " . $info["starttransfer_time"] . " / " . $info["redirect_time"] . " seconds\n";
+		Logger::notify("ep6\RESTClient:\n" . $logMessage);
 
 		// if message body is empty this is allowed with 204
-		if (!$response && $info["http_code"]!="204") {
-			Logger::error("Error with send REST client: " .$error);
+		if (!$response && $info["http_code"] != "204") {
+			Logger::error("ep6\RESTClient\nError with send REST client: " . $error);
 			return null;
 		}
 		elseif (!in_array($info["http_code"], array("200", "201", "204"))) {
-			Logger::warning("Get wrong response: " . $info["http_code"]);
+			Logger::warning("ep6\RESTClient\nGet wrong response: " . $info["http_code"]);
 			return null;
 		}
 
@@ -233,12 +246,14 @@ class RESTClient {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use HTTPRequestMethod enum.
+	 * @since 0.1.2 Throw warning with wrong parameters.
 	 * @api
 	 * @param HTTPRequestMethod method The request method the REST client should use.
 	 * @return boolean True, if it works, false if not.
 	 */
 	public static function setRequestMethod($method) {
 		if (!InputValidator::isRequestMethod($method)) {
+			Logger::warning("ep6\RESTClient\nRequest method (" . $method . ") is not valid.");
 			return false;
 		}
 		self::$HTTP_REQUEST_METHOD = $method;
@@ -267,6 +282,7 @@ class RESTClient {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.1
+	 * @since 0.1.2 Throw warning with wrong parameters.
 	 * @param int time The time in ms every reload needs to wait until get new information.
 	 * @return boolean True if the change works, false if not.
 	 * @api
@@ -274,6 +290,7 @@ class RESTClient {
 	public static function setRequestWaitTime($time) {
 
 		if (!InputValidator::isRangedInt($time, 0)) {
+			Logger::warning("ep6\RESTClient\nRequest time (" . $time . ") is not valid.");
 			return false;
 		}
 
