@@ -1,24 +1,32 @@
-# epages REST SDK
-This is the REST SDK to connect to an epages shop. You can use it as a developer for develop epages apps. Register at the [epages developer page](https://developer.epages.com) for a free development account.
+# ePages REST SDK
+
+This is the PHP REST SDK to easily connect to an ePages shop.
+You can use it as a developer to develop apps for ePages.
+Just sign up for the [ePages Developer Program](http://www.epages.cloud/developer/) and create a free developer test shop.
 
 ## Requirements
-To use this package it needs at least **PHP 5.4**.
-Download or update the latest REST SDK it via command line.
+
+To use this SDK, you'll need at least **PHP 5.4**.
+Download or update the latest REST SDK via the command line.
 ```
 wget https://raw.githubusercontent.com/ePages-de/epages-rest-php/master/build/epages-rest-php.phar -O epages-rest-php.phar
 ```
-Its also possible to download the PHP file archive manually. Took the latest **.phar** release in the [releases area](https://github.com/ePages-de/epages-rest-php/releases).
+It is also possible to download the PHP file archive manually.
+Check for the latest **.phar** release in the [releases area](https://github.com/ePages-de/epages-rest-php/releases).
 
 ## Installation
-To use the SDK only include it.
-For developing reasons its useful to print all notifications and informations on the screen. **Warning:** Its not recommended to do this in live system!
+
+To use the SDK, you simply have to include it.
+For reasons of development, it is useful to print all notifications and information on the screen.
+**Warning:** It is not recommended to do this in live system!
 ```php
 require_once("libraries/epages-rest-php.phar");
 ep6\Logger::setLogLevel(ep6\LogLevel::NOTIFICATION);
 ```
 
 ## Version information
-This are the information which are provided with the epages REST SDK since now.
+
+The following information are provided with the ePages REST SDK until now.
 
 | Feature | GET | PUT | POST | DELETE | PATCH | information |
 | --- | :---: | :---: | :---: | :---: | :---: | --- |
@@ -38,15 +46,15 @@ This are the information which are provided with the epages REST SDK since now.
 | products/export | **✘** | **-** | **-** | **-** | **?** |
 | sales | **✘** | **✘** | **✘** | **✘** | **?** |
 | search/product-suggest | **✘** | **-** | **-** | **-** | **?** |
-| shpping-methods | **✘** | **-** | **-** | **-** | **?** |
+| shipping-methods | **✘** | **-** | **-** | **-** | **?** |
 
 ## Code examples
 
-For more small examples see the [examples folder](https://github.com/ePages-de/epages-rest-php/tree/master/examples).
+For more code examples, see the [examples folder](https://github.com/ePages-de/epages-rest-php/tree/master/examples).
 
 ### Example 1
 
-This example get 100 products with a german localization and sort it with **name** attribute:
+Using this example, you can retrieve 100 products with a German localisation and sort it with the **name** attribute:
 
 ```php
 require_once("libraries/epages-rest-client.phar");
@@ -95,7 +103,7 @@ foreach ($products as $product) {
 
 ### Example 2
 
-This example gets some shop information.
+Using this example, you can retrieve some shop information.
 
 ```php
 require_once("libraries/epages-rest-php.phar");
@@ -123,14 +131,15 @@ echo $contactInformation->getName();
 ## Utilities
 
 ### Logger
-The library comes with a huge Logger. It is called ```ep6\Logger```.
+
+The library comes with a huge Logger called ```ep6\Logger```.
 To use this (instead of the ```echo``` command) write
 ```php
 ep6\Logger::force("Print this!");
 ```
 The force printer also can print arrays in a simple structure.
 
-By default all notification messages are print. To change this use:
+By default all notification messages are printed. To change this use:
 ```php
 ep6\Logger::setLogLevel(ep6\LogLevel::NOTIFICATION);	// shows all messages
 ep6\Logger::setLogLevel(ep6\LogLevel::WARNING);			// shows warning and error messages
@@ -144,11 +153,12 @@ To validate data and check the value of an object there is a InputValidator clas
 ep6\InputValidator::isHost("www.test.de");
 ep6\InputValidator::isJSON("{}");
 ```
-All InputValidator functions are found in the [doumentation](http://dbawdy.de/epages-rest-php/doc/class-ep6.InputValidator.html)
+You can find all InputValidator functions in the [documentation](http://dbawdy.de/epages-rest-php/doc/class-ep6.InputValidator.html)
 
 ## Function reference
+
 The complete reference is located [here](http://dbawdy.de/epages-rest-php/doc).
 
-## Licence
+## License
 
 The code is available under the terms of the MIT License.
