@@ -11,23 +11,31 @@ namespace ep6;
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
+ * @since 0.1.2 Add error reporting.
  * @package ep6
  * @subpackage Util
  */
 class JSONHandler {
+	
+	use ErrorReporting;
+	
 	/**
 	 * Call this function with the JSON in parameter.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.2 Better the warnings.
+	 * @since 0.1.2 Add error reporting.
 	 * @param String $JSON The JSON string to parse.
 	 * @return mixed[] The array of the JSON element or null if there is an error.
 	 */
 	public static function parseJSON($JSON) {
 
+		self::errorReset();
+
 		if (!InputValidator::isJSON($JSON)) {
 			Logger::warning("ep6\JSONHandler\nJSON string (" . $JSON . ") is not valid.");
+			self::errorSet("JSONH-1");
 			return array();
 		}
 
@@ -35,6 +43,7 @@ class JSONHandler {
 
 		if (!InputValidator::isArray($result)) {
 			Logger::warning("ep6\JSONHandler\nThere is an error with parsing the follwing JSON (" . $JSON . "): " . json_last_error() . ": " . json_last_error_msg());
+			self::errorSet("JSONH-2");
 			return array();
 		}
 
@@ -48,13 +57,17 @@ class JSONHandler {
 	 * @since 0.0.0
 	 * @since 0.1.2 Extend the encoding with avoid encode slashes.
 	 * @since 0.1.2 Better the warnings.
+	 * @since 0.1.2 Add error reporting.
 	 * @param mixed[] $array The array to make a JSON.
 	 * @return String The JSON string.
 	 */
 	public static function createJSON($array) {
 
+		self::errorReset();
+
 		if (!InputValidator::isArray($array)) {
-			Logger::warning("ep6\RESTClient\nArray (" . $array . ") is not valid.");
+			Logger::warning("ep6\JSONHandler\nArray (" . $array . ") is not valid.");
+			self::errorSet("JSONH-3");
 			return null;
 		}
 
@@ -62,6 +75,7 @@ class JSONHandler {
 
 		if (!InputValidator::isJSON($result)) {
 			Logger::warning("ep6\JSONHandler\nThere is an error with creating a JSON with the array (" . $array . "): " . json_last_error() . ": " . json_last_error_msg());
+			self::errorSet("JSONH-4");
 			return null;
 		}
 

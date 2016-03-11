@@ -15,6 +15,8 @@ namespace ep6;
  * @subpackage Shopobjects\Price
  */
 class ProductPrice extends Price {
+	
+	use ErrorReporting;
 
 	/** @var String|null The refered product ID. */
 	private $productID = null;
@@ -36,6 +38,8 @@ class ProductPrice extends Price {
 
 		// if the first parameter is no product ID
 		if (!InputValidator::isProductID($productID)) {
+			Logger::warning("ep6\ProductPrice\nNew product price has no product ID (" .$type . "," . $priceParameter . ").");
+			$this->errorSet("PP-1");
 			return;
 		}
 
@@ -52,13 +56,27 @@ class ProductPrice extends Price {
 	 * @api
 	 * @param float $amount The new amount of price.
 	 */
-	private function setAmount($amount) {
-
+	public function setAmount($amount) {
+		
+		$this->errorReset();
+		
 		$allowedTypes = array(ProductPriceTypes::PRICE, ProductPriceTypes::MANUFACTURER, ProductPriceTypes::ECOPARTICIPATION, ProductPriceTypes::DEPOSIT);
 
-		// if parameter is no float, PATCH does not work or this operation is not allowed for this price type
-		if (!InputValidator::isFloat($amount) || !RESTClient::setRequestMethod("PATCH") ||
-			InputValidator::isEmptyArrayKey($allowedTypes, $this->type)) {
+		// if parameter is no float
+		if (!InputValidator::isFloat($amount)) {
+			$this->errorSet("PP-2");
+			Logger::warning("ep6\ProductPrice\nAmount for product price (" . $amount . ") is not a float.");
+			return;
+		}
+		// if PATCH does not work
+		if (!RESTClient::setRequestMethod("PATCH")) {
+			$this->errorSet("RESTC-9");
+			return;
+		}
+		// if this operation is not allowed for this price type
+		if (InputValidator::isEmptyArrayKey($allowedTypes, $this->type)) {
+			$this->errorSet("PP-3");
+			Logger::warning("ep6\ProductPrice\nChanging product price is not allowed for this " . $this->type . " product price method.");
 			return;
 		}
 		
@@ -73,13 +91,21 @@ class ProductPrice extends Price {
 	 * @since 0.1.2
 	 * @api
 	 */
-	private function unsetAmount() {
+	public function unsetAmount() {
+		
+		$this->errorReset();
 		
 		$allowedTypes = array(ProductPriceTypes::PRICE, ProductPriceTypes::MANUFACTURER, ProductPriceTypes::ECOPARTICIPATION, ProductPriceTypes::DEPOSIT);
 
-		// if PATCH does not work or this operation is not allowed for this price type
-		if (!RESTClient::setRequestMethod("PATCH") ||
-			InputValidator::isEmptyArrayKey($allowedTypes, $this->type)) {
+		// if PATCH does not work
+		if (!RESTClient::setRequestMethod("PATCH")) {
+			$this->errorSet("RESTC-9");
+			return;
+		}
+		// if this operation is not allowed for this price type
+		if (InputValidator::isEmptyArrayKey($allowedTypes, $this->type)) {
+			$this->errorSet("PP-3");
+			Logger::warning("ep6\ProductPrice\nChanging product price is not allowed for this " . $this->type . " product price method.");
 			return;
 		}
 		

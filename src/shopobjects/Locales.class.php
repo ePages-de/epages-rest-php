@@ -14,11 +14,14 @@ namespace ep6;
  * @since 0.1.0 Add a timestamp to save the next allowed REST call.
  * @since 0.1.0 Add configured used Locale.
  * @since 0.1.1 Now the object is echoable.
+ * @since 0.1.2 Add error reporting.
  * @package ep6
  * @subpackage Shopobjects
  * @example examples\handleWithLocales.php Handle with locales.
  */
 class Locales {
+	
+	use ErrorReporting;
 
 	/** @var String The REST path for localizations. */
 	const RESTPATH = "locales";
@@ -43,6 +46,7 @@ class Locales {
 	 * @since 0.0.1 Use HTTPRequestMethod enum.
 	 * @since 0.1.0 Save timestamp of the last request.
  	 * @since 0.1.0 Add configured used Locale.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 */
 	private static function load() {
@@ -58,6 +62,7 @@ class Locales {
 		if (InputValidator::isEmptyArrayKey($content, "default") ||
 			InputValidator::isEmptyArrayKey($content, "items")) {
 		    Logger::error("Respond for " . self::RESTPATH . " can not be interpreted.");
+			self::errorSet("L-1");
 			return;
 		}
 
@@ -86,9 +91,12 @@ class Locales {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
  	 * @since 0.1.0 Reset used Locale.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 */
 	public static function resetValues() {
+		
+		self::errorReset();
 
 		self::$DEFAULT = null;
 		self::$ITEMS = array();
@@ -122,10 +130,13 @@ class Locales {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return The default localization of the shop.
 	 */
 	public static function getDefault() {
+
+		self::errorReset();
 
 		self::reload();
 		return self::$DEFAULT;
@@ -137,10 +148,13 @@ class Locales {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return The possible localizations of the shop.
 	 */
 	public static function getItems() {
+
+		self::errorReset();
 
 		self::reload();
 		return self::$ITEMS;
@@ -151,10 +165,13 @@ class Locales {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return The configured Locale which is used in REST calls.
 	 */
 	public static function getLocale() {
+
+		self::errorReset();
 
 		self::reload();
 		return self::$USED;
@@ -165,17 +182,22 @@ class Locales {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param String $locale The new used Locale.
 	 * @return boolean True if set the Locale works, false if not.
 	 */
 	public static function setLocale($locale) {
 
+		self::errorReset();
+		
 		self::reload();
 		if (array_key_exists($locale, self::$ITEMS)) {
 			self::$USED = $locale;
 			return true;
 		}
+	    Logger::error("Can't set locale " . $locale . ". It is not available in the shop.");
+		self::errorSet("L-2");
 		return false;
 	}
 

@@ -14,11 +14,14 @@ namespace ep6;
  * @since 0.1.0 Add a timestamp to save the next allowed REST call.
  * @since 0.1.0 Add configured used Currency.
  * @since 0.1.1 Now the object is echoable.
+ * @since 0.1.2 Add error reporting.
  * @package ep6
  * @subpackage Shopobjects
  * @example examples\handleWithCurrencies.php Handle with currencies.
  */
 class Currencies {
+	
+	use ErrorReporting;
 
 	/** @var String The REST path for currencies. */
 	const RESTPATH = "currencies";
@@ -43,6 +46,7 @@ class Currencies {
 	 * @since 0.1.0 Use HTTPRequestMethod enum
 	 * @since 0.1.0 Save timestamp of the last request.
  	 * @since 0.1.0 Add configured used Currency.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 */
 	private static function load() {
@@ -58,6 +62,7 @@ class Currencies {
 		if (InputValidator::isEmptyArrayKey($content, "default") ||
 			InputValidator::isEmptyArrayKey($content, "items")) {
 		    Logger::error("Respond for " . self::RESTPATH . " can not be interpreted.");
+			self::errorSet("C-1");
 			return;
 		}
 
@@ -86,9 +91,12 @@ class Currencies {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
  	 * @since 0.1.0 Reset used Currency.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 */
 	public static function resetValues() {
+		
+		self::errorReset();
 
 		self::$DEFAULT = null;
 		self::$ITEMS = array();
@@ -122,10 +130,13 @@ class Currencies {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return The default currencies of the shop.
 	 */
 	public static function getDefault() {
+
+		self::errorReset();
 
 		self::reload();
 		return self::$DEFAULT;
@@ -137,10 +148,13 @@ class Currencies {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a reload function.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return The possible currencies of the shop.
 	 */
 	public static function getItems() {
+
+		self::errorReset();
 
 		self::reload();
 		return self::$ITEMS;
@@ -151,10 +165,13 @@ class Currencies {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return The configured Currency which is used in REST calls.
 	 */
 	public static function getCurrency() {
+
+		self::errorReset();
 
 		self::reload();
 		return self::$USED;
@@ -165,17 +182,22 @@ class Currencies {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param String $currency The new used Locale.
 	 * @return boolean True if set the Currency works, false if not.
 	 */
 	public static function setCurrency($currency) {
 
+		self::errorReset();
+		
 		self::reload();
 		if (array_key_exists($currency, self::$ITEMS)) {
 			self::$USED = $currency;
 			return true;
 		}
+	    Logger::error("Can't set currency " . $currency . ". It is not available in the shop.");
+		self::errorSet("C-2");
 		return false;
 	}
 

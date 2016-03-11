@@ -9,6 +9,7 @@ namespace ep6;
 # include framework configuration
 require_once(__DIR__ . "/configuration/config.php");
 # include helpful objects, all are used in a static way
+require_once(__DIR__ . "/util/ErrorReporting.trait.php");
 require_once(__DIR__ . "/util/InputValidator.class.php");
 require_once(__DIR__ . "/util/JSONHandler.class.php");
 require_once(__DIR__ . "/util/Logger.class.php");
@@ -43,10 +44,13 @@ require_once(__DIR__ . "/shopobjects/price/ProductPriceWithQuantity.class.php");
  * @since 0.1.0 Configure the Locale and Currency to make REST calls.
  * @since 0.1.1 Now the shop can be printed via echo.
  * @since 0.1.1 Save their own shop credentials and use Information objects unstatic.
+ * @since 0.1.2 Add error reporting.
  * @package ep6
  * @example examples\connectingShop.php Create a new epage 6 shop object and disconnect.
  */
 class Shop {
+		
+	use ErrorReporting;		
 
 	/** @var ContactInformation|null The contact information object. */
 	private $contactInformation = null;
@@ -81,6 +85,7 @@ class Shop {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.1 Save the own login credentials.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param String $host The ePages host to connect.
 	 * @param String $shop The refered ePages shop.
@@ -92,6 +97,9 @@ class Shop {
 
 		if (!InputValidator::isHost($host) ||
 			!InputValidator::isShop($shop)) {
+			Logger::warning("ep6\Shop\nHost (" . $host . ") or Shop (" . $shop . ") are not valid.");
+			$error = !InputValidator::isHost($host) ? "S-1" : "S-2";
+			self::setError($error);
 			return;
 		}
 		
@@ -108,13 +116,22 @@ class Shop {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.1
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 */
-	function useShop() {
+	public function useShop() {
+
+		self::errorReset();
 
 		if (InputValidator::isEmpty($this->host) ||
 			InputValidator::isEmpty($this->shop)) {
 			RESTClient::disconnect($this->host, $this->shop, $this->authToken, $this->isssl);
+			Logger::warning("ep6\Shop\nCan't use shop, because there no shop host and name configured.");
+			$error = InputValidator::isEmpty($this->host) ? "S-3" : "S-4";
+			self::setError($error);
+		}
+		else {
+			RESTClient::connect($this->host, $this->shop, $this->authToken, $this->isssl);
 		}
 	}
 
@@ -144,10 +161,12 @@ class Shop {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.1 Echo the object itself to see all values setted.
+	 * @since 0.1.2 Add error reporting.
 	 * @deprecated Echo the object itself to see all values setted.
 	 */
 	public function printStatus() {
 
+		self::errorReset();
 		Logger::force(RESTClient);
 	}
 
@@ -157,10 +176,12 @@ class Shop {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.2 Add error reporting.
 	 * @return String|null Default localization or null if the REST call does fail.
 	 */
 	public function getDefaultLocales() {
 
+		self::errorReset();
 		return Locales::getDefault();
 	}
 
@@ -170,10 +191,12 @@ class Shop {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.2 Add error reporting.
 	 * @return mixed[]|null All localizations in an array or null if the REST call does fail.
 	 */
 	public function getLocales() {
 
+		self::errorReset();
 		return Locales::getItems();
 	}
 
@@ -183,10 +206,12 @@ class Shop {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.2 Add error reporting.
 	 * @return String|null Default currencies or null if the REST call does fail.
 	 */
 	public function getDefaultCurrencies() {
 
+		self::errorReset();
 		return Currencies::getDefault();
 	}
 
@@ -196,10 +221,12 @@ class Shop {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.2 Add error reporting.
 	 * @return mixed[]|null All currencies in an array or null if the REST call will fail.
 	 */
 	public function getCurrencies() {
 
+		self::errorReset();
 		return Currencies::getItems();
 	}
 
@@ -209,10 +236,12 @@ class Shop {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @return String|null The Locale which is configured for REST calls.
 	 */
 	public function getLocale() {
 
+		self::errorReset();
 		return Locales::getLocale();
 	}
 
@@ -222,11 +251,13 @@ class Shop {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @param String $locale The new used Locale.
 	 * @return boolean True if set the Locale works, false if not.
 	 */
 	public function setLocale($locale) {
 
+		self::errorReset();
 		return Locales::setLocale($locale);
 	}
 
@@ -236,10 +267,12 @@ class Shop {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @return String|null The Currency which is configured for REST calls.
 	 */
 	public function getCurrency() {
 
+		self::errorReset();
 		return Currencies::getCurrency();
 	}
 
@@ -249,11 +282,13 @@ class Shop {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @param String $locale The new used Locale.
 	 * @return boolean True if set the Locale works, false if not.
 	 */
 	public function setCurrency($currency) {
 
+		self::errorReset();
 		return Currencies::setCurrency($currency);
 	}
 
@@ -264,9 +299,12 @@ class Shop {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.1 Create an unstatic Information object.
+	 * @since 0.1.2 Add error reporting.
 	 * @return ContactInformation|null The contact information of the shop or null if the REST call will fail.
 	 */
 	public function getContactInformation() {
+
+		self::errorReset();
 
 		if ($this->contactInformation==null) {
 			$this->contactInformation = new ContactInformation();
@@ -281,9 +319,12 @@ class Shop {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.1 Create an unstatic Information object.
+	 * @since 0.1.2 Add error reporting.
 	 * @return PrivacyPolicyInformation|null The privacy policy information of the shop or null if the REST call will fail.
 	 */
 	public function getPrivacyPolicyInformation() {
+
+		self::errorReset();
 
 		if ($this->privacyPolicyInformation==null) {
 			$this->privacyPolicyInformation = new PrivacyPolicyInformation();
@@ -298,9 +339,12 @@ class Shop {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.1 Create an unstatic Information object.
+	 * @since 0.1.2 Add error reporting.
 	 * @return RightsOfWithdrawalInformation|null The rights of withdrawal information of the shop or null if the REST call will fail.
 	 */
 	public function getRightsOfWithdrawalInformation() {
+
+		self::errorReset();
 
 		if ($this->rightsOfWithdrawalInformation==null) {
 			$this->rightsOfWithdrawalInformation = new RightsOfWithdrawalInformation();
@@ -315,9 +359,12 @@ class Shop {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.1 Create an unstatic Information object.
+	 * @since 0.1.2 Add error reporting.
 	 * @return ShippingInformation|null The shipping information of the shop or null if the REST call fails.
 	 */
 	public function getShippingInformation() {
+
+		self::errorReset();
 
 		if ($this->shippingInformation==null) {
 			$this->shippingInformation = new ShippingInformation();
@@ -332,9 +379,12 @@ class Shop {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.1 Create an unstatic Information object.
+	 * @since 0.1.2 Add error reporting.
 	 * @return TermsAndCondiditonInformation The terms and condition information of the shop or null if the REST call fails.
 	 */
 	public function getTermsAndConditionInformation() {
+
+		self::errorReset();
 
 		if ($this->termsAndConditionInformation==null) {
 			$this->termsAndConditionInformation = new TermsAndConditionInformation();
@@ -350,15 +400,20 @@ class Shop {
 	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @param Product The product to delete.
 	 * @return boolean True if the deletion works, false if not.
 	 */
 	public function deleteProduct(&$product) {
 
+		self::errorReset();
+
 		if ($product->delete()) {
 			$product = null;
 			return true;
 		}
+		Logger::warning("ep6\Shop\nCan't delete product: " . $product);
+		self::errorSet("S-5");
 		return false;
 	}
 

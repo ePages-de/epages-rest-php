@@ -17,10 +17,13 @@ namespace ep6;
  * @since 0.1.1 Now the object is printable via echo.
  * @since 0.1.1 Add function to change the wait time for next REST request.
  * @since 0.1.1 Set $HOST and $SHOP to default value null.
+ * @since 0.1.2 Add error reporting.
  * @package ep6
  * @subpackage Util
  */
 class RESTClient {
+	
+	use ErrorReporting;
 
 	/** @var String|null The ePages host to connect. */
 	private static $HOST = null;
@@ -59,19 +62,24 @@ class RESTClient {
 	 * @since 0.0.0
 	 * @since 0.0.1 Use disconnect function on wrong parameters.
 	 * @since 0.1.2 Throw warning with wrong parameters.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param String $host The epages host to connect.
 	 * @param String $shop The refered ePages shop.
 	 * @param String $authToken The authentificaton token to connect via REST.
 	 * @param boolean $isssl True, if you use SSL, false if not. Default value is true.
 	 */
-	public static function connect($host, $shop, $authToken, $isssl) {
+	public static function connect($host, $shop, $authToken = null, $isssl = null) {
 
-		// check parameter
+		self::errorReset();
+
+		// check parameters
 		if (!InputValidator::isHost($host) ||
 			!InputValidator::isShop($shop)) {
 			Logger::warning("ep6\RESTClient\nHost (" . $host . ") or Shop (" . $shop . ") are not valid.");
 			self::disconnect();
+			$error = !InputValidator::isHost($host) ? "RESTC-1" : "RESTC-2";
+			self::errorSet($error);
 			return false;
 		}
 
@@ -95,6 +103,7 @@ class RESTClient {
 	 */
 	public static function printStatus() {
 
+		self::errorReset();
 		Logger::force("ep6\RESTClient\n" . self);
 	}
 
@@ -104,6 +113,7 @@ class RESTClient {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.2 Throw warning with wrong parameters.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param String command The path which is requested in the REST client.
 	 * @param String locale The localization to get.
@@ -112,9 +122,12 @@ class RESTClient {
 	 */
 	public static function sendWithLocalization($command, $locale, $postfields = array()) {
 
+		self::errorReset();
+
 		// cheeck parameters
 		if (!InputValidator::isLocale($locale)) {
 			Logger::warning("ep6\RESTClient\nLocale (" . $locale . ") is not valid.");
+			self::errorSet("RESTC-3");
 			return null;
 		}
 		return self::send($command . "?locale=" . $locale, $postfields);
@@ -128,6 +141,7 @@ class RESTClient {
 	 * @since 0.0.1 Use HTTPRequestMethod enum.
 	 * @since 0.1.0 Allow empty message body if the status code is 204.
 	 * @since 0.1.2 Restructure the logging message and fix the PATCH call.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param String command The path which is requested in the REST client.
 	 * @param String[] postfields Add specific parameters to the REST server.
@@ -135,15 +149,19 @@ class RESTClient {
 	 */
 	public static function send($command, $postfields = array()) {
 		
+		self::errorReset();
 		$JSONpostfield = "";
 
 		if (!InputValidator::isRESTCommand($command) ||
 			!InputValidator::isArray($postfields)) {
 			Logger::warning("ep6\RESTClient\nCommand (" . $command . ") or postfields (" . $postfields . ") are not valid.");
+			$error = !InputValidator::isRESTCommand($command) ? "RESTC-4" : "RESTC-5";
+			self::errorSet($error);
 			return null;
 		}
 		if (!self::$ISCONNECTED) {
 			Logger::warning("ep6\RESTClient\nClient is not connected.");
+			self::errorSet("RESTC-6");
 			return null;			
 		}
 
@@ -230,10 +248,12 @@ class RESTClient {
 		// if message body is empty this is allowed with 204
 		if (!$response && $info["http_code"] != "204") {
 			Logger::error("ep6\RESTClient\nError with send REST client: " . $error);
+			self::errorSet("RESTC-7");
 			return null;
 		}
 		elseif (!in_array($info["http_code"], array("200", "201", "204"))) {
 			Logger::warning("ep6\RESTClient\nGet wrong response: " . $info["http_code"]);
+			self::errorSet("RESTC-8");
 			return null;
 		}
 
@@ -247,13 +267,18 @@ class RESTClient {
 	 * @since 0.0.0
 	 * @since 0.1.0 Use HTTPRequestMethod enum.
 	 * @since 0.1.2 Throw warning with wrong parameters.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param HTTPRequestMethod method The request method the REST client should use.
 	 * @return boolean True, if it works, false if not.
 	 */
 	public static function setRequestMethod($method) {
+
+		self::errorReset();
+
 		if (!InputValidator::isRequestMethod($method)) {
 			Logger::warning("ep6\RESTClient\nRequest method (" . $method . ") is not valid.");
+			self::errorSet("RESTC-9");
 			return false;
 		}
 		self::$HTTP_REQUEST_METHOD = $method;
@@ -265,10 +290,12 @@ class RESTClient {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 */
 	public static function disconnect() {
 
+		self::errorReset();
 		self::$HOST = "";
 		self::$SHOP = "";
 		self::$AUTHTOKEN = null;
@@ -283,14 +310,18 @@ class RESTClient {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.1
 	 * @since 0.1.2 Throw warning with wrong parameters.
+	 * @since 0.1.2 Add error reporting.
 	 * @param int time The time in ms every reload needs to wait until get new information.
 	 * @return boolean True if the change works, false if not.
 	 * @api
 	 */
 	public static function setRequestWaitTime($time) {
 
+		self::errorReset();
+
 		if (!InputValidator::isRangedInt($time, 0)) {
 			Logger::warning("ep6\RESTClient\nRequest time (" . $time . ") is not valid.");
+			self::errorSet("RESTC-10");
 			return false;
 		}
 

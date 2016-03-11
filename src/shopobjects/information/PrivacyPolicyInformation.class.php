@@ -13,13 +13,14 @@ namespace ep6;
  * @since 0.0.0
  * @since 0.1.1 This object is now echoable.
  * @since 0.1.1 Unstatic every attributes.
+ * @since 0.1.2 Add error reporting.
  * @package ep6
  * @subpackage Shopobjects\Information
  * @see InformationTrait This trait has all information needed objects.
  */
 class PrivacyPolicyInformation {
 
-	use InformationTrait;
+	use InformationTrait, ErrorReporting;
 
 	/** @var String The REST path for privacy policy. */
 	const RESTPATH = "legal/privacy-policy";

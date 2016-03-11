@@ -44,6 +44,8 @@ trait InformationTrait {
 		// if the REST path empty -> this is the not the implementation or can't get something else
 		if (InputValidator::isEmpty(self::RESTPATH) ||
 			!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
+			$error = InputValidator::isEmpty(self::RESTPATH) ? "TI-1" : "RESTC-9";
+			self::errorSet($error);
 			return;
 		}
 
@@ -51,6 +53,7 @@ trait InformationTrait {
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
+			self::errorSet("TI-2");
 			return;
 		}
 
@@ -117,12 +120,14 @@ trait InformationTrait {
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @deprecated
 	 * @return String|null The name in the default localization or null if the default name is unset.
 	 */
 	public function getDefaultName() {
-
+		
+		self::errorReset();
 		return $this->getName();
 	}
 
@@ -134,11 +139,13 @@ trait InformationTrait {
 	 * @since 0.1.0 Use a reload function.
 	 * @since 0.1.0 Use the default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String|null The name or null if the name is unset.
 	 */
 	 public function getName() {
-
+		
+		self::errorReset();
 		$this->reload();
 		return InputValidator::isEmpty($this->NAME) ? null : $this->NAME;
 	}
@@ -150,12 +157,14 @@ trait InformationTrait {
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @deprecated
 	 * @return String|null The navigation caption in the default localization or null if the default navigation caption is unset.
 	 */
 	public function getDefaultNavigationCaption() {
-
+		
+		self::errorReset();
 		return $this->getNavigationCaption();
 	}
 
@@ -167,11 +176,13 @@ trait InformationTrait {
 	 * @since 0.1.0 Use a reload function.
 	 * @since 0.1.0 Use the default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String|null The navigation caption or null if the navigation caption is unset.
 	 */
 	 public function getNavigationCaption() {
 
+		self::errorReset();
 		$this->reload();
 		return InputValidator::isEmpty($this->NAVIGATIONCAPTION) ? null : $this->NAVIGATIONCAPTION;
 	}
@@ -183,12 +194,14 @@ trait InformationTrait {
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @deprecated
 	 * @return String|null The description in the default localization or null if the default description is unset.
 	 */
 	public function getDefaultDescription() {
-
+		
+		self::errorReset();
 		return $this->getDescription();
 	}
 
@@ -200,11 +213,13 @@ trait InformationTrait {
 	 * @since 0.1.0 Use a reload function.
 	 * @since 0.1.0 Use the default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String|null The localized description or null if the description is unset.
 	 */
 	 public function getDescription() {
 
+		self::errorReset();
 		$this->reload();
 		return InputValidator::isEmpty($this->DESCRIPTION) ? null : $this->DESCRIPTION;
 	}
