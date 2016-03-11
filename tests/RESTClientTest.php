@@ -11,7 +11,7 @@ class RESTClientTest extends \PHPUnit_Framework_TestCase {
     {
         $this->assertFalse(@RESTClient::connect());
         $this->assertFalse(@RESTClient::connect("www.google.de"));
-        $this->assertFalse(@RESTClient::connect("www.google.de", "Shopname"));
+        $this->assertTrue(@RESTClient::connect("www.google.de", "Shopname"));
         $this->assertTrue(@RESTClient::connect("www.google.de", "Shopname", "AuthToken"));
         $this->assertFalse(@RESTClient::connect("ThisIsNODomain", "Shopname", "AuthToken"));
         $this->assertTrue(@RESTClient::connect("www.google.de", "Shopname", "AuthToken", true));
