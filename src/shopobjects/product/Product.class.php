@@ -21,10 +21,13 @@ namespace ep6;
  * @since 0.1.1 Don't use locale parameter in get functions.
  * @since 0.1.1 Unstatic every attributes.
  * @since 0.1.2 Insert the Setters.
+ * @since 0.1.2 Add error reporting.
  * @package ep6
  * @subpackage Shopobjects\Product
  */
 class Product {
+	
+	use ErrorReporting;
 
 	/** @var String The REST path to the product ressource. */
 	const RESTPATH = "products";
@@ -98,6 +101,7 @@ class Product {
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Dont use the locale parameter in calling the product price attribute.
 	 * @since 0.1.2 Exclude the REST request to the load() function.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param mixed[] $productParameter The product to create as array.
 	 */
@@ -105,6 +109,8 @@ class Product {
 
 		if (!InputValidator::isArray($productParameter) ||
 			InputValidator::isEmptyArray($productParameter)) {
+			$this->errorSet("P-1");
+			Logger::warning("ep6\Product\nProduct parameter " . $productParameter . " to create product is invalid.");
 			return;
 		}
 		
@@ -191,10 +197,13 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String The product id.
 	 */
 	public function getID() {
+		
+		$this->errorReset();
 
 		return $this->productID;
 	}
@@ -206,10 +215,13 @@ class Product {
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Fix to call function without locale parameter.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String The name.
 	 */
 	public function getName() {
+		
+		$this->errorReset();
 
 		return $this->name;
 	}
@@ -223,6 +235,8 @@ class Product {
 	 * @param String $name The new name.
 	 */
 	public function setName($name) {
+		
+		$this->errorReset();
 
 		self::setAttribute("/name", $name);
 	}
@@ -235,6 +249,8 @@ class Product {
 	 * @api
 	 */
 	public function unsetName() {
+		
+		$this->errorReset();
 
 		self::unsetAttribute("/name");
 	}
@@ -248,6 +264,8 @@ class Product {
 	 * @param String $number The new product number.
 	 */
 	public function setNumber($number) {
+		
+		$this->errorReset();
 
 		self::setAttribute("/productNumber", $number);
 	}
@@ -259,10 +277,13 @@ class Product {
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Fix to call function without locale parameter.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String The short description.
 	 */
 	public function getShortDescription() {
+		
+		$this->errorReset();
 
 		return $this->shortDescription;
 	}
@@ -274,10 +295,13 @@ class Product {
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Fix to call function without locale parameter.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String The description.
 	 */
 	public function getDescription() {
+		
+		$this->errorReset();
 
 		return $this->description;
 	}
@@ -291,6 +315,8 @@ class Product {
 	 * @param String $description The new description.
 	 */
 	public function setDescription($description) {
+		
+		$this->errorReset();
 
 		self::setAttribute("/description", $dscription);
 	}
@@ -303,6 +329,8 @@ class Product {
 	 * @api
 	 */
 	public function unsetDescription() {
+		
+		$this->errorReset();
 
 		self::unsetAttribute("/description");
 	}
@@ -316,6 +344,8 @@ class Product {
 	 * @param String $shortDescription The new short description.
 	 */
 	public function setShortDescription($shortDescription) {
+		
+		$this->errorReset();
 
 		self::setAttribute("/shortDescription", $shortDescription);
 	}
@@ -328,6 +358,8 @@ class Product {
 	 * @api
 	 */
 	public function unsetShortDescription() {
+		
+		$this->errorReset();
 
 		self::unsetAttribute("/shortDescription");
 	}
@@ -341,6 +373,8 @@ class Product {
 	 * @param String $energyLabelsString The new energy labels string.
 	 */
 	public function setEnergyLabelsString($energyLabelsString) {
+		
+		$this->errorReset();
 
 		self::setAttribute("/energyLabelsString", $energyLabelsString);
 	}
@@ -353,6 +387,8 @@ class Product {
 	 * @api
 	 */
 	public function unsetEnergyLabelsString() {
+		
+		$this->errorReset();
 
 		self::unsetAttribute("/energyLabelsString");
 	}
@@ -366,6 +402,8 @@ class Product {
 	 * @param String $manufacturer The new manufacturer.
 	 */
 	public function setManufacturer($manufacturer) {
+		
+		$this->errorReset();
 
 		self::setAttribute("/manufacturer", $manufacturer);
 	}
@@ -378,6 +416,8 @@ class Product {
 	 * @api
 	 */
 	public function unsetManufacturer() {
+		
+		$this->errorReset();
 
 		self::unsetAttribute("/manufacturer");
 	}
@@ -391,6 +431,8 @@ class Product {
 	 * @param String $upc The new UPC.
 	 */
 	public function setUPC($upc) {
+		
+		$this->errorReset();
 
 		self::setAttribute("/upc", $upc);
 	}
@@ -403,6 +445,8 @@ class Product {
 	 * @api
 	 */
 	public function unsetUPC() {
+		
+		$this->errorReset();
 
 		self::unsetAttribute("/upc");
 	}
@@ -416,6 +460,8 @@ class Product {
 	 * @param String $ean The new EAN.
 	 */
 	public function setEAN($ean) {
+		
+		$this->errorReset();
 
 		self::setAttribute("/ean", $ean);
 	}
@@ -428,6 +474,8 @@ class Product {
 	 * @api
 	 */
 	public function unsetEAN() {
+		
+		$this->errorReset();
 
 		self::unsetAttribute("/ean");
 	}
@@ -441,6 +489,8 @@ class Product {
 	 * @param String $essentialFeatures The new essential features.
 	 */
 	public function setEssentialFeatures($essentialFeatures) {
+		
+		$this->errorReset();
 
 		self::setAttribute("/essentialFeatures", $essentialFeatures);
 	}
@@ -453,6 +503,8 @@ class Product {
 	 * @api
 	 */
 	public function unsetEssentialFeatures() {
+		
+		$this->errorReset();
 
 		self::unsetAttribute("/essentialFeatures");
 	}
@@ -466,6 +518,8 @@ class Product {
 	 * @param String $searchKeywords The new $search keywords.
 	 */
 	public function setSearchKeywords($searchKeywords) {
+		
+		$this->errorReset();
 
 		self::setAttribute("/searchKeywords", $searchKeywords);
 	}
@@ -478,6 +532,8 @@ class Product {
 	 * @api
 	 */
 	public function unsetSearchKeywords() {
+		
+		$this->errorReset();
 
 		self::unsetAttribute("/searchKeywords");
 	}
@@ -493,8 +549,15 @@ class Product {
 	 */
 	private function setAttribute($path, $value) {
 
-		// if parameter is no string or PATCH does not work
-		if (!InputValidator::isString($value) || !RESTClient::setRequestMethod("PATCH")) {
+		// if parameter is no string or 
+		if (!InputValidator::isString($value)) {
+			Logger::warning("ep6\Product\nNew attribute (" . $value . ") is no string.");
+			$this->errorSet("P-2");
+			return;
+		}
+		// if PATCH does not work
+		if (!RESTClient::setRequestMethod("PATCH")) {
+			$this->errorSet("RESTC-9");
 			return;
 		}
 		
@@ -517,6 +580,7 @@ class Product {
 
 		// if PATCH does not work
 		if (!RESTClient::setRequestMethod("PATCH")) {
+			$this->errorSet("RESTC-9");
 			return;
 		}
 		
@@ -532,11 +596,13 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return boolean True if it is for sale, false if not.
 	 */
 	public function isForSale() {
 
+		$this->errorReset();
 		return $this->forSale;
 	}
 
@@ -545,11 +611,13 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return boolean True if it is a special offer, false if not.
 	 */
 	public function isSpecialOffer() {
 
+		$this->errorReset();
 		return $this->specialOffer;
 	}
 
@@ -560,11 +628,13 @@ class Product {
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Fix to call function without locale parameter.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String The availibility text.
 	 */
 	public function getAvailibilityText() {
 
+		$this->errorReset();
 		return $this->availibilityText;
 	}
 
@@ -573,11 +643,13 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return Image The small image.
 	 */
 	public function getSmallImage() {
 
+		$this->errorReset();
 		return !InputValidator::isEmptyArrayKey($this->images, "Small") ? $this->images["Small"] : null;
 	}
 
@@ -586,11 +658,13 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return Image The medium image.
 	 */
 	public function getMediumImage() {
 
+		$this->errorReset();
 		return !InputValidator::isEmptyArrayKey($this->images, "Medium") ? $this->images["Medium"] : null;
 	}
 
@@ -599,11 +673,13 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return Image The large image.
 	 */
 	public function getLargeImage() {
 
+		$this->errorReset();
 		return !InputValidator::isEmptyArrayKey($this->images, "Large") ? $this->images["Large"] : null;
 	}
 
@@ -612,11 +688,13 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return Image The hot deal image.
 	 */
 	public function getHotDealImage() {
 
+		$this->errorReset();
 		return !InputValidator::isEmptyArrayKey($this->images, "HotDeal") ? $this->images["HotDeal"] : null;
 	}
 
@@ -625,11 +703,13 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return ProductPriceWithQuantity Gets the product price with quantity.
 	 */
 	public function getPrice() {
 
+		$this->errorReset();
 		return $this->price;
 	}
 
@@ -638,11 +718,13 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return ProductPrice Gets the deposit price.
 	 */
 	public function getDepositPrice() {
 
+		$this->errorReset();
 		return $this->depositPrice;
 	}
 
@@ -651,11 +733,13 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return ProductPrice Gets the eco participation price.
 	 */
 	public function getEcoParticipationPrice() {
 
+		$this->errorReset();
 		return $this->ecoParticipationPrice;
 	}
 
@@ -664,11 +748,13 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return ProductPrice Gets the with deposit price.
 	 */
 	public function getWithDepositPrice() {
 
+		$this->errorReset();
 		return $this->withDepositPrice;
 	}
 
@@ -677,11 +763,13 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return ProductPrice Gets the manufacturer price.
 	 */
 	public function getManufacturerPrice() {
 
+		$this->errorReset();
 		return $this->manufacturerPrice;
 	}
 
@@ -690,11 +778,13 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return ProductPrice Gets the base price.
 	 */
 	public function getBasePrice() {
 
+		$this->errorReset();
 		return $this->basePrice;
 	}
 
@@ -704,11 +794,13 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.1 Slideshows are not reloadable since now.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return ProductSlideshow Gets the product slideshow.
 	 */
 	public function getSlideshow() {
 
+		$this->errorReset();
 		// if the slideshow is not loaded until now
 		if (InputValidator::isEmpty($this->slideshow)) {
 			$this->slideshow = new ProductSlideshow($this->productID);
@@ -722,11 +814,13 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return ProductAttributes[] Gets the product attributes in an array.
 	 */
 	public function getAttributes() {
 
+		$this->errorReset();
 		$timestamp = (int) (microtime(true) * 1000);
 
 		// if the attribute is not loaded until now
@@ -742,12 +836,14 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param int $key The number of product attribute to get.
 	 * @return ProductAttributes|null Gets the required product attributes.
 	 */
 	public function getAttribute($key) {
 
+		$this->errorReset();
 		$timestamp = (int) (microtime(true) * 1000);
 
 		// if the attribute is not loaded until now
@@ -757,6 +853,8 @@ class Product {
 		}
 
 		if (InputValidator::isEmptyArrayKey($this->attributes, $key)) {
+			$this->errorSet("P-3");
+			Logger::warning("ep6\Product\nThe attribute " . $key . " is not defined in the product.");
 			return null;
 		}
 		return $this->attributes[$key];
@@ -768,11 +866,13 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 */
 	private function loadAttributes() {
 
 		// if parameter is wrong or GET is blocked
 		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
+			$this->errorSet("RESTC-9");
 			return;
 		}
 
@@ -780,12 +880,14 @@ class Product {
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
+			$this->errorSet("P-4");
 			return;
 		}
 
-		// if there are items
+		// if there are no items
 		if (InputValidator::isEmptyArrayKey($content, "items")) {
-		    Logger::error("Respond for " . self::RESTPATH . "/" . $this->productID . "/" .  self::RESTPATH_ATTRIBUTES . "can not be interpreted.");
+			$this->errorSet("P-5");
+		    Logger::error("Respond for " . self::RESTPATH . "/" . $this->productID . "/" .  self::RESTPATH_ATTRIBUTES . " can not be interpreted.");
 			return;
 		}
 
@@ -807,10 +909,13 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return float|null The stock level of the product.
 	 */
 	public function getStockLevel() {
+		
+		$this->errorReset();
 
 		$timestamp = (int) (microtime(true) * 1000);
 
@@ -828,11 +933,14 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param float $step The value the stock level should be increased, default value is 1.
 	 * @return float|null The new stock level of the product.
 	 */
 	public function increaseStockLevel($step = 1.0) {
+		
+		$this->errorReset();
 
 		$this->getStockLevel();
 
@@ -854,11 +962,14 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param float $step The value the stock level should be decreased, default value is 1.
 	 * @return float|null The new stock level of the product.
 	 */
 	public function decreaseStockLevel($step = 1.0) {
+		
+		$this->errorReset();
 
 		$this->getStockLevel();
 
@@ -881,19 +992,28 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 */
 	private function loadStockLevel() {
 
 		// if parameter is wrong or GET is blocked
 		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
+			$this->errorSet("RESTC-9");
 			return;
 		}
 
 		$content = RESTClient::send(self::RESTPATH . "/" . $this->productID . "/" .  self::RESTPATH_STOCKLEVEL);
-
+		
 		// if respond is empty
-		if (InputValidator::isEmpty($content) ||
-			InputValidator::isEmptyArrayKey($content, "stocklevel")) {
+		if (InputValidator::isEmpty($content)) {
+			$this->errorSet("P-6");
+			return;
+		}
+
+		// if there are no items
+		if (InputValidator::isEmptyArrayKey($content, "stocklevel")) {
+			$this->errorSet("P-7");
+		    Logger::error("Respond for " . self::RESTPATH . "/" . $this->productID . "/" .  self::RESTPATH_STOCKLEVEL . " can not be interpreted.");
 			return;
 		}
 
@@ -904,18 +1024,24 @@ class Product {
 		$this->NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::$NEXT_RESPONSE_WAIT_TIME;
 	}
 	/**
-	 * Loads the stock level.
+	 * Change the stock level with a step.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @param float $step The step to change.
 	 */
 	private function changeStockLevel($step) {
 
 		// if parameter is wrong or GET is blocked
-		if (!RESTClient::setRequestMethod(HTTPRequestMethod::PUT) ||
-			!InputValidator::isFloat($step)) {
+		if (!RESTClient::setRequestMethod(HTTPRequestMethod::PUT)) {
+			$this->errorSet("RESTC-9");
+			return;
+		}
+		if (!InputValidator::isFloat($step)) {
+			$this->errorSet("P-8");
+			Logger::error("The " . $step . " step to change the stocklevel is no float.");
 			return;
 		}
 
@@ -923,8 +1049,15 @@ class Product {
 		$content = RESTClient::send(self::RESTPATH . "/" . $this->productID . "/" .  self::RESTPATH_STOCKLEVEL, $postfields);
 
 		// if respond is empty
-		if (InputValidator::isEmpty($content) ||
-			InputValidator::isEmptyArrayKey($content, "stocklevel")) {
+		if (InputValidator::isEmpty($content)) {
+			$this->errorSet("P-6");
+			return;
+		}
+
+		// if there are no items
+		if (InputValidator::isEmptyArrayKey($content, "stocklevel")) {
+			$this->errorSet("P-7");
+		    Logger::error("Respond for " . self::RESTPATH . "/" . $this->productID . "/" .  self::RESTPATH_STOCKLEVEL . " can not be interpreted.");
 			return;
 		}
 
@@ -943,12 +1076,14 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @return boolean True if the deletion was successful, false if not.
 	 */
 	public function delete() {
 
 		// if request method is blocked
 		if (!RESTClient::setRequestMethod(HTTPRequestMethod::DELETE)) {
+			$this->errorSet("RESTC-9");
 			return false;
 		}
 

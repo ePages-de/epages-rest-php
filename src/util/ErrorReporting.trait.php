@@ -1,0 +1,151 @@
+<?php
+/**
+ * This file represents the error reporting trait.
+ *
+ * With error reporting you can use useful functions to check if the last call will throw an error.
+ * All useful objects in ep6 will inherit this functionality. 
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.1.2
+ */
+namespace ep6;
+/**
+ * This is the functionality to check whether there is an error on last library usage or not.
+ *
+ * @author David Pauli <contact@david-pauli.de>
+ * @since 0.1.2
+ * @package ep6
+ * @subpackage Util
+ */
+trait ErrorReporting {
+
+	/** @var array Saves the possibile error messages with the error number. */
+	private static $ERRORMESSAGES = array(
+		"RESTC-1"	=>	"Entered host for REST communication is not valid.",
+		"RESTC-2"	=>	"Entered shop for connecting is not valid.",
+		"RESTC-3"	=>	"Requested locale is not valid.",
+		"RESTC-4"	=>	"REST resource is not valid.",
+		"RESTC-5"	=>	"POST parameters are not valid.",
+		"RESTC-6"	=>	"REST client is not connected.",
+		"RESTC-7"	=>	"Response does not have hody.",
+		"RESTC-8"	=>	"Response returns an error code.",
+		"RESTC-9"	=>	"HTTP method is not allowed.",
+		"RESTC-10"	=>	"New request wait time is not valid.",
+		"JSONH-1"	=>	"JSON to parse is not valid",
+		"JSONH-2"	=>	"Parsing the JSON does not work.",
+		"JSONH-3"	=>	"The array to parse into JSON is invalid.",
+		"JSONH-4"	=>	"Parsing into JSON does not work.",
+		"S-1"	=>	"Entered host is not valid.",
+		"S-2"	=>	"Entered shop is not valid.",
+		"S-3"	=>	"No host name configured for using the shop.",
+		"S-4"	=>	"No shop name configured for using the shop.",
+		"S-5"	=>	"Can't delete product.",
+		"C-1"	=>	"Respond for Currencies is not valid.",
+		"C-2"	=>	"Can't set the currency, because it is not available in the shop.",
+		"L-1"	=>	"Respond for Locales is not valid.",
+		"L-2"	=>	"Can't set the locale, because it is not available in the shop.",
+		"CI-1"	=>	"Contact information respond is empty.",
+		"TI-1"	=>	"The REST path in information object is empty.",
+		"TI-2"	=>	"Information call respond is empty.",
+		"PP-1"	=>	"Product price does belong to any product.",
+		"PP-2"	=>	"Product price set function does not have a float parameter.",
+		"PP-3"	=>	"Product price set function is not allowed with this product price type.",
+		"P-1"	=>	"Product construct parameter is wrong.",
+		"P-2"	=>	"The new attribute value is not valid.",
+		"P-3"	=>	"Unknown attribute in the product.",
+		"P-4"	=>	"Product attributes REST respond is empty.",
+		"P-5"	=>	"The product does not have attributes.",
+		"P-6"	=>	"Product stocklevel REST respond is empty.",
+		"P-7"	=>	"The product does not have stocklevel.",
+		"P-8"	=>	"The step for the new stocklevel is no float.",
+		"PF-1"	=>	"The product filter attribute in ProductFilter constructor is invalid.",
+		"PF-2"	=>	"The product filter parameter is unknown.",
+		"PF-3"	=>	"The product filter page number is invalid.",
+		"PF-4"	=>	"The product filter results per page number is invalid.",
+		"PF-5"	=>	"The product filter direction is invalid.",
+		"PF-6"	=>	"The product sort parameter is invalid.",
+		"PF-7"	=>	"There are already 12 product IDs to filter. To add more delete one.",
+		"PF-8"	=>	"Product GET REST respond is empty.",
+		"PF-9"	=>	"The REST respond can't be interpreted correctly.",
+		"PS-1"	=>	"Invalid product ID to load attributes.",
+		"PS-2"	=>	"Empty response while getting product slideshow.",
+		"PS-3"	=>	"The REST response returns an invalid response.",
+		"PS-4"	=>	"There are no slideshow images.",
+		"PS-5"	=>	"The slideshow image number is unknown.",
+		"PS-6"	=>	"The required slideshow image exists but is empty."
+		);
+
+	/** @var String|null Saves the last happened error, or null if there is no. */
+	private static $ERROR = null;
+
+	/**
+	 * Checks whether there was an error or not.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @return boolean True if there was an error, false if not.
+	 * @api
+	 */
+	public static function error() {
+
+		return InputValidato::isEmpty(self::$ERROR) ? false : true;
+	}
+
+	/**
+	 * This function returns the error message of the last happened error.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @return String|null The error message of the last happened error or null if there is no error message.
+	 */
+	public static function errorMessage() {
+
+		return self::$error() ? self::$ERRORMESSAGES[self::$errorNumber()] : null;
+	}
+
+	/**
+	 * This function returns the error number of the last happened error.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 * @return String|null The error number of the last happened error, or null if there is no error.
+	 */
+	public static function errorNumber() {
+
+		return self::$ERROR;
+	}
+
+	/**
+	 * Sets an occured error.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @param String $errorNumber The error number to set.
+	 * @return True if the error number is valid, false if not.
+	 */
+	private static function errorSet($errorNumber) {
+
+		// if the parameter is empty or not a defined error number.
+		if (InputValidator::isEmpty($errorNumber)
+			|| InputValidator::isEmptyArrayKey(self::$ERRORMESSAGES, $errorNumber)) {
+			return false;
+		}
+		
+		self::$ERROR = $errorNumber;
+		return true;
+	}
+
+	/**
+	 * Resets the error message.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 */
+	 private static function errorReset() {
+
+		self::$ERROR = null;
+	}
+}
+?>

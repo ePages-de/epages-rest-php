@@ -13,11 +13,14 @@ namespace ep6;
  * @since 0.0.0
  * @since 0.1.0 Use a default Locale and Currency.
  * @since 0.1.1 The object can be echoed now.
+ * @since 0.1.2 Add error reporting.
  * @package ep6
  * @subpackage Shopobjects\Product
  * @example examples\createProductFilter.php Create and use the product filter.
  */
 class ProductFilter {
+	
+	use ErrorReporting;
 
 	/** @var String The REST path to the filter ressource. */
 	const RESTPATH = "products";
@@ -65,13 +68,18 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.1
 	 * @since 0.1.0 Use a default Locale and Currency.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param String[] $productFilterParameter The values of a product filter.
 	 */
 	public function setProductFilter($productFilterParameter) {
+		
+		$this->errorReset();
 
 		if (!InputValidator::isArray($productFilterParameter) ||
 			InputValidator::isEmptyArray($productFilterParameter)) {
+			$this->errorSet("PF-1");
+			Logger::warning("ep6\ProductFilter\nProduct filter parameter " . $productFilterParameter . " to create product filter is invalid.");
 			return;
 		}
 
@@ -95,7 +103,8 @@ class ProductFilter {
 				$this->setCategoryID($parameter);
 			}
 			else {
-				Logger::warning("Unknown attribute <i>" . $key . "</i> in product filter attribute.");
+				$this->errorSet("PF-2");
+				Logger::warning("ep6\ProductFilter\nUnknown attribute <i>" . $key . "</i> in product filter attribute.");
 			}
 		}
 	}
@@ -107,10 +116,12 @@ class ProductFilter {
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale and Currency.
 	 * @since 0.1.1 To print the product filter echo the object itself.
+	 * @since 0.1.2 Add error reporting.
 	 * @deprecated To print the product filter echo the object itself.
 	 */
 	public function printFilter() {
 
+		$this->errorReset();
 		Logger::force($this);
 	}
 
@@ -120,10 +131,13 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale and Currency.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String Returns the hash code of the object.
 	 */
 	public function hashCode() {
+		
+		$this->errorReset();
 
 		$message = $this->page
 			. $this->resultsPerPage
@@ -143,12 +157,14 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecate because product filter now use shop configured Locale.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @deprecated
 	 * @param String $locale The localiazion to filter.
 	 * @return boolean True if setting the locale works, false if not.
 	 */
 	public function setLocale($locale) {
+		$this->errorReset();
 		return false;
 	}
 
@@ -158,11 +174,13 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecate because product filter now use shop configured Locale.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @deprecated
 	 * @return String The localization of this product filter.
 	 */
 	public function getLocale() {
+		$this->errorReset();
 		return Locales::getLocale();
 	}
 
@@ -172,12 +190,14 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecate because product filter now use shop configured Currency.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @deprecated
 	 * @param String $currency The currency to filter.
 	 * @return boolean True if setting the currency works, false if not.
 	 */
 	public function setCurrency($currency) {
+		$this->errorReset();
 		return false;
 	}
 
@@ -187,11 +207,13 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecate because product filter now use shop configured Currency.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @deprecated
 	 * @return String The currency of this product filter.
 	 */
 	public function getCurrency() {
+		$this->errorReset();
 		return Currencies::getCurrency();
 	}
 
@@ -201,12 +223,18 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param int $page The page number to filter.
 	 * @return boolean True if setting the page works, false if not.
 	 */
 	public function setPage($page) {
+		
+		$this->errorReset();
+		
 		if (!InputValidator::isRangedInt($page, 1)) {
+			$this->errorSet("PF-3");
+			Logger::warning("ep6\ProductFilter\nThe number " . $page . " as a product filter page needs to be bigger than 0.");
 			return false;
 		}
 		$this->page = $page;
@@ -219,10 +247,12 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return int The page number of this product filter.
 	 */
 	public function getPage() {
+		$this->errorReset();
 		return $this->page;
 	}
 
@@ -232,12 +262,16 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param int $resultsPerPage The results per page to filter.
 	 * @return boolean True if setting the results per page works, false if not.
 	 */
 	public function setResultsPerPage($resultsPerPage) {
+		$this->errorReset();
 		if (!InputValidator::isRangedInt($resultsPerPage, null, 100)) {
+			$this->errorSet("PF-4");
+			Logger::warning("ep6\ProductFilter\The number " . $resultsPerPage . " as a product filter results per page needs to be lower than 100.");
 			return false;
 		}
 		$this->resultsPerPage = $resultsPerPage;
@@ -250,10 +284,12 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return int The results per page number of this product filter.
 	 */
 	public function getResultsPerPage() {
+		$this->errorReset();
 		return $this->resultsPerPage;
 	}
 
@@ -263,12 +299,16 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param String $direction The direction to filter.
 	 * @return boolean True if setting the direction works, false if not.
 	 */
 	public function setDirection($direction) {
+		$this->errorReset();
 		if (!InputValidator::isProductDirection($direction)) {
+			$this->errorSet("PF-5");
+			Logger::warning("The direction " . $direction . " as a product filter direction has not a valid value.");
 			return false;
 		}
 		$this->direction = $direction;
@@ -281,10 +321,12 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String The direction of this product filter.
 	 */
 	public function getDirection() {
+		$this->errorReset();
 		return $this->direction;
 	}
 
@@ -294,12 +336,16 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param String $sort The sort parameter to filter.
 	 * @return boolean True if setting the sort parameter works, false if not.
 	 */
 	public function setSort($sort) {
+		$this->errorReset();
 		if (!InputValidator::isProductSort($sort)) {
+			$this->errorSet("PF-6");
+			Logger::warning("ep6\ProductFilter\nThe parameter " . $sort . " as a product filter sort has not a valid value.");
 			return false;
 		}
 		$this->sort = $sort;
@@ -312,10 +358,12 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String The sort of this product filter.
 	 */
 	public function getSort() {
+		$this->errorReset();
 		return $this->sort;
 	}
 
@@ -325,11 +373,13 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param String $q The query search string to filter.
 	 * @return boolean True if setting the query search string works, false if not.
 	 */
 	public function setQ($q) {
+		$this->errorReset();
 		if (InputValidator::isEmpty($q)) {
 			return false;
 		}
@@ -343,10 +393,12 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String The query search string of this product filter.
 	 */
 	public function getQ() {
+		$this->errorReset();
 		return $this->q;
 	}
 
@@ -356,11 +408,13 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param String $categoryID The category ID to filter.
 	 * @return boolean True if setting the category ID string works, false if not.
 	 */
 	public function setCategoryID($categoryID) {
+		$this->errorReset();
 		if (InputValidator::isEmpty($categoryID)) {
 			return false;
 		}
@@ -374,10 +428,12 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String The category ID string of this product filter.
 	 */
 	public function getCategoryID() {
+		$this->errorReset();
 		return $this->categoryID;
 	}
 
@@ -387,14 +443,22 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param String $productID The product ID to filter.
 	 * @return boolean True if setting the product ID string works, false if not.
 	 */
 	public function setID($productID) {
+		$this->errorReset();
+		
 		if (InputValidator::isEmpty($productID)
 			|| count($this->IDs) > 12
 			|| in_array($productID, $this->IDs)) {
+				
+			if (count($this->IDs) > 12) {
+				$this->errorSet("PF-7");
+				Logger::warning("ep6\ProductFilter\nThere are already 12 product IDs to filter. To add more delete one.");
+			}
 			return false;
 		}
 		array_push($this->IDs, $productID);
@@ -407,11 +471,14 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param String $productID	The product ID to unset from filter.
 	 * @return boolean True if unsetting the product ID string works, false if not.
 	 */
 	public function unsetID($productID) {
+		$this->errorReset();
+		
 		if (InputValidator::isEmpty($productID)
 			|| !in_array($productID, $this->IDs)) {
 			return false;
@@ -425,9 +492,11 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use attribute unstatic.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 */
 	public function resetIDs() {
+		$this->errorReset();
 		$this->IDs = array();
 	}
 
@@ -436,9 +505,11 @@ class ProductFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale and Currency.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 */
 	public function resetFilter() {
+		$this->errorReset();
 
 		$this->page = 1;
 		$this->resultsPerPage = 10;
@@ -456,15 +527,19 @@ class ProductFilter {
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return Products[] Returns an array of products.
 	 */
 	public function getProducts() {
+		
+		$this->errorReset();
 
 		$parameter = $this->getParameter();
 
 		// if request method is blocked
 		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
+			$this->errorSet("RESTC-9");
 			return;
 		}
 
@@ -472,6 +547,8 @@ class ProductFilter {
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
+			$this->errorSet("PF-8");
+		    Logger::error("ep6\ProductFilter\nREST respomd for getting products is empty.");
 			return;
 		}
 
@@ -479,7 +556,8 @@ class ProductFilter {
 		if (InputValidator::isEmptyArrayKey($content, "results") ||
 			InputValidator::isEmptyArrayKey($content, "page") ||
 			InputValidator::isEmptyArrayKey($content, "resultsPerPage")) {
-		    Logger::error("Respond for " . self::RESTPATH . " can not be interpreted.");
+			$this->errorSet("PF-9");
+		    Logger::error("ep6\ProductFilter\nRespond for " . self::RESTPATH . " can not be interpreted.");
 			return;
 		}
 

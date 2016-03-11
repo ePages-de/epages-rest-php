@@ -14,11 +14,14 @@ namespace ep6;
  * @since 0.1.1 Can print the object itself.
  * @since 0.1.1 Delete functionality to reload itself.
  * @since 0.1.1 Use unstatic objects.
+ * @since 0.1.2 Add error reporting.
  * @api
  * @package ep6
  * @subpackage Shopobjects\Product
  */
 class ProductSlideshow {
+	
+	use ErrorReporting;
 
 	/** @var String The REST path to the product slideshow ressource. */
 	const RESTPATH = "slideshow";
@@ -54,14 +57,23 @@ class ProductSlideshow {
 	 * @since 0.1.0
 	 * @since 0.1.1 Fix bug with nonsetted product URL and delete reload functionality.
 	 * @since 0.1.1 Use unstatic variables.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @param String $productID The product ID to get images.
 	 */
 	private function load($productID) {
 
-		// if parameter is wrong or GET is blocked
-		if (!InputValidator::isProductId($productID) ||
-			!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
+		// if parameter is wrong
+		if (!InputValidator::isProductId($productID)) {
+			
+			$this->errorSet("PS-1");
+			Logger::warning("ep6\ProductSlideshow\nInvalid product ID " . $productId . " to load slideshow.");
+			return;
+		}
+		// if GET is blocked
+		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
+			
+			$this->errorSet("RESTC-9");
 			return;
 		}
 
@@ -69,12 +81,17 @@ class ProductSlideshow {
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
+			
+			$this->errorSet("PS-2");
+			Logger::warning("ep6\ProductSlideshow\nEmpty response while getting product slideshow.");
 			return;
 		}
 
 		// if there is items
 		if (InputValidator::isEmptyArrayKey($content, "items")) {
-		    Logger::error("Respond for product/" . $productID . "/" . self::RESTPATH . " can not be interpreted.");
+			
+			$this->errorSet("PS-3");
+		    Logger::error("Respond for product slidehows can not be interpreted.");
 			return;
 		}
 
@@ -113,10 +130,13 @@ class ProductSlideshow {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return int The number of images.
 	 */
 	public function getCountImages() {
+		
+		$this->errorReset();
 
 		if (InputValidator::isEmpty($this->images)) {
 			return 0;
@@ -125,23 +145,42 @@ class ProductSlideshow {
 	}
 
 	/**
-	 * Returns a thumbnail image.
+	 * Basic function to return an image.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.0
-	 * @since 0.1.1 Fix bug with returning image.
+	 * @since 0.1.2
 	 * @api
 	 * @param int $image The image number to get
+	 * @param String $type The type of the image.
 	 * @return Image|null The thumbnail image.
 	 */
-	public function getThumbnailImage($image) {
+	private function getImage($image, $type) {
 
 		if ($this->getCountImages() == 0 ||
 			!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1) ||
-			InputValidator::isEmptyArrayKey($this->images[$image], "Thumbnail")) {
+			InputValidator::isEmptyArrayKey($this->images[$image], $type)) {
+				
+			$reason = $this->getCountImages() == 0 ? "noImages" :
+						(!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1)) ? "IDunknown" :
+						"imageCorrupt";
+			
+			switch ($reason) {
+				case "noImages":
+					$this->errorSet("PS-4");
+					Logger::warning("ep6\ProductSlideshow\nThere are no slideshow images.");
+					break;
+				case "IDunknown":
+					$this->errorSet("PS-5");
+					Logger::warning("ep6\ProductSlideshow\nThe slideshow image number is unknown.");
+					break;
+				case "imageCorrupt":
+					$this->errorSet("PS-6");
+					Logger::warning("ep6\ProductSlideshow\nThe required slideshow image exists but is empty.");
+					break;
+			}
 			return null;
 		}
-		return $this->images[$image]["Thumbnail"];
+		return $this->images[$image][$type];
 	}
 
 	/**
@@ -150,18 +189,32 @@ class ProductSlideshow {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.1 Fix bug with returning image.
+	 * @since 0.1.2 Add error reporting and easy the function.
+	 * @api
+	 * @param int $image The image number to get
+	 * @return Image|null The small image.
+	 */
+	public function getThumbnailImage($image) {
+
+		$this->errorReset();
+		return $this->getImage($image, "Thumbnail");
+	}
+
+	/**
+	 * Returns a small image.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.0
+	 * @since 0.1.1 Fix bug with returning image.
+	 * @since 0.1.2 Add error reporting and easy the function.
 	 * @api
 	 * @param int $image The image number to get
 	 * @return Image|null The small image.
 	 */
 	public function getSmallImage($image) {
 
-		if ($this->getCountImages() == 0 ||
-			!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1) ||
-			InputValidator::isEmptyArrayKey($this->images[$image], "Small")) {
-			return null;
-		}
-		return $this->images[$image]["Small"];
+		$this->errorReset();
+		return $this->getImage($image, "Small");
 	}
 
 	/**
@@ -170,18 +223,15 @@ class ProductSlideshow {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.1 Fix bug with returning image.
+	 * @since 0.1.2 Add error reporting and easy the function.
 	 * @api
 	 * @param int $image The image number to get
 	 * @return Image|null The hotdeal image.
 	 */
 	public function getHotDealImage($image) {
-
-		if ($this->getCountImages() == 0 ||
-			!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1) ||
-			InputValidator::isEmptyArrayKey($this->images[$image], "HotDeal")) {
-			return null;
-		}
-		return $this->images[$image]["HotDeal"];
+		
+		$this->errorReset();
+		return $this->getImage($image, "HotDeal");
 	}
 
 	/**
@@ -190,18 +240,15 @@ class ProductSlideshow {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.1 Fix bug with returning image.
+	 * @since 0.1.2 Add error reporting and easy the function.
 	 * @api
 	 * @param int $image The image number to get
 	 * @return Image|null The medium small image.
 	 */
 	public function getMediumSmallImage($image) {
-
-		if ($this->getCountImages() == 0 ||
-			!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1) ||
-			InputValidator::isEmptyArrayKey($this->images[$image], "MediumSmall")) {
-			return null;
-		}
-		return $this->images[$image]["MediumSmall"];
+		
+		$this->errorReset();
+		return $this->getImage($image, "MediumSmall");
 	}
 
 	/**
@@ -210,18 +257,15 @@ class ProductSlideshow {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.1 Fix bug with returning image.
+	 * @since 0.1.2 Add error reporting and easy the function.
 	 * @api
 	 * @param int $image The image number to get
 	 * @return Image|null The medium image.
 	 */
 	public function getMediumImage($image) {
-
-		if ($this->getCountImages() == 0 ||
-			!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1) ||
-			InputValidator::isEmptyArrayKey($this->images[$image], "Medium")) {
-			return null;
-		}
-		return $this->images[$image]["Medium"];
+		
+		$this->errorReset();
+		return $this->getImage($image, "Medium");
 	}
 
 	/**
@@ -230,18 +274,15 @@ class ProductSlideshow {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.1 Fix bug with returning image.
+	 * @since 0.1.2 Add error reporting and easy the function.
 	 * @api
 	 * @param int $image The image number to get
 	 * @return Image|null The medium large image.
 	 */
 	public function getMediumLargeImage($image) {
-
-		if ($this->getCountImages() == 0 ||
-			!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1) ||
-			InputValidator::isEmptyArrayKey($this->images[$image], "MediumLarge")) {
-			return null;
-		}
-		return $this->images[$image]["MediumLarge"];
+		
+		$this->errorReset();
+		return $this->getImage($image, "MediumLarge");
 	}
 
 	/**
@@ -250,18 +291,15 @@ class ProductSlideshow {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.1 Fix bug with returning image.
+	 * @since 0.1.2 Add error reporting and easy the function.
 	 * @api
 	 * @param int $image The image number to get
 	 * @return Image|null The large image.
 	 */
 	public function getLargeImage($image) {
-
-		if ($this->getCountImages() == 0 ||
-			!InputValidator::isRangedInt($image, 0, $this->getCountImages() - 1) ||
-			InputValidator::isEmptyArrayKey($this->images[$image], "Large")) {
-			return null;
-		}
-		return $this->images[$image]["Large"];
+		
+		$this->errorReset();
+		return $this->getImage($image, "Large");
 	}
 
 	/**

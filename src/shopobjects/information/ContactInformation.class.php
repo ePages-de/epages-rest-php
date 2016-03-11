@@ -15,13 +15,14 @@ namespace ep6;
  * @since 0.1.0 Use a default Locale.
  * @since 0.1.1 The object can be echoed.
  * @since 0.1.1 Unstatic variables.
+ * @since 0.1.2 Add error reporting.
  * @package ep6
  * @subpackage Shopobjects\Information
  * @see InformationTrait This trait has all information needed objects.
  */
 class ContactInformation {
 
-	use InformationTrait;
+	use InformationTrait, ErrorReporting;
 
 	/** @var String The REST path for contact information. */
 	const RESTPATH = "legal/contact-information";
@@ -61,11 +62,13 @@ class ContactInformation {
 	 * @since 0.0.1 Use HTTPRequestMethod enum.
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 */
 	private function load() {
 
 		// if request method is blocked
 		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
+			self::errorSet("RESTC-9");
 			return;
 		}
 
@@ -73,6 +76,7 @@ class ContactInformation {
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
+			self::errorSet("CI-1");
 			return;
 		}
 
@@ -178,12 +182,13 @@ class ContactInformation {
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @since 0.1.1 Unstatic every attributes.
-	 * @api
+	 * @since 0.1.2 Add error reporting.
 	 * @deprecated
 	 * @return String|null The title in the default localization or null if the default title is not set.
 	 */
 	public function getDefaultTitle() {
-
+		
+		self::errorReset();
 		return $this->getTitle();
 	}
 
@@ -195,11 +200,13 @@ class ContactInformation {
 	 * @since 0.1.0 Use a reload function.
 	 * @since 0.1.0 Use the default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String|null The title or null if the localized title is not set.
 	 */
 	 public function getTitle() {
-
+		
+		self::errorReset();
 		$this->reload();
 		return InputValidator::isEmpty($this->TITLE) ? null : $this->TITLE;
 	}
@@ -211,12 +218,13 @@ class ContactInformation {
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @since 0.1.1 Unstatic every attributes.
-	 * @api
+	 * @since 0.1.2 Add error reporting.
 	 * @deprecated
 	 * @return String|null The short description in the default localization or null if the short description is not set.
 	 */
 	public function getDefaultShortDescription() {
-
+		
+		self::errorReset();
 		return $this->getShortDescription();
 	}
 
@@ -228,11 +236,13 @@ class ContactInformation {
 	 * @since 0.1.0 Use a reload function.
 	 * @since 0.1.0 Use the default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String|null The short description or null if the short description is not set.
 	 */
 	 public function getShortDescription() {
-
+		
+		self::errorReset();
 		$this->reload();
 		return InputValidator::isEmpty($this->SHORTDESCRIPTION) ? null : $this->SHORTDESCRIPTION;
 	}
@@ -244,12 +254,13 @@ class ContactInformation {
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @since 0.1.1 Unstatic every attributes.
-	 * @api
+	 * @since 0.1.2 Add error reporting.
 	 * @deprecated
 	 * @return String|null The company in the default localization or null if the short description is not set.
 	 */
 	public function getDefaultCompany() {
-
+		
+		self::errorReset();
 		return $this->getCompany();
 	}
 
@@ -261,11 +272,13 @@ class ContactInformation {
 	 * @since 0.1.0 Use a reload function.
 	 * @since 0.1.0 Use the default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String|null The company or null if the company is net set.
 	 */
 	 public function getCompany() {
-
+		
+		self::errorReset();
 		$this->load();
 		return InputValidator::isEmpty($this->COMPANY) ? null : $this->COMPANY;
 	}
@@ -277,12 +290,13 @@ class ContactInformation {
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @since 0.1.1 Unstatic every attributes.
-	 * @api
+	 * @since 0.1.2 Add error reporting.
 	 * @deprecated
 	 * @return String|null The contact person in the default localization or null if the contact person is not set.
 	 */
 	public function getDefaultContactPerson() {
-
+		
+		self::errorReset();
 		return $this->getContactPerson();
 	}
 
@@ -294,11 +308,13 @@ class ContactInformation {
 	 * @since 0.1.0 Use a reload function.
 	 * @since 0.1.0 Use the default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String|null The contact person or null uf the contact person is not set.
 	 */
 	 public function getContactPerson() {
-
+		
+		self::errorReset();
 		$this->reload();
 		return InputValidator::isEmpty($this->CONTACTPERSON) ? null : $this->CONTACTPERSON;
 	}
@@ -310,12 +326,13 @@ class ContactInformation {
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @since 0.1.1 Unstatic every attributes.
-	 * @api
+	 * @since 0.1.2 Add error reporting.
 	 * @deprecated
 	 * @return String|null The job title of the contact person in the default localization or null if the contact person job title is not set.
 	 */
 	public function getDefaultContactPersonJobTitle() {
-
+		
+		self::errorReset();
 		return $this->getContactPersonJobTitle();
 	}
 
@@ -327,11 +344,13 @@ class ContactInformation {
 	 * @since 0.1.0 Use a reload function.
 	 * @since 0.1.0 Use the default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String|null The job title of the contact person or null if the contact person job title is unset.
 	 */
 	 public function getContactPersonJobTitle() {
-
+		
+		self::errorReset();
 		$this->reload();
 		return InputValidator::isEmpty($this->CONTACTPERSONJOBTITLE) ? null : $this->CONTACTPERSONJOBTITLE;
 	}
@@ -343,12 +362,13 @@ class ContactInformation {
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @since 0.1.1 Unstatic every attributes.
-	 * @api
+	 * @since 0.1.2 Add error reporting.
 	 * @deprecated
 	 * @return String|null The address in the default localization or null if the default address is not set.
 	 */
 	public function getDefaultAddress() {
-
+		
+		self::errorReset();
 		return $this->getAddress(Locales::getDefault());
 	}
 
@@ -360,11 +380,13 @@ class ContactInformation {
 	 * @since 0.1.0 Use a reload function.
 	 * @since 0.1.0 Use the default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String|null The address or null if the address is unset.
 	 */
 	 public function getAddress() {
-
+		
+		self::errorReset();
 		$this->reload();
 		return InputValidator::isEmpty($this->ADDRESS) ? null : $this->ADDRESS;
 	}
@@ -376,12 +398,13 @@ class ContactInformation {
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @since 0.1.1 Unstatic every attributes.
-	 * @api
+	 * @since 0.1.2 Add error reporting.
 	 * @deprecated
 	 * @return String|null The phone number in the default localization or null if the default phone number is unset.
 	 */
 	public function getDefaultPhone() {
-
+		
+		self::errorReset();
 		return $this->getPhone();
 	}
 
@@ -393,11 +416,13 @@ class ContactInformation {
 	 * @since 0.1.0 Use a reload function.
 	 * @since 0.1.0 Use the default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String|null The phone number or null if the phone number is unset.
 	 */
 	 public function getPhone() {
-
+		
+		self::errorReset();
 		$this->reload();
 		return InputValidator::isEmpty($this->PHONE) ? null : $this->PHONE;
 	}
@@ -409,12 +434,13 @@ class ContactInformation {
 	 * @since 0.0.0
 	 * @since 0.1.0 Deprecated because the Locale is everytime the configured Locale.
 	 * @since 0.1.1 Unstatic every attributes.
-	 * @api
+	 * @since 0.1.2 Add error reporting.
 	 * @deprecated
 	 * @return String|null The email in the default localization or null if the default email address is unset.
 	 */
 	public function getDefaultEmail() {
-
+		
+		self::errorReset();
 		return $this->getEmail(Locales::getDefault());
 	}
 
@@ -426,11 +452,13 @@ class ContactInformation {
 	 * @since 0.1.0 Use a reload function.
 	 * @since 0.1.0 Use the default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.1.2 Add error reporting.
 	 * @api
 	 * @return String|null The email or null if the email address is not set.
 	 */
 	 public function getEmail() {
-
+		
+		self::errorReset();
 		$this->reload();
 		return InputValidator::isEmpty($this->EMAIL) ? null : $this->EMAIL;
 	}
@@ -446,7 +474,6 @@ class ContactInformation {
 	 * @return String The Information as a string.
 	 */
 	public function __toString() {
-
 
 		return "<strong>Name:</strong> " . $this->NAME . "<br/>" .
 				"<strong>Navigation caption:</strong> " . $this->NAVIGATIONCAPTION . "<br/>" .
