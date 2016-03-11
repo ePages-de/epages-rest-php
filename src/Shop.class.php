@@ -10,6 +10,7 @@ namespace ep6;
 require_once(__DIR__ . "/configuration/config.php");
 # include helpful objects, all are used in a static way
 require_once(__DIR__ . "/util/ErrorReporting.trait.php");
+require_once(__DIR__ . "/util/HTTPRequestMethod.enum.php");
 require_once(__DIR__ . "/util/InputValidator.class.php");
 require_once(__DIR__ . "/util/JSONHandler.class.php");
 require_once(__DIR__ . "/util/Logger.class.php");
