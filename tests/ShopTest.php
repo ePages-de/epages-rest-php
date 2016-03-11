@@ -30,16 +30,11 @@ class ShopTest extends \PHPUnit_Framework_TestCase {
     function testShopContactInformation()
     {
         $contactInformation = $this->shop->getContactInformation();
-		$this->assertEquals("Contact information", $contactInformation->getDefaultName());
-		$this->assertEquals("Impressum", $contactInformation->getName("de_DE"));
-		$this->assertEquals("Contact information", $contactInformation->getDefaultNavigationCaption());
-		$this->assertEquals("Impressum", $contactInformation->getNavigationCaption("de_DE"));
-		$this->assertEquals("David David", $contactInformation->getDefaultContactPerson());
-		$this->assertEquals("David David", $contactInformation->getContactPerson("de_DE"));
-		$this->assertEquals("000000", $contactInformation->getDefaultPhone());
-		$this->assertEquals("000000", $contactInformation->getPhone("de_DE"));
-		$this->assertEquals("bepeppered@gmail.com", $contactInformation->getDefaultEmail());
-		$this->assertEquals("bepeppered@gmail.com", $contactInformation->getEmail("de_DE"));
+		$this->assertEquals("Contact information", $contactInformation->getName());
+		$this->assertEquals("Contact information", $contactInformation->getNavigationCaption());
+		$this->assertEquals("David David", $contactInformation->getContactPerson());
+		$this->assertEquals("000000", $contactInformation->getPhone());
+		$this->assertEquals("bepeppered@gmail.com", $contactInformation->getEmail());
     }
 
 	/**
@@ -48,10 +43,8 @@ class ShopTest extends \PHPUnit_Framework_TestCase {
     function testShopPrivacyPolicyInformation()
     {
         $privacyPolicyInformation = $this->shop->getPrivacyPolicyInformation();
-		$this->assertEquals("Privacy policy", $privacyPolicyInformation->getDefaultName());
-		$this->assertEquals("Datenschutzerklärung", $privacyPolicyInformation->getName("de_DE"));
-		$this->assertEquals("Privacy policy", $privacyPolicyInformation->getDefaultNavigationCaption());
-		$this->assertEquals("Datenschutz", $privacyPolicyInformation->getNavigationCaption("de_DE"));
+		$this->assertEquals("Privacy policy", $privacyPolicyInformation->getName());
+		$this->assertEquals("Privacy policy", $privacyPolicyInformation->getNavigationCaption());
     }
 
 	/**
@@ -60,10 +53,8 @@ class ShopTest extends \PHPUnit_Framework_TestCase {
     function testShopRightsOfWithdrawalInformation()
     {
         $rightsOfWithdrawalInformation = $this->shop->getRightsOfWithdrawalInformation();
-		$this->assertEquals("Right of withdrawal", $rightsOfWithdrawalInformation->getDefaultName());
-		$this->assertEquals("Widerrufsrecht", $rightsOfWithdrawalInformation->getName("de_DE"));
-		$this->assertEquals("Right of withdrawal", $rightsOfWithdrawalInformation->getDefaultNavigationCaption());
-		$this->assertEquals("Widerrufsrecht", $rightsOfWithdrawalInformation->getNavigationCaption("de_DE"));
+		$this->assertEquals("Right of withdrawal", $rightsOfWithdrawalInformation->getName());
+		$this->assertEquals("Right of withdrawal", $rightsOfWithdrawalInformation->getNavigationCaption());
     }
 
 	/**
@@ -72,10 +63,8 @@ class ShopTest extends \PHPUnit_Framework_TestCase {
     function testShopShippingInformation()
     {
         $shippingInformation = $this->shop->getShippingInformation();
-		$this->assertEquals("Shipping terms", $shippingInformation->getDefaultName());
-		$this->assertEquals("Versandbedingungen", $shippingInformation->getName("de_DE"));
-		$this->assertEquals("Delivery", $shippingInformation->getDefaultNavigationCaption());
-		$this->assertEquals("Versand", $shippingInformation->getNavigationCaption("de_DE"));
+		$this->assertEquals("Shipping terms", $shippingInformation->getName());
+		$this->assertEquals("Delivery", $shippingInformation->getNavigationCaption());
     }
 
 	/**
@@ -84,11 +73,9 @@ class ShopTest extends \PHPUnit_Framework_TestCase {
     function testShopTermsAndConditionInformation()
     {
         $termsAndConditionInformation = $this->shop->getTermsAndConditionInformation();
-		$this->assertEquals("Terms and Conditions", $termsAndConditionInformation->getDefaultName());
-		$this->assertEquals("Allgemeine Geschäftsbedingungen", $termsAndConditionInformation->getName("de_DE"));
-		$this->assertEquals("Terms and Conditions", $termsAndConditionInformation->getDefaultNavigationCaption());
-		$this->assertEquals("AGB", $termsAndConditionInformation->getNavigationCaption("de_DE"));
-		$this->assertEquals("You adapt this text via the preview or data sheet view under the \"Content/Categories\" menu item of your Administration.", $termsAndConditionInformation->getDefaultDescription());
+		$this->assertEquals("Terms and Conditions", $termsAndConditionInformation->getName());
+		$this->assertEquals("Terms and Conditions", $termsAndConditionInformation->getNavigationCaption());
+		$this->assertEquals("You adapt this text via the preview or data sheet view under the \"Content/Categories\" menu item of your Administration.", $termsAndConditionInformation->getDescription());
     }
 
 	/**
