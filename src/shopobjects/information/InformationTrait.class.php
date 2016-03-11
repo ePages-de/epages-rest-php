@@ -172,7 +172,7 @@ trait InformationTrait {
 	 */
 	 public function getNavigationCaption() {
 
-		$this->reload($locale);
+		$this->reload();
 		return InputValidator::isEmpty($this->NAVIGATIONCAPTION) ? null : $this->NAVIGATIONCAPTION;
 	}
 
@@ -205,7 +205,7 @@ trait InformationTrait {
 	 */
 	 public function getDescription() {
 
-		$this->reload($locale);
+		$this->reload();
 		return InputValidator::isEmpty($this->DESCRIPTION) ? null : $this->DESCRIPTION;
 	}
 

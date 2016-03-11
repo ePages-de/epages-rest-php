@@ -146,7 +146,7 @@ class ContactInformation {
 			return;
 		}
 
-		$this->load($locale);
+		$this->load();
 	}
 
 	/**

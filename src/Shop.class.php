@@ -60,6 +60,9 @@ class Shop {
 	/** @var ShippingInformation|null The shipping information object. */
 	private $shippingInformation = null;
 
+	/** @var TermsAndConditionInformation|null The terms and condition information object. */
+	private $termsAndConditionInformation = null;
+
 	/** @var String|null The ePages host to connect. */
 	private $host = null;
 

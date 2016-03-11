@@ -175,7 +175,7 @@ class RESTClient {
 			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);						// don't check the peer ssl cerrificate
 			curl_setopt($curl, CURLOPT_PROTOCOLS, CURLPROTO_HTTPS);
 			curl_setopt($curl, CURLOPT_REDIR_PROTOCOLS, CURLPROTO_HTTPS);
-			curl_setopt($curl, CURLOPT_SSLVERSION, CURL_SSLVERSION_DEFAULT);	// default ssl version
+			curl_setopt($curl, CURLOPT_SSLVERSION, 0);							// default ssl version
 		}
 		else {
 			curl_setopt($curl, CURLOPT_PROTOCOLS, CURLPROTO_HTTP);
