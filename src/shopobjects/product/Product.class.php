@@ -114,7 +114,7 @@ class Product {
 			return;
 		}
 		
-		self::load($productParameter);
+		$this->load($productParameter);
 	}
 
 	/**
@@ -123,9 +123,39 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.2
 	 * @api
+	 */
+	private function load() {
+
+		// if the REST path empty -> this is the not the implementation or can't get something else
+		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
+			$this->errorSet("RESTC-9");
+			return;
+		}
+
+		$content = RESTClient::sendWithLocalization(self::RESTPATH . "/" . $this->productID, Locales::getLocale());
+
+		// if respond is empty
+		if (InputValidator::isEmpty($content)) {
+			$this->errorSet("PF-8");
+			return;
+		}
+
+		$this->parseData($content);
+
+		// update timestamp when make the next request
+		$timestamp = (int) (microtime(true) * 1000);
+		$this->NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::$NEXT_RESPONSE_WAIT_TIME;
+	}
+
+	/**
+	 * Parses the REST response data and save it.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
 	 * @param Array $product The product in an array.
 	 */
-	private function load($productParameter) {
+	private function parseData($productParameter) {
 
 		// if the product comes from the shop API
 		if (InputValidator::isArray($productParameter) &&
@@ -193,6 +223,25 @@ class Product {
 	}
 
 	/**
+	 * This function checks whether a reload is needed.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 * @api
+	 */
+	private function reload() {
+
+		$timestamp = (int) (microtime(true) * 1000);
+
+		// if the value is empty
+		if ($this->NEXT_REQUEST_TIMESTAMP > $timestamp) {
+			return;
+		}
+
+		$this->load();
+	}
+
+	/**
 	 * Returns the product id.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
@@ -204,7 +253,6 @@ class Product {
 	public function getID() {
 		
 		$this->errorReset();
-
 		return $this->productID;
 	}
 
@@ -216,13 +264,14 @@ class Product {
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Fix to call function without locale parameter.
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.2 Add refresh functionality.
 	 * @api
 	 * @return String The name.
 	 */
 	public function getName() {
 		
 		$this->errorReset();
-
+		$this->reload();
 		return $this->name;
 	}
 
@@ -237,8 +286,7 @@ class Product {
 	public function setName($name) {
 		
 		$this->errorReset();
-
-		self::setAttribute("/name", $name);
+		$this->setAttribute("/name", $name);
 	}
 
 	/**
@@ -251,8 +299,7 @@ class Product {
 	public function unsetName() {
 		
 		$this->errorReset();
-
-		self::unsetAttribute("/name");
+		$this->unsetAttribute("/name");
 	}
 
 	/**
@@ -267,7 +314,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::setAttribute("/productNumber", $number);
+		$this->setAttribute("/productNumber", $number);
 	}
 
 	/**
@@ -278,13 +325,14 @@ class Product {
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Fix to call function without locale parameter.
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.2 Add refresh functionality.
 	 * @api
 	 * @return String The short description.
 	 */
 	public function getShortDescription() {
 		
 		$this->errorReset();
-
+		$this->reload();
 		return $this->shortDescription;
 	}
 
@@ -296,13 +344,14 @@ class Product {
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Fix to call function without locale parameter.
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.2 Add refresh functionality.
 	 * @api
 	 * @return String The description.
 	 */
 	public function getDescription() {
 		
 		$this->errorReset();
-
+		$this->reload();
 		return $this->description;
 	}
 
@@ -318,7 +367,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::setAttribute("/description", $dscription);
+		$this->setAttribute("/description", $dscription);
 	}
 
 	/**
@@ -332,7 +381,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::unsetAttribute("/description");
+		$this->unsetAttribute("/description");
 	}
 
 	/**
@@ -347,7 +396,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::setAttribute("/shortDescription", $shortDescription);
+		$this->setAttribute("/shortDescription", $shortDescription);
 	}
 
 	/**
@@ -361,7 +410,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::unsetAttribute("/shortDescription");
+		$this->unsetAttribute("/shortDescription");
 	}
 
 	/**
@@ -390,7 +439,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::unsetAttribute("/energyLabelsString");
+		$this->unsetAttribute("/energyLabelsString");
 	}
 
 	/**
@@ -405,7 +454,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::setAttribute("/manufacturer", $manufacturer);
+		$this->setAttribute("/manufacturer", $manufacturer);
 	}
 
 	/**
@@ -419,7 +468,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::unsetAttribute("/manufacturer");
+		$this->unsetAttribute("/manufacturer");
 	}
 
 	/**
@@ -434,7 +483,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::setAttribute("/upc", $upc);
+		$this->setAttribute("/upc", $upc);
 	}
 
 	/**
@@ -448,7 +497,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::unsetAttribute("/upc");
+		$this->unsetAttribute("/upc");
 	}
 
 	/**
@@ -463,7 +512,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::setAttribute("/ean", $ean);
+		$this->setAttribute("/ean", $ean);
 	}
 
 	/**
@@ -477,7 +526,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::unsetAttribute("/ean");
+		$this->unsetAttribute("/ean");
 	}
 
 	/**
@@ -492,7 +541,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::setAttribute("/essentialFeatures", $essentialFeatures);
+		$this->setAttribute("/essentialFeatures", $essentialFeatures);
 	}
 
 	/**
@@ -506,7 +555,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::unsetAttribute("/essentialFeatures");
+		$this->unsetAttribute("/essentialFeatures");
 	}
 
 	/**
@@ -521,7 +570,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::setAttribute("/searchKeywords", $searchKeywords);
+		$this->setAttribute("/searchKeywords", $searchKeywords);
 	}
 
 	/**
@@ -535,7 +584,7 @@ class Product {
 		
 		$this->errorReset();
 
-		self::unsetAttribute("/searchKeywords");
+		$this->unsetAttribute("/searchKeywords");
 	}
 	
 	/**
@@ -629,12 +678,14 @@ class Product {
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Fix to call function without locale parameter.
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.2 Add refresh functionality.
 	 * @api
 	 * @return String The availibility text.
 	 */
 	public function getAvailibilityText() {
 
 		$this->errorReset();
+		$this->reload();
 		return $this->availibilityText;
 	}
 
@@ -644,12 +695,14 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.2 Add refresh functionality.
 	 * @api
 	 * @return Image The small image.
 	 */
 	public function getSmallImage() {
 
 		$this->errorReset();
+		$this->reload();
 		return !InputValidator::isEmptyArrayKey($this->images, "Small") ? $this->images["Small"] : null;
 	}
 
@@ -659,12 +712,14 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.2 Add refresh functionality.
 	 * @api
 	 * @return Image The medium image.
 	 */
 	public function getMediumImage() {
 
 		$this->errorReset();
+		$this->reload();
 		return !InputValidator::isEmptyArrayKey($this->images, "Medium") ? $this->images["Medium"] : null;
 	}
 
@@ -674,12 +729,14 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.2 Add refresh functionality.
 	 * @api
 	 * @return Image The large image.
 	 */
 	public function getLargeImage() {
 
 		$this->errorReset();
+		$this->reload();
 		return !InputValidator::isEmptyArrayKey($this->images, "Large") ? $this->images["Large"] : null;
 	}
 
@@ -689,12 +746,14 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.2 Add refresh functionality.
 	 * @api
 	 * @return Image The hot deal image.
 	 */
 	public function getHotDealImage() {
 
 		$this->errorReset();
+		$this->reload();
 		return !InputValidator::isEmptyArrayKey($this->images, "HotDeal") ? $this->images["HotDeal"] : null;
 	}
 
@@ -704,12 +763,14 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.2 Add refresh functionality.
 	 * @api
 	 * @return ProductPriceWithQuantity Gets the product price with quantity.
 	 */
 	public function getPrice() {
 
 		$this->errorReset();
+		$this->reload();
 		return $this->price;
 	}
 
@@ -719,12 +780,14 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.2 Add refresh functionality.
 	 * @api
 	 * @return ProductPrice Gets the deposit price.
 	 */
 	public function getDepositPrice() {
 
 		$this->errorReset();
+		$this->reload();
 		return $this->depositPrice;
 	}
 
@@ -734,12 +797,14 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.2 Add refresh functionality.
 	 * @api
 	 * @return ProductPrice Gets the eco participation price.
 	 */
 	public function getEcoParticipationPrice() {
 
 		$this->errorReset();
+		$this->reload();
 		return $this->ecoParticipationPrice;
 	}
 
@@ -749,12 +814,14 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.2 Add refresh functionality.
 	 * @api
 	 * @return ProductPrice Gets the with deposit price.
 	 */
 	public function getWithDepositPrice() {
 
 		$this->errorReset();
+		$this->reload();
 		return $this->withDepositPrice;
 	}
 
@@ -764,12 +831,14 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.2 Add refresh functionality.
 	 * @api
 	 * @return ProductPrice Gets the manufacturer price.
 	 */
 	public function getManufacturerPrice() {
 
 		$this->errorReset();
+		$this->reload();
 		return $this->manufacturerPrice;
 	}
 
@@ -779,12 +848,14 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.0
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.2 Add refresh functionality.
 	 * @api
 	 * @return ProductPrice Gets the base price.
 	 */
 	public function getBasePrice() {
 
 		$this->errorReset();
+		$this->reload();
 		return $this->basePrice;
 	}
 
@@ -802,7 +873,8 @@ class Product {
 
 		$this->errorReset();
 		// if the slideshow is not loaded until now
-		if (InputValidator::isEmpty($this->slideshow)) {
+		if (InputValidator::isEmpty($this->slideshow) ||
+			$this->NEXT_REQUEST_TIMESTAMP < $timestamp) {
 			$this->slideshow = new ProductSlideshow($this->productID);
 		}
 		return $this->slideshow;
