@@ -1,13 +1,13 @@
 <?php
 namespace ep6;
 /**
- * The HTTP request 'enum'.
+ * The HTTP Request 'enum'.
  *
- * This are the possible HTTP request methods.
+ * This are the possible HTTP Request Methods.
  *
  * @author David Pauli <contact@david-pauli.de>
- * @since 0.0.1
  * @package ep6
+ * @since 0.0.1
  * @subpackage Util\RESTClient
  */
 abstract class HTTPRequestMethod {

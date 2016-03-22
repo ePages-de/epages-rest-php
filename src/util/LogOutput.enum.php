@@ -1,14 +1,14 @@
 <?php
 namespace ep6;
 /**
- * The log output 'enum'.
+ * The Log Output 'enum'.
  *
  * Use this to define where the log messages should be printed.
  *
  * @author David Pauli <contact@david-pauli.de>
+ * @package ep6
  * @since 0.0.1
  * @since 0.1.2
- * @package ep6
  * @subpackage Util\Logger
  */
 abstract class LogOutput {

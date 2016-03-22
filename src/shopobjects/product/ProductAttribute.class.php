@@ -1,19 +1,18 @@
 <?php
 /**
- * This file represents the product attribute class.
+ * This file represents the Product Attribute class.
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.1.0
  */
 namespace ep6;
 /**
- * This is the product attribute class which saves all attributes of a product.
+ * This is the Product Attribute class which saves all attributes of a product.
  *
  * @author David Pauli <contact@david-pauli.de>
+ * @package ep6
  * @since 0.1.0
  * @since 0.1.1 The object can be echoed.
- * @api
- * @package ep6
  * @subpackage Shopobjects\Product
  */
 class ProductAttribute {
@@ -37,22 +36,28 @@ class ProductAttribute {
 	 * This function gets the product attributes.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.0
-	 * @api
 	 * @param mixed[] $attribute The attribute in an array.
+	 * @since 0.1.0
 	 */
 	public function __construct($attribute) {
 
 		if (!InputValidator::isEmptyArrayKey($attribute, "key")) {
+
 			$this->internName = $attribute["key"];
 		}
+
 		if (!InputValidator::isEmptyArrayKey($attribute, "displayKey")) {
+
 			$this->name = $attribute["displayKey"];
 		}
+
 		if (!InputValidator::isEmptyArrayKey($attribute, "singleValue")) {
+
 			$this->oneValue = $attribute["singleValue"];
 		}
+
 		if (!InputValidator::isEmptyArrayKey($attribute, "type")) {
+
 			$this->type = $attribute["type"];
 		}
 
@@ -60,8 +65,10 @@ class ProductAttribute {
 			!InputValidator::isArray($attribute["values"])) {
 
 			foreach ($attribute["values"] as $key => $value) {
+
 				if (!InputValidator::isEmptyArrayKey($value, "value") &&
 					!InputValidator::isEmptyArrayKey($value, "displayValue")) {
+
 					$this->values[$value["value"]] = $value["displayValue"];
 				}
 			}
@@ -69,12 +76,29 @@ class ProductAttribute {
 	}
 
 	/**
+	 * Prints the Product attribute object as a string.
+	 *
+	 * This function returns the setted values of the Product attribute object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String The Product attribute as a string.
+	 * @since 0.1.1
+	 */
+	public function __toString() {
+
+		return "<strong>Internal name:</strong> " . $this->internName . "<br/>" .
+				"<strong>Name:</strong> " . $this->name . "<br/>" .
+				"<strong>Can have only one value:</strong> " . $this->oneValue . "<br/>" .
+				"<strong>Value type:</strong> " . $this->type . "<br/>" .
+				"<strong>Values:</strong> " . print_r($this->values) . "<br/>";
+	}
+
+	/**
 	 * Returns the intern name of the attribute.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.0
-	 * @api
 	 * @return String|null The intern name of the attribute.
+	 * @since 0.1.0
 	 */
 	public function getInternName() {
 
@@ -85,9 +109,8 @@ class ProductAttribute {
 	 * Returns the name of the attribute.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.0
-	 * @api
 	 * @return String|null The name of the attribute.
+	 * @since 0.1.0
 	 */
 	public function getName() {
 
@@ -95,25 +118,11 @@ class ProductAttribute {
 	}
 
 	/**
-	 * Returns whether the attribute can one has one value.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.0
-	 * @api
-	 * @return boolean True, if the attribute can only have one value.
-	 */
-	public function isOneValue() {
-
-		return $this->isOneValue;
-	}
-
-	/**
 	 * Returns the type of the attribute value.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.0
-	 * @api
 	 * @return String|null The type of the attribute value, like String or int.
+	 * @since 0.1.0
 	 */
 	public function getType() {
 
@@ -124,9 +133,8 @@ class ProductAttribute {
 	 * Returns the possible values of this attribute.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.0
-	 * @api
 	 * @return String[] Array of possible values of this attribute.
+	 * @since 0.1.0
 	 */
 	public function getValues() {
 
@@ -134,21 +142,15 @@ class ProductAttribute {
 	}
 
 	/**
-	 * Prints the Product attribute object as a string.
-	 *
-	 * This function returns the setted values of the Product attribute object.
+	 * Returns whether the attribute can one has one value.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.1
-	 * @return String The Product attribute as a string.
+	 * @return boolean True, if the attribute can only have one value.
+	 * @since 0.1.0
 	 */
-	public function __toString() {
+	public function isOneValue() {
 
-		return "<strong>Internal name:</strong> " . $this->internName . "<br/>" .
-				"<strong>Name:</strong> " . $this->name . "<br/>" .
-				"<strong>Can have only one value:</strong> " . $this->oneValue . "<br/>" .
-				"<strong>Value type:</strong> " . $this->type . "<br/>" .
-				"<strong>Values:</strong> " . print_r($this->values) . "<br/>";
+		return $this->isOneValue;
 	}
 }
 ?>

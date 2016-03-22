@@ -1,6 +1,6 @@
 <?php
 /**
- * This file represents a special product price.
+ * This file represents a special Product Price.
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.1.2
@@ -10,12 +10,13 @@ namespace ep6;
  * This is the class for prices which belongs to a product.
  *
  * @author David Pauli <contact@david-pauli.de>
- * @since 0.1.2
  * @package ep6
+ * @see ErrorReporting This trait gives the error reporting functionality.
+ * @since 0.1.2
  * @subpackage Shopobjects\Price
  */
 class ProductPrice extends Price {
-	
+
 	use ErrorReporting;
 
 	/** @var String|null The refered product ID. */
@@ -25,19 +26,19 @@ class ProductPrice extends Price {
 	private $type = null;
 
 	/**
-	 * This is the constructor of the product price object.
+	 * This is the constructor of the Product Price object.
 	 *
-	 * @api
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.2
 	 * @param String $productID The product ID to which this price belongs.
 	 * @param ProductPriceType $type The type of the product price.
 	 * @param mixed[] $priceParameter The price parameter.
+	 * @since 0.1.2
 	 */
 	public function __construct($productID, $type, $priceParameter) {
 
 		// if the first parameter is no product ID
 		if (!InputValidator::isProductID($productID)) {
+
 			Logger::warning("ep6\ProductPrice\nNew product price has no product ID (" .$type . "," . $priceParameter . ").");
 			$this->errorSet("PP-1");
 			return;
@@ -47,71 +48,6 @@ class ProductPrice extends Price {
 		$this->type = $type;
 		parent::__construct($priceParameter);
 	}
-	
-	/**
-	 * Sets an the amount of a product price.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.2
-	 * @api
-	 * @param float $amount The new amount of price.
-	 */
-	public function setAmount($amount) {
-		
-		$this->errorReset();
-		
-		$allowedTypes = array(ProductPriceTypes::PRICE, ProductPriceTypes::MANUFACTURER, ProductPriceTypes::ECOPARTICIPATION, ProductPriceTypes::DEPOSIT);
-
-		// if parameter is no float
-		if (!InputValidator::isFloat($amount)) {
-			$this->errorSet("PP-2");
-			Logger::warning("ep6\ProductPrice\nAmount for product price (" . $amount . ") is not a float.");
-			return;
-		}
-		// if PATCH does not work
-		if (!RESTClient::setRequestMethod("PATCH")) {
-			$this->errorSet("RESTC-9");
-			return;
-		}
-		// if this operation is not allowed for this price type
-		if (InputValidator::isEmptyArrayKey($allowedTypes, $this->type)) {
-			$this->errorSet("PP-3");
-			Logger::warning("ep6\ProductPrice\nChanging product price is not allowed for this " . $this->type . " product price method.");
-			return;
-		}
-		
-		$parameter = array("op" => "add", "path" => "/priceInfo/" . $this->type . "/amount", "value" => $amount);
-		RESTClient::send("product/" . $this->productID, $parameter);
-	}
-	
-	/**
-	 * Unsets the amount of a product price.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.2
-	 * @api
-	 */
-	public function unsetAmount() {
-		
-		$this->errorReset();
-		
-		$allowedTypes = array(ProductPriceTypes::PRICE, ProductPriceTypes::MANUFACTURER, ProductPriceTypes::ECOPARTICIPATION, ProductPriceTypes::DEPOSIT);
-
-		// if PATCH does not work
-		if (!RESTClient::setRequestMethod("PATCH")) {
-			$this->errorSet("RESTC-9");
-			return;
-		}
-		// if this operation is not allowed for this price type
-		if (InputValidator::isEmptyArrayKey($allowedTypes, $this->type)) {
-			$this->errorSet("PP-3");
-			Logger::warning("ep6\ProductPrice\nChanging product price is not allowed for this " . $this->type . " product price method.");
-			return;
-		}
-		
-		$parameter = array("op" => "remove", "path" => "/priceInfo/" . $this->type . "/amount");
-		RESTClient::send("product/" . $this->productID, $parameter);
-	}
 
 	/**
 	 * Prints the Product Price object as a string.
@@ -119,8 +55,8 @@ class ProductPrice extends Price {
 	 * This function returns the setted attributes of the Product Price object.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.2
 	 * @return String The Product Price as a string.
+	 * @since 0.1.2
 	 */
 	public function __toString() {
 
@@ -129,6 +65,77 @@ class ProductPrice extends Price {
 				"<strong>Tax type:</strong> " . $this->taxType . "<br/>" .
 				"<strong>Currency:</strong> " . $this->currency . "<br/>" .
 				"<strong>Formatted:</strong> " . $this->formatted . "<br/>";
+	}
+
+	/**
+	 * Sets an the amount of a product price.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param float $amount The new amount of price.
+	 * @since 0.1.2
+	 */
+	public function setAmount($amount) {
+
+		$this->errorReset();
+
+		$allowedTypes = array(ProductPriceTypes::PRICE, ProductPriceTypes::MANUFACTURER, ProductPriceTypes::ECOPARTICIPATION, ProductPriceTypes::DEPOSIT);
+
+		// if parameter is no float
+		if (!InputValidator::isFloat($amount)) {
+
+			$this->errorSet("PP-2");
+			Logger::warning("ep6\ProductPrice\nAmount for product price (" . $amount . ") is not a float.");
+			return;
+		}
+
+		// if PATCH does not work
+		if (!RESTClient::setRequestMethod("PATCH")) {
+
+			$this->errorSet("RESTC-9");
+			return;
+		}
+
+		// if this operation is not allowed for this price type
+		if (InputValidator::isEmptyArrayKey($allowedTypes, $this->type)) {
+
+			$this->errorSet("PP-3");
+			Logger::warning("ep6\ProductPrice\nChanging product price is not allowed for this " . $this->type . " product price method.");
+			return;
+		}
+
+		$parameter = array("op" => "add", "path" => "/priceInfo/" . $this->type . "/amount", "value" => $amount);
+		RESTClient::send("product/" . $this->productID, $parameter);
+	}
+
+	/**
+	 * Unsets the amount of a product price.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.2
+	 */
+	public function unsetAmount() {
+
+		$this->errorReset();
+
+		$allowedTypes = array(ProductPriceTypes::PRICE, ProductPriceTypes::MANUFACTURER, ProductPriceTypes::ECOPARTICIPATION, ProductPriceTypes::DEPOSIT);
+
+		// if PATCH does not work
+		if (!RESTClient::setRequestMethod("PATCH")) {
+
+			$this->errorSet("RESTC-9");
+			return;
+		}
+
+		// if this operation is not allowed for this price type
+		if (InputValidator::isEmptyArrayKey($allowedTypes, $this->type)) {
+
+			$this->errorSet("PP-3");
+			Logger::warning("ep6\ProductPrice\nChanging product price is not allowed for this " . $this->type . " product price method.");
+			return;
+		}
+
+		$parameter = array("op" => "remove", "path" => "/priceInfo/" . $this->type . "/amount");
+		RESTClient::send("product/" . $this->productID, $parameter);
 	}
 }
 ?>

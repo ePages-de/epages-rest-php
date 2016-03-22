@@ -1,9 +1,9 @@
 <?php
 /**
- * This file represents the error reporting trait.
+ * This file represents the Error Reporting trait.
  *
  * With error reporting you can use useful functions to check if the last call will throw an error.
- * All useful objects in ep6 will inherit this functionality. 
+ * All useful objects in ep6 will inherit this functionality.
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.1.2
@@ -13,8 +13,8 @@ namespace ep6;
  * This is the functionality to check whether there is an error on last library usage or not.
  *
  * @author David Pauli <contact@david-pauli.de>
- * @since 0.1.2
  * @package ep6
+ * @since 0.1.2
  * @subpackage Util
  */
 trait ErrorReporting {
@@ -82,9 +82,8 @@ trait ErrorReporting {
 	 * Checks whether there was an error or not.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.2
 	 * @return boolean True if there was an error, false if not.
-	 * @api
+	 * @since 0.1.2
 	 */
 	public static function error() {
 
@@ -95,9 +94,8 @@ trait ErrorReporting {
 	 * This function returns the error message of the last happened error.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.2
-	 * @api
 	 * @return String|null The error message of the last happened error or null if there is no error message.
+	 * @since 0.1.2
 	 */
 	public static function errorMessage() {
 
@@ -108,9 +106,8 @@ trait ErrorReporting {
 	 * This function returns the error number of the last happened error.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.2
-	 * @api
 	 * @return String|null The error number of the last happened error, or null if there is no error.
+	 * @since 0.1.2
 	 */
 	public static function errorNumber() {
 
@@ -121,19 +118,21 @@ trait ErrorReporting {
 	 * Sets an occured error.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @since 0.1.2
 	 * @param String $errorNumber The error number to set.
 	 * @return True if the error number is valid, false if not.
+	 * @since 0.1.2
 	 */
 	private static function errorSet($errorNumber) {
 
 		// if the parameter is empty or not a defined error number.
 		if (InputValidator::isEmpty($errorNumber)
 			|| InputValidator::isEmptyArrayKey(self::$ERRORMESSAGES, $errorNumber)) {
+
 			return false;
 		}
-		
+
 		self::$ERROR = $errorNumber;
+
 		return true;
 	}
 
