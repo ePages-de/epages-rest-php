@@ -1,13 +1,13 @@
 <?php
 namespace ep6;
 /**
- * The Product Price types 'enum'.
+ * The Product Price Types 'enum'.
  *
- * This are the possible Product Prices types.
+ * This are the possible Product Prices Types.
  *
  * @author David Pauli <contact@david-pauli.de>
- * @since 0.1.2
  * @package ep6
+ * @since 0.1.2
  * @subpackage Shobojects\Price
  */
 abstract class ProductPriceType {
@@ -24,5 +24,4 @@ abstract class ProductPriceType {
 	/** @var String The base price. **/
 	const BASE = "basePrice";
 }
-
 ?>

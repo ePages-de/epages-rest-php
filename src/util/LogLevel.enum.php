@@ -1,13 +1,13 @@
 <?php
 namespace ep6;
 /**
- * The log level 'enum'.
+ * The Log Level 'enum'.
  *
  * Use this to define which log messages should be printed.
  *
  * @author David Pauli <contact@david-pauli.de>
- * @since 0.0.1
  * @package ep6
+ * @since 0.0.1
  * @subpackage Util\Logger
  */
 abstract class LogLevel {
