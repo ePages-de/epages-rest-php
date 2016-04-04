@@ -48,6 +48,9 @@
 				<li class="active"><a href="class-ep6.Product.html">Product</a></li>
 				<li><a href="class-ep6.ProductAttribute.html">ProductAttribute</a></li>
 				<li><a href="class-ep6.ProductFilter.html">ProductFilter</a></li>
+				<li><a href="class-ep6.ProductPrice.html">ProductPrice</a></li>
+				<li><a href="class-ep6.ProductPriceType.html">ProductPriceType</a></li>
+				<li><a href="class-ep6.ProductPriceWithQuantity.html">ProductPriceWithQuantity</a></li>
 				<li><a href="class-ep6.ProductSlideshow.html">ProductSlideshow</a></li>
 				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
@@ -59,7 +62,8 @@
 
 			<h3>Traits</h3>
 			<ul>
-				<li><a href="class-ep6.InformationTrait.html">InformationTrait</a></li>
+				<li><a href="class-ep6.ErrorReporting.html">ErrorReporting</a></li>
+				<li><a href="class-ep6.Information.html">Information</a></li>
 			</ul>
 
 
@@ -100,9 +104,18 @@
 
 
 	<div class="description">
-	<p>This is the product class for a product in the shop.</p>
+	<p>This is the product class for a Product in the shop.</p>
 	</div>
 
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>ep6\Product</span></b>			
+			
+			 uses 
+					<a href="class-ep6.ErrorReporting.html"><span>ep6\ErrorReporting</span></a>
+			
+		</dd>
+	</dl>
 
 
 
@@ -139,7 +152,11 @@
 				0.1.1 Don't use locale parameter in get functions.<br>
 				<b>Since:</b>
 				0.1.1 Unstatic every attributes.<br>
-			<b>Located at</b> <a href="source-class-ep6.Product.html#9-685" title="Go to source code">shopobjects/product/Product.class.php</a>
+				<b>Since:</b>
+				0.1.2 Insert the Setters.<br>
+				<b>Since:</b>
+				0.1.2 Add error reporting.<br>
+			<b>Located at</b> <a href="source-class-ep6.Product.html#9-1316" title="Go to source code">shopobjects/product/Product.class.php</a>
 		<br>
 	</div>
 
@@ -159,14 +176,14 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-ep6.Product.html#91-172" title="Go to source code">__construct</a>( <span>mixed[] <var>$productParameter</var></span> )</code>
+		<code><a href="source-class-ep6.Product.html#116-139" title="Go to source code">__construct</a>( <span>mixed[] <var>$productParameter</var></span> )</code>
 
 		<div class="description short">
-			<p>This is the constructor of the product.</p>
+			<p>This is the constructor of the Product.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>This is the constructor of the product.</p>
+			<p>This is the constructor of the Product.</p>
 
 
 				<h4>Parameters</h4>
@@ -187,1115 +204,8 @@
 						0.1.0 Add price information.<br>
 						0.1.0 Use a default Locale.<br>
 						0.1.1 Dont use the locale parameter in calling the product price attribute.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getID" id="_getID">
-
-		<td class="attributes"><code>
-			 public 
-
-			String
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getID">#</a>
-		<code><a href="source-class-ep6.Product.html#174-185" title="Go to source code">getID</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the product id.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the product id.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String<br>The product id.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getName" id="_getName">
-
-		<td class="attributes"><code>
-			 public 
-
-			String
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getName">#</a>
-		<code><a href="source-class-ep6.Product.html#187-200" title="Go to source code">getName</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the name in a specific localization.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the name in a specific localization.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String<br>The name.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Use a default Locale.<br>
-						0.1.1 Fix to call function without locale parameter.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getShortDescription" id="_getShortDescription">
-
-		<td class="attributes"><code>
-			 public 
-
-			String
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getShortDescription">#</a>
-		<code><a href="source-class-ep6.Product.html#202-215" title="Go to source code">getShortDescription</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the short description in a specific localization.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the short description in a specific localization.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String<br>The short description.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Use a default Locale.<br>
-						0.1.1 Fix to call function without locale parameter.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getDescription" id="_getDescription">
-
-		<td class="attributes"><code>
-			 public 
-
-			String
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getDescription">#</a>
-		<code><a href="source-class-ep6.Product.html#217-230" title="Go to source code">getDescription</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the description in a specific localization.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the description in a specific localization.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String<br>The description.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Use a default Locale.<br>
-						0.1.1 Fix to call function without locale parameter.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isForSale" id="_isForSale">
-
-		<td class="attributes"><code>
-			 public 
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isForSale">#</a>
-		<code><a href="source-class-ep6.Product.html#232-243" title="Go to source code">isForSale</a>( )</code>
-
-		<div class="description short">
-			<p>Returns true if it is for sale.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns true if it is for sale.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if it is for sale, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isSpecialOffer" id="_isSpecialOffer">
-
-		<td class="attributes"><code>
-			 public 
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isSpecialOffer">#</a>
-		<code><a href="source-class-ep6.Product.html#245-256" title="Go to source code">isSpecialOffer</a>( )</code>
-
-		<div class="description short">
-			<p>Returns true if it is a special offer.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns true if it is a special offer.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if it is a special offer, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getAvailibilityText" id="_getAvailibilityText">
-
-		<td class="attributes"><code>
-			 public 
-
-			String
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getAvailibilityText">#</a>
-		<code><a href="source-class-ep6.Product.html#258-271" title="Go to source code">getAvailibilityText</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the availibility text in a specific localization.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the availibility text in a specific localization.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String<br>The availibility text.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Use a default Locale.<br>
-						0.1.1 Fix to call function without locale parameter.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getSmallImage" id="_getSmallImage">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Image.html">ep6\Image</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getSmallImage">#</a>
-		<code><a href="source-class-ep6.Product.html#273-284" title="Go to source code">getSmallImage</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the small image.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the small image.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Image.html">ep6\Image</a></code><br>The small image.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getMediumImage" id="_getMediumImage">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Image.html">ep6\Image</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getMediumImage">#</a>
-		<code><a href="source-class-ep6.Product.html#286-297" title="Go to source code">getMediumImage</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the medium image.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the medium image.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Image.html">ep6\Image</a></code><br>The medium image.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getLargeImage" id="_getLargeImage">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Image.html">ep6\Image</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getLargeImage">#</a>
-		<code><a href="source-class-ep6.Product.html#299-310" title="Go to source code">getLargeImage</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the large image.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the large image.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Image.html">ep6\Image</a></code><br>The large image.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getHotDealImage" id="_getHotDealImage">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Image.html">ep6\Image</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getHotDealImage">#</a>
-		<code><a href="source-class-ep6.Product.html#312-323" title="Go to source code">getHotDealImage</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the hot deal image.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the hot deal image.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Image.html">ep6\Image</a></code><br>The hot deal image.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getPrice" id="_getPrice">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.PriceWithQuantity.html">ep6\PriceWithQuantity</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getPrice">#</a>
-		<code><a href="source-class-ep6.Product.html#325-336" title="Go to source code">getPrice</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the price with quantity.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the price with quantity.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.PriceWithQuantity.html">ep6\PriceWithQuantity</a></code><br>Gets the price with quantity.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getDepositPrice" id="_getDepositPrice">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Price.html">ep6\Price</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getDepositPrice">#</a>
-		<code><a href="source-class-ep6.Product.html#338-349" title="Go to source code">getDepositPrice</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the deposit price.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the deposit price.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Price.html">ep6\Price</a></code><br>Gets the deposit price.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getEcoParticipationPrice" id="_getEcoParticipationPrice">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Price.html">ep6\Price</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getEcoParticipationPrice">#</a>
-		<code><a href="source-class-ep6.Product.html#351-362" title="Go to source code">getEcoParticipationPrice</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the eco participation price.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the eco participation price.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Price.html">ep6\Price</a></code><br>Gets the eco participation price.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getWithDepositPrice" id="_getWithDepositPrice">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Price.html">ep6\Price</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getWithDepositPrice">#</a>
-		<code><a href="source-class-ep6.Product.html#364-375" title="Go to source code">getWithDepositPrice</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the with deposit price.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the with deposit price.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Price.html">ep6\Price</a></code><br>Gets the with deposit price.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getManufactorPrice" id="_getManufactorPrice">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Price.html">ep6\Price</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getManufactorPrice">#</a>
-		<code><a href="source-class-ep6.Product.html#377-388" title="Go to source code">getManufactorPrice</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the manufactor price.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the manufactor price.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Price.html">ep6\Price</a></code><br>Gets the manufactor price.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getBasePrice" id="_getBasePrice">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Price.html">ep6\Price</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getBasePrice">#</a>
-		<code><a href="source-class-ep6.Product.html#390-401" title="Go to source code">getBasePrice</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the base price.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the base price.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Price.html">ep6\Price</a></code><br>Gets the base price.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getSlideshow" id="_getSlideshow">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.ProductSlideshow.html">ep6\ProductSlideshow</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getSlideshow">#</a>
-		<code><a href="source-class-ep6.Product.html#403-419" title="Go to source code">getSlideshow</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the slideshow.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the slideshow.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.ProductSlideshow.html">ep6\ProductSlideshow</a></code><br>Gets the product slideshow.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-						0.1.1 Slideshows are not reloadable since now.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getAttributes" id="_getAttributes">
-
-		<td class="attributes"><code>
-			 public 
-
-			ProductAttributes[]
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getAttributes">#</a>
-		<code><a href="source-class-ep6.Product.html#421-440" title="Go to source code">getAttributes</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the product attributes.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the product attributes.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					ProductAttributes[]<br>Gets the product attributes in an array.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getAttribute" id="_getAttribute">
-
-		<td class="attributes"><code>
-			 public 
-
-			ProductAttributes|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getAttribute">#</a>
-		<code><a href="source-class-ep6.Product.html#442-465" title="Go to source code">getAttribute</a>( <span>integer <var>$key</var></span> )</code>
-
-		<div class="description short">
-			<p>Returns the product attributes.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the product attributes.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$key</var></dt>
-					<dd>The number of product attribute to get.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					ProductAttributes|null<br>Gets the required product attributes.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getStockLevel" id="_getStockLevel">
-
-		<td class="attributes"><code>
-			 public 
-
-			float|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getStockLevel">#</a>
-		<code><a href="source-class-ep6.Product.html#506-526" title="Go to source code">getStockLevel</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the stock level.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the stock level.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					float|null<br>The stock level of the product.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="increaseStockLevel" id="_increaseStockLevel">
-
-		<td class="attributes"><code>
-			 public 
-
-			float|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_increaseStockLevel">#</a>
-		<code><a href="source-class-ep6.Product.html#528-552" title="Go to source code">increaseStockLevel</a>( <span>float <var>$step</var> = <span class="php-num">1.0</span></span> )</code>
-
-		<div class="description short">
-			<p>Increases the stock level.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Increases the stock level.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$step</var></dt>
-					<dd>The value the stock level should be increased, default value is 1.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					float|null<br>The new stock level of the product.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="decreaseStockLevel" id="_decreaseStockLevel">
-
-		<td class="attributes"><code>
-			 public 
-
-			float|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_decreaseStockLevel">#</a>
-		<code><a href="source-class-ep6.Product.html#554-578" title="Go to source code">decreaseStockLevel</a>( <span>float <var>$step</var> = <span class="php-num">1.0</span></span> )</code>
-
-		<div class="description short">
-			<p>Decreases the stock level.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Decreases the stock level.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$step</var></dt>
-					<dd>The value the stock level should be decreased, default value is 1.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					float|null<br>The new stock level of the product.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="delete" id="_delete">
-
-		<td class="attributes"><code>
-			 public 
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_delete">#</a>
-		<code><a href="source-class-ep6.Product.html#640-660" title="Go to source code">delete</a>( )</code>
-
-		<div class="description short">
-			<p>Deletes itself.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Deletes itself.</p>
-
-<p>Dont use this function. To delete a product its better to use $shop->deleteProduct($product).</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the deletion was successful, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-						0.1.1 Unstatic every attributes.<br>
+						0.1.2 Exclude the REST request to the load() function.<br>
+						0.1.2 Add error reporting.<br>
 				</div>
 
 
@@ -1314,7 +224,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-ep6.Product.html#662-684" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#141-163" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			<p>Prints the Product object as a string.</p>
@@ -1346,9 +256,2193 @@
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="decreaseStockLevel" id="_decreaseStockLevel">
+
+		<td class="attributes"><code>
+			 public 
+
+			float|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_decreaseStockLevel">#</a>
+		<code><a href="source-class-ep6.Product.html#165-194" title="Go to source code">decreaseStockLevel</a>( <span>float <var>$step</var> = <span class="php-num">1.0</span></span> )</code>
+
+		<div class="description short">
+			<p>Decreases the stock level.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Decreases the stock level.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$step</var></dt>
+					<dd>The value the stock level should be decreased, default value is 1.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					float|null<br>The new stock level of the product.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="delete" id="_delete">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_delete">#</a>
+		<code><a href="source-class-ep6.Product.html#196-219" title="Go to source code">delete</a>( )</code>
+
+		<div class="description short">
+			<p>Deletes itself.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Deletes itself.</p>
+
+<p>Dont use this function. To delete a product its better to use $shop->deleteProduct($product).</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the deletion was successful, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.1 Unstatic every attributes.<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getAttribute" id="_getAttribute">
+
+		<td class="attributes"><code>
+			 public 
+
+			ProductAttributes|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getAttribute">#</a>
+		<code><a href="source-class-ep6.Product.html#221-250" title="Go to source code">getAttribute</a>( <span>integer <var>$key</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns the product attributes.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the product attributes.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$key</var></dt>
+					<dd>The number of product attribute to get.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					ProductAttributes|null<br>Gets the required product attributes.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getAttributes" id="_getAttributes">
+
+		<td class="attributes"><code>
+			 public 
+
+			ProductAttributes[]
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getAttributes">#</a>
+		<code><a href="source-class-ep6.Product.html#252-274" title="Go to source code">getAttributes</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the product attributes.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the product attributes.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					ProductAttributes[]<br>Gets the product attributes in an array.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.1 Unstatic every attributes.<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getAvailibilityText" id="_getAvailibilityText">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getAvailibilityText">#</a>
+		<code><a href="source-class-ep6.Product.html#276-291" title="Go to source code">getAvailibilityText</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the availibility text.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the availibility text.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>The availibility text.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.0 Use a default Locale.<br>
+						0.1.1 Fix to call function without locale parameter.<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getBasePrice" id="_getBasePrice">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.ProductPrice.html">ep6\ProductPrice</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getBasePrice">#</a>
+		<code><a href="source-class-ep6.Product.html#293-306" title="Go to source code">getBasePrice</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the base price.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the base price.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.ProductPrice.html">ep6\ProductPrice</a></code><br>Gets the base price.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getDepositPrice" id="_getDepositPrice">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.ProductPrice.html">ep6\ProductPrice</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getDepositPrice">#</a>
+		<code><a href="source-class-ep6.Product.html#308-321" title="Go to source code">getDepositPrice</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the deposit price.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the deposit price.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.ProductPrice.html">ep6\ProductPrice</a></code><br>Gets the deposit price.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getDescription" id="_getDescription">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getDescription">#</a>
+		<code><a href="source-class-ep6.Product.html#323-338" title="Go to source code">getDescription</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the description.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the description.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>The description.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.0 Use a default Locale.<br>
+						0.1.1 Fix to call function without locale parameter.<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getEAN" id="_getEAN">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getEAN">#</a>
+		<code><a href="source-class-ep6.Product.html#340-352" title="Go to source code">getEAN</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the EAN.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the EAN.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>Gets the EAN.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getEcoParticipationPrice" id="_getEcoParticipationPrice">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.ProductPrice.html">ep6\ProductPrice</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getEcoParticipationPrice">#</a>
+		<code><a href="source-class-ep6.Product.html#354-367" title="Go to source code">getEcoParticipationPrice</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the eco participation price.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the eco participation price.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.ProductPrice.html">ep6\ProductPrice</a></code><br>Gets the eco participation price.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getEnergyLabelsString" id="_getEnergyLabelsString">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getEnergyLabelsString">#</a>
+		<code><a href="source-class-ep6.Product.html#369-381" title="Go to source code">getEnergyLabelsString</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the energy labels string.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the energy labels string.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>Gets the energy labels string.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getEssentialFeatures" id="_getEssentialFeatures">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getEssentialFeatures">#</a>
+		<code><a href="source-class-ep6.Product.html#383-395" title="Go to source code">getEssentialFeatures</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the essential features.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the essential features.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>Gets the essential features.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getHotDealImage" id="_getHotDealImage">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Image.html">ep6\Image</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getHotDealImage">#</a>
+		<code><a href="source-class-ep6.Product.html#397-410" title="Go to source code">getHotDealImage</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the hot deal image.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the hot deal image.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Image.html">ep6\Image</a></code><br>The hot deal image.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getID" id="_getID">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getID">#</a>
+		<code><a href="source-class-ep6.Product.html#412-425" title="Go to source code">getID</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the product id.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the product id.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>The product id.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getLargeImage" id="_getLargeImage">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Image.html">ep6\Image</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLargeImage">#</a>
+		<code><a href="source-class-ep6.Product.html#427-440" title="Go to source code">getLargeImage</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the large image.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the large image.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Image.html">ep6\Image</a></code><br>The large image.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getManufacturer" id="_getManufacturer">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getManufacturer">#</a>
+		<code><a href="source-class-ep6.Product.html#442-454" title="Go to source code">getManufacturer</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the name of the manufacturer.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the name of the manufacturer.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>Gets the name of the manufacturer.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getManufacturerPrice" id="_getManufacturerPrice">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.ProductPrice.html">ep6\ProductPrice</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getManufacturerPrice">#</a>
+		<code><a href="source-class-ep6.Product.html#456-469" title="Go to source code">getManufacturerPrice</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the manufacturer price.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the manufacturer price.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.ProductPrice.html">ep6\ProductPrice</a></code><br>Gets the manufacturer price.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getMediumImage" id="_getMediumImage">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Image.html">ep6\Image</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getMediumImage">#</a>
+		<code><a href="source-class-ep6.Product.html#471-484" title="Go to source code">getMediumImage</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the medium image.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the medium image.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Image.html">ep6\Image</a></code><br>The medium image.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getName" id="_getName">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getName">#</a>
+		<code><a href="source-class-ep6.Product.html#486-501" title="Go to source code">getName</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the name.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the name.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>The name.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.0 Use a default Locale.<br>
+						0.1.1 Fix to call function without locale parameter.<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getNumberOfSearchKeywords" id="_getNumberOfSearchKeywords">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getNumberOfSearchKeywords">#</a>
+		<code><a href="source-class-ep6.Product.html#503-515" title="Go to source code">getNumberOfSearchKeywords</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the amount of search keywords.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the amount of search keywords.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					integer<br>Gets the number of search keywords.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getPrice" id="_getPrice">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.ProductPriceWithQuantity.html">ep6\ProductPriceWithQuantity</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getPrice">#</a>
+		<code><a href="source-class-ep6.Product.html#517-530" title="Go to source code">getPrice</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the product price with quantity.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the product price with quantity.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.ProductPriceWithQuantity.html">ep6\ProductPriceWithQuantity</a></code><br>Gets the product price with quantity.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getProductNumber" id="_getProductNumber">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getProductNumber">#</a>
+		<code><a href="source-class-ep6.Product.html#532-544" title="Go to source code">getProductNumber</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the product number.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the product number.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>Gets the product number.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSearchKeyword" id="_getSearchKeyword">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSearchKeyword">#</a>
+		<code><a href="source-class-ep6.Product.html#546-563" title="Go to source code">getSearchKeyword</a>( <span>integer <var>$number</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns the search keyword.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the search keyword.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$number</var></dt>
+					<dd>The number of the search keyword which is required.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>Gets a specific search keyword,, starting with 1.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getShortDescription" id="_getShortDescription">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getShortDescription">#</a>
+		<code><a href="source-class-ep6.Product.html#565-580" title="Go to source code">getShortDescription</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the short description.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the short description.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>The short description.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.0 Use a default Locale.<br>
+						0.1.1 Fix to call function without locale parameter.<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSlideshow" id="_getSlideshow">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.ProductSlideshow.html">ep6\ProductSlideshow</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSlideshow">#</a>
+		<code><a href="source-class-ep6.Product.html#582-602" title="Go to source code">getSlideshow</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the slideshow.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the slideshow.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.ProductSlideshow.html">ep6\ProductSlideshow</a></code><br>Gets the product slideshow.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.1 Slideshows are not reloadable since now.<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSmallImage" id="_getSmallImage">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Image.html">ep6\Image</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSmallImage">#</a>
+		<code><a href="source-class-ep6.Product.html#604-617" title="Go to source code">getSmallImage</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the small image.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the small image.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Image.html">ep6\Image</a></code><br>The small image.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getStockLevel" id="_getStockLevel">
+
+		<td class="attributes"><code>
+			 public 
+
+			float|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getStockLevel">#</a>
+		<code><a href="source-class-ep6.Product.html#619-642" title="Go to source code">getStockLevel</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the stock level.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the stock level.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					float|null<br>The stock level of the product.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.1 Unstatic every attributes.<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getUPC" id="_getUPC">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getUPC">#</a>
+		<code><a href="source-class-ep6.Product.html#644-656" title="Go to source code">getUPC</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the UPC.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the UPC.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>Gets the UPC.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getWithDepositPrice" id="_getWithDepositPrice">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.ProductPrice.html">ep6\ProductPrice</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getWithDepositPrice">#</a>
+		<code><a href="source-class-ep6.Product.html#658-671" title="Go to source code">getWithDepositPrice</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the with deposit price.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the with deposit price.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.ProductPrice.html">ep6\ProductPrice</a></code><br>Gets the with deposit price.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="increaseStockLevel" id="_increaseStockLevel">
+
+		<td class="attributes"><code>
+			 public 
+
+			float|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_increaseStockLevel">#</a>
+		<code><a href="source-class-ep6.Product.html#673-702" title="Go to source code">increaseStockLevel</a>( <span>float <var>$step</var> = <span class="php-num">1.0</span></span> )</code>
+
+		<div class="description short">
+			<p>Increases the stock level.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Increases the stock level.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$step</var></dt>
+					<dd>The value the stock level should be increased, default value is 1.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					float|null<br>The new stock level of the product.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isForSale" id="_isForSale">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isForSale">#</a>
+		<code><a href="source-class-ep6.Product.html#704-717" title="Go to source code">isForSale</a>( )</code>
+
+		<div class="description short">
+			<p>Returns true if it is for sale.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns true if it is for sale.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if it is for sale, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isSpecialOffer" id="_isSpecialOffer">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isSpecialOffer">#</a>
+		<code><a href="source-class-ep6.Product.html#719-732" title="Go to source code">isSpecialOffer</a>( )</code>
+
+		<div class="description short">
+			<p>Returns true if it is a special offer.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns true if it is a special offer.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if it is a special offer, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDescription" id="_setDescription">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDescription">#</a>
+		<code><a href="source-class-ep6.Product.html#734-746" title="Go to source code">setDescription</a>( <span>String <var>$description</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets the description of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets the description of the product.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$description</var></dt>
+					<dd>The new description.</dd>
+				</dl></div>
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setEAN" id="_setEAN">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setEAN">#</a>
+		<code><a href="source-class-ep6.Product.html#748-760" title="Go to source code">setEAN</a>( <span>String <var>$ean</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets the EAN of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets the EAN of the product.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$ean</var></dt>
+					<dd>The new EAN.</dd>
+				</dl></div>
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setEnergyLabelsString" id="_setEnergyLabelsString">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setEnergyLabelsString">#</a>
+		<code><a href="source-class-ep6.Product.html#762-774" title="Go to source code">setEnergyLabelsString</a>( <span>String <var>$energyLabelsString</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets the energy labels string of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets the energy labels string of the product.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$energyLabelsString</var></dt>
+					<dd>The new energy labels string.</dd>
+				</dl></div>
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setEssentialFeatures" id="_setEssentialFeatures">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setEssentialFeatures">#</a>
+		<code><a href="source-class-ep6.Product.html#776-788" title="Go to source code">setEssentialFeatures</a>( <span>String <var>$essentialFeatures</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets the essential features of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets the essential features of the product.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$essentialFeatures</var></dt>
+					<dd>The new essential features.</dd>
+				</dl></div>
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setManufacturer" id="_setManufacturer">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setManufacturer">#</a>
+		<code><a href="source-class-ep6.Product.html#790-802" title="Go to source code">setManufacturer</a>( <span>String <var>$manufacturer</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets the manufacturer of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets the manufacturer of the product.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$manufacturer</var></dt>
+					<dd>The new manufacturer.</dd>
+				</dl></div>
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setName" id="_setName">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setName">#</a>
+		<code><a href="source-class-ep6.Product.html#804-816" title="Go to source code">setName</a>( <span>String <var>$name</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets the name of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets the name of the product.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$name</var></dt>
+					<dd>The new name.</dd>
+				</dl></div>
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setNumber" id="_setNumber">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setNumber">#</a>
+		<code><a href="source-class-ep6.Product.html#818-830" title="Go to source code">setNumber</a>( <span>String <var>$number</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets the product number of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets the product number of the product.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$number</var></dt>
+					<dd>The new product number.</dd>
+				</dl></div>
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setSearchKeywords" id="_setSearchKeywords">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setSearchKeywords">#</a>
+		<code><a href="source-class-ep6.Product.html#832-844" title="Go to source code">setSearchKeywords</a>( <span>String <var>$searchKeywords</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets the search keywords of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets the search keywords of the product.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$searchKeywords</var></dt>
+					<dd>The new $search keywords.</dd>
+				</dl></div>
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setShortDescription" id="_setShortDescription">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setShortDescription">#</a>
+		<code><a href="source-class-ep6.Product.html#846-858" title="Go to source code">setShortDescription</a>( <span>String <var>$shortDescription</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets the short description of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets the short description of the product.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$shortDescription</var></dt>
+					<dd>The new short description.</dd>
+				</dl></div>
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setUPC" id="_setUPC">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setUPC">#</a>
+		<code><a href="source-class-ep6.Product.html#860-872" title="Go to source code">setUPC</a>( <span>String <var>$upc</var></span> )</code>
+
+		<div class="description short">
+			<p>Sets the UPC of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Sets the UPC of the product.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$upc</var></dt>
+					<dd>The new UPC.</dd>
+				</dl></div>
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetDescription" id="_unsetDescription">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetDescription">#</a>
+		<code><a href="source-class-ep6.Product.html#874-885" title="Go to source code">unsetDescription</a>( )</code>
+
+		<div class="description short">
+			<p>Deletes the description value of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Deletes the description value of the product.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetEAN" id="_unsetEAN">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetEAN">#</a>
+		<code><a href="source-class-ep6.Product.html#887-898" title="Go to source code">unsetEAN</a>( )</code>
+
+		<div class="description short">
+			<p>Deletes the EAN value of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Deletes the EAN value of the product.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetEnergyLabelsString" id="_unsetEnergyLabelsString">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetEnergyLabelsString">#</a>
+		<code><a href="source-class-ep6.Product.html#900-911" title="Go to source code">unsetEnergyLabelsString</a>( )</code>
+
+		<div class="description short">
+			<p>Deletes the energy labels string value of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Deletes the energy labels string value of the product.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetEssentialFeatures" id="_unsetEssentialFeatures">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetEssentialFeatures">#</a>
+		<code><a href="source-class-ep6.Product.html#913-924" title="Go to source code">unsetEssentialFeatures</a>( )</code>
+
+		<div class="description short">
+			<p>Deletes the essential features value of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Deletes the essential features value of the product.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetManufacturer" id="_unsetManufacturer">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetManufacturer">#</a>
+		<code><a href="source-class-ep6.Product.html#926-937" title="Go to source code">unsetManufacturer</a>( )</code>
+
+		<div class="description short">
+			<p>Deletes the manufacturer value of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Deletes the manufacturer value of the product.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetName" id="_unsetName">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetName">#</a>
+		<code><a href="source-class-ep6.Product.html#939-950" title="Go to source code">unsetName</a>( )</code>
+
+		<div class="description short">
+			<p>Deletes the name value of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Deletes the name value of the product.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetSearchKeywords" id="_unsetSearchKeywords">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetSearchKeywords">#</a>
+		<code><a href="source-class-ep6.Product.html#952-963" title="Go to source code">unsetSearchKeywords</a>( )</code>
+
+		<div class="description short">
+			<p>Deletes the search keywords of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Deletes the search keywords of the product.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetShortDescription" id="_unsetShortDescription">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetShortDescription">#</a>
+		<code><a href="source-class-ep6.Product.html#965-976" title="Go to source code">unsetShortDescription</a>( )</code>
+
+		<div class="description short">
+			<p>Deletes the short description value of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Deletes the short description value of the product.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetUPC" id="_unsetUPC">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetUPC">#</a>
+		<code><a href="source-class-ep6.Product.html#978-989" title="Go to source code">unsetUPC</a>( )</code>
+
+		<div class="description short">
+			<p>Deletes the UPC value of the product.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Deletes the UPC value of the product.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	</table>
 
 
+	<table class="summary used">
+	<caption>Methods used from <a href="class-ep6.ErrorReporting.html#methods">ep6\ErrorReporting</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ep6.ErrorReporting.html#_error">error()</a>, 
+			<a href="class-ep6.ErrorReporting.html#_errorMessage">errorMessage()</a>, 
+			<a href="class-ep6.ErrorReporting.html#_errorNumber">errorNumber()</a>
+		</code></td>
+	</tr>
+	</table>
 
 
 
@@ -1362,7 +2456,7 @@
 		<td class="attributes"><code>String</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-ep6.Product.html#28-29" title="Go to source code"><b>RESTPATH</b></a>
+				<a href="source-class-ep6.Product.html#32-33" title="Go to source code"><b>RESTPATH</b></a>
 			</code>
 
 			<div class="description short">
@@ -1386,7 +2480,7 @@
 		<td class="attributes"><code>String</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-ep6.Product.html#31-32" title="Go to source code"><b>RESTPATH_ATTRIBUTES</b></a>
+				<a href="source-class-ep6.Product.html#35-36" title="Go to source code"><b>RESTPATH_ATTRIBUTES</b></a>
 			</code>
 
 			<div class="description short">
@@ -1410,7 +2504,7 @@
 		<td class="attributes"><code>String</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-ep6.Product.html#34-35" title="Go to source code"><b>RESTPATH_STOCKLEVEL</b></a>
+				<a href="source-class-ep6.Product.html#38-39" title="Go to source code"><b>RESTPATH_STOCKLEVEL</b></a>
 			</code>
 
 			<div class="description short">

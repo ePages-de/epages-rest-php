@@ -1,3 +1,14 @@
+# 0.1.2 (04.04.2016)
+
+## Enhancements
+- #64 Refresh product.
+- #108 Edit products.
+- #112 Add more product attributes.
+- #117 Log into files and enhance logging.
+
+## Features
+- #114 Return and validate error if error occurs.
+
 # 0.1.1 (22.02.2016)
 
 ## Features

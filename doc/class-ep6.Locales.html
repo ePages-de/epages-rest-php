@@ -48,6 +48,9 @@
 				<li><a href="class-ep6.Product.html">Product</a></li>
 				<li><a href="class-ep6.ProductAttribute.html">ProductAttribute</a></li>
 				<li><a href="class-ep6.ProductFilter.html">ProductFilter</a></li>
+				<li><a href="class-ep6.ProductPrice.html">ProductPrice</a></li>
+				<li><a href="class-ep6.ProductPriceType.html">ProductPriceType</a></li>
+				<li><a href="class-ep6.ProductPriceWithQuantity.html">ProductPriceWithQuantity</a></li>
 				<li><a href="class-ep6.ProductSlideshow.html">ProductSlideshow</a></li>
 				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
@@ -59,7 +62,8 @@
 
 			<h3>Traits</h3>
 			<ul>
-				<li><a href="class-ep6.InformationTrait.html">InformationTrait</a></li>
+				<li><a href="class-ep6.ErrorReporting.html">ErrorReporting</a></li>
+				<li><a href="class-ep6.Information.html">Information</a></li>
 			</ul>
 
 
@@ -103,6 +107,15 @@
 	<p>This is the static class for the localization.</p>
 	</div>
 
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>ep6\Locales</span></b>			
+			
+			 uses 
+					<a href="class-ep6.ErrorReporting.html"><span>ep6\ErrorReporting</span></a>
+			
+		</dd>
+	</dl>
 
 
 
@@ -127,9 +140,9 @@
 				0.1.0 Add configured used Locale.<br>
 				<b>Since:</b>
 				0.1.1 Now the object is echoable.<br>
-				<b>Example:</b>
-				examples\handleWithLocales.php Handle with locales.<br>
-			<b>Located at</b> <a href="source-class-ep6.Locales.html#9-182" title="Go to source code">shopobjects/Locales.class.php</a>
+				<b>Since:</b>
+				0.1.2 Add error reporting.<br>
+			<b>Located at</b> <a href="source-class-ep6.Locales.html#9-202" title="Go to source code">shopobjects/Locales.class.php</a>
 		<br>
 	</div>
 
@@ -137,48 +150,6 @@
 
 	<table class="summary methods" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="resetValues" id="_resetValues">
-
-		<td class="attributes"><code>
-			 public static
-
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_resetValues">#</a>
-		<code><a href="source-class-ep6.Locales.html#83-96" title="Go to source code">resetValues</a>( )</code>
-
-		<div class="description short">
-			<p>This function resets all locales values.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>This function resets all locales values.</p>
-
-
-
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Reset used Locale.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="getDefault" id="_getDefault">
 
 		<td class="attributes"><code>
@@ -191,7 +162,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDefault">#</a>
-		<code><a href="source-class-ep6.Locales.html#119-132" title="Go to source code">getDefault</a>( )</code>
+		<code><a href="source-class-ep6.Locales.html#40-55" title="Go to source code">getDefault</a>( )</code>
 
 		<div class="description short">
 			<p>Gets the default localization.</p>
@@ -216,9 +187,7 @@
 				<div class="list">
 						0.0.0<br>
 						0.1.0 Use a reload function.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
+						0.1.2 Add error reporting.<br>
 				</div>
 
 
@@ -237,7 +206,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getItems">#</a>
-		<code><a href="source-class-ep6.Locales.html#134-147" title="Go to source code">getItems</a>( )</code>
+		<code><a href="source-class-ep6.Locales.html#57-72" title="Go to source code">getItems</a>( )</code>
 
 		<div class="description short">
 			<p>Gets the activated localizations.</p>
@@ -262,9 +231,7 @@
 				<div class="list">
 						0.0.0<br>
 						0.1.0 Use a reload function.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
+						0.1.2 Add error reporting.<br>
 				</div>
 
 
@@ -283,7 +250,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getLocale">#</a>
-		<code><a href="source-class-ep6.Locales.html#149-161" title="Go to source code">getLocale</a>( )</code>
+		<code><a href="source-class-ep6.Locales.html#74-88" title="Go to source code">getLocale</a>( )</code>
 
 		<div class="description short">
 			<p>Gets the configured Locale.</p>
@@ -307,9 +274,47 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.0<br>
+						0.1.2 Add error reporting.<br>
 				</div>
-				<h4>Api</h4>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="resetValues" id="_resetValues">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_resetValues">#</a>
+		<code><a href="source-class-ep6.Locales.html#90-105" title="Go to source code">resetValues</a>( )</code>
+
+		<div class="description short">
+			<p>This function resets all locales values.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function resets all locales values.</p>
+
+
+
+
+
+				<h4>Author</h4>
 				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.0 Reset used Locale.<br>
+						0.1.2 Add error reporting.<br>
 				</div>
 
 
@@ -328,7 +333,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setLocale">#</a>
-		<code><a href="source-class-ep6.Locales.html#163-180" title="Go to source code">setLocale</a>( <span>String <var>$locale</var></span> )</code>
+		<code><a href="source-class-ep6.Locales.html#107-131" title="Go to source code">setLocale</a>( <span>String <var>$locale</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the configured Locale.</p>
@@ -357,9 +362,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
+						0.1.2 Add error reporting.<br>
 				</div>
 
 
@@ -369,6 +372,16 @@
 	</table>
 
 
+	<table class="summary used">
+	<caption>Methods used from <a href="class-ep6.ErrorReporting.html#methods">ep6\ErrorReporting</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ep6.ErrorReporting.html#_error">error()</a>, 
+			<a href="class-ep6.ErrorReporting.html#_errorMessage">errorMessage()</a>, 
+			<a href="class-ep6.ErrorReporting.html#_errorNumber">errorNumber()</a>
+		</code></td>
+	</tr>
+	</table>
 
 
 
@@ -382,7 +395,7 @@
 		<td class="attributes"><code>String</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-ep6.Locales.html#23-24" title="Go to source code"><b>RESTPATH</b></a>
+				<a href="source-class-ep6.Locales.html#25-26" title="Go to source code"><b>RESTPATH</b></a>
 			</code>
 
 			<div class="description short">
