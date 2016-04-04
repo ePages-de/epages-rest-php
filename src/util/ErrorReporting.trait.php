@@ -58,6 +58,7 @@ trait ErrorReporting {
 		"P-6"	=>	"Product stocklevel REST respond is empty.",
 		"P-7"	=>	"The product does not have stocklevel.",
 		"P-8"	=>	"The step for the new stocklevel is no float.",
+		"P-9"	=>	"The requested search keyword does not exist.",
 		"PF-1"	=>	"The product filter attribute in ProductFilter constructor is invalid.",
 		"PF-2"	=>	"The product filter parameter is unknown.",
 		"PF-3"	=>	"The product filter page number is invalid.",

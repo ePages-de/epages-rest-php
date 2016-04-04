@@ -53,11 +53,23 @@ class Product {
 	/** @var String|null The description. */
 	private $description = null;
 
+	/** @var String|null Space to save the EAN. */
+	private $ean = null;
+
 	/** @var ProductPrice|null Here the eco participation price is saved. */
 	private $ecoParticipationPrice = null;
 
+	/** @var String|null This is the energy label. */
+	private $energyLabelsString = null;
+
+	/** @var String|null This are the essential features. */
+	private $essentialFeatures = null;
+
 	/** @var boolean Is this product for sale? */
 	private $forSale = true;
+
+	/** @var String|null Here the manufacturer name is saved. */
+	private $manufacturer = null;
 
 	/** @var ProductPrice|null Here the manufacturer price is saved. */
 	private $manufacturerPrice = null;
@@ -74,6 +86,12 @@ class Product {
 	/** @var String|null The product ID. */
 	private $productID = null;
 
+	/** @var String|null The product number. */
+	private $productNumber = null;
+
+	/** @var String[] Array to save the setted keywords. */
+	private $searchKeywords = array();
+
 	/** @var String|null The short description. */
 	private $shortDescription = null;
 
@@ -85,6 +103,9 @@ class Product {
 
 	/** @var float|null Space to save the stocklevel. */
 	private $stockLevel = null;
+
+	/** @var String|null Space to save the UPC. */
+	private $upc = null;
 
 	/** @var ProductPrice|null Here the price with deposit is saved. */
 	private $withDepositPrice = null;
@@ -317,6 +338,20 @@ class Product {
 	}
 
 	/**
+	 * Returns the EAN.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String Gets the EAN.
+	 * @since 0.1.2
+	 */
+	public function getEAN() {
+
+		$this->errorReset();
+
+		return $this->EAN;
+	}
+
+	/**
 	 * Returns the eco participation price.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
@@ -329,6 +364,34 @@ class Product {
 		$this->errorReset();
 
 		return $this->ecoParticipationPrice;
+	}
+
+	/**
+	 * Returns the energy labels string.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String Gets the energy labels string.
+	 * @since 0.1.2
+	 */
+	public function getEnergyLabelsString() {
+
+		$this->errorReset();
+
+		return $this->energyLabelsString;
+	}
+
+	/**
+	 * Returns the essential features.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String Gets the essential features.
+	 * @since 0.1.2
+	 */
+	public function getEssentialFeatures() {
+
+		$this->errorReset();
+
+		return $this->essentialFeatures;
 	}
 
 	/**
@@ -374,6 +437,20 @@ class Product {
 		$this->errorReset();
 
 		return !InputValidator::isEmptyArrayKey($this->images, "Large") ? $this->images["Large"] : null;
+	}
+
+	/**
+	 * Returns the name of the manufacturer.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String Gets the name of the manufacturer.
+	 * @since 0.1.2
+	 */
+	public function getManufacturer() {
+
+		$this->errorReset();
+
+		return $this->manufacturer;
 	}
 
 	/**
@@ -424,6 +501,20 @@ class Product {
 	}
 
 	/**
+	 * Returns the amount of search keywords.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return int Gets the number of search keywords.
+	 * @since 0.1.2
+	 */
+	public function getNumberOfSearchKeywords() {
+
+		$this->errorReset();
+
+		return sizeof($this->searchKeywords);
+	}
+
+	/**
 	 * Returns the product price with quantity.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
@@ -436,6 +527,39 @@ class Product {
 		$this->errorReset();
 
 		return $this->price;
+	}
+
+	/**
+	 * Returns the product number.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String Gets the product number.
+	 * @since 0.1.2
+	 */
+	public function getProductNumber() {
+
+		$this->errorReset();
+
+		return $this->productNumber;
+	}
+
+	/**
+	 * Returns the search keyword.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String Gets a specific search keyword,, starting with 1.
+	 * @param int $number The number of the search keyword which is required.
+	 * @since 0.1.2
+	 */
+	public function getSearchKeyword($number) {
+
+		$this->errorReset();
+
+		if (!InputValidator::isRangedInt($number, 1, $this->getNumberOfSearchKeywords())) {
+			$this->errorSet("P-9");
+			return;
+		}
+		return $this->searchKeywords[$number - 1];
 	}
 
 	/**
@@ -515,6 +639,20 @@ class Product {
 		}
 
 		return $this->stockLevel;
+	}
+
+	/**
+	 * Returns the UPC.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String Gets the UPC.
+	 * @since 0.1.2
+	 */
+	public function getUPC() {
+
+		$this->errorReset();
+
+		return $this->UPC;
 	}
 
 	/**
@@ -944,6 +1082,41 @@ class Product {
 			if (!InputValidator::isEmptyArrayKey($productParameter, "availabilityText")) {
 
 				$this->availabilityText = $productParameter['availabilityText'];
+			}
+
+			if (!InputValidator::isEmptyArrayKey($productParameter, "productNumber")) {
+
+				$this->productNumber = $productParameter['productNumber'];
+			}
+
+			if (!InputValidator::isEmptyArrayKey($productParameter, "energyLabelsString")) {
+
+				$this->energyLabelsString = $productParameter['energyLabelsString'];
+			}
+
+			if (!InputValidator::isEmptyArrayKey($productParameter, "manufacturer")) {
+
+				$this->manufacturer = $productParameter['manufacturer'];
+			}
+
+			if (!InputValidator::isEmptyArrayKey($productParameter, "upc")) {
+
+				$this->UPC = $productParameter['upc'];
+			}
+
+			if (!InputValidator::isEmptyArrayKey($productParameter, "ean")) {
+
+				$this->EAN = $productParameter['ean'];
+			}
+
+			if (!InputValidator::isEmptyArrayKey($productParameter, "essentialFeatures")) {
+
+				$this->essentialFeatures = $productParameter['essentialFeatures'];
+			}
+
+			if (!InputValidator::isEmptyArrayKey($productParameter, "searchKeywords")) {
+
+				$this->searchKeywords = $productParameter['searchKeywords'];
 			}
 
 			// parse images
