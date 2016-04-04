@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class ep6\Currencies</title>
+	<title>Trait ep6\ErrorReporting</title>
 
 	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
 
@@ -33,7 +33,7 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-ep6.ContactInformation.html">ContactInformation</a></li>
-				<li class="active"><a href="class-ep6.Currencies.html">Currencies</a></li>
+				<li><a href="class-ep6.Currencies.html">Currencies</a></li>
 				<li><a href="class-ep6.HTTPRequestMethod.html">HTTPRequestMethod</a></li>
 				<li><a href="class-ep6.Image.html">Image</a></li>
 				<li><a href="class-ep6.InputValidator.html">InputValidator</a></li>
@@ -62,7 +62,7 @@
 
 			<h3>Traits</h3>
 			<ul>
-				<li><a href="class-ep6.ErrorReporting.html">ErrorReporting</a></li>
+				<li class="active"><a href="class-ep6.ErrorReporting.html">ErrorReporting</a></li>
 				<li><a href="class-ep6.Information.html">Information</a></li>
 			</ul>
 
@@ -100,49 +100,50 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class Currencies</h1>
+	<h1>Trait ErrorReporting</h1>
 
 
 	<div class="description">
-	<p>This is the static class for the currencies in the shop.</p>
+	<p>This is the functionality to check whether there is an error on last library usage or not.</p>
 	</div>
 
-	<dl class="tree">
-		<dd style="padding-left:0px">
-<b><span>ep6\Currencies</span></b>			
-			
-			 uses 
-					<a href="class-ep6.ErrorReporting.html"><span>ep6\ErrorReporting</span></a>
-			
-		</dd>
-	</dl>
 
 
 
 
 
 
+	<div>
+		<h4>Direct Known Users</h4>
+			<a href="class-ep6.ContactInformation.html">ep6\ContactInformation</a>, 
+			<a href="class-ep6.Currencies.html">ep6\Currencies</a>, 
+			<a href="class-ep6.RESTClient.html">ep6\RESTClient</a>, 
+			<a href="class-ep6.RightsOfWithdrawalInformation.html">ep6\RightsOfWithdrawalInformation</a>, 
+			<a href="class-ep6.ShippingInformation.html">ep6\ShippingInformation</a>, 
+			<a href="class-ep6.Shop.html">ep6\Shop</a>, 
+			<a href="class-ep6.TermsAndConditionInformation.html">ep6\TermsAndConditionInformation</a>, 
+			<a href="class-ep6.JSONHandler.html">ep6\JSONHandler</a>, 
+			<a href="class-ep6.Locales.html">ep6\Locales</a>, 
+			<a href="class-ep6.PrivacyPolicyInformation.html">ep6\PrivacyPolicyInformation</a>, 
+			<a href="class-ep6.Product.html">ep6\Product</a>, 
+			<a href="class-ep6.ProductFilter.html">ep6\ProductFilter</a>, 
+			<a href="class-ep6.ProductPrice.html">ep6\ProductPrice</a>, 
+			<a href="class-ep6.ProductPriceWithQuantity.html">ep6\ProductPriceWithQuantity</a>, 
+			<a href="class-ep6.ProductSlideshow.html">ep6\ProductSlideshow</a>
+	</div>
 
 
 	<div class="info">
 		
 		
 		<b>Namespace:</b> <a href="namespace-ep6.html">ep6</a><br>
-		
+		<b>Package:</b> ep6\Util<br>
 
 				<b>Author:</b>
 				David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
 				<b>Since:</b>
-				0.0.0<br>
-				<b>Since:</b>
-				0.1.0 Add a timestamp to save the next allowed REST call.<br>
-				<b>Since:</b>
-				0.1.0 Add configured used Currency.<br>
-				<b>Since:</b>
-				0.1.1 Now the object is echoable.<br>
-				<b>Since:</b>
-				0.1.2 Add error reporting.<br>
-			<b>Located at</b> <a href="source-class-ep6.Currencies.html#9-201" title="Go to source code">shopobjects/Currencies.class.php</a>
+				0.1.2<br>
+			<b>Located at</b> <a href="source-class-ep6.ErrorReporting.html#12-150" title="Go to source code">util/ErrorReporting.trait.php</a>
 		<br>
 	</div>
 
@@ -150,178 +151,7 @@
 
 	<table class="summary methods" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="getCurrency" id="_getCurrency">
-
-		<td class="attributes"><code>
-			 public static
-
-			The
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getCurrency">#</a>
-		<code><a href="source-class-ep6.Currencies.html#39-53" title="Go to source code">getCurrency</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the configured Currency.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the configured Currency.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					The<br>configured Currency which is used in REST calls.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-						0.1.2 Add error reporting.<br>
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getDefault" id="_getDefault">
-
-		<td class="attributes"><code>
-			 public static
-
-			The
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getDefault">#</a>
-		<code><a href="source-class-ep6.Currencies.html#55-70" title="Go to source code">getDefault</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the default currency.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the default currency.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					The<br>default currencies of the shop.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Use a reload function.<br>
-						0.1.2 Add error reporting.<br>
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getItems" id="_getItems">
-
-		<td class="attributes"><code>
-			 public static
-
-			The
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getItems">#</a>
-		<code><a href="source-class-ep6.Currencies.html#72-87" title="Go to source code">getItems</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the activated currencies.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the activated currencies.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					The<br>possible currencies of the shop.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Use a reload function.<br>
-						0.1.2 Add error reporting.<br>
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="resetValues" id="_resetValues">
-
-		<td class="attributes"><code>
-			 public static
-
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_resetValues">#</a>
-		<code><a href="source-class-ep6.Currencies.html#89-104" title="Go to source code">resetValues</a>( )</code>
-
-		<div class="description short">
-			<p>This function resets all curencies values.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>This function resets all curencies values.</p>
-
-
-
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Reset used Currency.<br>
-						0.1.2 Add error reporting.<br>
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="setCurrency" id="_setCurrency">
+	<tr data-order="error" id="_error">
 
 		<td class="attributes"><code>
 			 public static
@@ -332,26 +162,21 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_setCurrency">#</a>
-		<code><a href="source-class-ep6.Currencies.html#106-130" title="Go to source code">setCurrency</a>( <span>String <var>$currency</var></span> )</code>
+		<a class="anchor" href="#_error">#</a>
+		<code><a href="source-class-ep6.ErrorReporting.html#82-92" title="Go to source code">error</a>( )</code>
 
 		<div class="description short">
-			<p>Sets the configured Currency.</p>
+			<p>Checks whether there was an error or not.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Sets the configured Currency.</p>
+			<p>Checks whether there was an error or not.</p>
 
 
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$currency</var></dt>
-					<dd>The new used Locale.</dd>
-				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					boolean<br>True if set the Currency works, false if not.
+					boolean<br>True if there was an error, false if not.
 				</div>
 
 
@@ -361,8 +186,91 @@
 				</div>
 				<h4>Since</h4>
 				<div class="list">
-						0.1.0<br>
-						0.1.2 Add error reporting.<br>
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="errorMessage" id="_errorMessage">
+
+		<td class="attributes"><code>
+			 public static
+
+			String|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_errorMessage">#</a>
+		<code><a href="source-class-ep6.ErrorReporting.html#94-104" title="Go to source code">errorMessage</a>( )</code>
+
+		<div class="description short">
+			<p>This function returns the error message of the last happened error.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function returns the error message of the last happened error.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String|null<br>The error message of the last happened error or null if there is no error message.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="errorNumber" id="_errorNumber">
+
+		<td class="attributes"><code>
+			 public static
+
+			String|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_errorNumber">#</a>
+		<code><a href="source-class-ep6.ErrorReporting.html#106-116" title="Go to source code">errorNumber</a>( )</code>
+
+		<div class="description short">
+			<p>This function returns the error number of the last happened error.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function returns the error number of the last happened error.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String|null<br>The error number of the last happened error, or null if there is no error.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
 				</div>
 
 
@@ -372,49 +280,12 @@
 	</table>
 
 
-	<table class="summary used">
-	<caption>Methods used from <a href="class-ep6.ErrorReporting.html#methods">ep6\ErrorReporting</a></caption>
-	<tr>
-		<td><code>
-			<a href="class-ep6.ErrorReporting.html#_error">error()</a>, 
-			<a href="class-ep6.ErrorReporting.html#_errorMessage">errorMessage()</a>, 
-			<a href="class-ep6.ErrorReporting.html#_errorNumber">errorNumber()</a>
-		</code></td>
-	</tr>
-	</table>
 
 
 
 
 
 
-	<table class="summary constants" id="constants">
-	<caption>Constants summary</caption>
-	<tr data-order="RESTPATH" id="RESTPATH">
-
-		<td class="attributes"><code>String</code></td>
-		<td class="name">
-			<code>
-				<a href="source-class-ep6.Currencies.html#24-25" title="Go to source code"><b>RESTPATH</b></a>
-			</code>
-
-			<div class="description short">
-				
-			</div>
-
-			<div class="description detailed hidden">
-				
-
-			</div>
-		</td>
-		<td class="value">
-			<div>
-				<a href="#RESTPATH" class="anchor">#</a>
-				<code><span class="php-quote">&quot;currencies&quot;</span></code>
-			</div>
-		</td>
-	</tr>
-	</table>
 
 
 

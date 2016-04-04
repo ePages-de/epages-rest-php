@@ -48,6 +48,9 @@
 				<li><a href="class-ep6.Product.html">Product</a></li>
 				<li><a href="class-ep6.ProductAttribute.html">ProductAttribute</a></li>
 				<li><a href="class-ep6.ProductFilter.html">ProductFilter</a></li>
+				<li><a href="class-ep6.ProductPrice.html">ProductPrice</a></li>
+				<li><a href="class-ep6.ProductPriceType.html">ProductPriceType</a></li>
+				<li><a href="class-ep6.ProductPriceWithQuantity.html">ProductPriceWithQuantity</a></li>
 				<li><a href="class-ep6.ProductSlideshow.html">ProductSlideshow</a></li>
 				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
@@ -59,7 +62,8 @@
 
 			<h3>Traits</h3>
 			<ul>
-				<li><a href="class-ep6.InformationTrait.html">InformationTrait</a></li>
+				<li><a href="class-ep6.ErrorReporting.html">ErrorReporting</a></li>
+				<li><a href="class-ep6.Information.html">Information</a></li>
 			</ul>
 
 
@@ -100,7 +104,7 @@
 
 
 	<div class="description">
-	<p>This is the contact information object of the shop.</p>
+	<p>This is the Contact Information object of the shop.</p>
 	</div>
 
 	<dl class="tree">
@@ -108,7 +112,9 @@
 <b><span>ep6\ContactInformation</span></b>			
 			
 			 uses 
-					<a href="class-ep6.InformationTrait.html"><span>ep6\InformationTrait</span></a>
+					<a href="class-ep6.Information.html"><span>ep6\Information</span></a>, 
+			
+					<a href="class-ep6.ErrorReporting.html"><span>ep6\ErrorReporting</span></a>
 			
 		</dd>
 	</dl>
@@ -138,9 +144,13 @@
 				0.1.1 The object can be echoed.<br>
 				<b>Since:</b>
 				0.1.1 Unstatic variables.<br>
+				<b>Since:</b>
+				0.1.2 Add error reporting.<br>
 				<b>See:</b>
 				InformationTrait This trait has all information needed objects.<br>
-			<b>Located at</b> <a href="source-class-ep6.ContactInformation.html#9-464" title="Go to source code">shopobjects/information/ContactInformation.class.php</a>
+				<b>See:</b>
+				ErrorReporting This trait gives the error reporting functionality.<br>
+			<b>Located at</b> <a href="source-class-ep6.ContactInformation.html#9-378" title="Go to source code">shopobjects/information/ContactInformation.class.php</a>
 		<br>
 	</div>
 
@@ -148,35 +158,34 @@
 
 	<table class="summary methods" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="getDefaultTitle" id="_getDefaultTitle" class="deprecated">
+	<tr data-order="__toString" id="___toString">
 
 		<td class="attributes"><code>
 			 public 
 
-			String|null
+			String
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getDefaultTitle">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#174-188" title="Go to source code">getDefaultTitle</a>( )</code>
+		<a class="anchor" href="#___toString">#</a>
+		<code><a href="source-class-ep6.ContactInformation.html#58-81" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
-			<p>Gets the title in the default localization.</p>
+			<p>Prints the Contact Information object as a string.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Gets the title in the default localization.</p>
+			<p>Prints the Contact Information object as a string.</p>
 
-				<h4>Deprecated</h4>
-				<div class="list">
-				</div>
+<p>This function returns the setted values of the Contact Information object.</p>
+
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					String|null<br>The title in the default localization or null if the default title is not set.
+					String<br>The Contact Information as a string.
 				</div>
 
 
@@ -186,502 +195,7 @@
 				</div>
 				<h4>Since</h4>
 				<div class="list">
-						0.0.0<br>
-						0.1.0 Deprecated because the Locale is everytime the configured Locale.<br>
-						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getTitle" id="_getTitle">
-
-		<td class="attributes"><code>
-			 public 
-
-			String|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getTitle">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#190-205" title="Go to source code">getTitle</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the title.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the title.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String|null<br>The title or null if the localized title is not set.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Use a reload function.<br>
-						0.1.0 Use the default Locale.<br>
-						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getDefaultShortDescription" id="_getDefaultShortDescription" class="deprecated">
-
-		<td class="attributes"><code>
-			 public 
-
-			String|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getDefaultShortDescription">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#207-221" title="Go to source code">getDefaultShortDescription</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the short description in the default localization.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the short description in the default localization.</p>
-
-				<h4>Deprecated</h4>
-				<div class="list">
-				</div>
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String|null<br>The short description in the default localization or null if the short description is not set.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Deprecated because the Locale is everytime the configured Locale.<br>
-						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getShortDescription" id="_getShortDescription">
-
-		<td class="attributes"><code>
-			 public 
-
-			String|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getShortDescription">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#223-238" title="Go to source code">getShortDescription</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the short description.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the short description.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String|null<br>The short description or null if the short description is not set.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Use a reload function.<br>
-						0.1.0 Use the default Locale.<br>
-						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getDefaultCompany" id="_getDefaultCompany" class="deprecated">
-
-		<td class="attributes"><code>
-			 public 
-
-			String|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getDefaultCompany">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#240-254" title="Go to source code">getDefaultCompany</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the company in the default localization.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the company in the default localization.</p>
-
-				<h4>Deprecated</h4>
-				<div class="list">
-				</div>
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String|null<br>The company in the default localization or null if the short description is not set.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Deprecated because the Locale is everytime the configured Locale.<br>
-						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getCompany" id="_getCompany">
-
-		<td class="attributes"><code>
-			 public 
-
-			String|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getCompany">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#256-271" title="Go to source code">getCompany</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the company.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the company.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String|null<br>The company or null if the company is net set.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Use a reload function.<br>
-						0.1.0 Use the default Locale.<br>
-						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getDefaultContactPerson" id="_getDefaultContactPerson" class="deprecated">
-
-		<td class="attributes"><code>
-			 public 
-
-			String|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getDefaultContactPerson">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#273-287" title="Go to source code">getDefaultContactPerson</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the contact person in the default localization.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the contact person in the default localization.</p>
-
-				<h4>Deprecated</h4>
-				<div class="list">
-				</div>
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String|null<br>The contact person in the default localization or null if the contact person is not set.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Deprecated because the Locale is everytime the configured Locale.<br>
-						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getContactPerson" id="_getContactPerson">
-
-		<td class="attributes"><code>
-			 public 
-
-			String|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getContactPerson">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#289-304" title="Go to source code">getContactPerson</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the contact person.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the contact person.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String|null<br>The contact person or null uf the contact person is not set.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Use a reload function.<br>
-						0.1.0 Use the default Locale.<br>
-						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getDefaultContactPersonJobTitle" id="_getDefaultContactPersonJobTitle" class="deprecated">
-
-		<td class="attributes"><code>
-			 public 
-
-			String|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getDefaultContactPersonJobTitle">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#306-320" title="Go to source code">getDefaultContactPersonJobTitle</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the job title of the contact person in the default localization.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the job title of the contact person in the default localization.</p>
-
-				<h4>Deprecated</h4>
-				<div class="list">
-				</div>
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String|null<br>The job title of the contact person in the default localization or null if the contact person job title is not set.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Deprecated because the Locale is everytime the configured Locale.<br>
-						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getContactPersonJobTitle" id="_getContactPersonJobTitle">
-
-		<td class="attributes"><code>
-			 public 
-
-			String|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getContactPersonJobTitle">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#322-337" title="Go to source code">getContactPersonJobTitle</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the job title of the contact person.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the job title of the contact person.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String|null<br>The job title of the contact person or null if the contact person job title is unset.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Use a reload function.<br>
-						0.1.0 Use the default Locale.<br>
-						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getDefaultAddress" id="_getDefaultAddress" class="deprecated">
-
-		<td class="attributes"><code>
-			 public 
-
-			String|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getDefaultAddress">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#339-353" title="Go to source code">getDefaultAddress</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the address in the default localization.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the address in the default localization.</p>
-
-				<h4>Deprecated</h4>
-				<div class="list">
-				</div>
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String|null<br>The address in the default localization or null if the default address is not set.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Deprecated because the Locale is everytime the configured Locale.<br>
-						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
+						0.1.1<br>
 				</div>
 
 
@@ -700,7 +214,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAddress">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#355-370" title="Go to source code">getAddress</a>( )</code>
+		<code><a href="source-class-ep6.ContactInformation.html#83-100" title="Go to source code">getAddress</a>( )</code>
 
 		<div class="description short">
 			<p>Gets the address.</p>
@@ -727,16 +241,14 @@
 						0.1.0 Use a reload function.<br>
 						0.1.0 Use the default Locale.<br>
 						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
+						0.1.2 Add error reporting.<br>
 				</div>
 
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getDefaultPhone" id="_getDefaultPhone" class="deprecated">
+	<tr data-order="getCompany" id="_getCompany">
 
 		<td class="attributes"><code>
 			 public 
@@ -747,71 +259,21 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getDefaultPhone">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#372-386" title="Go to source code">getDefaultPhone</a>( )</code>
+		<a class="anchor" href="#_getCompany">#</a>
+		<code><a href="source-class-ep6.ContactInformation.html#102-119" title="Go to source code">getCompany</a>( )</code>
 
 		<div class="description short">
-			<p>Gets the phone number in the default localization.</p>
+			<p>Gets the company.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Gets the phone number in the default localization.</p>
-
-				<h4>Deprecated</h4>
-				<div class="list">
-				</div>
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String|null<br>The phone number in the default localization or null if the default phone number is unset.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Deprecated because the Locale is everytime the configured Locale.<br>
-						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getPhone" id="_getPhone">
-
-		<td class="attributes"><code>
-			 public 
-
-			String|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getPhone">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#388-403" title="Go to source code">getPhone</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the phone number.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the phone number.</p>
+			<p>Gets the company.</p>
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					String|null<br>The phone number or null if the phone number is unset.
+					String|null<br>The company or null if the company is net set.
 				</div>
 
 
@@ -825,16 +287,14 @@
 						0.1.0 Use a reload function.<br>
 						0.1.0 Use the default Locale.<br>
 						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
+						0.1.2 Add error reporting.<br>
 				</div>
 
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getDefaultEmail" id="_getDefaultEmail" class="deprecated">
+	<tr data-order="getContactPerson" id="_getContactPerson">
 
 		<td class="attributes"><code>
 			 public 
@@ -845,24 +305,21 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getDefaultEmail">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#405-419" title="Go to source code">getDefaultEmail</a>( )</code>
+		<a class="anchor" href="#_getContactPerson">#</a>
+		<code><a href="source-class-ep6.ContactInformation.html#121-138" title="Go to source code">getContactPerson</a>( )</code>
 
 		<div class="description short">
-			<p>Gets the email in the default localization.</p>
+			<p>Gets the contact person.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Gets the email in the default localization.</p>
+			<p>Gets the contact person.</p>
 
-				<h4>Deprecated</h4>
-				<div class="list">
-				</div>
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					String|null<br>The email in the default localization or null if the default email address is unset.
+					String|null<br>The contact person or null uf the contact person is not set.
 				</div>
 
 
@@ -873,11 +330,56 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.0.0<br>
-						0.1.0 Deprecated because the Locale is everytime the configured Locale.<br>
+						0.1.0 Use a reload function.<br>
+						0.1.0 Use the default Locale.<br>
 						0.1.1 Unstatic every attributes.<br>
+						0.1.2 Add error reporting.<br>
 				</div>
-				<h4>Api</h4>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getContactPersonJobTitle" id="_getContactPersonJobTitle">
+
+		<td class="attributes"><code>
+			 public 
+
+			String|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getContactPersonJobTitle">#</a>
+		<code><a href="source-class-ep6.ContactInformation.html#140-157" title="Go to source code">getContactPersonJobTitle</a>( )</code>
+
+		<div class="description short">
+			<p>Gets the job title of the contact person.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Gets the job title of the contact person.</p>
+
+
+
+				<h4>Returns</h4>
 				<div class="list">
+					String|null<br>The job title of the contact person or null if the contact person job title is unset.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.0 Use a reload function.<br>
+						0.1.0 Use the default Locale.<br>
+						0.1.1 Unstatic every attributes.<br>
+						0.1.2 Add error reporting.<br>
 				</div>
 
 
@@ -896,7 +398,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getEmail">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#421-436" title="Go to source code">getEmail</a>( )</code>
+		<code><a href="source-class-ep6.ContactInformation.html#159-176" title="Go to source code">getEmail</a>( )</code>
 
 		<div class="description short">
 			<p>Gets the email.</p>
@@ -923,43 +425,39 @@
 						0.1.0 Use a reload function.<br>
 						0.1.0 Use the default Locale.<br>
 						0.1.1 Unstatic every attributes.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
+						0.1.2 Add error reporting.<br>
 				</div>
 
 
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="__toString" id="___toString">
+	<tr data-order="getPhone" id="_getPhone">
 
 		<td class="attributes"><code>
 			 public 
 
-			String
+			String|null
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-ep6.ContactInformation.html#438-463" title="Go to source code">__toString</a>( )</code>
+		<a class="anchor" href="#_getPhone">#</a>
+		<code><a href="source-class-ep6.ContactInformation.html#178-195" title="Go to source code">getPhone</a>( )</code>
 
 		<div class="description short">
-			<p>Prints the Information object as a string.</p>
+			<p>Gets the phone number.</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Prints the Information object as a string.</p>
-
-<p>This function returns the setted values of the Information object.</p>
+			<p>Gets the phone number.</p>
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					String<br>The Information as a string.
+					String|null<br>The phone number or null if the phone number is unset.
 				</div>
 
 
@@ -969,10 +467,103 @@
 				</div>
 				<h4>Since</h4>
 				<div class="list">
-						0.1.1<br>
+						0.0.0<br>
+						0.1.0 Use a reload function.<br>
+						0.1.0 Use the default Locale.<br>
+						0.1.1 Unstatic every attributes.<br>
+						0.1.2 Add error reporting.<br>
 				</div>
-				<h4>Api</h4>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getShortDescription" id="_getShortDescription">
+
+		<td class="attributes"><code>
+			 public 
+
+			String|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getShortDescription">#</a>
+		<code><a href="source-class-ep6.ContactInformation.html#197-214" title="Go to source code">getShortDescription</a>( )</code>
+
+		<div class="description short">
+			<p>Gets the short description.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Gets the short description.</p>
+
+
+
+				<h4>Returns</h4>
 				<div class="list">
+					String|null<br>The short description or null if the short description is not set.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.0 Use a reload function.<br>
+						0.1.0 Use the default Locale.<br>
+						0.1.1 Unstatic every attributes.<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getTitle" id="_getTitle">
+
+		<td class="attributes"><code>
+			 public 
+
+			String|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getTitle">#</a>
+		<code><a href="source-class-ep6.ContactInformation.html#216-233" title="Go to source code">getTitle</a>( )</code>
+
+		<div class="description short">
+			<p>Gets the title.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Gets the title.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String|null<br>The title or null if the localized title is not set.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.0 Use a reload function.<br>
+						0.1.0 Use the default Locale.<br>
+						0.1.1 Unstatic every attributes.<br>
+						0.1.2 Add error reporting.<br>
 				</div>
 
 
@@ -983,15 +574,22 @@
 
 
 	<table class="summary used">
-	<caption>Methods used from <a href="class-ep6.InformationTrait.html#methods">ep6\InformationTrait</a></caption>
+	<caption>Methods used from <a href="class-ep6.Information.html#methods">ep6\Information</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-ep6.InformationTrait.html#_getDefaultDescription"><span class="deprecated">getDefaultDescription()</span></a>, 
-			<a href="class-ep6.InformationTrait.html#_getDefaultName"><span class="deprecated">getDefaultName()</span></a>, 
-			<a href="class-ep6.InformationTrait.html#_getDefaultNavigationCaption"><span class="deprecated">getDefaultNavigationCaption()</span></a>, 
-			<a href="class-ep6.InformationTrait.html#_getDescription">getDescription()</a>, 
-			<a href="class-ep6.InformationTrait.html#_getName">getName()</a>, 
-			<a href="class-ep6.InformationTrait.html#_getNavigationCaption">getNavigationCaption()</a>
+			<a href="class-ep6.Information.html#_getDescription">getDescription()</a>, 
+			<a href="class-ep6.Information.html#_getName">getName()</a>, 
+			<a href="class-ep6.Information.html#_getNavigationCaption">getNavigationCaption()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary used">
+	<caption>Methods used from <a href="class-ep6.ErrorReporting.html#methods">ep6\ErrorReporting</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ep6.ErrorReporting.html#_error">error()</a>, 
+			<a href="class-ep6.ErrorReporting.html#_errorMessage">errorMessage()</a>, 
+			<a href="class-ep6.ErrorReporting.html#_errorNumber">errorNumber()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -1008,7 +606,7 @@
 		<td class="attributes"><code>String</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-ep6.ContactInformation.html#26-27" title="Go to source code"><b>RESTPATH</b></a>
+				<a href="source-class-ep6.ContactInformation.html#28-29" title="Go to source code"><b>RESTPATH</b></a>
 			</code>
 
 			<div class="description short">

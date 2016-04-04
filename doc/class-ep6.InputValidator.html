@@ -48,6 +48,9 @@
 				<li><a href="class-ep6.Product.html">Product</a></li>
 				<li><a href="class-ep6.ProductAttribute.html">ProductAttribute</a></li>
 				<li><a href="class-ep6.ProductFilter.html">ProductFilter</a></li>
+				<li><a href="class-ep6.ProductPrice.html">ProductPrice</a></li>
+				<li><a href="class-ep6.ProductPriceType.html">ProductPriceType</a></li>
+				<li><a href="class-ep6.ProductPriceWithQuantity.html">ProductPriceWithQuantity</a></li>
 				<li><a href="class-ep6.ProductSlideshow.html">ProductSlideshow</a></li>
 				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
@@ -59,7 +62,8 @@
 
 			<h3>Traits</h3>
 			<ul>
-				<li><a href="class-ep6.InformationTrait.html">InformationTrait</a></li>
+				<li><a href="class-ep6.ErrorReporting.html">ErrorReporting</a></li>
+				<li><a href="class-ep6.Information.html">Information</a></li>
 			</ul>
 
 
@@ -123,9 +127,7 @@
 				0.0.0<br>
 				<b>Since:</b>
 				0.1.0 Add function to add float values.<br>
-				<b>Example:</b>
-				examples\useValidator.php Test input values with the static Validator object.<br>
-			<b>Located at</b> <a href="source-class-ep6.InputValidator.html#9-354" title="Go to source code">util/InputValidator.class.php</a>
+			<b>Located at</b> <a href="source-class-ep6.InputValidator.html#9-344" title="Go to source code">util/InputValidator.class.php</a>
 		<br>
 	</div>
 
@@ -133,869 +135,6 @@
 
 	<table class="summary methods" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="isHost" id="_isHost">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isHost">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#21-34" title="Go to source code">isHost</a>( <span>String <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is a host.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is a host.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>String to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the string is a host, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isShop" id="_isShop">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isShop">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#36-48" title="Go to source code">isShop</a>( <span>String <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is a shop.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is a shop.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>String to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the string is a shop, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isAuthToken" id="_isAuthToken">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isAuthToken">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#50-63" title="Go to source code">isAuthToken</a>( <span>String <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is a OAuth authentification token.
-TODO: Finalize this function.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is a OAuth authentification token.
-TODO: Finalize this function.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>String to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the string is a OAuth authentification token, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isLocale" id="_isLocale">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isLocale">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#65-78" title="Go to source code">isLocale</a>( <span>String <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is a localization string.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is a localization string.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>String to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the string is a localization string, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isCurrency" id="_isCurrency">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isCurrency">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#80-93" title="Go to source code">isCurrency</a>( <span>String <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is a currency string.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is a currency string.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>String to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the string is a currency string, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isRequestMethod" id="_isRequestMethod">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isRequestMethod">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#95-109" title="Go to source code">isRequestMethod</a>( <span>String <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is a HTTP request method.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is a HTTP request method.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>String to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the string is a HTTP request method, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Use HTTPRequestMethod enum.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isOutputRessource" id="_isOutputRessource">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isOutputRessource">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#111-125" title="Go to source code">isOutputRessource</a>( <span>String <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is an output ressource.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is an output ressource.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>String to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the string is an output ressource, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Use LogOutput enum.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isLogLevel" id="_isLogLevel">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isLogLevel">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#127-141" title="Go to source code">isLogLevel</a>( <span>String <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is a log level.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is a log level.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>String to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the string is a log level, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-						0.1.0 Use LogLevel enum.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isRESTCommand" id="_isRESTCommand">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isRESTCommand">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#143-155" title="Go to source code">isRESTCommand</a>( <span>String <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is a REST command.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is a REST command.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>String to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the string is a REST command, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isJSON" id="_isJSON">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isJSON">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#157-169" title="Go to source code">isJSON</a>( <span>String <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is a JSON string.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is a JSON string.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>String to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the string is a JSON string, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isRangedInt" id="_isRangedInt">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isRangedInt">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#171-187" title="Go to source code">isRangedInt</a>( <span>integer <var>$parameter</var></span>, <span>integer|null <var>$minimum</var> = <span class="php-keyword1">null</span></span>, <span>integer|null <var>$maximum</var> = <span class="php-keyword1">null</span></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is an int with a range.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is an int with a range.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>Int to check.</dd>
-					<dt><var>$minimum</var></dt>
-					<dd>The minimum allowed number, null if there is no minimum.</dd>
-					<dt><var>$maximum</var></dt>
-					<dd>The maximum allowed number, null if there is no maximum.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the parameter is an int, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isRangedFloat" id="_isRangedFloat">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isRangedFloat">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#189-205" title="Go to source code">isRangedFloat</a>( <span>float <var>$parameter</var></span>, <span>float|null <var>$minimum</var> = <span class="php-keyword1">null</span></span>, <span>float|null <var>$maximum</var> = <span class="php-keyword1">null</span></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is a float with a range.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is a float with a range.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>Float to check.</dd>
-					<dt><var>$minimum</var></dt>
-					<dd>The minimum allowed number, null if there is no minimum.</dd>
-					<dt><var>$maximum</var></dt>
-					<dd>The maximum allowed number, null if there is no maximum.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the parameter is an int, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isProductDirection" id="_isProductDirection">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isProductDirection">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#207-220" title="Go to source code">isProductDirection</a>( <span>String <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is a product sort direction.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is a product sort direction.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>String to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the parameter is a product sort direction, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isProductSort" id="_isProductSort">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isProductSort">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#222-235" title="Go to source code">isProductSort</a>( <span>String <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is a product sort parameter.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is a product sort parameter.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>String to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the parameter is a product sort parameter, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isProductId" id="_isProductId">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isProductId">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#237-249" title="Go to source code">isProductId</a>( <span>String <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is a valid product id.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is a valid product id.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>String to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the parameter is a valid product id, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isFloat" id="_isFloat">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isFloat">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#251-263" title="Go to source code">isFloat</a>( <span>float <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is a float.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is a float.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>Float to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the parameter is a float, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isInt" id="_isInt">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isInt">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#265-277" title="Go to source code">isInt</a>( <span>integer <var>$parameter</var></span> )</code>
-
-		<div class="description short">
-			<p>Checks whether a parameter is an int.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Checks whether a parameter is an int.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$parameter</var></dt>
-					<dd>Int to check.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True if the parameter is an int, false if not.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.0.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="isArray" id="_isArray">
 
 		<td class="attributes"><code>
@@ -1008,7 +147,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isArray">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#279-291" title="Go to source code">isArray</a>( <span>array <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#20-31" title="Go to source code">isArray</a>( <span>array <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a parameter is an array.</p>
@@ -1038,8 +177,99 @@ TODO: Finalize this function.</p>
 				<div class="list">
 						0.0.0<br>
 				</div>
-				<h4>Api</h4>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isAuthToken" id="_isAuthToken">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isAuthToken">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#33-44" title="Go to source code">isAuthToken</a>( <span>String <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a OAuth authentification token.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a OAuth authentification token.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>String to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
 				<div class="list">
+					boolean<br>True if the string is a OAuth authentification token, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isCurrency" id="_isCurrency">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isCurrency">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#46-58" title="Go to source code">isCurrency</a>( <span>String <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a currency string.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a currency string.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>String to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the string is a currency string, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
 				</div>
 
 
@@ -1058,7 +288,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isEmpty">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#293-306" title="Go to source code">isEmpty</a>( <span>String <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#60-72" title="Go to source code">isEmpty</a>( <span>String <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether a paramter is empty or null.</p>
@@ -1089,9 +319,6 @@ TODO: Finalize this function.</p>
 						0.0.0<br>
 						0.1.0 Test if the parameter is also the correct type.<br>
 				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
 
 
 		</div>
@@ -1109,7 +336,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isEmptyArray">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#308-320" title="Go to source code">isEmptyArray</a>( <span>mixed[] <var>$parameter</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#74-85" title="Go to source code">isEmptyArray</a>( <span>mixed[] <var>$parameter</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether an array is empty or null.</p>
@@ -1139,9 +366,6 @@ TODO: Finalize this function.</p>
 				<div class="list">
 						0.1.0<br>
 				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
 
 
 		</div>
@@ -1159,7 +383,7 @@ TODO: Finalize this function.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isEmptyArrayKey">#</a>
-		<code><a href="source-class-ep6.InputValidator.html#322-335" title="Go to source code">isEmptyArrayKey</a>( <span>mixed[] <var>$array</var></span>, <span>String <var>$key</var></span> )</code>
+		<code><a href="source-class-ep6.InputValidator.html#87-99" title="Go to source code">isEmptyArrayKey</a>( <span>mixed[] <var>$array</var></span>, <span>String <var>$key</var></span> )</code>
 
 		<div class="description short">
 			<p>Checks whether an array key is unset.</p>
@@ -1191,8 +415,769 @@ TODO: Finalize this function.</p>
 				<div class="list">
 						0.1.0<br>
 				</div>
-				<h4>Api</h4>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isFloat" id="_isFloat">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isFloat">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#101-112" title="Go to source code">isFloat</a>( <span>float <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a float.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a float.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>Float to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
 				<div class="list">
+					boolean<br>True if the parameter is a float, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isHost" id="_isHost">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isHost">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#114-126" title="Go to source code">isHost</a>( <span>String <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a host.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a host.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>String to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the string is a host, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isInt" id="_isInt">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isInt">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#128-139" title="Go to source code">isInt</a>( <span>integer <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is an int.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is an int.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>Int to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the parameter is an int, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isJSON" id="_isJSON">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isJSON">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#141-152" title="Go to source code">isJSON</a>( <span>String <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a JSON string.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a JSON string.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>String to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the string is a JSON string, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isLocale" id="_isLocale">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isLocale">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#154-166" title="Go to source code">isLocale</a>( <span>String <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a localization string.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a localization string.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>String to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the string is a localization string, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isLogLevel" id="_isLogLevel">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isLogLevel">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#168-181" title="Go to source code">isLogLevel</a>( <span>String <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a log level.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a log level.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>String to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the string is a log level, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.0 Use LogLevel enum.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isProductDirection" id="_isProductDirection">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isProductDirection">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#183-195" title="Go to source code">isProductDirection</a>( <span>String <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a product sort direction.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a product sort direction.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>String to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the parameter is a product sort direction, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isProductId" id="_isProductId">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isProductId">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#197-208" title="Go to source code">isProductId</a>( <span>String <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a valid product id.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a valid product id.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>String to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the parameter is a valid product id, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isProductSort" id="_isProductSort">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isProductSort">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#210-222" title="Go to source code">isProductSort</a>( <span>String <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a product sort parameter.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a product sort parameter.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>String to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the parameter is a product sort parameter, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isOutputRessource" id="_isOutputRessource">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isOutputRessource">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#224-238" title="Go to source code">isOutputRessource</a>( <span>String <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is an output ressource.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is an output ressource.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>String to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the string is an output ressource, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.0 Use LogOutput enum.<br>
+						0.1.2 Add file output ressource.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isRangedFloat" id="_isRangedFloat">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isRangedFloat">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#240-255" title="Go to source code">isRangedFloat</a>( <span>float <var>$parameter</var></span>, <span>float|null <var>$minimum</var> = <span class="php-keyword1">null</span></span>, <span>float|null <var>$maximum</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a float with a range.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a float with a range.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>Float to check.</dd>
+					<dt><var>$minimum</var></dt>
+					<dd>The minimum allowed number, null if there is no minimum.</dd>
+					<dt><var>$maximum</var></dt>
+					<dd>The maximum allowed number, null if there is no maximum.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the parameter is an int, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isRangedInt" id="_isRangedInt">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isRangedInt">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#257-272" title="Go to source code">isRangedInt</a>( <span>integer <var>$parameter</var></span>, <span>integer|null <var>$minimum</var> = <span class="php-keyword1">null</span></span>, <span>integer|null <var>$maximum</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is an int with a range.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is an int with a range.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>Int to check.</dd>
+					<dt><var>$minimum</var></dt>
+					<dd>The minimum allowed number, null if there is no minimum.</dd>
+					<dt><var>$maximum</var></dt>
+					<dd>The maximum allowed number, null if there is no maximum.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the parameter is an int, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isRESTCommand" id="_isRESTCommand">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isRESTCommand">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#274-285" title="Go to source code">isRESTCommand</a>( <span>String <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a REST command.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a REST command.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>String to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the string is a REST command, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isRequestMethod" id="_isRequestMethod">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isRequestMethod">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#287-300" title="Go to source code">isRequestMethod</a>( <span>String <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a HTTP request method.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a HTTP request method.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>String to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the string is a HTTP request method, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.0 Use HTTPRequestMethod enum.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isShop" id="_isShop">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isShop">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#302-313" title="Go to source code">isShop</a>( <span>String <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a shop.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a shop.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>String to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the string is a shop, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isString" id="_isString">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isString">#</a>
+		<code><a href="source-class-ep6.InputValidator.html#315-326" title="Go to source code">isString</a>( <span>String <var>$parameter</var></span> )</code>
+
+		<div class="description short">
+			<p>Checks whether a parameter is a string.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Checks whether a parameter is a string.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parameter</var></dt>
+					<dd>Parameter to check.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if the parameter is a string, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.2<br>
 				</div>
 
 

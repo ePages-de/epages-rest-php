@@ -48,6 +48,9 @@
 				<li><a href="class-ep6.Product.html">Product</a></li>
 				<li class="active"><a href="class-ep6.ProductAttribute.html">ProductAttribute</a></li>
 				<li><a href="class-ep6.ProductFilter.html">ProductFilter</a></li>
+				<li><a href="class-ep6.ProductPrice.html">ProductPrice</a></li>
+				<li><a href="class-ep6.ProductPriceType.html">ProductPriceType</a></li>
+				<li><a href="class-ep6.ProductPriceWithQuantity.html">ProductPriceWithQuantity</a></li>
 				<li><a href="class-ep6.ProductSlideshow.html">ProductSlideshow</a></li>
 				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
@@ -59,7 +62,8 @@
 
 			<h3>Traits</h3>
 			<ul>
-				<li><a href="class-ep6.InformationTrait.html">InformationTrait</a></li>
+				<li><a href="class-ep6.ErrorReporting.html">ErrorReporting</a></li>
+				<li><a href="class-ep6.Information.html">Information</a></li>
 			</ul>
 
 
@@ -100,7 +104,7 @@
 
 
 	<div class="description">
-	<p>This is the product attribute class which saves all attributes of a product.</p>
+	<p>This is the Product Attribute class which saves all attributes of a product.</p>
 	</div>
 
 
@@ -123,9 +127,7 @@
 				0.1.0<br>
 				<b>Since:</b>
 				0.1.1 The object can be echoed.<br>
-				<b>Api</b>
-				<br>
-			<b>Located at</b> <a href="source-class-ep6.ProductAttribute.html#9-153" title="Go to source code">shopobjects/product/ProductAttribute.class.php</a>
+			<b>Located at</b> <a href="source-class-ep6.ProductAttribute.html#9-155" title="Go to source code">shopobjects/product/ProductAttribute.class.php</a>
 		<br>
 	</div>
 
@@ -145,7 +147,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-ep6.ProductAttribute.html#36-69" title="Go to source code">__construct</a>( <span>mixed[] <var>$attribute</var></span> )</code>
+		<code><a href="source-class-ep6.ProductAttribute.html#35-76" title="Go to source code">__construct</a>( <span>mixed[] <var>$attribute</var></span> )</code>
 
 		<div class="description short">
 			<p>This function gets the product attributes.</p>
@@ -171,234 +173,6 @@
 				<div class="list">
 						0.1.0<br>
 				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getInternName" id="_getInternName">
-
-		<td class="attributes"><code>
-			 public 
-
-			String|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getInternName">#</a>
-		<code><a href="source-class-ep6.ProductAttribute.html#71-82" title="Go to source code">getInternName</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the intern name of the attribute.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the intern name of the attribute.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String|null<br>The intern name of the attribute.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getName" id="_getName">
-
-		<td class="attributes"><code>
-			 public 
-
-			String|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getName">#</a>
-		<code><a href="source-class-ep6.ProductAttribute.html#84-95" title="Go to source code">getName</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the name of the attribute.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the name of the attribute.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String|null<br>The name of the attribute.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="isOneValue" id="_isOneValue">
-
-		<td class="attributes"><code>
-			 public 
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_isOneValue">#</a>
-		<code><a href="source-class-ep6.ProductAttribute.html#97-108" title="Go to source code">isOneValue</a>( )</code>
-
-		<div class="description short">
-			<p>Returns whether the attribute can one has one value.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns whether the attribute can one has one value.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					boolean<br>True, if the attribute can only have one value.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getType" id="_getType">
-
-		<td class="attributes"><code>
-			 public 
-
-			String|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getType">#</a>
-		<code><a href="source-class-ep6.ProductAttribute.html#110-121" title="Go to source code">getType</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the type of the attribute value.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the type of the attribute value.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String|null<br>The type of the attribute value, like String or int.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getValues" id="_getValues">
-
-		<td class="attributes"><code>
-			 public 
-
-			String[]
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getValues">#</a>
-		<code><a href="source-class-ep6.ProductAttribute.html#123-134" title="Go to source code">getValues</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the possible values of this attribute.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the possible values of this attribute.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String[]<br>Array of possible values of this attribute.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
 
 
 		</div>
@@ -416,7 +190,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-ep6.ProductAttribute.html#136-152" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-ep6.ProductAttribute.html#78-94" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			<p>Prints the Product attribute object as a string.</p>
@@ -442,6 +216,216 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.1<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getInternName" id="_getInternName">
+
+		<td class="attributes"><code>
+			 public 
+
+			String|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getInternName">#</a>
+		<code><a href="source-class-ep6.ProductAttribute.html#96-106" title="Go to source code">getInternName</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the intern name of the attribute.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the intern name of the attribute.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String|null<br>The intern name of the attribute.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getName" id="_getName">
+
+		<td class="attributes"><code>
+			 public 
+
+			String|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getName">#</a>
+		<code><a href="source-class-ep6.ProductAttribute.html#108-118" title="Go to source code">getName</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the name of the attribute.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the name of the attribute.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String|null<br>The name of the attribute.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getType" id="_getType">
+
+		<td class="attributes"><code>
+			 public 
+
+			String|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getType">#</a>
+		<code><a href="source-class-ep6.ProductAttribute.html#120-130" title="Go to source code">getType</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the type of the attribute value.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the type of the attribute value.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String|null<br>The type of the attribute value, like String or int.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getValues" id="_getValues">
+
+		<td class="attributes"><code>
+			 public 
+
+			String[]
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getValues">#</a>
+		<code><a href="source-class-ep6.ProductAttribute.html#132-142" title="Go to source code">getValues</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the possible values of this attribute.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the possible values of this attribute.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String[]<br>Array of possible values of this attribute.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isOneValue" id="_isOneValue">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isOneValue">#</a>
+		<code><a href="source-class-ep6.ProductAttribute.html#144-154" title="Go to source code">isOneValue</a>( )</code>
+
+		<div class="description short">
+			<p>Returns whether the attribute can one has one value.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns whether the attribute can one has one value.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True, if the attribute can only have one value.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
 				</div>
 
 

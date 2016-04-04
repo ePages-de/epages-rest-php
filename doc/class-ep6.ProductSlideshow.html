@@ -48,6 +48,9 @@
 				<li><a href="class-ep6.Product.html">Product</a></li>
 				<li><a href="class-ep6.ProductAttribute.html">ProductAttribute</a></li>
 				<li><a href="class-ep6.ProductFilter.html">ProductFilter</a></li>
+				<li><a href="class-ep6.ProductPrice.html">ProductPrice</a></li>
+				<li><a href="class-ep6.ProductPriceType.html">ProductPriceType</a></li>
+				<li><a href="class-ep6.ProductPriceWithQuantity.html">ProductPriceWithQuantity</a></li>
 				<li class="active"><a href="class-ep6.ProductSlideshow.html">ProductSlideshow</a></li>
 				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
@@ -59,7 +62,8 @@
 
 			<h3>Traits</h3>
 			<ul>
-				<li><a href="class-ep6.InformationTrait.html">InformationTrait</a></li>
+				<li><a href="class-ep6.ErrorReporting.html">ErrorReporting</a></li>
+				<li><a href="class-ep6.Information.html">Information</a></li>
 			</ul>
 
 
@@ -103,6 +107,15 @@
 	<p>This is the product slideshow class which saves all images of the slideshow.</p>
 	</div>
 
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>ep6\ProductSlideshow</span></b>			
+			
+			 uses 
+					<a href="class-ep6.ErrorReporting.html"><span>ep6\ErrorReporting</span></a>
+			
+		</dd>
+	</dl>
 
 
 
@@ -127,9 +140,9 @@
 				0.1.1 Delete functionality to reload itself.<br>
 				<b>Since:</b>
 				0.1.1 Use unstatic objects.<br>
-				<b>Api</b>
-				<br>
-			<b>Located at</b> <a href="source-class-ep6.ProductSlideshow.html#9-280" title="Go to source code">shopobjects/product/ProductSlideshow.class.php</a>
+				<b>Since:</b>
+				0.1.2 Add error reporting.<br>
+			<b>Located at</b> <a href="source-class-ep6.ProductSlideshow.html#9-325" title="Go to source code">shopobjects/product/ProductSlideshow.class.php</a>
 		<br>
 	</div>
 
@@ -149,7 +162,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#38-48" title="Go to source code">__construct</a>( <span>String <var>$productID</var></span> )</code>
+		<code><a href="source-class-ep6.ProductSlideshow.html#40-50" title="Go to source code">__construct</a>( <span>String <var>$productID</var></span> )</code>
 
 		<div class="description short">
 			<p>Constructor of the Slideshow.</p>
@@ -175,411 +188,6 @@
 				<div class="list">
 						0.1.0<br>
 				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getCountImages" id="_getCountImages">
-
-		<td class="attributes"><code>
-			 public 
-
-			integer
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getCountImages">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#111-125" title="Go to source code">getCountImages</a>( )</code>
-
-		<div class="description short">
-			<p>Gets the number of available images.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Gets the number of available images.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					integer<br>The number of images.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getThumbnailImage" id="_getThumbnailImage">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getThumbnailImage">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#127-145" title="Go to source code">getThumbnailImage</a>( <span>integer <var>$image</var></span> )</code>
-
-		<div class="description short">
-			<p>Returns a thumbnail image.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns a thumbnail image.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$image</var></dt>
-					<dd>The image number to get</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null<br>The thumbnail image.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-						0.1.1 Fix bug with returning image.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getSmallImage" id="_getSmallImage">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getSmallImage">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#147-165" title="Go to source code">getSmallImage</a>( <span>integer <var>$image</var></span> )</code>
-
-		<div class="description short">
-			<p>Returns a small image.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns a small image.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$image</var></dt>
-					<dd>The image number to get</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null<br>The small image.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-						0.1.1 Fix bug with returning image.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getHotDealImage" id="_getHotDealImage">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getHotDealImage">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#167-185" title="Go to source code">getHotDealImage</a>( <span>integer <var>$image</var></span> )</code>
-
-		<div class="description short">
-			<p>Returns a hotdeal image.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns a hotdeal image.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$image</var></dt>
-					<dd>The image number to get</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null<br>The hotdeal image.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-						0.1.1 Fix bug with returning image.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getMediumSmallImage" id="_getMediumSmallImage">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getMediumSmallImage">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#187-205" title="Go to source code">getMediumSmallImage</a>( <span>integer <var>$image</var></span> )</code>
-
-		<div class="description short">
-			<p>Returns a medium small image.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns a medium small image.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$image</var></dt>
-					<dd>The image number to get</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null<br>The medium small image.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-						0.1.1 Fix bug with returning image.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getMediumImage" id="_getMediumImage">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getMediumImage">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#207-225" title="Go to source code">getMediumImage</a>( <span>integer <var>$image</var></span> )</code>
-
-		<div class="description short">
-			<p>Returns a medium image.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns a medium image.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$image</var></dt>
-					<dd>The image number to get</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null<br>The medium image.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-						0.1.1 Fix bug with returning image.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getMediumLargeImage" id="_getMediumLargeImage">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getMediumLargeImage">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#227-245" title="Go to source code">getMediumLargeImage</a>( <span>integer <var>$image</var></span> )</code>
-
-		<div class="description short">
-			<p>Returns a medium large image.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns a medium large image.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$image</var></dt>
-					<dd>The image number to get</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null<br>The medium large image.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-						0.1.1 Fix bug with returning image.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getLargeImage" id="_getLargeImage">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getLargeImage">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#247-265" title="Go to source code">getLargeImage</a>( <span>integer <var>$image</var></span> )</code>
-
-		<div class="description short">
-			<p>Returns a large image.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns a large image.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$image</var></dt>
-					<dd>The image number to get</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null<br>The large image.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.0<br>
-						0.1.1 Fix bug with returning image.<br>
-				</div>
-				<h4>Api</h4>
-				<div class="list">
-				</div>
 
 
 		</div>
@@ -597,7 +205,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-ep6.ProductSlideshow.html#267-279" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-ep6.ProductSlideshow.html#52-64" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			<p>Prints the Product slideshow object as a string.</p>
@@ -629,9 +237,405 @@
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="getCountImages" id="_getCountImages">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCountImages">#</a>
+		<code><a href="source-class-ep6.ProductSlideshow.html#66-84" title="Go to source code">getCountImages</a>( )</code>
+
+		<div class="description short">
+			<p>Gets the number of available images.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Gets the number of available images.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					integer<br>The number of images.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getHotDealImage" id="_getHotDealImage">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getHotDealImage">#</a>
+		<code><a href="source-class-ep6.ProductSlideshow.html#86-101" title="Go to source code">getHotDealImage</a>( <span>integer <var>$image</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns a hotdeal image.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns a hotdeal image.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$image</var></dt>
+					<dd>The image number to get</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null<br>The hotdeal image.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.1 Fix bug with returning image.<br>
+						0.1.2 Add error reporting and easy the function.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getLargeImage" id="_getLargeImage">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLargeImage">#</a>
+		<code><a href="source-class-ep6.ProductSlideshow.html#103-118" title="Go to source code">getLargeImage</a>( <span>integer <var>$image</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns a large image.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns a large image.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$image</var></dt>
+					<dd>The image number to get</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null<br>The large image.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.1 Fix bug with returning image.<br>
+						0.1.2 Add error reporting and easy the function.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getMediumLargeImage" id="_getMediumLargeImage">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getMediumLargeImage">#</a>
+		<code><a href="source-class-ep6.ProductSlideshow.html#120-135" title="Go to source code">getMediumLargeImage</a>( <span>integer <var>$image</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns a medium large image.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns a medium large image.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$image</var></dt>
+					<dd>The image number to get</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null<br>The medium large image.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.1 Fix bug with returning image.<br>
+						0.1.2 Add error reporting and easy the function.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getMediumImage" id="_getMediumImage">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getMediumImage">#</a>
+		<code><a href="source-class-ep6.ProductSlideshow.html#137-152" title="Go to source code">getMediumImage</a>( <span>integer <var>$image</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns a medium image.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns a medium image.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$image</var></dt>
+					<dd>The image number to get</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null<br>The medium image.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.1 Fix bug with returning image.<br>
+						0.1.2 Add error reporting and easy the function.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getMediumSmallImage" id="_getMediumSmallImage">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getMediumSmallImage">#</a>
+		<code><a href="source-class-ep6.ProductSlideshow.html#154-169" title="Go to source code">getMediumSmallImage</a>( <span>integer <var>$image</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns a medium small image.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns a medium small image.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$image</var></dt>
+					<dd>The image number to get</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null<br>The medium small image.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.1 Fix bug with returning image.<br>
+						0.1.2 Add error reporting and easy the function.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getSmallImage" id="_getSmallImage">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getSmallImage">#</a>
+		<code><a href="source-class-ep6.ProductSlideshow.html#171-186" title="Go to source code">getSmallImage</a>( <span>integer <var>$image</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns a small image.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns a small image.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$image</var></dt>
+					<dd>The image number to get</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null<br>The small image.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.1 Fix bug with returning image.<br>
+						0.1.2 Add error reporting and easy the function.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getThumbnailImage" id="_getThumbnailImage">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getThumbnailImage">#</a>
+		<code><a href="source-class-ep6.ProductSlideshow.html#188-203" title="Go to source code">getThumbnailImage</a>( <span>integer <var>$image</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns a small image.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns a small image.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$image</var></dt>
+					<dd>The image number to get</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Image.html">ep6\Image</a></code>|null<br>The small image.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.0<br>
+						0.1.1 Fix bug with returning image.<br>
+						0.1.2 Add error reporting and easy the function.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
 	</table>
 
 
+	<table class="summary used">
+	<caption>Methods used from <a href="class-ep6.ErrorReporting.html#methods">ep6\ErrorReporting</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ep6.ErrorReporting.html#_error">error()</a>, 
+			<a href="class-ep6.ErrorReporting.html#_errorMessage">errorMessage()</a>, 
+			<a href="class-ep6.ErrorReporting.html#_errorNumber">errorNumber()</a>
+		</code></td>
+	</tr>
+	</table>
 
 
 
@@ -645,7 +649,7 @@
 		<td class="attributes"><code>String</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-ep6.ProductSlideshow.html#23-24" title="Go to source code"><b>RESTPATH</b></a>
+				<a href="source-class-ep6.ProductSlideshow.html#25-26" title="Go to source code"><b>RESTPATH</b></a>
 			</code>
 
 			<div class="description short">

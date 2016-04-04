@@ -48,6 +48,9 @@
 				<li><a href="class-ep6.Product.html">Product</a></li>
 				<li><a href="class-ep6.ProductAttribute.html">ProductAttribute</a></li>
 				<li><a href="class-ep6.ProductFilter.html">ProductFilter</a></li>
+				<li><a href="class-ep6.ProductPrice.html">ProductPrice</a></li>
+				<li><a href="class-ep6.ProductPriceType.html">ProductPriceType</a></li>
+				<li><a href="class-ep6.ProductPriceWithQuantity.html">ProductPriceWithQuantity</a></li>
 				<li><a href="class-ep6.ProductSlideshow.html">ProductSlideshow</a></li>
 				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
@@ -59,7 +62,8 @@
 
 			<h3>Traits</h3>
 			<ul>
-				<li><a href="class-ep6.InformationTrait.html">InformationTrait</a></li>
+				<li><a href="class-ep6.ErrorReporting.html">ErrorReporting</a></li>
+				<li><a href="class-ep6.Information.html">Information</a></li>
 			</ul>
 
 
@@ -100,7 +104,7 @@
 
 
 	<div class="description">
-	<p>This class is needed for the shipping information in the shop.</p>
+	<p>This class is needed for the Shipping Information in the shop.</p>
 	</div>
 
 	<dl class="tree">
@@ -108,7 +112,9 @@
 <b><span>ep6\ShippingInformation</span></b>			
 			
 			 uses 
-					<a href="class-ep6.InformationTrait.html"><span>ep6\InformationTrait</span></a>
+					<a href="class-ep6.Information.html"><span>ep6\Information</span></a>, 
+			
+					<a href="class-ep6.ErrorReporting.html"><span>ep6\ErrorReporting</span></a>
 			
 		</dd>
 	</dl>
@@ -134,73 +140,38 @@
 				0.1.1 This object is now echoable.<br>
 				<b>Since:</b>
 				0.1.1 Unstatic every attributes.<br>
+				<b>Since:</b>
+				0.1.2 Add error reporting.<br>
 				<b>See:</b>
 				InformationTrait This trait has all information needed objects.<br>
-			<b>Located at</b> <a href="source-class-ep6.ShippingInformation.html#9-47" title="Go to source code">shopobjects/information/ShippingInformation.class.php</a>
+				<b>See:</b>
+				ErrorReporting This trait gives the error reporting functionality.<br>
+			<b>Located at</b> <a href="source-class-ep6.ShippingInformation.html#9-32" title="Go to source code">shopobjects/information/ShippingInformation.class.php</a>
 		<br>
 	</div>
 
 
 
-	<table class="summary methods" id="methods">
-	<caption>Methods summary</caption>
-	<tr data-order="__toString" id="___toString">
-
-		<td class="attributes"><code>
-			 public 
-
-			String
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-ep6.ShippingInformation.html#30-45" title="Go to source code">__toString</a>( )</code>
-
-		<div class="description short">
-			<p>Prints the Information object as a string.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Prints the Information object as a string.</p>
-
-<p>This function returns the setted values of the Information object.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					String<br>The Information as a string.
-				</div>
-
-
-				<h4>Author</h4>
-				<div class="list">
-						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
-				</div>
-				<h4>Since</h4>
-				<div class="list">
-						0.1.1<br>
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
-	</table>
 
 
 	<table class="summary used">
-	<caption>Methods used from <a href="class-ep6.InformationTrait.html#methods">ep6\InformationTrait</a></caption>
+	<caption>Methods used from <a href="class-ep6.Information.html#methods">ep6\Information</a></caption>
 	<tr>
 		<td><code>
-			<a href="class-ep6.InformationTrait.html#_getDefaultDescription"><span class="deprecated">getDefaultDescription()</span></a>, 
-			<a href="class-ep6.InformationTrait.html#_getDefaultName"><span class="deprecated">getDefaultName()</span></a>, 
-			<a href="class-ep6.InformationTrait.html#_getDefaultNavigationCaption"><span class="deprecated">getDefaultNavigationCaption()</span></a>, 
-			<a href="class-ep6.InformationTrait.html#_getDescription">getDescription()</a>, 
-			<a href="class-ep6.InformationTrait.html#_getName">getName()</a>, 
-			<a href="class-ep6.InformationTrait.html#_getNavigationCaption">getNavigationCaption()</a>
+			<a href="class-ep6.Information.html#___toString">__toString()</a>, 
+			<a href="class-ep6.Information.html#_getDescription">getDescription()</a>, 
+			<a href="class-ep6.Information.html#_getName">getName()</a>, 
+			<a href="class-ep6.Information.html#_getNavigationCaption">getNavigationCaption()</a>
+		</code></td>
+	</tr>
+	</table>
+	<table class="summary used">
+	<caption>Methods used from <a href="class-ep6.ErrorReporting.html#methods">ep6\ErrorReporting</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ep6.ErrorReporting.html#_error">error()</a>, 
+			<a href="class-ep6.ErrorReporting.html#_errorMessage">errorMessage()</a>, 
+			<a href="class-ep6.ErrorReporting.html#_errorNumber">errorNumber()</a>
 		</code></td>
 	</tr>
 	</table>
@@ -217,7 +188,7 @@
 		<td class="attributes"><code>String</code></td>
 		<td class="name">
 			<code>
-				<a href="source-class-ep6.ShippingInformation.html#24-25" title="Go to source code"><b>RESTPATH</b></a>
+				<a href="source-class-ep6.ShippingInformation.html#26-27" title="Go to source code"><b>RESTPATH</b></a>
 			</code>
 
 			<div class="description short">
