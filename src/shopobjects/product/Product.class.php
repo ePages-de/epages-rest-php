@@ -117,25 +117,31 @@ class Product {
 	 * This is the constructor of the Product.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @param mixed[] $productParameter The product to create as array.
+	 * @param mixed[]|String $productParameter The product to create as array or product ID.
 	 * @since 0.0.0
 	 * @since 0.1.0 Add price information.
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Dont use the locale parameter in calling the product price attribute.
 	 * @since 0.1.2 Exclude the REST request to the load() function.
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.3 Product creation with product ID as parameter.
 	 */
 	public function __construct($productParameter) {
 
-		if (!InputValidator::isArray($productParameter) ||
-			InputValidator::isEmptyArray($productParameter)) {
+		if (!InputValidator::isString($productParameter) &&
+			!InputValidator::isArray($productParameter)) {
 
 			$this->errorSet("P-1");
 			Logger::warning("ep6\Product\nProduct parameter " . $productParameter . " to create product is invalid.");
 			return;
 		}
 
-		self::load($productParameter);
+		if (InputValidator::isArray($productParameter)) {
+			$this->load($productParameter);
+		}
+		else {
+			$this->productId($productParameter);
+		}
 	}
 
 	/**
