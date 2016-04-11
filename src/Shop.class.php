@@ -20,6 +20,7 @@ require_once(__DIR__ . "/util/RESTClient.class.php");
 # include shopobjects
 require_once(__DIR__ . "/shopobjects/Currencies.class.php");
 require_once(__DIR__ . "/shopobjects/Locales.class.php");
+require_once(__DIR__ . "/shopobjects/url/URL.class.php");
 require_once(__DIR__ . "/shopobjects/image/Image.class.php");
 require_once(__DIR__ . "/shopobjects/information/Information.trait.php");
 require_once(__DIR__ . "/shopobjects/information/ContactInformation.class.php");
@@ -47,6 +48,7 @@ require_once(__DIR__ . "/shopobjects/product/ProductSlideshow.class.php");
  * @since 0.1.1 Now the shop can be printed via echo.
  * @since 0.1.1 Save their own shop credentials and use Information objects unstatic.
  * @since 0.1.2 Add error reporting.
+ * @since 0.1.3 Add shop attributes.
  */
 class Shop {
 
@@ -54,6 +56,9 @@ class Shop {
 
 	/** @var String|null The authentification token (access token). */
 	private $authToken = null;
+
+	/** @var URL|null The backoffice URL as URL object. */
+	private $backofficeURL = null;
 
 	/** @var ContactInformation|null The contact information object. */
 	private $contactInformation = null;
@@ -63,6 +68,12 @@ class Shop {
 
 	/** @var boolean|null You use https or http? Default is true. */
 	private $isssl = true;
+
+	/** @var Image|null The logo of the shop. */
+	private $logo = null;
+
+	/** @var String|null The name of the shop. */
+	private $name = null;
 
 	/** @var PrivacyPolicyInformation|null The privacy policy information object. */
 	private $privacyPolicyInformation = null;
@@ -76,8 +87,17 @@ class Shop {
 	/** @var String|null The refered ePages ahop. */
 	private $shop = null;
 
+	/** @var String|null The slogan of the shop. */
+	private $slogan = null;
+
+	/** @var URL|null The storefront URL as URL object. */
+	private $storefrontURL = null;
+
 	/** @var TermsAndConditionInformation|null The terms and condition information object. */
 	private $termsAndConditionInformation = null;
+
+	/** @var int Timestamp in ms when the next request needs to be done. */
+	private $NEXT_REQUEST_TIMESTAMP = 0;
 
 	/**
 	 * The constructor for the shop class.
@@ -90,6 +110,7 @@ class Shop {
 	 * @since 0.0.0
 	 * @since 0.1.1 Save the own login credentials.
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.3 Load shop attributes.
 	 */
 	function __construct($host, $shop, $authToken, $isssl = true) {
 
@@ -108,6 +129,8 @@ class Shop {
 		$this->isssl = $isssl;
 
 		RESTClient::connect($this->host, $this->shop, $this->authToken, $this->isssl);
+
+		$this->load();
 	}
 
 	/**
@@ -116,6 +139,7 @@ class Shop {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.0.0
 	 * @since 0.1.1 Unset the own shop credentials.
+	 * @since 0.1.3 Delete all shop attributes.
 	 */
 	function __destruct() {
 
@@ -124,7 +148,27 @@ class Shop {
 		$this->authToken = null;
 		$this->isssl = null;
 
+		$this->resetValues();
+
 		RESTClient::disconnect();
+	}
+
+	/**
+	 * Prints the Shop object as a string.
+	 *
+	 * This function returns the setted values of the shop object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String The URL as a string.
+	 * @since 0.1.3
+	 */
+	public function __toString() {
+
+		return "<strong>Name:</strong> " . $this->name . "<br/>" .
+			"<strong>Slogan:</strong> " . $this->slogan . "<br/>" .
+			"<strong>Logo:</strong> " . $this->logo . "<br/>" .
+			"<strong>Storefront URL:</strong> " . $this->storefrontUrl . "<br/>" .
+			"<strong>Backoffice URL:</strong> " . $this->backofficeUrl . "<br/>";
 	}
 
 	/**
@@ -152,6 +196,20 @@ class Shop {
 		self::errorSet("S-5");
 
 		return false;
+	}
+
+	/**
+	 * Returns the backoffice URL.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return URL|null The backoffice URL.
+	 * @since 0.1.3
+	 */
+	public function getBackofficeURL() {
+
+		self::errorReset();
+		$this->reload();
+		return $this->backofficeURL;
 	}
 
 	/**
@@ -190,20 +248,6 @@ class Shop {
 	}
 
 	/**
-	 * Returns configured Currency.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @return String|null The Currency which is configured for REST calls.
-	 * @since 0.1.0
-	 * @since 0.1.2 Add error reporting.
-	 */
-	public function getCurrency() {
-
-		self::errorReset();
-		return Currencies::getCurrency();
-	}
-
-	/**
 	 * Returns the default currencies.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
@@ -211,7 +255,7 @@ class Shop {
 	 * @since 0.0.0
 	 * @since 0.1.2 Add error reporting.
 	 */
-	public function getDefaultCurrencies() {
+	public function getDefaultCurrency() {
 
 		self::errorReset();
 		return Currencies::getDefault();
@@ -225,24 +269,10 @@ class Shop {
 	 * @since 0.0.0
 	 * @since 0.1.2 Add error reporting.
 	 */
-	public function getDefaultLocales() {
+	public function getDefaultLocale() {
 
 		self::errorReset();
 		return Locales::getDefault();
-	}
-
-	/**
-	 * Returns configured Locale.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @return String|null The Locale which is configured for REST calls.
-	 * @since 0.1.0
-	 * @since 0.1.2 Add error reporting.
-	 */
-	public function getLocale() {
-
-		self::errorReset();
-		return Locales::getLocale();
 	}
 
 	/**
@@ -257,6 +287,34 @@ class Shop {
 
 		self::errorReset();
 		return Locales::getItems();
+	}
+
+	/**
+	 * Returns the shop logo.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return Image|null The shop logo.
+	 * @since 0.1.3
+	 */
+	public function getLogo() {
+
+		self::errorReset();
+		$this->reload();
+		return $this->logo;
+	}
+
+	/**
+	 * Returns the shop name.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String|null The shop name.
+	 * @since 0.1.3
+	 */
+	public function getName() {
+
+		self::errorReset();
+		$this->reload();
+		return $this->name;
 	}
 
 	/**
@@ -323,6 +381,34 @@ class Shop {
 	}
 
 	/**
+	 * Returns the shop slogan.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String|null The shop slogan.
+	 * @since 0.1.3
+	 */
+	public function getSlogan() {
+
+		self::errorReset();
+		$this->reload();
+		return $this->slogan;
+	}
+
+	/**
+	 * Returns the storefront URL.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return URL|null The storefront URL.
+	 * @since 0.1.3
+	 */
+	public function getStorefrontURL() {
+
+		self::errorReset();
+		$this->reload();
+		return $this->storefrontURL;
+	}
+
+	/**
 	 * Get the terms and condition information.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
@@ -344,6 +430,51 @@ class Shop {
 	}
 
 	/**
+	 * Returns configured Currency.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String|null The Currency which is configured for REST calls.
+	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
+	 */
+	public function getUsedCurrency() {
+
+		self::errorReset();
+		return Currencies::getCurrency();
+	}
+
+	/**
+	 * Returns configured Locale.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String|null The Locale which is configured for REST calls.
+	 * @since 0.1.0
+	 * @since 0.1.2 Add error reporting.
+	 */
+	public function getUsedLocale() {
+
+		self::errorReset();
+		return Locales::getLocale();
+	}
+
+	/**
+	 * This function resets all shop attributes.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.3
+	 */
+	public function resetValues() {
+
+		self::errorReset();
+
+		$this->name = null;
+		$this->slogan = null;
+		$this->logoUrl = null;
+		$this->sfUrl = null;
+		$this->mboUrl = null;
+	}
+
+	/**
 	 * Set configured Currency.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
@@ -352,7 +483,7 @@ class Shop {
 	 * @since 0.1.0
 	 * @since 0.1.2 Add error reporting.
 	 */
-	public function setCurrency($currency) {
+	public function setUsedCurrency($currency) {
 
 		self::errorReset();
 		return Currencies::setCurrency($currency);
@@ -367,7 +498,7 @@ class Shop {
 	 * @since 0.1.0
 	 * @since 0.1.2 Add error reporting.
 	 */
-	public function setLocale($locale) {
+	public function setUsedLocale($locale) {
 
 		self::errorReset();
 		return Locales::setLocale($locale);
@@ -398,5 +529,72 @@ class Shop {
 		}
 	}
 
+	/**
+	 * Loads the shop data.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param Array $product The product in an array.
+	 * @since 0.1.3
+	 */
+	private function load() {
+
+		// if request method is blocked
+		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
+
+			return;
+		}
+
+		$content = RESTClient::send($this->shop);
+
+		// if respond has no name, slogan, logoUrl, sfUrl and mboUrl
+		if (InputValidator::isEmptyArrayKey($content, "name") ||
+			InputValidator::isEmptyArrayKey($content, "slogan") ||
+			InputValidator::isEmptyArrayKey($content, "logoUrl") ||
+			InputValidator::isEmptyArrayKey($content, "sfUrl") ||
+			InputValidator::isEmptyArrayKey($content, "mboUrl")) {
+
+		    Logger::error("Respond for " . $this->shop . " can not be interpreted.");
+			self::errorSet("C-1");
+			return;
+		}
+
+		// reset values
+		$this->resetValues();
+
+		// save the attributes
+		$this->name = $content['name'];
+		$this->slogan = $content['slogan'];
+		$this->logo = new Image($content['logoUrl']);
+		$this->storefrontURL = new URL($content['sfUrl']);
+		$this->backofficeURL = new URL($content['mboUrl']);
+
+		// update timestamp when make the next request
+		$timestamp = (int) (microtime(true) * 1000);
+		self::$NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::$NEXT_RESPONSE_WAIT_TIME;
+	}
+
+	/**
+	 * This function checks whether a reload is needed.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @since 0.1.3
+	 */
+	private static function reload() {
+
+		$timestamp = (int) (microtime(true) * 1000);
+
+		// if the value is empty
+		if (!InputValidator::isEmpty($this->name) &&
+			!InputValidator::isEmpty($this->slogan) &&
+			!InputValidator::isEmpty($this->logo) &&
+			!InputValidator::isEmpty($this->storefrontURL) &&
+			!InputValidator::isEmpty($this->backofficeURL) &&
+			$this->NEXT_REQUEST_TIMESTAMP > $timestamp) {
+
+			return;
+		}
+
+		$this->load();
+	}
 }
 ?>

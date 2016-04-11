@@ -11,7 +11,7 @@ class ShopTest extends \PHPUnit_Framework_TestCase {
 	 */
     function testShopLocales()
     {
-        $this->assertEquals("en_GB", $this->shop->getDefaultLocales());
+        $this->assertEquals("en_GB", $this->shop->getDefaultLocale());
         $this->assertContains("de_DE", $this->shop->getLocales());
     }
 
@@ -20,7 +20,7 @@ class ShopTest extends \PHPUnit_Framework_TestCase {
 	 */
     function testShopCurrencies()
     {
-        $this->assertEquals("GBP", $this->shop->getDefaultCurrencies());
+        $this->assertEquals("GBP", $this->shop->getDefaultCurrency());
         $this->assertContains("EUR", $this->shop->getCurrencies());
     }
 
