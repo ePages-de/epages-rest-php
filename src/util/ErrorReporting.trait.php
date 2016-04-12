@@ -24,7 +24,7 @@ trait ErrorReporting {
 		"RESTC-1"	=>	"Entered host for REST communication is not valid.",
 		"RESTC-2"	=>	"Entered shop for connecting is not valid.",
 		"RESTC-3"	=>	"Requested locale is not valid.",
-		"RESTC-4"	=>	"REST resource is not valid.",
+		"RESTC-4"	=>	"",
 		"RESTC-5"	=>	"POST parameters are not valid.",
 		"RESTC-6"	=>	"REST client is not connected.",
 		"RESTC-7"	=>	"Response does not have hody.",

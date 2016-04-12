@@ -123,18 +123,17 @@ class RESTClient {
 	 * @since 0.1.0 Allow empty message body if the status code is 204.
 	 * @since 0.1.2 Restructure the logging message and fix the PATCH call.
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.3 Remove isRESTCommand function.
 	 */
-	public static function send($command, $postfields = array()) {
+	public static function send($command = "", $postfields = array()) {
 
 		self::errorReset();
 		$JSONpostfield = "";
 
-		if (!InputValidator::isRESTCommand($command) ||
-			!InputValidator::isArray($postfields)) {
+		if (!InputValidator::isArray($postfields)) {
 
 			Logger::warning("ep6\RESTClient\nCommand (" . $command . ") or postfields (" . $postfields . ") are not valid.");
-			$error = !InputValidator::isRESTCommand($command) ? "RESTC-4" : "RESTC-5";
-			self::errorSet($error);
+			self::errorSet("RESTC-5");
 			return null;
 		}
 

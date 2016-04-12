@@ -13,6 +13,7 @@ namespace ep6;
  * @package ep6
  * @since 0.0.0
  * @since 0.1.0 Add function to add float values.
+ * @since 0.1.3 Remove isRESTCommand function.
  * @subpackage Util
  */
 class InputValidator {
@@ -269,19 +270,6 @@ class InputValidator {
 		return self::isInt($parameter)
 			&& (self::isInt($minimum) ? $parameter >= $minimum : true)
 			&& (self::isInt($maximum) ? $parameter <= $maximum : true);
-	}
-
-	/**
-	 * Checks whether a parameter is a REST command.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @param String $parameter String to check.
-	 * @return boolean True if the string is a REST command, false if not.
-	 * @since 0.0.0
-	 */
-	public static function isRESTCommand($parameter) {
-
-		return !self::isEmpty($parameter);
 	}
 
 	/**
