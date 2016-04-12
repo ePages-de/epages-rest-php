@@ -20,7 +20,10 @@ require_once(__DIR__ . "/util/RESTClient.class.php");
 # include shopobjects
 require_once(__DIR__ . "/shopobjects/Currencies.class.php");
 require_once(__DIR__ . "/shopobjects/Locales.class.php");
+require_once(__DIR__ . "/shopobjects/date/Date.class.php");
 require_once(__DIR__ . "/shopobjects/url/URL.class.php");
+require_once(__DIR__ . "/shopobjects/address/Address.class.php");
+require_once(__DIR__ . "/shopobjects/customer/Customer.class.php");
 require_once(__DIR__ . "/shopobjects/image/Image.class.php");
 require_once(__DIR__ . "/shopobjects/information/Information.trait.php");
 require_once(__DIR__ . "/shopobjects/information/ContactInformation.class.php");
@@ -28,7 +31,12 @@ require_once(__DIR__ . "/shopobjects/information/PrivacyPolicyInformation.class.
 require_once(__DIR__ . "/shopobjects/information/RightsOfWithdrawalInformation.class.php");
 require_once(__DIR__ . "/shopobjects/information/ShippingInformation.class.php");
 require_once(__DIR__ . "/shopobjects/information/TermsAndConditionInformation.class.php");
+require_once(__DIR__ . "/shopobjects/method/PaymentMethod.class.php");
+require_once(__DIR__ . "/shopobjects/method/ShippingMethod.class.php");
+require_once(__DIR__ . "/shopobjects/order/Order.class.php");
+require_once(__DIR__ . "/shopobjects/order/OrderFilter.class.php");
 require_once(__DIR__ . "/shopobjects/price/Price.class.php");
+require_once(__DIR__ . "/shopobjects/price/PriceTaxModel.enum.php");
 require_once(__DIR__ . "/shopobjects/price/PriceWithQuantity.class.php");
 require_once(__DIR__ . "/shopobjects/price/ProductPrice.class.php");
 require_once(__DIR__ . "/shopobjects/price/ProductPriceType.enum.php");

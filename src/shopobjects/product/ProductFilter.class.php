@@ -62,7 +62,7 @@ class ProductFilter {
 	}
 
 	/**
-	 * Prints the Product attribute object as a string.
+	 * Prints the Product Filter object as a string.
 	 *
 	 * This function returns the setted values of the Product attribute object.
 	 *
@@ -165,7 +165,7 @@ class ProductFilter {
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
 	 * @since 0.1.2 Add error reporting.
-	 * @return Products[] Returns an array of products.
+	 * @return Product[] Returns an array of products.
 	 */
 	public function getProducts() {
 
@@ -401,10 +401,10 @@ class ProductFilter {
 	}
 
 	/**
-	 * Fill the product filter with a array.
+	 * Fill the product filter with an array.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @return String The Product attribute as a string.
+	 * @param mixed[] $productFilterParameter The Product Filter Parameter as an array.
 	 * @since 0.0.1
 	 * @since 0.1.0 Use a default Locale and Currency.
 	 * @since 0.1.2 Add error reporting.

@@ -140,7 +140,8 @@ class Product {
 			$this->parseData($productParameter);
 		}
 		else {
-			$this->productId($productParameter);
+			$this->productId = $productParameter;
+			$this->reload();
 		}
 	}
 
@@ -742,7 +743,7 @@ class Product {
 	public function isForSale() {
 
 		self::errorReset();
-
+		$this->reload();
 		return $this->forSale;
 	}
 
@@ -757,7 +758,7 @@ class Product {
 	public function isSpecialOffer() {
 
 		self::errorReset();
-
+		$this->reload();
 		return $this->specialOffer;
 	}
 
@@ -1084,7 +1085,7 @@ class Product {
 			return;
 		}
 
-		$content = RESTClient::send(self::RESTPATH . "/" . $this->productID, Locales::getUsedLocale());
+		$content = RESTClient::sendWithLocalization(self::RESTPATH . "/" . $this->productID, Locales::getLocale());
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
@@ -1191,7 +1192,7 @@ class Product {
 	 * Parses the REST response data and save it.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @param Array $product The product in an array.
+	 * @param Array $productParameter The product in an array.
 	 * @since 0.1.3
 	 */
 	private function parseData($productParameter) {
@@ -1202,7 +1203,6 @@ class Product {
 
 			$this->productID = $productParameter['productId'];
 
-			// load locale depended content
 			if (!InputValidator::isEmptyArrayKey($productParameter, "forSale")) {
 
 				$this->forSale = $productParameter['forSale'];
@@ -1326,7 +1326,6 @@ class Product {
  	 *
  	 * @author David Pauli <contact@david-pauli.de>
  	 * @since 0.1.3
- 	 * @api
  	 */
  	private function reload() {
 
