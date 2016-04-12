@@ -28,7 +28,7 @@ class Price {
 	/** @var String|null The formatted price with currency. */
 	protected $formatted = null;
 
-	/** @var String|null The tax type of the price. */
+	/** @var PriceTaxModel|null The tax type of the price. */
 	protected $taxType = null;
 
 	/**
@@ -51,7 +51,12 @@ class Price {
 
 			if (!InputValidator::isEmptyArrayKey($priceParameter, "taxType")) {
 
-				$this->taxType = $priceParameter['taxType'];
+				if ($priceParameter['taxType'] == "GROSS") {
+					$this->taxType = PriceTaxModel::GROSS;
+				}
+				else {
+					$this->taxType = PriceTaxModel::NET;
+				}
 			}
 
 			if (!InputValidator::isEmptyArrayKey($priceParameter, "currency")) {
@@ -124,7 +129,7 @@ class Price {
 	 * Returns the tax type.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @return String Gets the tax type.
+	 * @return PriceTaxModel Gets the tax type.
 	 * @since 0.1.0
 	 */
 	public function getTaxType() {
