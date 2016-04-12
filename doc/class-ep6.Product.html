@@ -32,8 +32,12 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-ep6.Address.html">Address</a></li>
 				<li><a href="class-ep6.ContactInformation.html">ContactInformation</a></li>
 				<li><a href="class-ep6.Currencies.html">Currencies</a></li>
+				<li><a href="class-ep6.Date.html">Date</a></li>
+				<li><a href="class-ep6.Filter.html">Filter</a></li>
+				<li><a href="class-ep6.FilterOperation.html">FilterOperation</a></li>
 				<li><a href="class-ep6.HTTPRequestMethod.html">HTTPRequestMethod</a></li>
 				<li><a href="class-ep6.Image.html">Image</a></li>
 				<li><a href="class-ep6.InputValidator.html">InputValidator</a></li>
@@ -42,7 +46,11 @@
 				<li><a href="class-ep6.Logger.html">Logger</a></li>
 				<li><a href="class-ep6.LogLevel.html">LogLevel</a></li>
 				<li><a href="class-ep6.LogOutput.html">LogOutput</a></li>
+				<li><a href="class-ep6.Order.html">Order</a></li>
+				<li><a href="class-ep6.OrderFilter.html">OrderFilter</a></li>
+				<li><a href="class-ep6.PaymentMethod.html">PaymentMethod</a></li>
 				<li><a href="class-ep6.Price.html">Price</a></li>
+				<li><a href="class-ep6.PriceTaxModel.html">PriceTaxModel</a></li>
 				<li><a href="class-ep6.PriceWithQuantity.html">PriceWithQuantity</a></li>
 				<li><a href="class-ep6.PrivacyPolicyInformation.html">PrivacyPolicyInformation</a></li>
 				<li class="active"><a href="class-ep6.Product.html">Product</a></li>
@@ -55,8 +63,10 @@
 				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
 				<li><a href="class-ep6.ShippingInformation.html">ShippingInformation</a></li>
+				<li><a href="class-ep6.ShippingMethod.html">ShippingMethod</a></li>
 				<li><a href="class-ep6.Shop.html">Shop</a></li>
 				<li><a href="class-ep6.TermsAndConditionInformation.html">TermsAndConditionInformation</a></li>
+				<li><a href="class-ep6.URL.html">URL</a></li>
 			</ul>
 
 
@@ -156,7 +166,7 @@
 				0.1.2 Insert the Setters.<br>
 				<b>Since:</b>
 				0.1.2 Add error reporting.<br>
-			<b>Located at</b> <a href="source-class-ep6.Product.html#9-1316" title="Go to source code">shopobjects/product/Product.class.php</a>
+			<b>Located at</b> <a href="source-class-ep6.Product.html#9-1399" title="Go to source code">shopobjects/product/Product.class.php</a>
 		<br>
 	</div>
 
@@ -176,7 +186,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-ep6.Product.html#116-139" title="Go to source code">__construct</a>( <span>mixed[] <var>$productParameter</var></span> )</code>
+		<code><a href="source-class-ep6.Product.html#116-146" title="Go to source code">__construct</a>( <span>mixed[]|String <var>$productParameter</var></span> )</code>
 
 		<div class="description short">
 			<p>This is the constructor of the Product.</p>
@@ -189,7 +199,7 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$productParameter</var></dt>
-					<dd>The product to create as array.</dd>
+					<dd>The product to create as array or product ID.</dd>
 				</dl></div>
 
 
@@ -206,6 +216,7 @@
 						0.1.1 Dont use the locale parameter in calling the product price attribute.<br>
 						0.1.2 Exclude the REST request to the load() function.<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Product creation with product ID as parameter.<br>
 				</div>
 
 
@@ -224,7 +235,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-ep6.Product.html#141-163" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#148-170" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			<p>Prints the Product object as a string.</p>
@@ -268,7 +279,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_decreaseStockLevel">#</a>
-		<code><a href="source-class-ep6.Product.html#165-194" title="Go to source code">decreaseStockLevel</a>( <span>float <var>$step</var> = <span class="php-num">1.0</span></span> )</code>
+		<code><a href="source-class-ep6.Product.html#172-201" title="Go to source code">decreaseStockLevel</a>( <span>float <var>$step</var> = <span class="php-num">1.0</span></span> )</code>
 
 		<div class="description short">
 			<p>Decreases the stock level.</p>
@@ -316,7 +327,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_delete">#</a>
-		<code><a href="source-class-ep6.Product.html#196-219" title="Go to source code">delete</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#203-226" title="Go to source code">delete</a>( )</code>
 
 		<div class="description short">
 			<p>Deletes itself.</p>
@@ -362,7 +373,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAttribute">#</a>
-		<code><a href="source-class-ep6.Product.html#221-250" title="Go to source code">getAttribute</a>( <span>integer <var>$key</var></span> )</code>
+		<code><a href="source-class-ep6.Product.html#228-257" title="Go to source code">getAttribute</a>( <span>integer <var>$key</var></span> )</code>
 
 		<div class="description short">
 			<p>Returns the product attributes.</p>
@@ -410,7 +421,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAttributes">#</a>
-		<code><a href="source-class-ep6.Product.html#252-274" title="Go to source code">getAttributes</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#259-281" title="Go to source code">getAttributes</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the product attributes.</p>
@@ -454,7 +465,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAvailibilityText">#</a>
-		<code><a href="source-class-ep6.Product.html#276-291" title="Go to source code">getAvailibilityText</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#283-299" title="Go to source code">getAvailibilityText</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the availibility text.</p>
@@ -481,6 +492,7 @@
 						0.1.0 Use a default Locale.<br>
 						0.1.1 Fix to call function without locale parameter.<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -499,7 +511,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getBasePrice">#</a>
-		<code><a href="source-class-ep6.Product.html#293-306" title="Go to source code">getBasePrice</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#301-315" title="Go to source code">getBasePrice</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the base price.</p>
@@ -524,6 +536,7 @@
 				<div class="list">
 						0.1.0<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -542,7 +555,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDepositPrice">#</a>
-		<code><a href="source-class-ep6.Product.html#308-321" title="Go to source code">getDepositPrice</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#317-331" title="Go to source code">getDepositPrice</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the deposit price.</p>
@@ -567,6 +580,7 @@
 				<div class="list">
 						0.1.0<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -585,7 +599,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getDescription">#</a>
-		<code><a href="source-class-ep6.Product.html#323-338" title="Go to source code">getDescription</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#333-349" title="Go to source code">getDescription</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the description.</p>
@@ -612,6 +626,7 @@
 						0.1.0 Use a default Locale.<br>
 						0.1.1 Fix to call function without locale parameter.<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -630,7 +645,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getEAN">#</a>
-		<code><a href="source-class-ep6.Product.html#340-352" title="Go to source code">getEAN</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#351-364" title="Go to source code">getEAN</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the EAN.</p>
@@ -654,6 +669,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.2<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -672,7 +688,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getEcoParticipationPrice">#</a>
-		<code><a href="source-class-ep6.Product.html#354-367" title="Go to source code">getEcoParticipationPrice</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#366-380" title="Go to source code">getEcoParticipationPrice</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the eco participation price.</p>
@@ -697,6 +713,7 @@
 				<div class="list">
 						0.1.0<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -715,7 +732,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getEnergyLabelsString">#</a>
-		<code><a href="source-class-ep6.Product.html#369-381" title="Go to source code">getEnergyLabelsString</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#382-395" title="Go to source code">getEnergyLabelsString</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the energy labels string.</p>
@@ -739,6 +756,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.2<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -757,7 +775,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getEssentialFeatures">#</a>
-		<code><a href="source-class-ep6.Product.html#383-395" title="Go to source code">getEssentialFeatures</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#397-410" title="Go to source code">getEssentialFeatures</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the essential features.</p>
@@ -781,6 +799,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.2<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -799,7 +818,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getHotDealImage">#</a>
-		<code><a href="source-class-ep6.Product.html#397-410" title="Go to source code">getHotDealImage</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#412-426" title="Go to source code">getHotDealImage</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the hot deal image.</p>
@@ -824,6 +843,7 @@
 				<div class="list">
 						0.0.0<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -842,7 +862,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getID">#</a>
-		<code><a href="source-class-ep6.Product.html#412-425" title="Go to source code">getID</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#428-442" title="Go to source code">getID</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the product id.</p>
@@ -867,6 +887,7 @@
 				<div class="list">
 						0.0.0<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -885,7 +906,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getLargeImage">#</a>
-		<code><a href="source-class-ep6.Product.html#427-440" title="Go to source code">getLargeImage</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#444-458" title="Go to source code">getLargeImage</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the large image.</p>
@@ -910,6 +931,7 @@
 				<div class="list">
 						0.0.0<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -928,7 +950,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getManufacturer">#</a>
-		<code><a href="source-class-ep6.Product.html#442-454" title="Go to source code">getManufacturer</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#460-473" title="Go to source code">getManufacturer</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the name of the manufacturer.</p>
@@ -952,6 +974,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.2<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -970,7 +993,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getManufacturerPrice">#</a>
-		<code><a href="source-class-ep6.Product.html#456-469" title="Go to source code">getManufacturerPrice</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#475-489" title="Go to source code">getManufacturerPrice</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the manufacturer price.</p>
@@ -995,6 +1018,7 @@
 				<div class="list">
 						0.1.0<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -1013,7 +1037,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMediumImage">#</a>
-		<code><a href="source-class-ep6.Product.html#471-484" title="Go to source code">getMediumImage</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#491-505" title="Go to source code">getMediumImage</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the medium image.</p>
@@ -1038,6 +1062,7 @@
 				<div class="list">
 						0.0.0<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -1056,7 +1081,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getName">#</a>
-		<code><a href="source-class-ep6.Product.html#486-501" title="Go to source code">getName</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#507-523" title="Go to source code">getName</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the name.</p>
@@ -1083,6 +1108,7 @@
 						0.1.0 Use a default Locale.<br>
 						0.1.1 Fix to call function without locale parameter.<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -1101,7 +1127,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getNumberOfSearchKeywords">#</a>
-		<code><a href="source-class-ep6.Product.html#503-515" title="Go to source code">getNumberOfSearchKeywords</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#525-538" title="Go to source code">getNumberOfSearchKeywords</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the amount of search keywords.</p>
@@ -1125,6 +1151,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.2<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -1143,7 +1170,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getPrice">#</a>
-		<code><a href="source-class-ep6.Product.html#517-530" title="Go to source code">getPrice</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#540-554" title="Go to source code">getPrice</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the product price with quantity.</p>
@@ -1168,6 +1195,7 @@
 				<div class="list">
 						0.1.0<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -1186,7 +1214,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getProductNumber">#</a>
-		<code><a href="source-class-ep6.Product.html#532-544" title="Go to source code">getProductNumber</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#556-569" title="Go to source code">getProductNumber</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the product number.</p>
@@ -1210,6 +1238,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.2<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -1228,7 +1257,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSearchKeyword">#</a>
-		<code><a href="source-class-ep6.Product.html#546-563" title="Go to source code">getSearchKeyword</a>( <span>integer <var>$number</var></span> )</code>
+		<code><a href="source-class-ep6.Product.html#571-589" title="Go to source code">getSearchKeyword</a>( <span>integer <var>$number</var></span> )</code>
 
 		<div class="description short">
 			<p>Returns the search keyword.</p>
@@ -1257,6 +1286,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.2<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -1275,7 +1305,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getShortDescription">#</a>
-		<code><a href="source-class-ep6.Product.html#565-580" title="Go to source code">getShortDescription</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#591-607" title="Go to source code">getShortDescription</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the short description.</p>
@@ -1302,6 +1332,7 @@
 						0.1.0 Use a default Locale.<br>
 						0.1.1 Fix to call function without locale parameter.<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -1320,7 +1351,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSlideshow">#</a>
-		<code><a href="source-class-ep6.Product.html#582-602" title="Go to source code">getSlideshow</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#609-630" title="Go to source code">getSlideshow</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the slideshow.</p>
@@ -1364,7 +1395,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSmallImage">#</a>
-		<code><a href="source-class-ep6.Product.html#604-617" title="Go to source code">getSmallImage</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#632-646" title="Go to source code">getSmallImage</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the small image.</p>
@@ -1389,6 +1420,7 @@
 				<div class="list">
 						0.0.0<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -1407,7 +1439,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getStockLevel">#</a>
-		<code><a href="source-class-ep6.Product.html#619-642" title="Go to source code">getStockLevel</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#648-671" title="Go to source code">getStockLevel</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the stock level.</p>
@@ -1451,7 +1483,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getUPC">#</a>
-		<code><a href="source-class-ep6.Product.html#644-656" title="Go to source code">getUPC</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#673-686" title="Go to source code">getUPC</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the UPC.</p>
@@ -1475,6 +1507,7 @@
 				<h4>Since</h4>
 				<div class="list">
 						0.1.2<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -1493,7 +1526,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getWithDepositPrice">#</a>
-		<code><a href="source-class-ep6.Product.html#658-671" title="Go to source code">getWithDepositPrice</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#688-702" title="Go to source code">getWithDepositPrice</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the with deposit price.</p>
@@ -1518,6 +1551,7 @@
 				<div class="list">
 						0.1.0<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Add reload feature.<br>
 				</div>
 
 
@@ -1536,7 +1570,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_increaseStockLevel">#</a>
-		<code><a href="source-class-ep6.Product.html#673-702" title="Go to source code">increaseStockLevel</a>( <span>float <var>$step</var> = <span class="php-num">1.0</span></span> )</code>
+		<code><a href="source-class-ep6.Product.html#704-733" title="Go to source code">increaseStockLevel</a>( <span>float <var>$step</var> = <span class="php-num">1.0</span></span> )</code>
 
 		<div class="description short">
 			<p>Increases the stock level.</p>
@@ -1584,7 +1618,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isForSale">#</a>
-		<code><a href="source-class-ep6.Product.html#704-717" title="Go to source code">isForSale</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#735-748" title="Go to source code">isForSale</a>( )</code>
 
 		<div class="description short">
 			<p>Returns true if it is for sale.</p>
@@ -1627,7 +1661,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isSpecialOffer">#</a>
-		<code><a href="source-class-ep6.Product.html#719-732" title="Go to source code">isSpecialOffer</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#750-763" title="Go to source code">isSpecialOffer</a>( )</code>
 
 		<div class="description short">
 			<p>Returns true if it is a special offer.</p>
@@ -1670,7 +1704,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setDescription">#</a>
-		<code><a href="source-class-ep6.Product.html#734-746" title="Go to source code">setDescription</a>( <span>String <var>$description</var></span> )</code>
+		<code><a href="source-class-ep6.Product.html#765-777" title="Go to source code">setDescription</a>( <span>String <var>$description</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the description of the product.</p>
@@ -1713,7 +1747,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setEAN">#</a>
-		<code><a href="source-class-ep6.Product.html#748-760" title="Go to source code">setEAN</a>( <span>String <var>$ean</var></span> )</code>
+		<code><a href="source-class-ep6.Product.html#779-791" title="Go to source code">setEAN</a>( <span>String <var>$ean</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the EAN of the product.</p>
@@ -1756,7 +1790,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setEnergyLabelsString">#</a>
-		<code><a href="source-class-ep6.Product.html#762-774" title="Go to source code">setEnergyLabelsString</a>( <span>String <var>$energyLabelsString</var></span> )</code>
+		<code><a href="source-class-ep6.Product.html#793-805" title="Go to source code">setEnergyLabelsString</a>( <span>String <var>$energyLabelsString</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the energy labels string of the product.</p>
@@ -1799,7 +1833,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setEssentialFeatures">#</a>
-		<code><a href="source-class-ep6.Product.html#776-788" title="Go to source code">setEssentialFeatures</a>( <span>String <var>$essentialFeatures</var></span> )</code>
+		<code><a href="source-class-ep6.Product.html#807-819" title="Go to source code">setEssentialFeatures</a>( <span>String <var>$essentialFeatures</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the essential features of the product.</p>
@@ -1842,7 +1876,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setManufacturer">#</a>
-		<code><a href="source-class-ep6.Product.html#790-802" title="Go to source code">setManufacturer</a>( <span>String <var>$manufacturer</var></span> )</code>
+		<code><a href="source-class-ep6.Product.html#821-833" title="Go to source code">setManufacturer</a>( <span>String <var>$manufacturer</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the manufacturer of the product.</p>
@@ -1885,7 +1919,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setName">#</a>
-		<code><a href="source-class-ep6.Product.html#804-816" title="Go to source code">setName</a>( <span>String <var>$name</var></span> )</code>
+		<code><a href="source-class-ep6.Product.html#835-847" title="Go to source code">setName</a>( <span>String <var>$name</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the name of the product.</p>
@@ -1928,7 +1962,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setNumber">#</a>
-		<code><a href="source-class-ep6.Product.html#818-830" title="Go to source code">setNumber</a>( <span>String <var>$number</var></span> )</code>
+		<code><a href="source-class-ep6.Product.html#849-861" title="Go to source code">setNumber</a>( <span>String <var>$number</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the product number of the product.</p>
@@ -1971,7 +2005,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setSearchKeywords">#</a>
-		<code><a href="source-class-ep6.Product.html#832-844" title="Go to source code">setSearchKeywords</a>( <span>String <var>$searchKeywords</var></span> )</code>
+		<code><a href="source-class-ep6.Product.html#863-875" title="Go to source code">setSearchKeywords</a>( <span>String <var>$searchKeywords</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the search keywords of the product.</p>
@@ -2014,7 +2048,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setShortDescription">#</a>
-		<code><a href="source-class-ep6.Product.html#846-858" title="Go to source code">setShortDescription</a>( <span>String <var>$shortDescription</var></span> )</code>
+		<code><a href="source-class-ep6.Product.html#877-889" title="Go to source code">setShortDescription</a>( <span>String <var>$shortDescription</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the short description of the product.</p>
@@ -2057,7 +2091,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setUPC">#</a>
-		<code><a href="source-class-ep6.Product.html#860-872" title="Go to source code">setUPC</a>( <span>String <var>$upc</var></span> )</code>
+		<code><a href="source-class-ep6.Product.html#891-903" title="Go to source code">setUPC</a>( <span>String <var>$upc</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the UPC of the product.</p>
@@ -2100,7 +2134,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_unsetDescription">#</a>
-		<code><a href="source-class-ep6.Product.html#874-885" title="Go to source code">unsetDescription</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#905-916" title="Go to source code">unsetDescription</a>( )</code>
 
 		<div class="description short">
 			<p>Deletes the description value of the product.</p>
@@ -2138,7 +2172,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_unsetEAN">#</a>
-		<code><a href="source-class-ep6.Product.html#887-898" title="Go to source code">unsetEAN</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#918-929" title="Go to source code">unsetEAN</a>( )</code>
 
 		<div class="description short">
 			<p>Deletes the EAN value of the product.</p>
@@ -2176,7 +2210,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_unsetEnergyLabelsString">#</a>
-		<code><a href="source-class-ep6.Product.html#900-911" title="Go to source code">unsetEnergyLabelsString</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#931-942" title="Go to source code">unsetEnergyLabelsString</a>( )</code>
 
 		<div class="description short">
 			<p>Deletes the energy labels string value of the product.</p>
@@ -2214,7 +2248,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_unsetEssentialFeatures">#</a>
-		<code><a href="source-class-ep6.Product.html#913-924" title="Go to source code">unsetEssentialFeatures</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#944-955" title="Go to source code">unsetEssentialFeatures</a>( )</code>
 
 		<div class="description short">
 			<p>Deletes the essential features value of the product.</p>
@@ -2252,7 +2286,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_unsetManufacturer">#</a>
-		<code><a href="source-class-ep6.Product.html#926-937" title="Go to source code">unsetManufacturer</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#957-968" title="Go to source code">unsetManufacturer</a>( )</code>
 
 		<div class="description short">
 			<p>Deletes the manufacturer value of the product.</p>
@@ -2290,7 +2324,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_unsetName">#</a>
-		<code><a href="source-class-ep6.Product.html#939-950" title="Go to source code">unsetName</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#970-981" title="Go to source code">unsetName</a>( )</code>
 
 		<div class="description short">
 			<p>Deletes the name value of the product.</p>
@@ -2328,7 +2362,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_unsetSearchKeywords">#</a>
-		<code><a href="source-class-ep6.Product.html#952-963" title="Go to source code">unsetSearchKeywords</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#983-994" title="Go to source code">unsetSearchKeywords</a>( )</code>
 
 		<div class="description short">
 			<p>Deletes the search keywords of the product.</p>
@@ -2366,7 +2400,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_unsetShortDescription">#</a>
-		<code><a href="source-class-ep6.Product.html#965-976" title="Go to source code">unsetShortDescription</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#996-1007" title="Go to source code">unsetShortDescription</a>( )</code>
 
 		<div class="description short">
 			<p>Deletes the short description value of the product.</p>
@@ -2404,7 +2438,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_unsetUPC">#</a>
-		<code><a href="source-class-ep6.Product.html#978-989" title="Go to source code">unsetUPC</a>( )</code>
+		<code><a href="source-class-ep6.Product.html#1009-1020" title="Go to source code">unsetUPC</a>( )</code>
 
 		<div class="description short">
 			<p>Deletes the UPC value of the product.</p>

@@ -155,7 +155,7 @@ class RESTClient {
 
 			array_push($headers, "Authorization: Bearer " . self::$AUTHTOKEN);
 		}
-
+		
 		$curl = curl_init($url);
 
 		curl_setopt($curl, CURLOPT_FAILONERROR, 1);								// show full errors

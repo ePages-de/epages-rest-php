@@ -30,6 +30,9 @@ class OrderFilter {
 	/** @var String|null Search orders made by this customer ID. */
 	private $customerId = null;
 
+	/** @var The filter of the Order Filter. */
+	private $filters = array();
+
 	/** @var boolean Show orders which are already archived. */
 	private $isArchived = null;
 
@@ -69,6 +72,9 @@ class OrderFilter {
 	/** @var String|null Search orders with this product ID in there. */
 	private $productId = null;
 
+	/** @var int|null The number of all results. */
+	private $results = null;
+
 	/** @var int The number of elements per page. */
 	private $resultsPerPage = 10;
 
@@ -107,36 +113,32 @@ class OrderFilter {
 	}
 
 	/**
-	 * This function returns the hash code of the object to equals the object.
+	 * This is the function to add a filter.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @return String Returns the hash code of the object.
+	 * @param String $attribute The attribute to filter.
+	 * @param String $value The value to filter and compare.
+	 * @param FilterOperation $operator The operation to do.
+	 * @return boolean
 	 * @since 0.1.3
 	 */
-	public function hashCode() {
+	public function addFilter($attribute, $value, $operator, $type) {
 
 		$this->errorReset();
 
-		$message = $this->page
-			. $this->resultsPerPage
-			. $this->customerId
-			. $this->createdAfterDate
-			. $this->createdBeforeDate
-			. $this->archivedDate
-			. $this->closedDate
-			. $this->deliveredDate
-			. $this->dispatchDate
-			. $this->invoicedDate
-			. $this->paidDate
-			. $this->pendingDate
-			. $this->rejectedDate
-			. $this->returnedDate
-			. $this->lastUpdateDate
-			. $this->productId
-			. $this->sortLastUpdate
-			. $this->isClosed;
+		if (InputValidator::isEmpty($attribute) || InputValidator::isEmpty($value) || InputValidator::isEmpty($operator)) {
+			$this->errorSet("OF-6");
+			return false;
+		}
 
-		return hash("sha512", $message);
+		$filterParameter = array("attribute"	=> $attribute,
+						"value"			=> $value,
+						"operator"		=> $operator,
+						"type"		=> $type);
+
+		array_push($this->filters, new Filter($filterParameter));
+
+		return true;
 	}
 
 	/**
@@ -235,6 +237,8 @@ class OrderFilter {
 			return;
 		}
 
+		$this->results = $content['results'];
+
 		$orders = array();
 
 		// is there any order found: load the products.
@@ -243,6 +247,24 @@ class OrderFilter {
 			foreach ($content['items'] as $item) {
 
 				$order = new Order($item);
+
+				// go to every filter
+				foreach ($this->filters as $filter) {
+
+					if (!InputValidator::isEmptyArrayKey($item, $filter->getAttribute()) || $filter->getOperator() == FilterOperation::UNDEF) {
+
+						if (!InputValidator::isArray($item[$filter->getAttribute()])) {
+
+							if (!$filter->isElementInFilter($item)) {
+								continue 2;
+							}
+						}
+					}
+					else {
+						continue 2;
+					}
+				}
+
 				array_push($orders, $order);
 			}
 	 	}
@@ -290,6 +312,39 @@ class OrderFilter {
 		$this->errorReset();
 
 		return $this->resultsPerPage;
+	}
+
+	/**
+	 * This function returns the hash code of the object to equals the object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String Returns the hash code of the object.
+	 * @since 0.1.3
+	 */
+	public function hashCode() {
+
+		$this->errorReset();
+
+		$message = $this->page
+			. $this->resultsPerPage
+			. $this->customerId
+			. $this->createdAfterDate
+			. $this->createdBeforeDate
+			. $this->archivedDate
+			. $this->closedDate
+			. $this->deliveredDate
+			. $this->dispatchDate
+			. $this->invoicedDate
+			. $this->paidDate
+			. $this->pendingDate
+			. $this->rejectedDate
+			. $this->returnedDate
+			. $this->lastUpdateDate
+			. $this->productId
+			. $this->sortLastUpdate
+			. $this->isClosed;
+
+		return hash("sha512", $message);
 	}
 
 	/**
@@ -411,7 +466,7 @@ class OrderFilter {
 	 * @return boolean True if orders are filtered which are returned, false if not.
 	 * @since 0.1.3
 	 */
-	public function isReturnd() {
+	public function isReturned() {
 
 		$this->errorReset();
 

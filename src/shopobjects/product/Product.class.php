@@ -1180,7 +1180,6 @@ class Product {
 		    Logger::error("Respond for " . self::RESTPATH . "/" . $this->productID . "/" .  self::RESTPATH_STOCKLEVEL . " can not be interpreted.");
 			return;
 		}
-
 		$this->stockLevel = (float) $content["stocklevel"];
 
 		// update timestamp when make the next request
@@ -1319,6 +1318,10 @@ class Product {
 				}
 			}
 		}
+
+		// update timestamp when make the next request
+		$timestamp = (int) (microtime(true) * 1000);
+		$this->NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::$NEXT_RESPONSE_WAIT_TIME;
 	}
 
  	/**

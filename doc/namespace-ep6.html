@@ -32,8 +32,12 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-ep6.Address.html">Address</a></li>
 				<li><a href="class-ep6.ContactInformation.html">ContactInformation</a></li>
 				<li><a href="class-ep6.Currencies.html">Currencies</a></li>
+				<li><a href="class-ep6.Date.html">Date</a></li>
+				<li><a href="class-ep6.Filter.html">Filter</a></li>
+				<li><a href="class-ep6.FilterOperation.html">FilterOperation</a></li>
 				<li><a href="class-ep6.HTTPRequestMethod.html">HTTPRequestMethod</a></li>
 				<li><a href="class-ep6.Image.html">Image</a></li>
 				<li><a href="class-ep6.InputValidator.html">InputValidator</a></li>
@@ -42,7 +46,11 @@
 				<li><a href="class-ep6.Logger.html">Logger</a></li>
 				<li><a href="class-ep6.LogLevel.html">LogLevel</a></li>
 				<li><a href="class-ep6.LogOutput.html">LogOutput</a></li>
+				<li><a href="class-ep6.Order.html">Order</a></li>
+				<li><a href="class-ep6.OrderFilter.html">OrderFilter</a></li>
+				<li><a href="class-ep6.PaymentMethod.html">PaymentMethod</a></li>
 				<li><a href="class-ep6.Price.html">Price</a></li>
+				<li><a href="class-ep6.PriceTaxModel.html">PriceTaxModel</a></li>
 				<li><a href="class-ep6.PriceWithQuantity.html">PriceWithQuantity</a></li>
 				<li><a href="class-ep6.PrivacyPolicyInformation.html">PrivacyPolicyInformation</a></li>
 				<li><a href="class-ep6.Product.html">Product</a></li>
@@ -55,8 +63,10 @@
 				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
 				<li><a href="class-ep6.ShippingInformation.html">ShippingInformation</a></li>
+				<li><a href="class-ep6.ShippingMethod.html">ShippingMethod</a></li>
 				<li><a href="class-ep6.Shop.html">Shop</a></li>
 				<li><a href="class-ep6.TermsAndConditionInformation.html">TermsAndConditionInformation</a></li>
+				<li><a href="class-ep6.URL.html">URL</a></li>
 			</ul>
 
 
@@ -106,12 +116,28 @@
 <table class="summary" id="classes">
 <caption>Classes summary</caption>
 <tr>
+	<td class="name"><a href="class-ep6.Address.html">Address</a></td>
+	<td>This is an Address class to handle addressees from shop.</td>
+</tr>
+<tr>
 	<td class="name"><a href="class-ep6.ContactInformation.html">ContactInformation</a></td>
 	<td>This is the Contact Information object of the shop.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-ep6.Currencies.html">Currencies</a></td>
 	<td>This is the static class for the currencies in the shop.</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-ep6.Date.html">Date</a></td>
+	<td>This is a Date class to handle date formats.</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-ep6.Filter.html">Filter</a></td>
+	<td>This is a filter class to filter several shop objects.</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-ep6.FilterOperation.html">FilterOperation</a></td>
+	<td>The Filter Operation 'enum'.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-ep6.HTTPRequestMethod.html">HTTPRequestMethod</a></td>
@@ -146,8 +172,24 @@
 	<td>The Log Output 'enum'.</td>
 </tr>
 <tr>
+	<td class="name"><a href="class-ep6.Order.html">Order</a></td>
+	<td>This is the Order object for an Order in the shop.</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-ep6.OrderFilter.html">OrderFilter</a></td>
+	<td>This is a Order Filter class to search orders via the REST call "orders".</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-ep6.PaymentMethod.html">PaymentMethod</a></td>
+	<td>This is a Payment Method class to handle possible payment methods.</td>
+</tr>
+<tr>
 	<td class="name"><a href="class-ep6.Price.html">Price</a></td>
 	<td>This is the class for Price objects.</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-ep6.PriceTaxModel.html">PriceTaxModel</a></td>
+	<td>The Price Tax Model 'enum'.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-ep6.PriceWithQuantity.html">PriceWithQuantity</a></td>
@@ -198,12 +240,20 @@
 	<td>This class is needed for the Shipping Information in the shop.</td>
 </tr>
 <tr>
+	<td class="name"><a href="class-ep6.ShippingMethod.html">ShippingMethod</a></td>
+	<td>This is a Shipping Method class to handle possible shipping methods.</td>
+</tr>
+<tr>
 	<td class="name"><a href="class-ep6.Shop.html">Shop</a></td>
 	<td>This is the epages 6 shop object.</td>
 </tr>
 <tr>
 	<td class="name"><a href="class-ep6.TermsAndConditionInformation.html">TermsAndConditionInformation</a></td>
 	<td>This class is required for showing the information of Terms And Condition.</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-ep6.URL.html">URL</a></td>
+	<td>This is the URL class which is used for URLs.</td>
 </tr>
 </table>
 
@@ -230,6 +280,6 @@
 </div>
 </div>
 <script src="resources/combined.js?529a709ba2f260c0942b04bd0ce7515798f1c6b1"></script>
-<script src="elementlist.js?2c50fc692250b16d19700f0efe5131b6fa0a072f"></script>
+<script src="elementlist.js?3ea00bd68cb54e6a5eff9d387500945ed80668e4"></script>
 </body>
 </html>

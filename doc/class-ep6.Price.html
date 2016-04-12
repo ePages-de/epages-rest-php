@@ -32,8 +32,12 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-ep6.Address.html">Address</a></li>
 				<li><a href="class-ep6.ContactInformation.html">ContactInformation</a></li>
 				<li><a href="class-ep6.Currencies.html">Currencies</a></li>
+				<li><a href="class-ep6.Date.html">Date</a></li>
+				<li><a href="class-ep6.Filter.html">Filter</a></li>
+				<li><a href="class-ep6.FilterOperation.html">FilterOperation</a></li>
 				<li><a href="class-ep6.HTTPRequestMethod.html">HTTPRequestMethod</a></li>
 				<li><a href="class-ep6.Image.html">Image</a></li>
 				<li><a href="class-ep6.InputValidator.html">InputValidator</a></li>
@@ -42,7 +46,11 @@
 				<li><a href="class-ep6.Logger.html">Logger</a></li>
 				<li><a href="class-ep6.LogLevel.html">LogLevel</a></li>
 				<li><a href="class-ep6.LogOutput.html">LogOutput</a></li>
+				<li><a href="class-ep6.Order.html">Order</a></li>
+				<li><a href="class-ep6.OrderFilter.html">OrderFilter</a></li>
+				<li><a href="class-ep6.PaymentMethod.html">PaymentMethod</a></li>
 				<li class="active"><a href="class-ep6.Price.html">Price</a></li>
+				<li><a href="class-ep6.PriceTaxModel.html">PriceTaxModel</a></li>
 				<li><a href="class-ep6.PriceWithQuantity.html">PriceWithQuantity</a></li>
 				<li><a href="class-ep6.PrivacyPolicyInformation.html">PrivacyPolicyInformation</a></li>
 				<li><a href="class-ep6.Product.html">Product</a></li>
@@ -55,8 +63,10 @@
 				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
 				<li><a href="class-ep6.ShippingInformation.html">ShippingInformation</a></li>
+				<li><a href="class-ep6.ShippingMethod.html">ShippingMethod</a></li>
 				<li><a href="class-ep6.Shop.html">Shop</a></li>
 				<li><a href="class-ep6.TermsAndConditionInformation.html">TermsAndConditionInformation</a></li>
+				<li><a href="class-ep6.URL.html">URL</a></li>
 			</ul>
 
 
@@ -140,7 +150,7 @@
 				0.1.1 Set attribute to protected to use it in the child classes.<br>
 				<b>Since:</b>
 				0.1.1 Add formatted attribute.<br>
-			<b>Located at</b> <a href="source-class-ep6.Price.html#9-134" title="Go to source code">shopobjects/price/Price.class.php</a>
+			<b>Located at</b> <a href="source-class-ep6.Price.html#9-139" title="Go to source code">shopobjects/price/Price.class.php</a>
 		<br>
 	</div>
 
@@ -160,7 +170,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-ep6.Price.html#34-67" title="Go to source code">__construct</a>( <span>mixed[] <var>$priceParameter</var></span> )</code>
+		<code><a href="source-class-ep6.Price.html#34-72" title="Go to source code">__construct</a>( <span>mixed[] <var>$priceParameter</var></span> )</code>
 
 		<div class="description short">
 			<p>This is the constructor of the Price object.</p>
@@ -205,7 +215,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___toString">#</a>
-		<code><a href="source-class-ep6.Price.html#69-84" title="Go to source code">__toString</a>( )</code>
+		<code><a href="source-class-ep6.Price.html#74-89" title="Go to source code">__toString</a>( )</code>
 
 		<div class="description short">
 			<p>Prints the Price object as a string.</p>
@@ -249,7 +259,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getAmount">#</a>
-		<code><a href="source-class-ep6.Price.html#86-96" title="Go to source code">getAmount</a>( )</code>
+		<code><a href="source-class-ep6.Price.html#91-101" title="Go to source code">getAmount</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the amount.</p>
@@ -291,7 +301,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getCurrency">#</a>
-		<code><a href="source-class-ep6.Price.html#98-108" title="Go to source code">getCurrency</a>( )</code>
+		<code><a href="source-class-ep6.Price.html#103-113" title="Go to source code">getCurrency</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the currency.</p>
@@ -333,7 +343,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getFormatted">#</a>
-		<code><a href="source-class-ep6.Price.html#110-121" title="Go to source code">getFormatted</a>( )</code>
+		<code><a href="source-class-ep6.Price.html#115-126" title="Go to source code">getFormatted</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the formatted price with currency.</p>
@@ -371,14 +381,14 @@
 		<td class="attributes"><code>
 			 public 
 
-			String
+			<code><a href="class-ep6.PriceTaxModel.html">ep6\PriceTaxModel</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getTaxType">#</a>
-		<code><a href="source-class-ep6.Price.html#123-133" title="Go to source code">getTaxType</a>( )</code>
+		<code><a href="source-class-ep6.Price.html#128-138" title="Go to source code">getTaxType</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the tax type.</p>
@@ -391,7 +401,7 @@
 
 				<h4>Returns</h4>
 				<div class="list">
-					String<br>Gets the tax type.
+					<code><a href="class-ep6.PriceTaxModel.html">ep6\PriceTaxModel</a></code><br>Gets the tax type.
 				</div>
 
 
@@ -501,7 +511,7 @@
 	<tr data-order="taxType" id="$taxType">
 		<td class="attributes"><code>
 			protected  
-			String|null
+			<code><a href="class-ep6.PriceTaxModel.html">ep6\PriceTaxModel</a></code>|null
 		</code></td>
 
 		<td class="name">
