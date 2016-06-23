@@ -15,6 +15,7 @@ namespace ep6;
  * @since 0.1.0 Use a default Locale and Currency.
  * @since 0.1.1 The object can be echoed now.
  * @since 0.1.2 Add error reporting.
+ * @since 0.1.3 Add all results attribute.
  * @subpackage Shopobjects\Product
  */
 class ProductFilter {
@@ -30,6 +31,9 @@ class ProductFilter {
 	/** @var String|null The sort direction of the product search result. */
 	private $direction;
 
+	/** @var The filter of the Product Filter. */
+	private $filters = array();
+
 	/** @var String[] The product ids of the product search result. */
 	private $IDs = array();
 
@@ -38,6 +42,9 @@ class ProductFilter {
 
 	/** @var String|null The search string of the product search result. */
 	private $q;
+
+	/** @var int|null The number of all results. */
+	private $results = null;
 
 	/** @var int The number of results per page of the product search result. */
 	private $resultsPerPage = 10;
@@ -82,31 +89,32 @@ class ProductFilter {
 	}
 
 	/**
-	 * This function returns the hash code of the object to equals the object.
+	 * This is the function to add a filter.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @return String Returns the hash code of the object.
-	 * @since 0.0.0
-	 * @since 0.1.0 Use a default Locale and Currency.
-	 * @since 0.1.2 Add error reporting.
+	 * @param String $attribute The attribute to filter.
+	 * @param String $value The value to filter and compare.
+	 * @param FilterOperation $operator The operation to do.
+	 * @return boolean
+	 * @since 0.1.3
 	 */
-	public function hashCode() {
+	public function addFilter($attribute, $value, $operator, $type) {
 
 		$this->errorReset();
 
-		$message = $this->page
-			. $this->resultsPerPage
-			. $this->direction
-			. $this->sort
-			. $this->q
-			. $this->categoryID;
-
-		foreach ($this->IDs as $id) {
-
-			$message .= $id;
+		if (InputValidator::isEmpty($attribute) || InputValidator::isEmpty($value) || InputValidator::isEmpty($operator)) {
+			$this->errorSet("PF-10");
+			return false;
 		}
 
-		return hash("sha512", $message);
+		$filterParameter = array("attribute"	=> $attribute,
+						"value"			=> $value,
+						"operator"		=> $operator,
+						"type"		=> $type);
+
+		array_push($this->filters, new Filter($filterParameter));
+
+		return true;
 	}
 
 	/**
@@ -165,6 +173,7 @@ class ProductFilter {
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.1.3 Get all results.
 	 * @return Product[] Returns an array of products.
 	 */
 	public function getProducts() {
@@ -200,6 +209,8 @@ class ProductFilter {
 			return;
 		}
 
+		$this->results = $content['results'];
+
 		$products = array();
 
 		// is there any product found: load the products.
@@ -208,6 +219,47 @@ class ProductFilter {
 			foreach ($content['items'] as $item) {
 
 				$product = new Product($item);
+
+				// go to every filter
+				foreach ($this->filters as $filter) {
+
+					switch ($filter->getAttribute()) {
+
+						case 'stocklevel':
+							$value = array();
+							$value["stocklevel"] = $product->getStocklevel();
+							break;
+
+						case 'price':
+							$value = array();
+							$value["price"] = $product->getPrice()->getAmount();
+							break;
+
+						case 'category':
+							$value = array();
+							$value["category"] = $product->getCategories();
+							break;
+
+						default:
+							$value = $item;
+							break;
+
+					}
+
+					if (!InputValidator::isEmptyArrayKey($value, $filter->getAttribute()) || $filter->getOperator() == FilterOperation::UNDEF) {
+
+						if (!InputValidator::isArray($value[$filter->getAttribute()])) {
+
+							if (!$filter->isElementInFilter($value)) {
+								continue 2;
+							}
+						}
+					}
+					else {
+						continue 2;
+					}
+				}
+
 				array_push($products, $product);
 			}
 	 	}
@@ -229,6 +281,20 @@ class ProductFilter {
 		$this->errorReset();
 
 		return $this->q;
+	}
+
+	/**
+	 * This function gets all results.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return int The results of the request.
+	 * @since 0.1.3
+	 */
+	public function getResults() {
+
+		$this->errorReset();
+
+		return $this->results;
 	}
 
 	/**
@@ -261,6 +327,34 @@ class ProductFilter {
 		$this->errorReset();
 
 		return $this->sort;
+	}
+
+	/**
+	 * This function returns the hash code of the object to equals the object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String Returns the hash code of the object.
+	 * @since 0.0.0
+	 * @since 0.1.0 Use a default Locale and Currency.
+	 * @since 0.1.2 Add error reporting.
+	 */
+	public function hashCode() {
+
+		$this->errorReset();
+
+		$message = $this->page
+			. $this->resultsPerPage
+			. $this->direction
+			. $this->sort
+			. $this->q
+			. $this->categoryID;
+
+		foreach ($this->IDs as $id) {
+
+			$message .= $id;
+		}
+
+		return hash("sha512", $message);
 	}
 
 	/**

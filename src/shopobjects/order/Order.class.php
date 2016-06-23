@@ -270,6 +270,20 @@ class Order {
 	}
 
 	/**
+	 * Returns the order ID.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String The order ID.
+	 * @since 0.1.3
+	 */
+	public function getID() {
+
+		self::errorReset();
+		$this->reload();
+		return $this->orderId;
+	}
+
+	/**
 	 * Returns the internal note.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
@@ -298,27 +312,13 @@ class Order {
 	}
 
 	/**
-	 * Returns the order ID.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @return String The order ID.
-	 * @since 0.1.3
-	 */
-	public function getOrderID() {
-
-		self::errorReset();
-		$this->reload();
-		return $this->orderId;
-	}
-
-	/**
 	 * Returns the order number.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @return String The order number.
 	 * @since 0.1.3
 	 */
-	public function getOrderNumber() {
+	public function getNumber() {
 
 		self::errorReset();
 		$this->reload();
@@ -662,7 +662,7 @@ class Order {
 			return;
 		}
 
-		$content = RESTClient::sendWithLocalization(self::RESTPATH . "/" . $this->orderID, Locales::getLocale());
+		$content = RESTClient::sendWithLocalization(self::RESTPATH . "/" . $this->orderId, Locales::getLocale());
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
@@ -691,8 +691,7 @@ class Order {
 		if (InputValidator::isArray($orderParameter) &&
 			!InputValidator::isEmptyArrayKey($orderParameter, "orderId")) {
 
-			$this->orderID = $orderParameter['orderId'];
-			echo $this->orderID;
+			$this->orderId = $orderParameter['orderId'];
 
 			if (!InputValidator::isEmptyArrayKey($orderParameter, "orderNumber")) {
 
@@ -831,6 +830,10 @@ class Order {
 				}
 			}
 		}
+
+		// update timestamp when make the next request
+		$timestamp = (int) (microtime(true) * 1000);
+		$this->NEXT_REQUEST_TIMESTAMP = $timestamp + RESTClient::$NEXT_RESPONSE_WAIT_TIME;
 	}
 
  	/**

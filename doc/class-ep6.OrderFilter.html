@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class ep6\OrderFilter</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-ep6.html">
+						ep6					</a>
+
+						</li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-ep6.Address.html">Address</a></li>
+				<li><a href="class-ep6.ContactInformation.html">ContactInformation</a></li>
+				<li><a href="class-ep6.Currencies.html">Currencies</a></li>
+				<li><a href="class-ep6.Date.html">Date</a></li>
+				<li><a href="class-ep6.Filter.html">Filter</a></li>
+				<li><a href="class-ep6.FilterOperation.html">FilterOperation</a></li>
+				<li><a href="class-ep6.HTTPRequestMethod.html">HTTPRequestMethod</a></li>
+				<li><a href="class-ep6.Image.html">Image</a></li>
+				<li><a href="class-ep6.InputValidator.html">InputValidator</a></li>
+				<li><a href="class-ep6.JSONHandler.html">JSONHandler</a></li>
+				<li><a href="class-ep6.Locales.html">Locales</a></li>
+				<li><a href="class-ep6.Logger.html">Logger</a></li>
+				<li><a href="class-ep6.LogLevel.html">LogLevel</a></li>
+				<li><a href="class-ep6.LogOutput.html">LogOutput</a></li>
+				<li><a href="class-ep6.Order.html">Order</a></li>
+				<li class="active"><a href="class-ep6.OrderFilter.html">OrderFilter</a></li>
+				<li><a href="class-ep6.PaymentMethod.html">PaymentMethod</a></li>
+				<li><a href="class-ep6.Price.html">Price</a></li>
+				<li><a href="class-ep6.PriceTaxModel.html">PriceTaxModel</a></li>
+				<li><a href="class-ep6.PriceWithQuantity.html">PriceWithQuantity</a></li>
+				<li><a href="class-ep6.PrivacyPolicyInformation.html">PrivacyPolicyInformation</a></li>
+				<li><a href="class-ep6.Product.html">Product</a></li>
+				<li><a href="class-ep6.ProductAttribute.html">ProductAttribute</a></li>
+				<li><a href="class-ep6.ProductFilter.html">ProductFilter</a></li>
+				<li><a href="class-ep6.ProductPrice.html">ProductPrice</a></li>
+				<li><a href="class-ep6.ProductPriceType.html">ProductPriceType</a></li>
+				<li><a href="class-ep6.ProductPriceWithQuantity.html">ProductPriceWithQuantity</a></li>
+				<li><a href="class-ep6.ProductSlideshow.html">ProductSlideshow</a></li>
+				<li><a href="class-ep6.RESTClient.html">RESTClient</a></li>
+				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
+				<li><a href="class-ep6.ShippingInformation.html">ShippingInformation</a></li>
+				<li><a href="class-ep6.ShippingMethod.html">ShippingMethod</a></li>
+				<li><a href="class-ep6.Shop.html">Shop</a></li>
+				<li><a href="class-ep6.TermsAndConditionInformation.html">TermsAndConditionInformation</a></li>
+				<li><a href="class-ep6.URL.html">URL</a></li>
+			</ul>
+
+
+			<h3>Traits</h3>
+			<ul>
+				<li><a href="class-ep6.ErrorReporting.html">ErrorReporting</a></li>
+				<li><a href="class-ep6.Information.html">Information</a></li>
+			</ul>
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-ep6.html" title="Summary of ep6"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class OrderFilter</h1>
+
+
+	<div class="description">
+	<p>This is a Order Filter class to search orders via the REST call "orders".</p>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>ep6\OrderFilter</span></b>			
+			
+			 uses 
+					<a href="class-ep6.ErrorReporting.html"><span>ep6\ErrorReporting</span></a>
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-ep6.html">ep6</a><br>
+		<b>Package:</b> ep6\Shopobjects\Order<br>
+
+				<b>Author:</b>
+				David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				<b>Since:</b>
+				0.1.3<br>
+			<b>Located at</b> <a href="source-class-ep6.OrderFilter.html#9-925" title="Go to source code">shopobjects/order/OrderFilter.class.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__toString" id="___toString">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___toString">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#84-113" title="Go to source code">__toString</a>( )</code>
+
+		<div class="description short">
+			<p>Prints the Order Filter object as a string.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Prints the Order Filter object as a string.</p>
+
+<p>This function returns the setted values of the Order Filter object.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>The Order Filter as a string.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.1<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addFilter" id="_addFilter">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addFilter">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#115-142" title="Go to source code">addFilter</a>( <span>String <var>$attribute</var></span>, <span>String <var>$value</var></span>, <span><code><a href="class-ep6.FilterOperation.html">ep6\FilterOperation</a></code> <var>$operator</var></span>, <span> <var>$type</var></span> )</code>
+
+		<div class="description short">
+			<p>This is the function to add a filter.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This is the function to add a filter.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$attribute</var></dt>
+					<dd>The attribute to filter.</dd>
+					<dt><var>$value</var></dt>
+					<dd>The value to filter and compare.</dd>
+					<dt><var>$operator</var></dt>
+					<dd>The operation to do.</dd>
+					<dt><var>$type</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCreatedAfterDate" id="_getCreatedAfterDate">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Date.html">ep6\Date</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCreatedAfterDate">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#144-156" title="Go to source code">getCreatedAfterDate</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets the created after date.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets the created after date.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Date.html">ep6\Date</a></code><br>The created after date string of this order filter.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCreatedBeforeDate" id="_getCreatedBeforeDate">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Date.html">ep6\Date</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCreatedBeforeDate">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#158-170" title="Go to source code">getCreatedBeforeDate</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets the created before date.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets the created before date.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Date.html">ep6\Date</a></code><br>The created before date of this order filter.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getCustomerID" id="_getCustomerID">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCustomerID">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#172-184" title="Go to source code">getCustomerID</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets the customer ID string.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets the customer ID string.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>The customer ID of this order filter.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getLastUpdateDate" id="_getLastUpdateDate">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Date.html">ep6\Date</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLastUpdateDate">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#186-198" title="Go to source code">getLastUpdateDate</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets the last update date.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets the last update date.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Date.html">ep6\Date</a></code><br>The last update date of this order filter.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getOrders" id="_getOrders">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-ep6.Order.html">ep6\Order</a>[]</code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getOrders">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#200-273" title="Go to source code">getOrders</a>( )</code>
+
+		<div class="description short">
+			<p>This function returns the orders by using the order filter.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function returns the orders by using the order filter.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-ep6.Order.html">ep6\Order</a>[]</code><br>Returns an array of orders.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getPage" id="_getPage">
+
+		<td class="attributes"><code>
+			 public 
+
+			iint
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getPage">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#275-287" title="Go to source code">getPage</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets the page.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets the page.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					iint<br>The page of this order filter.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getProductID" id="_getProductID">
+
+		<td class="attributes"><code>
+			 public 
+
+			Stringt
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getProductID">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#289-301" title="Go to source code">getProductID</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets the product ID.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets the product ID.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					Stringt<br>The product ID of this order filter.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getResultsPerPage" id="_getResultsPerPage">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getResultsPerPage">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#303-315" title="Go to source code">getResultsPerPage</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets the results per page.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets the results per page.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					integer<br>The results per page of this order filter.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="hashCode" id="_hashCode">
+
+		<td class="attributes"><code>
+			 public 
+
+			String
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_hashCode">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#317-348" title="Go to source code">hashCode</a>( )</code>
+
+		<div class="description short">
+			<p>This function returns the hash code of the object to equals the object.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function returns the hash code of the object to equals the object.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					String<br>Returns the hash code of the object.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isArchived" id="_isArchived">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isArchived">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#350-362" title="Go to source code">isArchived</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets whether orders are filtered which are archived.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets whether orders are filtered which are archived.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if orders are filtered which are archived, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isClosed" id="_isClosed">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isClosed">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#364-376" title="Go to source code">isClosed</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets whether orders are filtered which are closed.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets whether orders are filtered which are closed.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if orders are filtered which are closed, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isDelivered" id="_isDelivered">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isDelivered">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#378-390" title="Go to source code">isDelivered</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets whether orders are filtered which are delivered.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets whether orders are filtered which are delivered.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if orders are filtered which are delivered, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isDispatched" id="_isDispatched">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isDispatched">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#392-404" title="Go to source code">isDispatched</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets whether orders are filtered which are dispatched.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets whether orders are filtered which are dispatched.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if orders are filtered which are dispatched, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isInvoiced" id="_isInvoiced">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isInvoiced">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#406-418" title="Go to source code">isInvoiced</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets whether orders are filtered which are invoiced.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets whether orders are filtered which are invoiced.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if orders are filtered which are invoiced, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isPaid" id="_isPaid">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isPaid">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#420-432" title="Go to source code">isPaid</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets whether orders are filtered which are paid.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets whether orders are filtered which are paid.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if orders are filtered which are paid, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isPending" id="_isPending">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isPending">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#434-446" title="Go to source code">isPending</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets whether orders are filtered which are pending.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets whether orders are filtered which are pending.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if orders are filtered which are pending, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isRejected" id="_isRejected">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isRejected">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#448-460" title="Go to source code">isRejected</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets whether orders are filtered which are rejected.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets whether orders are filtered which are rejected.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if orders are filtered which are rejected, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isReturned" id="_isReturned">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isReturned">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#462-474" title="Go to source code">isReturned</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets whether orders are filtered which are returned.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets whether orders are filtered which are returned.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if orders are filtered which are returned, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isSortLastUpdate" id="_isSortLastUpdate">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isSortLastUpdate">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#476-488" title="Go to source code">isSortLastUpdate</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets whether orders are sorted since their last update.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets whether orders are sorted since their last update.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if orders are sorted by their last update, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isViewed" id="_isViewed">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isViewed">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#490-502" title="Go to source code">isViewed</a>( )</code>
+
+		<div class="description short">
+			<p>This function gets whether orders are filtered which are viewed.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function gets whether orders are filtered which are viewed.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if orders are filtered which are viewed, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="resetFilter" id="_resetFilter">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_resetFilter">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#504-533" title="Go to source code">resetFilter</a>( )</code>
+
+		<div class="description short">
+			<p>This function reset all product IDs from filter.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function reset all product IDs from filter.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.0 Use a default Locale and Currency.<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setArchived" id="_setArchived">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setArchived">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#535-545" title="Go to source code">setArchived</a>( )</code>
+
+		<div class="description short">
+			<p>This function activates to find orders which are archived.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function activates to find orders which are archived.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setClosed" id="_setClosed">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setClosed">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#547-557" title="Go to source code">setClosed</a>( )</code>
+
+		<div class="description short">
+			<p>This function activates to find orders which are closed.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function activates to find orders which are closed.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setCreatedAfterDate" id="_setCreatedAfterDate">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setCreatedAfterDate">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#559-579" title="Go to source code">setCreatedAfterDate</a>( <span><code><a href="class-ep6.Date.html">ep6\Date</a></code> <var>$createdAfterDate</var></span> )</code>
+
+		<div class="description short">
+			<p>This function sets the 'Created after' date to search.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function sets the 'Created after' date to search.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$createdAfterDate</var></dt>
+					<dd>The 'Created after' date to filter.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if setting works, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setCreatedBeforeDate" id="_setCreatedBeforeDate">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setCreatedBeforeDate">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#581-601" title="Go to source code">setCreatedBeforeDate</a>( <span><code><a href="class-ep6.Date.html">ep6\Date</a></code> <var>$createdBeforeDate</var></span> )</code>
+
+		<div class="description short">
+			<p>This function sets the 'Created before' date to search.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function sets the 'Created before' date to search.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$createdBeforeDate</var></dt>
+					<dd>The 'Created before' date to filter.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if setting works, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setCustomerId" id="_setCustomerId">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setCustomerId">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#603-622" title="Go to source code">setCustomerId</a>( <span>String <var>$customerId</var></span> )</code>
+
+		<div class="description short">
+			<p>This function sets the customer ID to search.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function sets the customer ID to search.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$customerId</var></dt>
+					<dd>The customer ID to filter.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if setting works, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDelivered" id="_setDelivered">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDelivered">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#624-634" title="Go to source code">setDelivered</a>( )</code>
+
+		<div class="description short">
+			<p>This function activates to find orders which are delivered.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function activates to find orders which are delivered.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setDispatched" id="_setDispatched">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setDispatched">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#636-646" title="Go to source code">setDispatched</a>( )</code>
+
+		<div class="description short">
+			<p>This function activates to find orders which are dispatched.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function activates to find orders which are dispatched.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setInvoiced" id="_setInvoiced">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setInvoiced">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#648-658" title="Go to source code">setInvoiced</a>( )</code>
+
+		<div class="description short">
+			<p>This function activates to find orders which are invoiced.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function activates to find orders which are invoiced.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setPage" id="_setPage">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setPage">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#660-683" title="Go to source code">setPage</a>( <span>integer <var>$page</var></span> )</code>
+
+		<div class="description short">
+			<p>This function sets the page to show.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function sets the page to show.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$page</var></dt>
+					<dd>The page number to filter.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if setting the page works, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setPaid" id="_setPaid">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setPaid">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#685-695" title="Go to source code">setPaid</a>( )</code>
+
+		<div class="description short">
+			<p>This function activates to find orders which are paid.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function activates to find orders which are paid.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setPending" id="_setPending">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setPending">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#697-707" title="Go to source code">setPending</a>( )</code>
+
+		<div class="description short">
+			<p>This function activates to find orders which are pending.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function activates to find orders which are pending.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setRejected" id="_setRejected">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setRejected">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#709-719" title="Go to source code">setRejected</a>( )</code>
+
+		<div class="description short">
+			<p>This function activates to find orders which are rejected.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function activates to find orders which are rejected.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setReturned" id="_setReturned">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setReturned">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#721-731" title="Go to source code">setReturned</a>( )</code>
+
+		<div class="description short">
+			<p>This function activates to find orders which are returned.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function activates to find orders which are returned.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setResultsPerPage" id="_setResultsPerPage">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setResultsPerPage">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#733-757" title="Go to source code">setResultsPerPage</a>( <span>integer <var>$resultsPerPage</var></span> )</code>
+
+		<div class="description short">
+			<p>This function sets the results per page to show.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function sets the results per page to show.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$resultsPerPage</var></dt>
+					<dd>The results per page to filter.</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>True if setting the results per page works, false if not.
+				</div>
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.0.0<br>
+						0.1.0 Use attribute unstatic.<br>
+						0.1.2 Add error reporting.<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setViewed" id="_setViewed">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setViewed">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#759-769" title="Go to source code">setViewed</a>( )</code>
+
+		<div class="description short">
+			<p>This function activates to find orders which are viewed.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function activates to find orders which are viewed.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetArchived" id="_unsetArchived">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetArchived">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#771-781" title="Go to source code">unsetArchived</a>( )</code>
+
+		<div class="description short">
+			<p>This function deactivates to find orders which are archived.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function deactivates to find orders which are archived.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetClosed" id="_unsetClosed">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetClosed">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#783-793" title="Go to source code">unsetClosed</a>( )</code>
+
+		<div class="description short">
+			<p>This function deactivates to find orders which are closed.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function deactivates to find orders which are closed.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetDelivered" id="_unsetDelivered">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetDelivered">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#795-805" title="Go to source code">unsetDelivered</a>( )</code>
+
+		<div class="description short">
+			<p>This function deactivates to find orders which are delivered.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function deactivates to find orders which are delivered.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetDispatched" id="_unsetDispatched">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetDispatched">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#807-817" title="Go to source code">unsetDispatched</a>( )</code>
+
+		<div class="description short">
+			<p>This function deactivates to find orders which are dispatched.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function deactivates to find orders which are dispatched.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetInvoiced" id="_unsetInvoiced">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetInvoiced">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#819-829" title="Go to source code">unsetInvoiced</a>( )</code>
+
+		<div class="description short">
+			<p>This function deactivates to find orders which are invoiced.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function deactivates to find orders which are invoiced.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetPaid" id="_unsetPaid">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetPaid">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#831-841" title="Go to source code">unsetPaid</a>( )</code>
+
+		<div class="description short">
+			<p>This function deactivates to find orders which are paid.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function deactivates to find orders which are paid.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetPending" id="_unsetPending">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetPending">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#843-853" title="Go to source code">unsetPending</a>( )</code>
+
+		<div class="description short">
+			<p>This function deactivates to find orders which are pending.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function deactivates to find orders which are pending.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetRejected" id="_unsetRejected">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetRejected">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#855-865" title="Go to source code">unsetRejected</a>( )</code>
+
+		<div class="description short">
+			<p>This function deactivates to find orders which are rejected.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function deactivates to find orders which are rejected.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetReturned" id="_unsetReturned">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetReturned">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#867-877" title="Go to source code">unsetReturned</a>( )</code>
+
+		<div class="description short">
+			<p>This function deactivates to find orders which are returned.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function deactivates to find orders which are returned.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="unsetViewed" id="_unsetViewed">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_unsetViewed">#</a>
+		<code><a href="source-class-ep6.OrderFilter.html#879-889" title="Go to source code">unsetViewed</a>( )</code>
+
+		<div class="description short">
+			<p>This function deactivates to find orders which are viewed.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>This function deactivates to find orders which are viewed.</p>
+
+
+
+
+
+				<h4>Author</h4>
+				<div class="list">
+						David Pauli <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#58;&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;">&#99;&#111;&#110;&#116;&#97;ct&#x40;&#x64;&#x61;&#x76;&#x69;&#x64;&#45;&#112;&#97;&#117;&#108;&#105;&#46;d&#x65;</a><br>
+				</div>
+				<h4>Since</h4>
+				<div class="list">
+						0.1.3<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+	<table class="summary used">
+	<caption>Methods used from <a href="class-ep6.ErrorReporting.html#methods">ep6\ErrorReporting</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-ep6.ErrorReporting.html#_error">error()</a>, 
+			<a href="class-ep6.ErrorReporting.html#_errorMessage">errorMessage()</a>, 
+			<a href="class-ep6.ErrorReporting.html#_errorNumber">errorNumber()</a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+	<table class="summary constants" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="RESTPATH" id="RESTPATH">
+
+		<td class="attributes"><code>String</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-ep6.OrderFilter.html#21-22" title="Go to source code"><b>RESTPATH</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#RESTPATH" class="anchor">#</a>
+				<code><span class="php-quote">&quot;orders&quot;</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

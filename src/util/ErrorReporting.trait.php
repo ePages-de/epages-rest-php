@@ -39,6 +39,7 @@ trait ErrorReporting {
 		"OF-3"	=>	"The order filter attribute in OrderFilter constructor is invalid.",
 		"OF-4"	=>	"The order filter page number is invalid.",
 		"OF-5"	=>	"The order filter results per page number is invalid.",
+		"OF-6"	=>	"Filter parameter in Product Filter are not valid.",
 		"P-1"	=>	"Product construct parameter is wrong.",
 		"P-2"	=>	"The new attribute value is not valid.",
 		"P-3"	=>	"Unknown attribute in the product.",
@@ -57,6 +58,7 @@ trait ErrorReporting {
 		"PF-7"	=>	"There are already 12 product IDs to filter. To add more delete one.",
 		"PF-8"	=>	"Product Filter GET REST respond is empty.",
 		"PF-9"	=>	"The REST respond can't be interpreted correctly.",
+		"PF-10"	=>	"Filter parameter in Product Filter are not valid.",
 		"PM-1"	=>	"The parameter to construct the payment method is no array.",
 		"PP-1"	=>	"Product price does belong to any product.",
 		"PP-2"	=>	"Product price set function does not have a float parameter.",
@@ -99,7 +101,7 @@ trait ErrorReporting {
 	 */
 	public static function error() {
 
-		return InputValidato::isEmpty(self::$ERROR) ? false : true;
+		return InputValidator::isEmpty(self::$ERROR) ? false : true;
 	}
 
 	/**
@@ -111,7 +113,7 @@ trait ErrorReporting {
 	 */
 	public static function errorMessage() {
 
-		return self::$error() ? self::$ERRORMESSAGES[self::$errorNumber()] : null;
+		return self::$error() ? self::$ERRORMESSAGES[self::errorNumber()] : null;
 	}
 
 	/**

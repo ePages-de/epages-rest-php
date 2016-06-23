@@ -32,8 +32,12 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
+				<li><a href="class-ep6.Address.html">Address</a></li>
 				<li><a href="class-ep6.ContactInformation.html">ContactInformation</a></li>
 				<li><a href="class-ep6.Currencies.html">Currencies</a></li>
+				<li><a href="class-ep6.Date.html">Date</a></li>
+				<li><a href="class-ep6.Filter.html">Filter</a></li>
+				<li><a href="class-ep6.FilterOperation.html">FilterOperation</a></li>
 				<li><a href="class-ep6.HTTPRequestMethod.html">HTTPRequestMethod</a></li>
 				<li><a href="class-ep6.Image.html">Image</a></li>
 				<li><a href="class-ep6.InputValidator.html">InputValidator</a></li>
@@ -42,7 +46,11 @@
 				<li><a href="class-ep6.Logger.html">Logger</a></li>
 				<li><a href="class-ep6.LogLevel.html">LogLevel</a></li>
 				<li><a href="class-ep6.LogOutput.html">LogOutput</a></li>
+				<li><a href="class-ep6.Order.html">Order</a></li>
+				<li><a href="class-ep6.OrderFilter.html">OrderFilter</a></li>
+				<li><a href="class-ep6.PaymentMethod.html">PaymentMethod</a></li>
 				<li><a href="class-ep6.Price.html">Price</a></li>
+				<li><a href="class-ep6.PriceTaxModel.html">PriceTaxModel</a></li>
 				<li><a href="class-ep6.PriceWithQuantity.html">PriceWithQuantity</a></li>
 				<li><a href="class-ep6.PrivacyPolicyInformation.html">PrivacyPolicyInformation</a></li>
 				<li><a href="class-ep6.Product.html">Product</a></li>
@@ -55,8 +63,10 @@
 				<li class="active"><a href="class-ep6.RESTClient.html">RESTClient</a></li>
 				<li><a href="class-ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
 				<li><a href="class-ep6.ShippingInformation.html">ShippingInformation</a></li>
+				<li><a href="class-ep6.ShippingMethod.html">ShippingMethod</a></li>
 				<li><a href="class-ep6.Shop.html">Shop</a></li>
 				<li><a href="class-ep6.TermsAndConditionInformation.html">TermsAndConditionInformation</a></li>
+				<li><a href="class-ep6.URL.html">URL</a></li>
 			</ul>
 
 
@@ -146,7 +156,7 @@
 				0.1.1 Set $HOST and $SHOP to default value null.<br>
 				<b>Since:</b>
 				0.1.2 Add error reporting.<br>
-			<b>Located at</b> <a href="source-class-ep6.RESTClient.html#10-331" title="Go to source code">util/RESTClient.class.php</a>
+			<b>Located at</b> <a href="source-class-ep6.RESTClient.html#10-330" title="Go to source code">util/RESTClient.class.php</a>
 		<br>
 	</div>
 
@@ -257,7 +267,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_send">#</a>
-		<code><a href="source-class-ep6.RESTClient.html#114-251" title="Go to source code">send</a>( <span>String <var>$command</var></span>, <span>String[] <var>$postfields</var> = <span class="php-keyword1">array</span>()</span> )</code>
+		<code><a href="source-class-ep6.RESTClient.html#114-250" title="Go to source code">send</a>( <span>String <var>$command</var> = <span class="php-quote">&quot;&quot;</span></span>, <span>String[] <var>$postfields</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 		<div class="description short">
 			<p>This send function sends a special command to the REST server with additional parameter.</p>
@@ -292,6 +302,7 @@
 						0.1.0 Allow empty message body if the status code is 204.<br>
 						0.1.2 Restructure the logging message and fix the PATCH call.<br>
 						0.1.2 Add error reporting.<br>
+						0.1.3 Remove isRESTCommand function.<br>
 				</div>
 
 
@@ -310,7 +321,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_sendWithLocalization">#</a>
-		<code><a href="source-class-ep6.RESTClient.html#253-278" title="Go to source code">sendWithLocalization</a>( <span>String <var>$command</var></span>, <span>String <var>$locale</var></span>, <span>mixed[] <var>$postfields</var> = <span class="php-keyword1">array</span>()</span> )</code>
+		<code><a href="source-class-ep6.RESTClient.html#252-277" title="Go to source code">sendWithLocalization</a>( <span>String <var>$command</var></span>, <span>String <var>$locale</var></span>, <span>mixed[] <var>$postfields</var> = <span class="php-keyword1">array</span>()</span> )</code>
 
 		<div class="description short">
 			<p>This send function sends a special command to the REST server.</p>
@@ -363,7 +374,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setRequestMethod">#</a>
-		<code><a href="source-class-ep6.RESTClient.html#280-304" title="Go to source code">setRequestMethod</a>( <span><code><a href="class-ep6.HTTPRequestMethod.html">ep6\HTTPRequestMethod</a></code> <var>$method</var></span> )</code>
+		<code><a href="source-class-ep6.RESTClient.html#279-303" title="Go to source code">setRequestMethod</a>( <span><code><a href="class-ep6.HTTPRequestMethod.html">ep6\HTTPRequestMethod</a></code> <var>$method</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets another request method.</p>
@@ -413,7 +424,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setRequestWaitTime">#</a>
-		<code><a href="source-class-ep6.RESTClient.html#306-330" title="Go to source code">setRequestWaitTime</a>( <span>integer <var>$time</var></span> )</code>
+		<code><a href="source-class-ep6.RESTClient.html#305-329" title="Go to source code">setRequestWaitTime</a>( <span>integer <var>$time</var></span> )</code>
 
 		<div class="description short">
 			<p>Change the time to wait with the next request.</p>

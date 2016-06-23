@@ -230,7 +230,7 @@ class Logger {
 		// print message, if it is array or string
 		if (is_array($message)) {
 
-			$output .= "\n" . implode(",", $message);
+			$output .= print_r($message, true);
 		}
 		else {
 
