@@ -4,8 +4,13 @@
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
+ * @since 0.2.0 Add Guzzle REST client.
  */
 namespace ep6;
+
+# load required composer libraries
+require(__DIR__ . "/vendor/autoload.php");
+
 # include framework configuration
 require_once(__DIR__ . "/configuration/config.php");
 # include helpful objects, all are used in a static way
@@ -139,8 +144,6 @@ class Shop {
 		$this->isssl = $isssl;
 
 		RESTClient::connect($this->host, $this->shop, $this->authToken, $this->isssl);
-
-		$this->load();
 	}
 
 	/**
@@ -556,12 +559,14 @@ class Shop {
 
 		$content = RESTClient::send();
 
+		print_r($content);
+
 		// if respond has no name, slogan, logoUrl, sfUrl and mboUrl
-		if (InputValidator::isEmptyArrayKey($content, "name") ||
-			InputValidator::isEmptyArrayKey($content, "slogan") ||
-			InputValidator::isEmptyArrayKey($content, "logoUrl") ||
-			InputValidator::isEmptyArrayKey($content, "sfUrl") ||
-			InputValidator::isEmptyArrayKey($content, "mboUrl")) {
+		if (InputValidator::isExistsArrayKey($content, "name") ||
+			InputValidator::isExistsArrayKey($content, "slogan") ||
+			InputValidator::isExistsArrayKey($content, "logoUrl") ||
+			InputValidator::isExistsArrayKey($content, "sfUrl") ||
+			InputValidator::isExistsArrayKey($content, "mboUrl")) {
 
 		    Logger::error("Respond for " . $this->shop . " can not be interpreted.");
 			self::errorSet("C-1");

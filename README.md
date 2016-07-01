@@ -6,22 +6,42 @@ Just sign up for the [ePages Developer Program](http://www.epages.cloud/develope
 
 ## Requirements
 
-To use this SDK, you'll need at least **PHP 5.4**.
-Download or update the latest REST SDK via the command line.
-```
-wget https://raw.githubusercontent.com/ePages-de/epages-rest-php/master/build/epages-rest-php.phar -O epages-rest-php.phar
-```
-It is also possible to download the PHP file archive manually.
-Check for the latest **.phar** release in the [releases area](https://github.com/ePages-de/epages-rest-php/releases).
+To use this SDK, you'll need:
+
+* at least **PHP 5.5**
+* [Guzzle](https://github.com/guzzle/guzzle) (for REST and Logging)
+
+All dependencies comes automatically with the client and could be updated via composer.
 
 ## Installation
 
+### Via composer
+Its recommended to get the client via **Composer**.
+Just search for [epages/rest-sdk](https://packagist.org/packages/epages/rest-sdk) and put this to you composer.yml file:
+
+```php
+{
+   "require": {
+      "php": ">=5.5.0",
+      "epages/rest-sdk": ">=0.2"
+    }
+}
+``
+
+### Direct download
+To use the client directly without getting composer just download the **.phar** archive and include it.
+
+```
+wget https://raw.githubusercontent.com/ePages-de/epages-rest-php/master/build/epages-rest-php.phar -O epages-rest-php.phar
+```
+
+It is also possible to download the PHP file archive manually.
+Check for the latest **.phar** release in the [releases area](https://github.com/ePages-de/epages-rest-php/releases).
+
 To use the SDK, you simply have to include it.
-For reasons of development, it is useful to print all notifications and information on the screen.
 **Warning:** It is not recommended to do this in live system!
 ```php
 require_once("libraries/epages-rest-php.phar");
-ep6\Logger::setLogLevel(ep6\LogLevel::NOTIFICATION);
 ```
 
 ## Version information
@@ -50,15 +70,13 @@ The following information are provided with the ePages REST SDK until now.
 
 ## Code examples
 
-For more code examples, see the [examples folder](https://github.com/ePages-de/epages-rest-php/tree/master/examples).
+For code examples, see the [examples folder](https://github.com/ePages-de/epages-rest-php/tree/master/examples).
 
-### Example 1
-
-Using this example, you can retrieve 100 products with a German localisation and sort it with the **name** attribute:
+### Example *Get 100 products*
 
 ```php
 require_once("libraries/epages-rest-client.phar");
-ep6\Logger::setLogLevel(ep6\LogLevel::NOTIFICATION);
+ep6\Logger::setLogLevel(ep6\LogLevel::NOTIFICATION);	// activate visible output
 
 // set connection constants
 $HOST		= "www.meinshop.de";
@@ -101,13 +119,11 @@ foreach ($products as $product) {
 }
 ```
 
-### Example 2
-
-Using this example, you can retrieve some shop information.
+### Example *Retrieve shop information*
 
 ```php
 require_once("libraries/epages-rest-php.phar");
-ep6\Logger::setLogLevel(ep6\LogLevel::NOTIFICATION);
+ep6\Logger::setLogLevel(ep6\LogLevel::NOTIFICATION);	//activate visible output
 
 // set connection constants
 $HOST		= "www.meinshop.de";

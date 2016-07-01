@@ -51,7 +51,7 @@ class RESTClientTest extends \PHPUnit_Framework_TestCase {
         RESTClient::setRequestMethod("GET");
         $this->assertNull(RESTClient::send("NoValidRessource"));
 		$this->assertTrue(RESTClient::error());
-		$this->assertEquals("RESTC-7", RESTClient::errorNumber());
+		$this->assertEquals("RESTC-11", RESTClient::errorNumber());
 
         $this->assertNotNull(RESTClient::send());
         $this->assertFalse(RESTClient::error());
@@ -91,7 +91,7 @@ class RESTClientTest extends \PHPUnit_Framework_TestCase {
         RESTClient::setRequestMethod("GET");
         $this->assertNull(RESTClient::sendWithLocalization("NoValidRessource", "en_GB"));
 		$this->assertTrue(RESTClient::error());
-		$this->assertEquals("RESTC-7", RESTClient::errorNumber());
+		$this->assertEquals("RESTC-11", RESTClient::errorNumber());
 
         $this->assertNull(RESTClient::sendWithLocalization("NoValidRessource", "NoLocale"));
 		$this->assertTrue(RESTClient::error());

@@ -90,13 +90,28 @@ class InputValidator {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @param mixed[] $array Array to check.
-	 * @param String $key Key to exists.
+	 * @param String $key Key to exists and should not be null or empty.
 	 * @return boolean True if the array key is unset or null, false if not.
 	 * @since 0.1.0
+	 * @since 0.2.0 Create new function to check whether a key exists but can be null or empty.
 	 */
 	public static function isEmptyArrayKey($array, $key) {
 
-		return self::isEmptyArray($array) || !array_key_exists($key, $array) || is_null($array[$key]);
+		return self::isExistsArrayKey($array, $key) || is_null($array[$key]);
+	}
+
+	/**
+	 * Checks whether an array key exists. It can be unset or null.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param mixed[] $array Array to check.
+	 * @param String $key Key to exists.
+	 * @return boolean True if the array key exists, false if not.
+	 * @since 0.2.0
+	 */
+	public static function isExistsArrayKey($array, $key) {
+
+		return self::isEmptyArray($array) || !array_key_exists($key, $array);
 	}
 
 	/**
