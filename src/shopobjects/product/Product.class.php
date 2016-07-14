@@ -23,6 +23,7 @@ namespace ep6;
  * @since 0.1.1 Unstatic every attributes.
  * @since 0.1.2 Insert the Setters.
  * @since 0.1.2 Add error reporting.
+ * @since 0.2.0 Use ProductPrice for the price.
  * @subpackage Shopobjects\Product
  */
 class Product {
@@ -80,7 +81,7 @@ class Product {
 	/** @var Images[] This are the images in the four different possibilities. */
 	private $images = array();
 
-	/** @var ProductPriceWithQuantity|null Here the price is saved. */
+	/** @var ProductPrice|null Here the price is saved. */
 	private $price = null;
 
 	/** @var String|null The product ID. */
@@ -541,10 +542,11 @@ class Product {
 	 * Returns the product price with quantity.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @return ProductPriceWithQuantity Gets the product price with quantity.
+	 * @return ProductPrice Gets the product price with quantity.
 	 * @since 0.1.0
 	 * @since 0.1.2 Add error reporting.
 	 * @since 0.1.3 Add reload feature.
+	 * @since 0.2.0 Return type ProductPrice.
 	 */
 	public function getPrice() {
 
@@ -1289,32 +1291,32 @@ class Product {
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "price") &&
 					!InputValidator::isEmptyArrayKey($priceInformation, "quantity")) {
 
-					$this->price = new ProductPriceWithQuantity($this->productID, ProductPriceType::PRICE, $priceInformation['price'], $priceInformation['quantity']);
+					$this->price = new ProductPrice($this->productID, ProductPriceType::PRICE, $priceInformation['price'], $priceInformation['quantity']);
 				}
 
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "depositPrice")) {
 
-					$this->depositPrice = new ProductPrice($this->productID, ProductPriceType::DEPOSIT, $priceInformation['depositPrice']);
+					$this->depositPrice = new ProductPrice($this->productID, ProductPriceType::DEPOSIT, $priceInformation['depositPrice'], $priceInformation['quantity']);
 				}
 
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "ecoParticipationPrice")) {
 
-					$this->ecoParticipationPrice = new ProductPrice($this->productID, ProductPriceType::ECOPARTICIPATION, $priceInformation['ecoParticipationPrice']);
+					$this->ecoParticipationPrice = new ProductPrice($this->productID, ProductPriceType::ECOPARTICIPATION, $priceInformation['ecoParticipationPrice'], $priceInformation['quantity']);
 				}
 
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "priceWithDeposits")) {
 
-					$this->withDepositPrice = new ProductPrice($this->productID, ProductPriceType::WITHDEPOSITS, $priceInformation['priceWithDeposits']);
+					$this->withDepositPrice = new ProductPrice($this->productID, ProductPriceType::WITHDEPOSITS, $priceInformation['priceWithDeposits'], $priceInformation['quantity']);
 				}
 
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "manufacturerPrice")) {
 
-					$this->manufacturerPrice = new ProductPrice($this->productID, ProductPriceType::MANUFACTURER, $priceInformation['manufacturerPrice']);
+					$this->manufacturerPrice = new ProductPrice($this->productID, ProductPriceType::MANUFACTURER, $priceInformation['manufacturerPrice'], $priceInformation['quantity']);
 				}
 
 				if (!InputValidator::isEmptyArrayKey($priceInformation, "basePrice")) {
 
-					$this->basePrice = new ProductPrice($this->productID, ProductPriceType::BASE, $priceInformation['basePrice']);
+					$this->basePrice = new ProductPrice($this->productID, ProductPriceType::BASE, $priceInformation['basePrice'], $priceInformation['quantity']);
 				}
 			}
 		}

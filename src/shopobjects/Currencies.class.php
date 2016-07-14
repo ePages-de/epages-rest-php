@@ -116,8 +116,8 @@ class Currencies {
 
 		self::errorReset();
 		self::reload();
-
-		if (array_key_exists($currency, self::$ITEMS)) {
+		
+		if (InputValidator::isExistsArrayKey(self::$ITEMS, $currency)) {
 
 			self::$USED = $currency;
 			return true;

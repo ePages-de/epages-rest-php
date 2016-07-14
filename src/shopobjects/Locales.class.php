@@ -118,7 +118,7 @@ class Locales {
 		self::errorReset();
 		self::reload();
 
-		if (array_key_exists($locale, self::$ITEMS)) {
+		if (InputValidator::isExistsArrayKey(self::$ITEMS, $locale)) {
 
 			self::$USED = $locale;
 			return true;

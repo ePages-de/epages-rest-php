@@ -45,7 +45,6 @@ require_once(__DIR__ . "/shopobjects/price/PriceTaxModel.enum.php");
 require_once(__DIR__ . "/shopobjects/price/PriceWithQuantity.class.php");
 require_once(__DIR__ . "/shopobjects/price/ProductPrice.class.php");
 require_once(__DIR__ . "/shopobjects/price/ProductPriceType.enum.php");
-require_once(__DIR__ . "/shopobjects/price/ProductPriceWithQuantity.class.php");
 require_once(__DIR__ . "/shopobjects/product/Product.class.php");
 require_once(__DIR__ . "/shopobjects/product/ProductAttribute.class.php");
 require_once(__DIR__ . "/shopobjects/product/ProductFilter.class.php");

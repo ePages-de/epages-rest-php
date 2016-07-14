@@ -13,9 +13,10 @@ namespace ep6;
  * @package ep6
  * @see ErrorReporting This trait gives the error reporting functionality.
  * @since 0.1.2
+ * @since 0.2.0 Extends from ProductPriceWithQuantity
  * @subpackage Shopobjects\Price
  */
-class ProductPrice extends Price {
+class ProductPrice extends PriceWithQuantity {
 
 	use ErrorReporting;
 
@@ -32,9 +33,11 @@ class ProductPrice extends Price {
 	 * @param String $productID The product ID to which this price belongs.
 	 * @param ProductPriceType $type The type of the product price.
 	 * @param mixed[] $priceParameter The price parameter.
+	 * @param mixed[] $quantityParameter The quantity parameter.
 	 * @since 0.1.2
+	 * @since 0.2.0 Merge with ProductPriceWithQuantity.
 	 */
-	public function __construct($productID, $type, $priceParameter) {
+	public function __construct($productID, $type, $priceParameter, $quantityParameter) {
 
 		// if the first parameter is no product ID
 		if (!InputValidator::isProductID($productID)) {
@@ -46,7 +49,7 @@ class ProductPrice extends Price {
 
 		$this->productID = $productID;
 		$this->type = $type;
-		parent::__construct($priceParameter);
+		parent::__construct($priceParameter, $quantityParameter);
 	}
 
 	/**
@@ -57,6 +60,7 @@ class ProductPrice extends Price {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @return String The Product Price as a string.
 	 * @since 0.1.2
+	 * @since 0.2.0 Add quantity.
 	 */
 	public function __toString() {
 
@@ -64,7 +68,9 @@ class ProductPrice extends Price {
 				"<strong>Amount:</strong> " . $this->amount . "<br/>" .
 				"<strong>Tax type:</strong> " . $this->taxType . "<br/>" .
 				"<strong>Currency:</strong> " . $this->currency . "<br/>" .
-				"<strong>Formatted:</strong> " . $this->formatted . "<br/>";
+				"<strong>Formatted:</strong> " . $this->formatted . "<br/>".
+				"<strong>Quantity amount:</strong> " . $this->quantityAmount . "<br/>" .
+				"<strong>Quantity unit:</strong> " . $this->quantityUnit . "<br/>";
 	}
 
 	/**
