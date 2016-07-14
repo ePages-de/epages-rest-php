@@ -4,12 +4,8 @@
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
- * @since 0.2.0 Add Guzzle REST client.
  */
 namespace ep6;
-
-# load required composer libraries
-require(__DIR__ . "/vendor/autoload.php");
 
 # include framework configuration
 require_once(__DIR__ . "/configuration/config.php");
@@ -558,8 +554,6 @@ class Shop {
 		}
 
 		$content = RESTClient::send();
-
-		print_r($content);
 
 		// if respond has no name, slogan, logoUrl, sfUrl and mboUrl
 		if (InputValidator::isExistsArrayKey($content, "name") ||

@@ -9,7 +9,6 @@ Just sign up for the [ePages Developer Program](http://www.epages.cloud/develope
 To use this SDK, you'll need:
 
 * at least **PHP 5.5**
-* [Guzzle](https://github.com/guzzle/guzzle) (for REST and Logging)
 
 All dependencies comes automatically with the client and could be updated via composer.
 
@@ -22,11 +21,11 @@ Just search for [epages/rest-sdk](https://packagist.org/packages/epages/rest-sdk
 ```php
 {
    "require": {
-      "php": ">=5.5.0",
+      "php": ">=5.4.0",
       "epages/rest-sdk": ">=0.2"
     }
 }
-``
+```
 
 ### Direct download
 To use the client directly without getting composer just download the **.phar** archive and include it.
