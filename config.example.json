@@ -1,0 +1,12 @@
+{
+    "logging":
+    {
+        "level":        "NOTIFICATION",
+        "output":       "SCREEN",
+        "outputfile":   null
+    },
+    "formatting":
+    {
+        "format":   "HTML"
+    }
+}

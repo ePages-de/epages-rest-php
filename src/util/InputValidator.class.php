@@ -115,6 +115,19 @@ class InputValidator {
 	}
 
 	/**
+	 * Checks whether the parameter is an existing file.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param float $parameter File with path to check.
+	 * @return boolean True if the parameter is an existing file, false if not.
+	 * @since 0.2.0
+	 */
+	public static function isExistingFile($parameter) {
+
+		return !self::isEmpty($parameter) && file_exists($parameter);
+	}
+
+	/**
 	 * Checks whether a parameter is a float.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>

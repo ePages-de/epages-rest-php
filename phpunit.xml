@@ -7,7 +7,10 @@
 			<file>tests/ShopTest.php</file>
 		</testsuite>
 		<testsuite name="InputValidator Test">
-			<file>tests/InputValidator.php</file>
+			<file>tests/InputValidatorTest.php</file>
+		</testsuite>
+		<testsuite name="ConfigLoader Test">
+			<file>tests/ConfigLoaderTest.php</file>
 		</testsuite>
 	</testsuites>
 	<groups>

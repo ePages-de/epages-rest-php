@@ -113,7 +113,7 @@ trait ErrorReporting {
 	 */
 	public static function errorMessage() {
 
-		return self::$error() ? self::$ERRORMESSAGES[self::errorNumber()] : null;
+		return self::error() ? self::$ERRORMESSAGES[self::errorNumber()] : null;
 	}
 
 	/**

@@ -43,6 +43,24 @@ To use the SDK, you simply have to include it.
 require_once("libraries/epages-rest-php.phar");
 ```
 
+## Configuration
+You can configure it with putting a **config.json** into you main directory.
+Just copy the **config.example.json** from GitHub or create a new one:
+```javascript
+{
+    "logging":
+    {
+        "level":        "NONE",
+        "output":       "SCREEN",
+        "outputfile":   null
+    },
+    "formatting":
+    {
+        "format":   "HTML"
+    }
+}
+```
+
 ## Version information
 
 The following information are provided with the ePages REST SDK until now.

@@ -4,6 +4,7 @@
  *
  * @author David Pauli <contact@david-pauli.de>
  * @since 0.0.0
+ * @since 0.2.0 Add automaticallly configuration possibility.
  */
 namespace ep6;
 
@@ -20,6 +21,7 @@ require_once(__DIR__ . "/util/Logger.class.php");
 require_once(__DIR__ . "/util/LogLevel.enum.php");
 require_once(__DIR__ . "/util/LogOutput.enum.php");
 require_once(__DIR__ . "/util/RESTClient.class.php");
+require_once(__DIR__ . "/util/ConfigLoader.class.php");
 # include shopobjects
 require_once(__DIR__ . "/shopobjects/Currencies.class.php");
 require_once(__DIR__ . "/shopobjects/Locales.class.php");
@@ -48,6 +50,9 @@ require_once(__DIR__ . "/shopobjects/product/Product.class.php");
 require_once(__DIR__ . "/shopobjects/product/ProductAttribute.class.php");
 require_once(__DIR__ . "/shopobjects/product/ProductFilter.class.php");
 require_once(__DIR__ . "/shopobjects/product/ProductSlideshow.class.php");
+
+// Load configuration if some exists
+ConfigLoader::autoload("config.json");
 
 /**
  * This is the epages 6 shop object.

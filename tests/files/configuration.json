@@ -1,0 +1,12 @@
+{
+    "logging":
+    {
+        "level":        "NONE",
+        "output":       "SCREEN",
+        "outputfile":   null
+    },
+    "formatting":
+    {
+        "format":   "HTML"
+    }
+}
