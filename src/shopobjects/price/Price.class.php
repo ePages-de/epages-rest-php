@@ -49,14 +49,10 @@ class Price {
 				$this->amount = $priceParameter['amount'];
 			}
 
-			if (!InputValidator::isEmptyArrayKey($priceParameter, "taxType")) {
-
-				if ($priceParameter['taxType'] == "GROSS") {
-					$this->taxType = PriceTaxModel::GROSS;
-				}
-				else {
-					$this->taxType = PriceTaxModel::NET;
-				}
+			if (!InputValidator::isEmptyArrayKey($priceParameter, "taxType") &&
+				($priceParameter['taxType'] == PriceTaxModel::GROSS ||
+				$priceParameter['taxType'] == PriceTaxModel::NET)) {
+				$this->taxType = $priceParameter['taxType'];
 			}
 
 			if (!InputValidator::isEmptyArrayKey($priceParameter, "currency")) {

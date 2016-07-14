@@ -47,8 +47,10 @@ require_once(__DIR__ . "/shopobjects/price/ProductPrice.class.php");
 require_once(__DIR__ . "/shopobjects/price/ProductPriceType.enum.php");
 require_once(__DIR__ . "/shopobjects/product/Product.class.php");
 require_once(__DIR__ . "/shopobjects/product/ProductAttribute.class.php");
+require_once(__DIR__ . "/shopobjects/product/ProductAvailibility.enum.php");
 require_once(__DIR__ . "/shopobjects/product/ProductFilter.class.php");
 require_once(__DIR__ . "/shopobjects/product/ProductSlideshow.class.php");
+require_once(__DIR__ . "/shopobjects/quantity/Quantity.class.php");
 
 // Load configuration if some exists
 ConfigLoader::autoload("config.json");

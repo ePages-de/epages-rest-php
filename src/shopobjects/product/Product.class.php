@@ -24,6 +24,7 @@ namespace ep6;
  * @since 0.1.2 Insert the Setters.
  * @since 0.1.2 Add error reporting.
  * @since 0.2.0 Use ProductPrice for the price.
+ * @since 0.2.0 Add missing Product attributes.
  * @subpackage Shopobjects\Product
  */
 class Product {
@@ -42,6 +43,9 @@ class Product {
 	/** @var ProductAttribute[] This array saves all the attributes. */
 	private $attributes = array();
 
+	/** @var ProductAvailibility|null Is this product availible or not. */
+	private $availibility = null;
+
 	/** @var String|null The text of availibility. */
 	private $availibilityText = null;
 
@@ -53,6 +57,12 @@ class Product {
 
 	/** @var String|null The description. */
 	private $description = null;
+	
+	/** @var String|null Information about how long the delivery period is. */
+	private $deliveryPeriod = null;
+	
+	/** @var Quantity|null The quantity how many weight has the product. */
+	private $deliveryWeight = null;
 
 	/** @var String|null Space to save the EAN. */
 	private $ean = null;
@@ -62,6 +72,9 @@ class Product {
 
 	/** @var String|null This is the energy label. */
 	private $energyLabelsString = null;
+
+	/** @var URL|null The URL to the energy label file. */
+	private $energyLabelSourceFile = null;
 
 	/** @var String|null This are the essential features. */
 	private $essentialFeatures = null;
@@ -107,6 +120,9 @@ class Product {
 
 	/** @var String|null Space to save the UPC. */
 	private $upc = null;
+	
+	/** @var boolean Is this product visible. */
+	private $visible = true;
 
 	/** @var ProductPrice|null Here the price with deposit is saved. */
 	private $withDepositPrice = null;
@@ -154,6 +170,7 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @return String The Product as a string.
 	 * @since 0.1.1
+	 * @since 0.2.0 Add new attributes.
 	 */
 	public function __toString() {
 
@@ -167,7 +184,12 @@ class Product {
 				"<strong>Images:</strong> " . print_r($this->images) . "<br/>" .
 				"<strong>Price:</strong> " . $this->price . "<br/>" .
 				"<strong>Deposit price:</strong> " . $this->depositPrice . "<br/>" .
-				"<strong>Ecoparticipation price:</strong> " . $this->ecoParticipationPrice . "<br/>";
+				"<strong>Ecoparticipation price:</strong> " . $this->ecoParticipationPrice . "<br/>" .
+				"<strong>Visible:</strong> " . $this->visible . "<br/>" .
+				"<strong>Delivery Period:</strong> " . $this->deliveryPeriod . "<br/>" .
+				"<strong>Delivery Weight:</strong> " . $this->deliveryWeight . "<br/>" .
+				"<strong>Availibility:</strong> " . $this->availibility . "<br/>" .
+				"<strong>Energy Label Source File:</strong> " . $this->energyLabelSourceFile . "<br/>";
 	}
 
 	/**
@@ -282,6 +304,20 @@ class Product {
 	}
 
 	/**
+	 * Returns the availibility.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return ProductAvailibility The status of the availibility.
+	 * @since 0.2.0
+	 */
+	public function getAvailibility() {
+
+		self::errorReset();
+		$this->reload();
+		return $this->availibility;
+	}
+
+	/**
 	 * Returns the availibility text.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
@@ -313,6 +349,34 @@ class Product {
 		self::errorReset();
 		$this->reload();
 		return $this->basePrice;
+	}
+
+	/**
+	 * Returns the delivery period.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String Gets the delivery period information.
+	 * @since 0.2.0
+	 */
+	public function getDeliveryPeriod() {
+
+		self::errorReset();
+		$this->reload();
+		return $this->deliveryPeriod;
+	}
+
+	/**
+	 * Returns the delivery weight.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return Quantity Gets the delivery weight information.
+	 * @since 0.2.0
+	 */
+	public function getDeliveryWeight() {
+
+		self::errorReset();
+		$this->reload();
+		return $this->deliveryWeight;
 	}
 
 	/**
@@ -389,6 +453,20 @@ class Product {
 	 * @since 0.1.3 Add reload feature.
 	 */
 	public function getEnergyLabelsString() {
+
+		self::errorReset();
+		$this->reload();
+		return $this->energyLabelsString;
+	}
+
+	/**
+	 * Returns the energy label source file object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return URL Gets the energy label source file URL object.
+	 * @since 0.2.0
+	 */
+	public function getEnergyLabelSourceFile() {
 
 		self::errorReset();
 		$this->reload();
@@ -762,6 +840,20 @@ class Product {
 		self::errorReset();
 		$this->reload();
 		return $this->specialOffer;
+	}
+
+	/**
+	 * Returns true if the product is visible.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return boolean True if it is visible, false if not.
+	 * @since 0.2.0
+	 */
+	public function isVisible() {
+
+		self::errorReset();
+		$this->reload();
+		return $this->visible;
 	}
 
 	/**
@@ -1267,6 +1359,34 @@ class Product {
 			if (!InputValidator::isEmptyArrayKey($productParameter, "searchKeywords")) {
 
 				$this->searchKeywords = $productParameter['searchKeywords'];
+			}
+
+			if (!InputValidator::isEmptyArrayKey($productParameter, "visibility")) {
+
+				$this->visibility = $productParameter['visibility'];
+			}
+
+			if (!InputValidator::isEmptyArrayKey($productParameter, "deliveryPeriod")) {
+
+				$this->deliveryPeriod = $productParameter['deliveryPeriod'];
+			}
+
+			if (!InputValidator::isEmptyArrayKey($productParameter, "deliveryWeight")) {
+
+				$this->deliveryWeight = new Quantity($productParameter['deliveryWeight']);
+			}
+
+			if (!InputValidator::isEmptyArrayKey($productParameter, "availibility") &&
+				($productParameter['availibility'] == ProductAvailibility::ONSTOCK ||
+				$productParameter['availibility'] == ProductAvailibility::WARNSTOCK ||
+				$productParameter['availibility'] == ProductAvailibility::OUTSTOCK)) {
+
+				$this->availibility = $productParameter['availibility'];
+			}
+
+			if (!InputValidator::isEmptyArrayKey($productParameter, "energyLabelSourceFile")) {
+
+				$this->energyLabelSourceFile = $productParameter['energyLabelSourceFile'];
 			}
 
 			// parse images

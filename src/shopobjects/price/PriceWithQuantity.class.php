@@ -87,7 +87,6 @@ class PriceWithQuantity extends Price {
 	 * Returns the quantity unit.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @param String $locale The localization.
 	 * @return String Gets the quantity unit.
 	 * @since 0.1.0
 	 * @since 0.1.1 No locale parameter is needed.
