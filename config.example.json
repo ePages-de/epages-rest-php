@@ -7,6 +7,27 @@
     },
     "formatting":
     {
-        "format":   "HTML"
+        "image":
+        {
+            "formatters": ["IMAGE", "NEWLINE"],
+            "classes": ["testClass1", "testClass2"],
+            "id": "testID",
+            "attributes":
+            {
+                "testAttribute1": "testValue1",
+                "testAttribute2": "testValue2"
+            }
+        },
+        "bold":
+        {
+            "formatters": ["BOLD", "NEWLINE"],
+            "classes": ["testClass1", "testClass2"],
+            "id": "testID",
+            "attributes":
+            {
+                "testAttribute1": "testValue1",
+                "testAttribute2": "testValue2"
+            }
+        }
     }
 }

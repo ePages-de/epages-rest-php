@@ -21,7 +21,8 @@ require_once(__DIR__ . "/util/Logger.class.php");
 require_once(__DIR__ . "/util/LogLevel.enum.php");
 require_once(__DIR__ . "/util/LogOutput.enum.php");
 require_once(__DIR__ . "/util/RESTClient.class.php");
-require_once(__DIR__ . "/util/ConfigLoader.class.php");
+require_once(__DIR__ . "/util/Formatter.class.php");
+require_once(__DIR__ . "/util/FormatterType.enum.php");
 # include shopobjects
 require_once(__DIR__ . "/shopobjects/Currencies.class.php");
 require_once(__DIR__ . "/shopobjects/Locales.class.php");
@@ -53,7 +54,7 @@ require_once(__DIR__ . "/shopobjects/product/ProductSlideshow.class.php");
 require_once(__DIR__ . "/shopobjects/quantity/Quantity.class.php");
 
 // Load configuration if some exists
-ConfigLoader::autoload("config.json");
+require_once(__DIR__ . "/autoload.php");
 
 /**
  * This is the epages 6 shop object.

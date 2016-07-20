@@ -141,6 +141,20 @@ class InputValidator {
 	}
 
 	/**
+	 * Checks whether a parameter is a FormatterType.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param String $parameter Parameter to check.
+	 * @return boolean True if the parameter is a FormatterType, false if not.
+	 * @since 0.2.0
+	 */
+	public static function isFormatterType($parameter) {
+
+		return self::isMatchRegex($parameter, "/^(IMAGE|BOLD|ITALIC|HYPERLINK|NEWLINE)/", "FormatterType")
+			&& !self::isEmpty($parameter);
+	}
+
+	/**
 	 * Checks whether a parameter is a host.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
