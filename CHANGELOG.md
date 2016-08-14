@@ -1,3 +1,23 @@
+# 0.1.2 (15.08.2016)
+
+## Enhancements
+- #6 Get orders.
+- #41 Extend logging and log into a file.
+- #64 Refresh product.
+- #118 Add configuration file.
+- #132 Get shop data.
+- #139 Create Product object with product ID.
+- #152 Change ProductPrice behaviour.
+
+## Bugfixes
+- #122 Move InformationTrait file.
+- #143 Delete InputValidator::isRESTCommand function.
+- #156 Fix using other shop locale.
+
+## Features
+- #74 Format output automatically.
+- #161 Set order information.
+
 # 0.1.2 (04.04.2016)
 
 ## Enhancements
