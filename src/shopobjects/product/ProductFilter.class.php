@@ -174,6 +174,7 @@ class ProductFilter {
 	 * @since 0.1.1 Unstatic every attributes.
 	 * @since 0.1.2 Add error reporting.
 	 * @since 0.1.3 Get all results.
+	 * @since 0.2.0 Set error message for empty responses to notify.
 	 * @return Product[] Returns an array of products.
 	 */
 	public function getProducts() {
@@ -195,7 +196,7 @@ class ProductFilter {
 		if (InputValidator::isEmpty($content)) {
 
 			$this->errorSet("PF-8");
-		    Logger::error("ep6\ProductFilter\nREST respomd for getting products is empty.");
+		    Logger::notify("ep6\ProductFilter\nREST respomd for getting products is empty.");
 			return;
 		}
 

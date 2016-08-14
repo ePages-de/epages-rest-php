@@ -54,6 +54,21 @@ class PaymentMethod {
 	}
 
 	/**
+	 * Prints the Payment Method object as a string.
+	 *
+	 * This function returns the setted values of the Payment Method object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String The Payment Method as a string.
+	 * @since 0.2.0
+	 */
+	public function __toString() {
+
+		return "<strong>Payment Method ID:</strong> " . $this->paymentMethodId . "<br/>" .
+				"<strong>Name:</strong> " . $this->name . "<br/>";
+	}
+
+	/**
 	 * Returns the ID of the payment method.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>

@@ -54,6 +54,32 @@ class Date {
 	}
 
 	/**
+	 * Prints the Date object as a string.
+	 *
+	 * This function returns the setted values of the Date object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String The Date as a string.
+	 * @since 0.2.0
+	 */
+	public function __toString() {
+
+		return "<strong>Timestamp:</strong> " . $this->timestamp . "<br/>" .
+			"<strong>Readable:</strong> " . $this->asReadable() . "<br/>";
+	}
+	
+	/**
+	 * Gets the Date object in readable format for REST communication.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String The readable format of the Date object.
+	 * @since 0.2.0
+	 */
+	public function asReadable() {
+		return date("Y-m-d\TH:i:s.000\Z", $this->timestamp);
+	}
+
+	/**
 	 * Returns the date es timestamp.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>

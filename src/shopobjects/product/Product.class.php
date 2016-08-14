@@ -862,12 +862,13 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @param String $description The new description.
 	 * @since 0.1.2
+	 * @since 0.2.0 Fix function call.
 	 */
 	public function setDescription($description) {
 
 		self::errorReset();
 
-		$this->setAtribute("/description", $dscription);
+		$this->setAttribute("/description", $dscription);
 	}
 
 	/**
@@ -876,12 +877,13 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @param String $ean The new EAN.
 	 * @since 0.1.2
+	 * @since 0.2.0 Fix function call.
 	 */
 	public function setEAN($ean) {
 
 		self::errorReset();
 
-		$this->setAtribute("/ean", $ean);
+		$this->setAttribute("/ean", $ean);
 	}
 
 	/**
@@ -890,12 +892,13 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @param String $energyLabelsString The new energy labels string.
 	 * @since 0.1.2
+	 * @since 0.2.0 Fix function call.
 	 */
 	public function setEnergyLabelsString($energyLabelsString) {
 
 		self::errorReset();
 
-		$this->setAtribute("/energyLabelsString", $energyLabelsString);
+		$this->setAttribute("/energyLabelsString", $energyLabelsString);
 	}
 
 	/**
@@ -904,12 +907,13 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @param String $essentialFeatures The new essential features.
 	 * @since 0.1.2
+	 * @since 0.2.0 Fix function call.
 	 */
 	public function setEssentialFeatures($essentialFeatures) {
 
 		self::errorReset();
 
-		$this->setAtribute("/essentialFeatures", $essentialFeatures);
+		$this->setAttribute("/essentialFeatures", $essentialFeatures);
 	}
 
 	/**
@@ -918,12 +922,13 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @param String $manufacturer The new manufacturer.
 	 * @since 0.1.2
+	 * @since 0.2.0 Fix function call.
 	 */
 	public function setManufacturer($manufacturer) {
 
 		self::errorReset();
 
-		$this->setAtribute("/manufacturer", $manufacturer);
+		$this->setAttribute("/manufacturer", $manufacturer);
 	}
 
 	/**
@@ -932,12 +937,13 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @param String $name The new name.
 	 * @since 0.1.2
+	 * @since 0.2.0 Fix function call.
 	 */
 	public function setName($name) {
 
 		self::errorReset();
 
-		$this->setAtribute("/name", $name);
+		$this->setAttribute("/name", $name);
 	}
 
 	/**
@@ -946,12 +952,13 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @param String $number The new product number.
 	 * @since 0.1.2
+	 * @since 0.2.0 Fix function call.
 	 */
 	public function setNumber($number) {
 
 		self::errorReset();
 
-		$this->setAtribute("/productNumber", $number);
+		$this->setAttribute("/productNumber", $number);
 	}
 
 	/**
@@ -960,12 +967,13 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @param String $searchKeywords The new $search keywords.
 	 * @since 0.1.2
+	 * @since 0.2.0 Fix function call.
 	 */
 	public function setSearchKeywords($searchKeywords) {
 
 		self::errorReset();
 
-		$this->setAtribute("/searchKeywords", $searchKeywords);
+		$this->setAttribute("/searchKeywords", $searchKeywords);
 	}
 
 	/**
@@ -974,12 +982,13 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @param String $shortDescription The new short description.
 	 * @since 0.1.2
+	 * @since 0.2.0 Fix function call.
 	 */
 	public function setShortDescription($shortDescription) {
 
 		self::errorReset();
 
-		$this->setAtribute("/shortDescription", $shortDescription);
+		$this->setAttribute("/shortDescription", $shortDescription);
 	}
 
 	/**
@@ -988,12 +997,13 @@ class Product {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @param String $upc The new UPC.
 	 * @since 0.1.2
+	 * @since 0.2.0 Fix function call.
 	 */
 	public function setUPC($upc) {
 
 		self::errorReset();
 
-		$this->setAtribute("/upc", $upc);
+		$this->setAttribute("/upc", $upc);
 	}
 
 	/**
@@ -1001,6 +1011,7 @@ class Product {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.2
+	 * @since 0.2.0 Fix function call.
 	 */
 	public function unsetDescription() {
 
@@ -1516,7 +1527,7 @@ class Product {
 		$productParameter = RESTClient::send(self::RESTPATH, $parameter);
 
 		// update the product
-		$this->patseData($productParameter);
+		$this->parseData($productParameter);
 	}
 }
 ?>

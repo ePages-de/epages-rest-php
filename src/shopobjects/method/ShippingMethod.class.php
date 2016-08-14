@@ -54,6 +54,21 @@ class ShippingMethod {
 	}
 
 	/**
+	 * Prints the Shipping Method object as a string.
+	 *
+	 * This function returns the setted values of the Shipping Method object.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String The Shipping Method as a string.
+	 * @since 0.2.0
+	 */
+	public function __toString() {
+
+		return "<strong>Shipping Method ID:</strong> " . $this->shippingMethodId . "<br/>" .
+				"<strong>Name:</strong> " . $this->name . "<br/>";
+	}
+
+	/**
 	 * Returns the ID of the shipping method.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>

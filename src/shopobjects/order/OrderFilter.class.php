@@ -202,6 +202,7 @@ class OrderFilter {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.3
+	 * @since 0.2.0 Set error message for empty responses to notify.
 	 * @return Order[] Returns an array of orders.
 	 */
 	public function getOrders() {
@@ -223,7 +224,7 @@ class OrderFilter {
 		if (InputValidator::isEmpty($content)) {
 
 			$this->errorSet("OF-1");
-		    Logger::error("ep6\OrderFilter\nREST respomd for getting orders is empty.");
+		    Logger::notify("ep6\OrderFilter\nREST respond for getting orders is empty.");
 			return;
 		}
 
@@ -704,6 +705,27 @@ class OrderFilter {
 
 		$this->errorReset();
 		$this->isPending = true;
+	}
+
+	/**
+	 * This function sets the product ID to search.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param String $productId The product ID to filter.
+	 * @return boolean True if setting works, false if not.
+	 * @since 0.2.0
+	 */
+	public function setProductId($productId) {
+
+		$this->errorReset();
+
+		if (InputValidator::isEmpty($productId)) {
+
+			return false;
+		}
+
+		$this->productId = $productId;
+		return true;
 	}
 
 	/**

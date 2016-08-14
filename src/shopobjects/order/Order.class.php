@@ -126,12 +126,12 @@ class Order {
 	}
 
 	/**
-	 * Prints the Product object as a string.
+	 * Prints the Order object as a string.
 	 *
-	 * This function returns the setted values of the Product object.
+	 * This function returns the setted values of the Order object.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @return String The Product as a string.
+	 * @return String The Order as a string.
 	 * @since 0.1.1
 	 */
 	public function __toString() {
@@ -648,6 +648,202 @@ class Order {
 	}
 
 	/**
+	 * Sets the archived on date of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param Date $archivedOn The archivedOn Date.
+	 * @since 0.2.0
+	 */
+	public function setArchiveDate($archivedOn) {
+
+		self::errorReset();
+
+		$this->setAttribute("/archivedOn", $archivedOn->asReadable());
+	}
+	
+	/**
+	 * Sets the billing address of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param Address $billingAddress The billing address.
+	 * @since 0.2.0
+	 */
+	public function setBillingAddress($billingAddress) {
+
+		self::errorReset();
+
+		$this->setAttribute("/billingAddress", $billingAddress->asArray());
+	}
+
+	/**
+	 * Sets the closed on date of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param Date $closedOn The closedOn Date.
+	 * @since 0.2.0
+	 */
+	public function setCloseDate($closedOn) {
+
+		self::errorReset();
+
+		$this->setAttribute("/closedOn", $closedOn->asReadable());
+	}
+
+	/**
+	 * Sets the customer comment of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param String $customerComment The new customer comment.
+	 * @since 0.2.0
+	 */
+	public function setCustomerComment($customerComment) {
+
+		self::errorReset();
+
+		$this->setAttribute("/customerComment", $customerComment);
+	}
+
+	/**
+	 * Sets the delivered on date of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param Date $deliveredOn The deliveredOn Date.
+	 * @since 0.2.0
+	 */
+	public function setDeliveryDate($deliveredOn) {
+
+		self::errorReset();
+
+		$this->setAttribute("/deliveredOn", $deliveredOn->asReadable());
+	}
+
+	/**
+	 * Sets the dispatched on date of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param Date $dispatchedOn The dispatchedOn Date.
+	 * @since 0.2.0
+	 */
+	public function setDispatchDate($dispatchedOn) {
+
+		self::errorReset();
+
+		$this->setAttribute("/dispatchedOn", $dispatchedOn->asReadable());
+	}
+
+	/**
+	 * Sets the internal note of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param String $internalNote The new internal note.
+	 * @since 0.2.0
+	 */
+	public function setInternalNote($internalNote) {
+
+		self::errorReset();
+
+		$this->setAttribute("/internalNote", $internalNote);
+	}
+
+	/**
+	 * Sets the invoiced on date of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param Date $invoicedOn The invoicedOn Date.
+	 * @since 0.2.0
+	 */
+	public function setInvoiceDate($invoicedOn) {
+
+		self::errorReset();
+
+		$this->setAttribute("/invoicedOn", $invoicedOn->asReadable());
+	}
+
+	/**
+	 * Sets the paid on date of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param Date $paidOn The paidOn Date.
+	 * @since 0.2.0
+	 */
+	public function setPayDate($paidOn) {
+
+		self::errorReset();
+
+		$this->setAttribute("/paidOn", $paidOn->asReadable());
+	}
+
+	/**
+	 * Sets the pending on date of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param Date $pendingOn The pendingOn Date.
+	 * @since 0.2.0
+	 */
+	public function setPendingDate($pendingOn) {
+
+		self::errorReset();
+
+		$this->setAttribute("/pendingOn", $pendingOn->asReadable());
+	}
+	
+	/**
+	 * Sets the rejected on date of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param Date $rejectedOn The rejectedOn Date.
+	 * @since 0.2.0
+	 */
+	public function setRejectionDate($rejectedOn) {
+
+		self::errorReset();
+
+		$this->setAttribute("/rejectedOn", $rejectedOn->asReadable());
+	}
+
+	/**
+	 * Sets the returned on date of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param Date $returnedOn The returnedOn Date.
+	 * @since 0.2.0
+	 */
+	public function setReturnDate($returnedOn) {
+
+		self::errorReset();
+
+		$this->setAttribute("/returnedOn", $returnedOn->asReadable());
+	}
+
+	/**
+	 * Sets the shipping address of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param Address $shippingAddress The shipping address.
+	 * @since 0.2.0
+	 */
+	public function setShippingAddress($shippingAddress) {
+
+		self::errorReset();
+
+		$this->setAttribute("/shippingAddress", $shippingAddress->asArray());
+	}
+
+	/**
+	 * Sets the viewed on date of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param Date $viewedOn The viewedOn Date.
+	 * @since 0.2.0
+	 */
+	public function setViewDate($viewedOn) {
+
+		self::errorReset();
+
+		$this->setAttribute("/viewedOn", $viewedOn->asReadable());
+	}
+
+	/**
 	 * Loads the order.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
@@ -745,6 +941,26 @@ class Order {
 				$this->viewDate = new Date($orderParameter['viewedOn']);
 			}
 
+			if (!InputValidator::isEmptyArrayKey($orderParameter, "rejectedOn")) {
+
+				$this->rejectionDate = new Date($orderParameter["rejectedOn"]);
+			}
+
+			if (!InputValidator::isEmptyArrayKey($orderParameter, "closedOn")) {
+
+				$this->closeDate = new Date($orderParameter["closedOn"]);
+			}
+
+			if (!InputValidator::isEmptyArrayKey($orderParameter, "paidOn")) {
+
+				$this->payDate = new Date($orderParameter["paidOn"]);
+			}
+
+			if (!InputValidator::isEmptyArrayKey($orderParameter, "returnedOn")) {
+
+				$this->returnDate = new Date($orderParameter["returnedOn"]);
+			}
+
 			if (!InputValidator::isEmptyArrayKey($orderParameter, "currencyId") &&
 				!InputValidator::isEmptyArrayKey($orderParameter, "taxModel")) {
 
@@ -778,26 +994,6 @@ class Order {
 			if (!InputValidator::isEmptyArrayKey($orderParameter, "internalNote")) {
 
 				$this->internalNote = $orderParameter["internalNote"];
-			}
-
-			if (!InputValidator::isEmptyArrayKey($orderParameter, "rejectedOn")) {
-
-				$this->rejectionDate = new Date($orderParameter["rejectedOn"]);
-			}
-
-			if (!InputValidator::isEmptyArrayKey($orderParameter, "closedOn")) {
-
-				$this->closeDate = new Date($orderParameter["closedOn"]);
-			}
-
-			if (!InputValidator::isEmptyArrayKey($orderParameter, "paidOn")) {
-
-				$this->payDate = new Date($orderParameter["paidOn"]);
-			}
-
-			if (!InputValidator::isEmptyArrayKey($orderParameter, "returnedOn")) {
-
-				$this->returnDate = new Date($orderParameter["returnedOn"]);
 			}
 
 			if (!InputValidator::isEmptyArrayKey($orderParameter, "shippingData")) {
@@ -853,5 +1049,52 @@ class Order {
 
  		$this->load();
  	}
+
+	/**
+	 * Sets an attribute of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param String $path The path to this attribute.
+	 * @param String $value The new attribute value.
+	 * @since 0.2.0
+	 */
+	private function setAttribute($path, $value) {
+
+		// if PATCH does not work
+		if (!RESTClient::setRequestMethod("PATCH")) {
+
+			self::errorSet("RESTC-9");
+			return;
+		}
+
+		$parameter = array("op" => "add", "path" => $path, "value" => $value);
+		$orderParameter = RESTClient::send(self::RESTPATH . "/" . $this->orderId, $parameter);
+
+		// update the order
+		$this->parseData($orderParameter);
+	}
+
+	/**
+	 * Unsets an attribute value of the order.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param String $path The path to this attribute.
+	 * @since 0.2.0
+	 */
+	private function unsetAttribute($path) {
+
+		// if PATCH does not work
+		if (!RESTClient::setRequestMethod("PATCH")) {
+
+			self::errorSet("RESTC-9");
+			return;
+		}
+
+		$parameter = array("op" => "remove", "path" => $path);
+		$productParameter = RESTClient::send(self::RESTPATH, $parameter);
+
+		// update the product
+		$this->parseData($productParameter);
+	}
 }
 ?>
