@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/ep6.html">\ep6</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">11</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-265753481"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-265753481" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1710210282"></a>
+                                <a href="../namespaces/ep6.html" style="margin-left: 30px; padding-left: 0">ep6</a>
+            </div>
+            <div id="namespace-1710210282" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/ep6.ErrorReporting.html">ErrorReporting</a></li>
+                                                    <li class="trait"><a href="../classes/ep6.Information.html">Information</a></li>
+                                                                            <li class="class"><a href="../classes/ep6.Address.html">Address</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ContactInformation.html">ContactInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Currencies.html">Currencies</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Date.html">Date</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Filter.html">Filter</a></li>
+                                                    <li class="class"><a href="../classes/ep6.FilterOperation.html">FilterOperation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Formatter.html">Formatter</a></li>
+                                                    <li class="class"><a href="../classes/ep6.FormatterType.html">FormatterType</a></li>
+                                                    <li class="class"><a href="../classes/ep6.HTTPRequestMethod.html">HTTPRequestMethod</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Image.html">Image</a></li>
+                                                    <li class="class"><a href="../classes/ep6.InputValidator.html">InputValidator</a></li>
+                                                    <li class="class"><a href="../classes/ep6.JSONHandler.html">JSONHandler</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Locales.html">Locales</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Logger.html">Logger</a></li>
+                                                    <li class="class"><a href="../classes/ep6.LogLevel.html">LogLevel</a></li>
+                                                    <li class="class"><a href="../classes/ep6.LogOutput.html">LogOutput</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Order.html">Order</a></li>
+                                                    <li class="class"><a href="../classes/ep6.OrderFilter.html">OrderFilter</a></li>
+                                                    <li class="class"><a href="../classes/ep6.PaymentMethod.html">PaymentMethod</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Price.html">Price</a></li>
+                                                    <li class="class"><a href="../classes/ep6.PriceTaxModel.html">PriceTaxModel</a></li>
+                                                    <li class="class"><a href="../classes/ep6.PriceWithQuantity.html">PriceWithQuantity</a></li>
+                                                    <li class="class"><a href="../classes/ep6.PrivacyPolicyInformation.html">PrivacyPolicyInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Product.html">Product</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductAttribute.html">ProductAttribute</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductAvailibility.html">ProductAvailibility</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductFilter.html">ProductFilter</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductPrice.html">ProductPrice</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductPriceType.html">ProductPriceType</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductSlideshow.html">ProductSlideshow</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Quantity.html">Quantity</a></li>
+                                                    <li class="class"><a href="../classes/ep6.RESTClient.html">RESTClient</a></li>
+                                                    <li class="class"><a href="../classes/ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ShippingInformation.html">ShippingInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ShippingMethod.html">ShippingMethod</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Shop.html">Shop</a></li>
+                                                    <li class="class"><a href="../classes/ep6.TermsAndConditionInformation.html">TermsAndConditionInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.URL.html">URL</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/ep6.html">\ep6</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\ep6</small>ProductFilter</h1>
+                    <p><em>This is a product filter class to search products via the REST call &quot;product&quot;.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/ep6.ErrorReporting.html#method_error" class="">error()</a><br />
+                                                                    <a href="../classes/ep6.ErrorReporting.html#method_errorMessage" class="">errorMessage()</a><br />
+                                                                    <a href="../classes/ep6.ErrorReporting.html#method_errorNumber" class="">errorNumber()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method___toString" class="">__toString()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_addFilter" class="">addFilter()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_getCategoryID" class="">getCategoryID()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_getDirection" class="">getDirection()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_getPage" class="">getPage()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_getProducts" class="">getProducts()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_getQ" class="">getQ()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_getResults" class="">getResults()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_getResultsPerPage" class="">getResultsPerPage()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_getSort" class="">getSort()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_hashCode" class="">hashCode()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_resetFilter" class="">resetFilter()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_resetIDs" class="">resetIDs()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_setCategoryID" class="">setCategoryID()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_setDirection" class="">setDirection()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_setID" class="">setID()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_setPage" class="">setPage()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_setProductFilter" class="">setProductFilter()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_setQ" class="">setQ()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_setResultsPerPage" class="">setResultsPerPage()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_setSort" class="">setSort()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_unsetID" class="">unsetID()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/ep6.ProductFilter.html#constant_RESTPATH" class="">RESTPATH</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/ep6.ErrorReporting.html#method_errorSet" class="">errorSet()</a><br />
+                                                                    <a href="../classes/ep6.ErrorReporting.html#method_errorReset" class="">errorReset()</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#method_getParameter" class="">getParameter()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/ep6.ErrorReporting.html#property_ERRORMESSAGES" class="">$ERRORMESSAGES</a><br />
+                                                                    <a href="../classes/ep6.ErrorReporting.html#property_ERROR" class="">$ERROR</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#property_categoryID" class="">$categoryID</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#property_direction" class="">$direction</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#property_filters" class="">$filters</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#property_IDs" class="">$IDs</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#property_page" class="">$page</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#property_q" class="">$q</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#property_results" class="">$results</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#property_resultsPerPage" class="">$resultsPerPage</a><br />
+                                                                    <a href="../classes/ep6.ProductFilter.html#property_sort" class="">$sort</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/shopobjects.product.ProductFilter.class.html"><div class="path-wrapper">shopobjects/product/ProductFilter.class.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Shopobjects\Product</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\ep6\ProductFilter</div>
+                            </dd>
+
+                        
+                                                                                    <dt>Uses traits</dt>
+                                                        <dd>
+                                <a href="../classes/ep6.ErrorReporting.html">                                    <div class="namespace-wrapper">\ep6\ErrorReporting</div>
+                                </a>                            </dd>
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                since
+                            </th>
+                            <td>
+                                                                    
+                                                                    <p>Use a default Locale and Currency.</p>
+                                                                    <p>The object can be echoed now.</p>
+                                                                    <p>Add error reporting.</p>
+                                                                    <p>Add all results attribute.</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_RESTPATH" name="constant_RESTPATH" class="anchor"></a>
+            <article id="constant_RESTPATH" class="constant">
+                <h3 class="">RESTPATH</h3>
+                <pre class="signature">RESTPATH</pre>
+                <p><em></em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_ERRORMESSAGES" name="property_ERRORMESSAGES" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$ERRORMESSAGES</h3>
+                <pre class="signature">$ERRORMESSAGES : array</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                &mdash; Saves the possibile error messages with the error number.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/ep6.ErrorReporting.html"><div class="path-wrapper">\ep6\ErrorReporting</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_ERROR" name="property_ERROR" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$ERROR</h3>
+                <pre class="signature">$ERROR : String|null</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                String|null
+                &mdash; Saves the last happened error, or null if there is no.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/ep6.ErrorReporting.html"><div class="path-wrapper">\ep6\ErrorReporting</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_categoryID" name="property_categoryID" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$categoryID</h3>
+                <pre class="signature">$categoryID : String|null</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                String|null
+                &mdash; The category id of the product search result.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_direction" name="property_direction" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$direction</h3>
+                <pre class="signature">$direction : String|null</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                String|null
+                &mdash; The sort direction of the product search result.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_filters" name="property_filters" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$filters</h3>
+                <pre class="signature">$filters : \ep6\The</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                \ep6\The
+                &mdash; filter of the Product Filter.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_IDs" name="property_IDs" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$IDs</h3>
+                <pre class="signature">$IDs : array&lt;mixed,String&gt;</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                array&lt;mixed,String&gt;
+                &mdash; The product ids of the product search result.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_page" name="property_page" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$page</h3>
+                <pre class="signature">$page : integer</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                &mdash; The page of the product search result.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_q" name="property_q" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$q</h3>
+                <pre class="signature">$q : String|null</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                String|null
+                &mdash; The search string of the product search result.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_results" name="property_results" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$results</h3>
+                <pre class="signature">$results : integer|null</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                integer|null
+                &mdash; The number of all results.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_resultsPerPage" name="property_resultsPerPage" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$resultsPerPage</h3>
+                <pre class="signature">$resultsPerPage : integer</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                &mdash; The number of results per page of the product search result.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_sort" name="property_sort" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$sort</h3>
+                <pre class="signature">$sort : String</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                String
+                &mdash; The variable to sort the results of the product search result.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_error" name="method_error" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">error()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">error() : boolean</pre>
+                <p><em>Checks whether there was an error or not.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if there was an error, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/ep6.ErrorReporting.html"><div class="path-wrapper">\ep6\ErrorReporting</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.2                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_errorMessage" name="method_errorMessage" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">errorMessage()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">errorMessage() : String|null</pre>
+                <p><em>This function returns the error message of the last happened error.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    String|null
+                                            &mdash; <p>The error message of the last happened error or null if there is no error message.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/ep6.ErrorReporting.html"><div class="path-wrapper">\ep6\ErrorReporting</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.2                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_errorNumber" name="method_errorNumber" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">errorNumber()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">errorNumber() : String|null</pre>
+                <p><em>This function returns the error number of the last happened error.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    String|null
+                                            &mdash; <p>The error number of the last happened error, or null if there is no error.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/ep6.ErrorReporting.html"><div class="path-wrapper">\ep6\ErrorReporting</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.2                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(array&lt;mixed,String&gt;  <span class="argument">$productFilterParameter = array()</span>) </pre>
+                <p><em>This is the constructor to prefill the product filter.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,String&gt;</td>
+                                <td>$productFilterParameter </td>
+                                <td><p>The values of a product filter.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.1                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___toString" name="method___toString" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__toString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__toString() : String</pre>
+                <p><em>Prints the Product Filter object as a string.</em></p>
+                <p>This function returns the setted values of the Product attribute object.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    String
+                                            &mdash; <p>The Product attribute as a string.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.1                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addFilter" name="method_addFilter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addFilter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addFilter(String  <span class="argument">$attribute</span>, String  <span class="argument">$value</span>, \ep6\FilterOperation  <span class="argument">$operator</span>, String  <span class="argument">$type</span>) : boolean</pre>
+                <p><em>This is the function to add a filter.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$attribute </td>
+                                <td><p>The attribute to filter.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>String</td>
+                                <td>$value </td>
+                                <td><p>The value to filter and compare.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/ep6.FilterOperation.html">\ep6\FilterOperation</a></td>
+                                <td>$operator </td>
+                                <td><p>The operation to do.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>String</td>
+                                <td>$type </td>
+                                <td><p>The type of the parameter, like &quot;bool&quot;.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.3                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCategoryID" name="method_getCategoryID" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCategoryID()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCategoryID() : String</pre>
+                <p><em>This function gets the category ID string.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    String
+                                            &mdash; <p>The category ID string of this product filter.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDirection" name="method_getDirection" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDirection()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDirection() : String</pre>
+                <p><em>This function gets the direction.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    String
+                                            &mdash; <p>The direction of this product filter.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getPage" name="method_getPage" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getPage()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getPage() : integer</pre>
+                <p><em>This function gets the page.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The page number of this product filter.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getProducts" name="method_getProducts" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getProducts()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getProducts() : array&lt;mixed,\ep6\Product&gt;</pre>
+                <p><em>This function returns the products by using the product filter.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,<a href="../classes/ep6.Product.html">\ep6\Product</a>&gt;
+                                            &mdash; <p>Returns an array of products.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use a default Locale.</p>
+                                                            0.1.1                                <p>Unstatic every attributes.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                            0.1.3                                <p>Get all results.</p>
+                                                            0.2.0                                <p>Set error message for empty responses to notify.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getQ" name="method_getQ" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getQ()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getQ() : String</pre>
+                <p><em>This function gets the query search string.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    String
+                                            &mdash; <p>The query search string of this product filter.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getResults" name="method_getResults" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getResults()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getResults() : integer</pre>
+                <p><em>This function gets all results.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The results of the request.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.3                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getResultsPerPage" name="method_getResultsPerPage" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getResultsPerPage()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getResultsPerPage() : integer</pre>
+                <p><em>This function gets the results per page.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                            &mdash; <p>The results per page number of this product filter.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSort" name="method_getSort" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSort()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSort() : String</pre>
+                <p><em>This function gets the sort.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    String
+                                            &mdash; <p>The sort of this product filter.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hashCode" name="method_hashCode" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hashCode()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hashCode() : String</pre>
+                <p><em>This function returns the hash code of the object to equals the object.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    String
+                                            &mdash; <p>Returns the hash code of the object.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use a default Locale and Currency.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_resetFilter" name="method_resetFilter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">resetFilter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">resetFilter() </pre>
+                <p><em>This function reset all product IDs from filter.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use a default Locale and Currency.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_resetIDs" name="method_resetIDs" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">resetIDs()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">resetIDs() </pre>
+                <p><em>This function reset all product IDs from filter.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setCategoryID" name="method_setCategoryID" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setCategoryID()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setCategoryID(String  <span class="argument">$categoryID</span>) : boolean</pre>
+                <p><em>This function sets the category ID to show.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$categoryID </td>
+                                <td><p>The category ID to filter.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if setting the category ID string works, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDirection" name="method_setDirection" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDirection()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDirection(String  <span class="argument">$direction</span>) : boolean</pre>
+                <p><em>This function sets the direction to show.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$direction </td>
+                                <td><p>The direction to filter.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if setting the direction works, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setID" name="method_setID" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setID()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setID(String  <span class="argument">$productID</span>) : boolean</pre>
+                <p><em>This function add a product ID from filter.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$productID </td>
+                                <td><p>The product ID to filter.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if setting the product ID string works, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setPage" name="method_setPage" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setPage()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setPage(integer  <span class="argument">$page</span>) : boolean</pre>
+                <p><em>This function sets the page to show.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$page </td>
+                                <td><p>The page number to filter.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if setting the page works, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setProductFilter" name="method_setProductFilter" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setProductFilter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setProductFilter(array&lt;mixed,mixed&gt;  <span class="argument">$productFilterParameter</span>) </pre>
+                <p><em>Fill the product filter with an array.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,mixed&gt;</td>
+                                <td>$productFilterParameter </td>
+                                <td><p>The Product Filter Parameter as an array.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.1                                
+                                                            0.1.0                                <p>Use a default Locale and Currency.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setQ" name="method_setQ" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setQ()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setQ(String  <span class="argument">$q</span>) : boolean</pre>
+                <p><em>This function sets the query search string to show.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$q </td>
+                                <td><p>The query search string to filter.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if setting the query search string works, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setResultsPerPage" name="method_setResultsPerPage" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setResultsPerPage()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setResultsPerPage(integer  <span class="argument">$resultsPerPage</span>) : boolean</pre>
+                <p><em>This function sets the results per page to show.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$resultsPerPage </td>
+                                <td><p>The results per page to filter.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if setting the results per page works, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setSort" name="method_setSort" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setSort()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setSort(String  <span class="argument">$sort</span>) : boolean</pre>
+                <p><em>This function sets the order parameter to show.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$sort </td>
+                                <td><p>The sort parameter to filter.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if setting the sort parameter works, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_unsetID" name="method_unsetID" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">unsetID()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">unsetID(String  <span class="argument">$productID</span>) : boolean</pre>
+                <p><em>This function delete a product ID from filter.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$productID </td>
+                                <td><p>The product ID to unset from filter.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if unsetting the product ID string works, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use attribute unstatic.</p>
+                                                            0.1.2                                <p>Add error reporting.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_errorSet" name="method_errorSet" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">errorSet()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">errorSet(String  <span class="argument">$errorNumber</span>) : True</pre>
+                <p><em>Sets an occured error.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$errorNumber </td>
+                                <td><p>The error number to set.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    True
+                                            &mdash; <p>if the error number is valid, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/ep6.ErrorReporting.html"><div class="path-wrapper">\ep6\ErrorReporting</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.2                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_errorReset" name="method_errorReset" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">errorReset()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">errorReset() </pre>
+                <p><em>Resets the error message.</em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/ep6.ErrorReporting.html"><div class="path-wrapper">\ep6\ErrorReporting</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.2                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getParameter" name="method_getParameter" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">getParameter()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getParameter() : String</pre>
+                <p><em>This function returns the parameter as string.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    String
+                                            &mdash; <p>The parameter build with this product filter.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use a default Locale and Currency.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">ProductFilter.class.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/shopobjects/product/ProductFilter.class.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/ep6.html">\ep6</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on August 15th, 2016 at 00:00.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

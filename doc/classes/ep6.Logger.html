@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/ep6.html">\ep6</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">11</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1886418953"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1886418953" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-764511146"></a>
+                                <a href="../namespaces/ep6.html" style="margin-left: 30px; padding-left: 0">ep6</a>
+            </div>
+            <div id="namespace-764511146" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/ep6.ErrorReporting.html">ErrorReporting</a></li>
+                                                    <li class="trait"><a href="../classes/ep6.Information.html">Information</a></li>
+                                                                            <li class="class"><a href="../classes/ep6.Address.html">Address</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ContactInformation.html">ContactInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Currencies.html">Currencies</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Date.html">Date</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Filter.html">Filter</a></li>
+                                                    <li class="class"><a href="../classes/ep6.FilterOperation.html">FilterOperation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Formatter.html">Formatter</a></li>
+                                                    <li class="class"><a href="../classes/ep6.FormatterType.html">FormatterType</a></li>
+                                                    <li class="class"><a href="../classes/ep6.HTTPRequestMethod.html">HTTPRequestMethod</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Image.html">Image</a></li>
+                                                    <li class="class"><a href="../classes/ep6.InputValidator.html">InputValidator</a></li>
+                                                    <li class="class"><a href="../classes/ep6.JSONHandler.html">JSONHandler</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Locales.html">Locales</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Logger.html">Logger</a></li>
+                                                    <li class="class"><a href="../classes/ep6.LogLevel.html">LogLevel</a></li>
+                                                    <li class="class"><a href="../classes/ep6.LogOutput.html">LogOutput</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Order.html">Order</a></li>
+                                                    <li class="class"><a href="../classes/ep6.OrderFilter.html">OrderFilter</a></li>
+                                                    <li class="class"><a href="../classes/ep6.PaymentMethod.html">PaymentMethod</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Price.html">Price</a></li>
+                                                    <li class="class"><a href="../classes/ep6.PriceTaxModel.html">PriceTaxModel</a></li>
+                                                    <li class="class"><a href="../classes/ep6.PriceWithQuantity.html">PriceWithQuantity</a></li>
+                                                    <li class="class"><a href="../classes/ep6.PrivacyPolicyInformation.html">PrivacyPolicyInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Product.html">Product</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductAttribute.html">ProductAttribute</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductAvailibility.html">ProductAvailibility</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductFilter.html">ProductFilter</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductPrice.html">ProductPrice</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductPriceType.html">ProductPriceType</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductSlideshow.html">ProductSlideshow</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Quantity.html">Quantity</a></li>
+                                                    <li class="class"><a href="../classes/ep6.RESTClient.html">RESTClient</a></li>
+                                                    <li class="class"><a href="../classes/ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ShippingInformation.html">ShippingInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ShippingMethod.html">ShippingMethod</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Shop.html">Shop</a></li>
+                                                    <li class="class"><a href="../classes/ep6.TermsAndConditionInformation.html">TermsAndConditionInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.URL.html">URL</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/ep6.html">\ep6</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\ep6</small>Logger</h1>
+                    <p><em>This is a static object to log messages while executing.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/ep6.Logger.html#method___toString" class="">__toString()</a><br />
+                                                                    <a href="../classes/ep6.Logger.html#method_error" class="">error()</a><br />
+                                                                    <a href="../classes/ep6.Logger.html#method_force" class="">force()</a><br />
+                                                                    <a href="../classes/ep6.Logger.html#method_notify" class="">notify()</a><br />
+                                                                    <a href="../classes/ep6.Logger.html#method_setLogLevel" class="">setLogLevel()</a><br />
+                                                                    <a href="../classes/ep6.Logger.html#method_setOutput" class="">setOutput()</a><br />
+                                                                    <a href="../classes/ep6.Logger.html#method_setOutputFile" class="">setOutputFile()</a><br />
+                                                                    <a href="../classes/ep6.Logger.html#method_warning" class="">warning()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/ep6.Logger.html#method_getStacktrace" class="">getStacktrace()</a><br />
+                                                                    <a href="../classes/ep6.Logger.html#method_printMessage" class="">printMessage()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/ep6.Logger.html#property_LOGLEVEL" class="">$LOGLEVEL</a><br />
+                                                                    <a href="../classes/ep6.Logger.html#property_OUT" class="">$OUT</a><br />
+                                                                    <a href="../classes/ep6.Logger.html#property_OUTPUT_FILE" class="">$OUTPUT_FILE</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/util.Logger.class.html"><div class="path-wrapper">util/Logger.class.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">ep6\Util</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\ep6\Logger</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                since
+                            </th>
+                            <td>
+                                                                    
+                                                                    <p>Use LogLevel and LogOutput</p>
+                                                                    <p>Add functionality to print into files.</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_LOGLEVEL" name="property_LOGLEVEL" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$LOGLEVEL</h3>
+                <pre class="signature">$LOGLEVEL : \ep6\LogLevel</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/ep6.LogLevel.html">\ep6\LogLevel</a>
+                &mdash; The log level describes which error should be logged.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_OUT" name="property_OUT" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$OUT</h3>
+                <pre class="signature">$OUT : \ep6\LogOutput</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/ep6.LogOutput.html">\ep6\LogOutput</a>
+                &mdash; The output value is set to configure where logging message is made.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_OUTPUT_FILE" name="property_OUTPUT_FILE" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$OUTPUT_FILE</h3>
+                <pre class="signature">$OUTPUT_FILE : String</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                String
+                &mdash; The default output file for printing log messages.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___toString" name="method___toString" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__toString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__toString() : String</pre>
+                <p><em>Prints the Logger object as a string.</em></p>
+                <p>This function returns the setted values of the Logger object.</p>
+
+                
+                
+                                    <h4>Returns</h4>
+                    String
+                                            &mdash; <p>The Logger as a string.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.1                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_error" name="method_error" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">error()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">error(String  <span class="argument">$message</span>) </pre>
+                <p><em>This function prints errors.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$message </td>
+                                <td><p>The message to print.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.0.1                                <p>Use LogLevel</p>
+                                                            0.1.2                                <p>Call the printMessage function on another way.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_force" name="method_force" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">force()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">force(String  <span class="argument">$message</span>) </pre>
+                <p><em>This function definitly prints the message.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$message </td>
+                                <td><p>The message to print.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.0.1                                <p>Use LogLevel</p>
+                                                            0.1.2                                <p>Call the printMessage function on another way.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_notify" name="method_notify" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">notify()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">notify(String  <span class="argument">$message</span>) </pre>
+                <p><em>This function prints notifications.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$message </td>
+                                <td><p>The message to print.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.0.1                                <p>Use LogLevel</p>
+                                                            0.1.2                                <p>Call the printMessage function on another way.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setLogLevel" name="method_setLogLevel" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setLogLevel()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setLogLevel(\ep6\LogLevel  <span class="argument">$level</span>) </pre>
+                <p><em>This function sets the log level.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/ep6.LogLevel.html">\ep6\LogLevel</a></td>
+                                <td>$level </td>
+                                <td><p>The log level to set.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.0.1                                <p>Use LogLevel enum.</p>
+                                                            0.0.3                                <p>Set php error reporting automatically in developing systems.</p>
+                                                            0.1.2                                <p>epages-rest-php log level will not take effect in PHP log level.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setOutput" name="method_setOutput" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setOutput()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setOutput(\ep6\LogOutput  <span class="argument">$out</span>) </pre>
+                <p><em>This function sets the output ressource.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/ep6.LogOutput.html">\ep6\LogOutput</a></td>
+                                <td>$out </td>
+                                <td><p>The resource to output.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.0.1                                <p>Use LogOutput enum.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setOutputFile" name="method_setOutputFile" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setOutputFile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setOutputFile(String  <span class="argument">$filename</span>) </pre>
+                <p><em>This function sets the output file.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$filename </td>
+                                <td><p>The filename of the new output file with path on the server.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.2                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_warning" name="method_warning" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">warning()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">warning(String  <span class="argument">$message</span>) </pre>
+                <p><em>This function prints warnings.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$message </td>
+                                <td><p>The message to print.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.0.1                                <p>Use LogLevel</p>
+                                                            0.1.2                                <p>Call the printMessage function on another way.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getStacktrace" name="method_getStacktrace" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">getStacktrace()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getStacktrace() : String</pre>
+                <p><em>This function returns the stacktrace.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    String
+                                            &mdash; <p>The Stacktrace.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.2                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_printMessage" name="method_printMessage" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">printMessage()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">printMessage(String  <span class="argument">$message</span>, boolean  <span class="argument">$showStacktrace = false</span>) </pre>
+                <p><em>This function finally prints the message.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$message </td>
+                                <td><p>The message to print.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$showStacktrace </td>
+                                <td><p>= 'false' True if a stacktrace show be shown, false if not.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.0.1                                <p>Restructor the output message.</p>
+                                                            0.1.2                                <p>Restructure log message and print to file.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Logger.class.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/util/Logger.class.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/ep6.html">\ep6</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on August 15th, 2016 at 00:00.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

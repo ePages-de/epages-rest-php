@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/ep6.html">\ep6</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">11</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-280716953"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-280716953" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-21274273"></a>
+                                <a href="../namespaces/ep6.html" style="margin-left: 30px; padding-left: 0">ep6</a>
+            </div>
+            <div id="namespace-21274273" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/ep6.ErrorReporting.html">ErrorReporting</a></li>
+                                                    <li class="trait"><a href="../classes/ep6.Information.html">Information</a></li>
+                                                                            <li class="class"><a href="../classes/ep6.Address.html">Address</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ContactInformation.html">ContactInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Currencies.html">Currencies</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Date.html">Date</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Filter.html">Filter</a></li>
+                                                    <li class="class"><a href="../classes/ep6.FilterOperation.html">FilterOperation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Formatter.html">Formatter</a></li>
+                                                    <li class="class"><a href="../classes/ep6.FormatterType.html">FormatterType</a></li>
+                                                    <li class="class"><a href="../classes/ep6.HTTPRequestMethod.html">HTTPRequestMethod</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Image.html">Image</a></li>
+                                                    <li class="class"><a href="../classes/ep6.InputValidator.html">InputValidator</a></li>
+                                                    <li class="class"><a href="../classes/ep6.JSONHandler.html">JSONHandler</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Locales.html">Locales</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Logger.html">Logger</a></li>
+                                                    <li class="class"><a href="../classes/ep6.LogLevel.html">LogLevel</a></li>
+                                                    <li class="class"><a href="../classes/ep6.LogOutput.html">LogOutput</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Order.html">Order</a></li>
+                                                    <li class="class"><a href="../classes/ep6.OrderFilter.html">OrderFilter</a></li>
+                                                    <li class="class"><a href="../classes/ep6.PaymentMethod.html">PaymentMethod</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Price.html">Price</a></li>
+                                                    <li class="class"><a href="../classes/ep6.PriceTaxModel.html">PriceTaxModel</a></li>
+                                                    <li class="class"><a href="../classes/ep6.PriceWithQuantity.html">PriceWithQuantity</a></li>
+                                                    <li class="class"><a href="../classes/ep6.PrivacyPolicyInformation.html">PrivacyPolicyInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Product.html">Product</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductAttribute.html">ProductAttribute</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductAvailibility.html">ProductAvailibility</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductFilter.html">ProductFilter</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductPrice.html">ProductPrice</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductPriceType.html">ProductPriceType</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ProductSlideshow.html">ProductSlideshow</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Quantity.html">Quantity</a></li>
+                                                    <li class="class"><a href="../classes/ep6.RESTClient.html">RESTClient</a></li>
+                                                    <li class="class"><a href="../classes/ep6.RightsOfWithdrawalInformation.html">RightsOfWithdrawalInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ShippingInformation.html">ShippingInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.ShippingMethod.html">ShippingMethod</a></li>
+                                                    <li class="class"><a href="../classes/ep6.Shop.html">Shop</a></li>
+                                                    <li class="class"><a href="../classes/ep6.TermsAndConditionInformation.html">TermsAndConditionInformation</a></li>
+                                                    <li class="class"><a href="../classes/ep6.URL.html">URL</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/ep6.html">\ep6</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\ep6</small>InputValidator</h1>
+                    <p><em>This class, used by a static way, checks whether a value is valid.</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isArray" class="">isArray()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isAuthToken" class="">isAuthToken()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isCurrency" class="">isCurrency()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isEmpty" class="">isEmpty()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isEmptyArray" class="">isEmptyArray()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isEmptyArrayKey" class="">isEmptyArrayKey()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isExistsArrayKey" class="">isExistsArrayKey()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isExistingFile" class="">isExistingFile()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isFloat" class="">isFloat()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isFormatterType" class="">isFormatterType()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isHost" class="">isHost()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isInt" class="">isInt()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isJSON" class="">isJSON()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isLocale" class="">isLocale()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isLogLevel" class="">isLogLevel()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isProductDirection" class="">isProductDirection()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isProductId" class="">isProductId()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isProductSort" class="">isProductSort()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isOutputRessource" class="">isOutputRessource()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isRangedFloat" class="">isRangedFloat()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isRangedInt" class="">isRangedInt()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isRequestMethod" class="">isRequestMethod()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isShop" class="">isShop()</a><br />
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isString" class="">isString()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <a href="../classes/ep6.InputValidator.html#method_isMatchRegex" class="">isMatchRegex()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/util.InputValidator.class.html"><div class="path-wrapper">util/InputValidator.class.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">ep6\Util</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\ep6\InputValidator</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                author
+                            </th>
+                            <td>
+                                                                    <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                since
+                            </th>
+                            <td>
+                                                                    
+                                                                    <p>Add function to add float values.</p>
+                                                                    <p>Remove isRESTCommand function.</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                        
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isArray" name="method_isArray" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isArray()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isArray(array  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is an array.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$parameter </td>
+                                <td><p>Array to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the parameter is an array, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isAuthToken" name="method_isAuthToken" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isAuthToken()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isAuthToken(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a OAuth authentification token.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>String to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the string is a OAuth authentification token, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isCurrency" name="method_isCurrency" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isCurrency()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isCurrency(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a currency string.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>String to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the string is a currency string, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isEmpty" name="method_isEmpty" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isEmpty()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isEmpty(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a paramter is empty or null.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>String to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the parameter is empty or null, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Test if the parameter is also the correct type.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isEmptyArray" name="method_isEmptyArray" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isEmptyArray()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isEmptyArray(array&lt;mixed,mixed&gt;  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether an array is empty or null.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,mixed&gt;</td>
+                                <td>$parameter </td>
+                                <td><p>Array to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the array is empty or null, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isEmptyArrayKey" name="method_isEmptyArrayKey" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isEmptyArrayKey()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isEmptyArrayKey(array&lt;mixed,mixed&gt;  <span class="argument">$array</span>, String  <span class="argument">$key</span>) : boolean</pre>
+                <p><em>Checks whether an array key is unset or null.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,mixed&gt;</td>
+                                <td>$array </td>
+                                <td><p>Array to check.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>String</td>
+                                <td>$key </td>
+                                <td><p>Key to exists and should not be null or empty.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the array key is unset or null, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.0                                
+                                                            0.2.0                                <p>Create new function to check whether a key exists but can be null or empty.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isExistsArrayKey" name="method_isExistsArrayKey" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isExistsArrayKey()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isExistsArrayKey(array&lt;mixed,mixed&gt;  <span class="argument">$array</span>, String  <span class="argument">$key</span>) : boolean</pre>
+                <p><em>Checks whether an array key exists. It can be unset or null.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,mixed&gt;</td>
+                                <td>$array </td>
+                                <td><p>Array to check.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>String</td>
+                                <td>$key </td>
+                                <td><p>Key to exists.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the array key exists, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.2.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isExistingFile" name="method_isExistingFile" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isExistingFile()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isExistingFile(float  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether the parameter is an existing file.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$parameter </td>
+                                <td><p>File with path to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the parameter is an existing file, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.2.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isFloat" name="method_isFloat" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isFloat()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isFloat(float  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a float.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$parameter </td>
+                                <td><p>Float to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the parameter is a float, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isFormatterType" name="method_isFormatterType" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isFormatterType()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isFormatterType(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a FormatterType.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>Parameter to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the parameter is a FormatterType, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.2.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isHost" name="method_isHost" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isHost()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isHost(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a host.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>String to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the string is a host, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isInt" name="method_isInt" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isInt()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isInt(integer  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is an int.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$parameter </td>
+                                <td><p>Int to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the parameter is an int, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isJSON" name="method_isJSON" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isJSON()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isJSON(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a JSON string.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>String to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the string is a JSON string, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isLocale" name="method_isLocale" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isLocale()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isLocale(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a localization string.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>String to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the string is a localization string, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isLogLevel" name="method_isLogLevel" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isLogLevel()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isLogLevel(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a log level.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>String to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the string is a log level, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use LogLevel enum.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isProductDirection" name="method_isProductDirection" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isProductDirection()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isProductDirection(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a product sort direction.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>String to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the parameter is a product sort direction, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isProductId" name="method_isProductId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isProductId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isProductId(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a valid product id.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>String to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the parameter is a valid product id, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isProductSort" name="method_isProductSort" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isProductSort()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isProductSort(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a product sort parameter.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>String to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the parameter is a product sort parameter, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isOutputRessource" name="method_isOutputRessource" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isOutputRessource()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isOutputRessource(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is an output ressource.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>String to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the string is an output ressource, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use LogOutput enum.</p>
+                                                            0.1.2                                <p>Add file output ressource.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isRangedFloat" name="method_isRangedFloat" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isRangedFloat()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isRangedFloat(float  <span class="argument">$parameter</span>, float|null  <span class="argument">$minimum = null</span>, float|null  <span class="argument">$maximum = null</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a float with a range.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>float</td>
+                                <td>$parameter </td>
+                                <td><p>Float to check.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>float|null</td>
+                                <td>$minimum </td>
+                                <td><p>The minimum allowed number, null if there is no minimum.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>float|null</td>
+                                <td>$maximum </td>
+                                <td><p>The maximum allowed number, null if there is no maximum.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the parameter is an int, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isRangedInt" name="method_isRangedInt" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isRangedInt()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isRangedInt(integer  <span class="argument">$parameter</span>, integer|null  <span class="argument">$minimum = null</span>, integer|null  <span class="argument">$maximum = null</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is an int with a range.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$parameter </td>
+                                <td><p>Int to check.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer|null</td>
+                                <td>$minimum </td>
+                                <td><p>The minimum allowed number, null if there is no minimum.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer|null</td>
+                                <td>$maximum </td>
+                                <td><p>The maximum allowed number, null if there is no maximum.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the parameter is an int, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isRequestMethod" name="method_isRequestMethod" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isRequestMethod()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isRequestMethod(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a HTTP request method.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>String to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the string is a HTTP request method, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.0                                <p>Use HTTPRequestMethod enum.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isShop" name="method_isShop" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isShop()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isShop(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a shop.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>String to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the string is a shop, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isString" name="method_isString" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isString()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isString(String  <span class="argument">$parameter</span>) : boolean</pre>
+                <p><em>Checks whether a parameter is a string.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>Parameter to check.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the parameter is a string, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.1.2                                
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isMatchRegex" name="method_isMatchRegex" class="anchor"></a>
+            <article class="method">
+                <h3 class="private ">isMatchRegex()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isMatchRegex(String  <span class="argument">$parameter</span>, String  <span class="argument">$regex</span>, String  <span class="argument">$type</span>) : boolean</pre>
+                <p><em>Checks whether a parameter match a regex.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>String</td>
+                                <td>$parameter </td>
+                                <td><p>String to check.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>String</td>
+                                <td>$regex </td>
+                                <td><p>The regex to check.</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>String</td>
+                                <td>$type </td>
+                                <td><p>The type which is validated.</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                            &mdash; <p>True if the string validates, false if not.</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            author
+                        </th>
+                        <td>
+                                                                                            <p>David Pauli <a href="mailto:contact@david-pauli.de">contact@david-pauli.de</a></p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            0.0.0                                
+                                                            0.1.2                                <p>Don't throw a logging message.</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">InputValidator.class.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/util/InputValidator.class.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/ep6.html">\ep6</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on August 15th, 2016 at 00:00.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

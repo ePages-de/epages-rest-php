@@ -95,6 +95,7 @@ class ProductFilter {
 	 * @param String $attribute The attribute to filter.
 	 * @param String $value The value to filter and compare.
 	 * @param FilterOperation $operator The operation to do.
+	 * @param String $type The type of the parameter, like "bool".
 	 * @return boolean
 	 * @since 0.1.3
 	 */
