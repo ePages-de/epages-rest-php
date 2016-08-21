@@ -64,7 +64,7 @@ class OrderFilter {
 	private $isViewed = null;
 
 	/** @var Date|null Show orders which are updated since this date. */
-	private $lastUpdateDate = null;
+	private $updatedFromDate = null;
 
 	/** @var int The page number to search. */
 	private $page = 1;
@@ -89,6 +89,7 @@ class OrderFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @return String The Order Filter as a string.
 	 * @since 0.1.1
+	 * @since 0.2.1 Fix attributes to print.
 	 */
 	public function __toString() {
 
@@ -97,16 +98,16 @@ class OrderFilter {
 				"<strong>Customer ID:</strong> " . $this->customerId . "<br/>" .
 				"<strong>'Created after' date:</strong> " . $this->createdAfterDate . "<br/>" .
 				"<strong>'Created before' date:</strong> " . $this->createdBeforeDate . "<br/>" .
-				"<strong>Is archived:</strong> " . $this->archivedDate . "<br/>" .
-				"<strong>Is closed:</strong> " . $this->closedDate . "<br/>" .
-				"<strong>Is delivered:</strong> " . $this->deliveredDate . "<br/>" .
-				"<strong>Is dispatched:</strong> " . $this->dispatchedDate . "<br/>" .
-				"<strong>Is invoiced:</strong> " . $this->invoicedDate . "<br/>" .
-				"<strong>Is paid:</strong> " . $this->paidDate . "<br/>" .
-				"<strong>Is pending:</strong> " . $this->pendingDate . "<br/>" .
-				"<strong>Is rejected:</strong> " . $this->rejectedDate . "<br/>" .
-				"<strong>Is returned:</strong> " . $this->returnedDate . "<br/>" .
-				"<strong>'Last update' date:</strong> " . $this->lastUpdateDate . "<br/>" .
+				"<strong>Is archived:</strong> " . $this->isArchived . "<br/>" .
+				"<strong>Is closed:</strong> " . $this->isClosed . "<br/>" .
+				"<strong>Is delivered:</strong> " . $this->isDelivered . "<br/>" .
+				"<strong>Is dispatched:</strong> " . $this->isDispatched . "<br/>" .
+				"<strong>Is invoiced:</strong> " . $this->isInvoiced . "<br/>" .
+				"<strong>Is paid:</strong> " . $this->isPaid . "<br/>" .
+				"<strong>Is pending:</strong> " . $this->isPending . "<br/>" .
+				"<strong>Is rejected:</strong> " . $this->isRejected . "<br/>" .
+				"<strong>Is returned:</strong> " . $this->isReturned . "<br/>" .
+				"<strong>'Updated from' date:</strong> " . $this->updatedFromDate . "<br/>" .
 				"<strong>Product ID:</strong> " . $this->productId . "<br/>" .
 				"<strong>Sort for last update:</strong> " . $this->sortLastUpdate . "<br/>" .
 				"<strong>Is closed:</strong> " . $this->isClosed . "<br/>";
@@ -185,17 +186,18 @@ class OrderFilter {
 	}
 
 	/**
-	 * This function gets the last update date.
+	 * This function gets the Updated from' date.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @return Date The last update date of this order filter.
+	 * @return Date The 'Updated from' date of this order filter.
 	 * @since 0.1.3
+	 * @since 0.2.1 Rename function.
 	 */
-	public function getLastUpdateDate() {
+	public function getUpdatedFromDate() {
 
 		$this->errorReset();
 
-		return $this->lastUpdateDate;
+		return $this->updatedFromDate;
 	}
 
 	/**
@@ -322,6 +324,7 @@ class OrderFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @return String Returns the hash code of the object.
 	 * @since 0.1.3
+	 * @since 0.2.1 Fix attribute name.
 	 */
 	public function hashCode() {
 
@@ -332,16 +335,16 @@ class OrderFilter {
 			. $this->customerId
 			. $this->createdAfterDate
 			. $this->createdBeforeDate
-			. $this->archivedDate
-			. $this->closedDate
-			. $this->deliveredDate
-			. $this->dispatchDate
-			. $this->invoicedDate
-			. $this->paidDate
-			. $this->pendingDate
-			. $this->rejectedDate
-			. $this->returnedDate
-			. $this->lastUpdateDate
+			. $this->isArchived
+			. $this->isClosed
+			. $this->isDelivered
+			. $this->isDispatched
+			. $this->isInvoiced
+			. $this->isPaid
+			. $this->isPending
+			. $this->isRejected
+			. $this->isReturned
+			. $this->updatedFromDate
 			. $this->productId
 			. $this->sortLastUpdate
 			. $this->isClosed;
@@ -509,6 +512,7 @@ class OrderFilter {
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale and Currency.
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.2.1 Rename attributes.
 	 */
 	public function resetFilter() {
 
@@ -529,7 +533,7 @@ class OrderFilter {
 		$this->isRejected = null;
 		$this->isReturned = null;
 		$this->isViewed = null;
-		$this->lastUpdateDate = null;
+		$this->updatedFromDate = null;
 		$this->productId = null;
 		$this->sortLastUpdate = null;
 	}
@@ -565,18 +569,18 @@ class OrderFilter {
 	 * @param Date $createdAfterDate The 'Created after' date to filter.
 	 * @return boolean True if setting works, false if not.
 	 * @since 0.1.3
+	 * @since 0.2.1 Fix error on set this date.
 	 */
 	public function setCreatedAfterDate($createdAfterDate) {
 
 		$this->errorReset();
 
-		$date = new Date($createdAfterDate);
-		if($date->error()) {
+		if($createdAfterDate->error()) {
 
 			return false;
 		}
 
-		$this->date = $date;
+		$this->createdAfterDate = $createdAfterDate;
 		return true;
 	}
 
@@ -587,18 +591,18 @@ class OrderFilter {
 	 * @param Date $createdBeforeDate The 'Created before' date to filter.
 	 * @return boolean True if setting works, false if not.
 	 * @since 0.1.3
+	 * @since 0.2.1 Fix error on set this date.
 	 */
 	public function setCreatedBeforeDate($createdBeforeDate) {
 
 		$this->errorReset();
 
-		$date = new Date($createdBeforeDate);
-		if($date->error()) {
+		if($createdBeforeDate->error()) {
 
 			return false;
 		}
 
-		$this->date = $date;
+		$this->createdBeforeDate = $createdBeforeDate;
 		return true;
 	}
 
@@ -657,6 +661,27 @@ class OrderFilter {
 
 		$this->errorReset();
 		$this->isInvoiced = true;
+	}
+
+	/**
+	 * This function sets the 'Updated from' date to search.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param Date $updatedFromDate The 'Updated from' date to filter.
+	 * @return boolean True if setting works, false if not.
+	 * @since 0.2.1
+	 */
+	public function setUpdatedFromDate($updatedFromDate) {
+
+		$this->errorReset();
+
+		if($updatedFromDate->error()) {
+
+			return false;
+		}
+
+		$this->updatedFromDate = $updatedFromDate;
+		return true;
 	}
 
 	/**
@@ -917,6 +942,7 @@ class OrderFilter {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @return String The parameter build with this order filter.
 	 * @since 0.1.3
+	 * @since 0.2.1 Update build of parameter
 	 */
 	private function getParameter() {
 
@@ -924,8 +950,8 @@ class OrderFilter {
 		array_push($parameter, "locale=" . Locales::getLocale());
 		array_push($parameter, "currency=" . Currencies::getCurrency());
 
-		if (!InputValidator::isEmpty($this->createdAfterDate)) array_push($parameter, "createdeAfter=" . $this->createdAfterDate->getTimestamp());
-		if (!InputValidator::isEmpty($this->createdBeforeDate)) array_push($parameter, "createdBefore=" . $this->createdBeforeDate->getTimestamp());
+		if (!InputValidator::isEmpty($this->createdAfterDate)) array_push($parameter, "createdAfter=" . $this->createdAfterDate->asReadable());
+		if (!InputValidator::isEmpty($this->createdBeforeDate)) array_push($parameter, "createdBefore=" . $this->createdBeforeDate->asReadable());
 		if (!InputValidator::isEmpty($this->customerId)) array_push($parameter, "customerId=" . $this->customerId);
 		if (!InputValidator::isEmpty($this->isArchived)) array_push($parameter, "archivedOn=" . $this->isArchived);
 		if (!InputValidator::isEmpty($this->isClosed)) array_push($parameter, "closedOn=" . $this->isClosed);
@@ -937,7 +963,7 @@ class OrderFilter {
 		if (!InputValidator::isEmpty($this->isRejected)) array_push($parameter, "rejectedOn=" . $this->isRejected);
 		if (!InputValidator::isEmpty($this->isReturned)) array_push($parameter, "returnedOn=" . $this->isReturned);
 		if (!InputValidator::isEmpty($this->isViewed)) array_push($parameter, "viewedOn=" . $this->isViewed);
-		if (!InputValidator::isEmpty($this->lastUpdateDate)) array_push($parameter, "lastUpdateDate=" . $this->lastUpdateDate);
+		if (!InputValidator::isEmpty($this->updatedFromDate)) array_push($parameter, "updatedFrom=" . $this->updatedFromDate->asReadable());
 		if (!InputValidator::isEmpty($this->page)) array_push($parameter, "page=" . $this->page);
 		if (!InputValidator::isEmpty($this->productId)) array_push($parameter, "productId=" . $this->productId);
 		if (!InputValidator::isEmpty($this->resultsPerPage)) array_push($parameter, "resultsPerPage=" . $this->resultsPerPage);

@@ -27,21 +27,25 @@ class Date {
 	 * This function extracts the date.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @param String $date The date to set.
+	 * @param String $date The date to set (timestamp or strtotime allowed string).
 	 * @since 0.1.3
+	 * @since 0.2.1 Extend constructor to use also timestamps.
 	 */
 	public function __construct($date) {
 
 		// if parameter is no string
-		if (!InputValidator::isString($date)) {
-
+		if (InputValidator::isTimestamp($date)) {
+			$timestamp = $date;
+		}
+		else if (InputValidator::isString($date)) {
+			// try to convert to a timestamp
+			$timestamp = strtotime($date);
+		}
+		else {
 			$this->errorSet("D-1");
 			Logger::error("ep6\Date\nThe parameter date " . $date . " is no string.");
 			return;
 		}
-
-		// try to convert to a timestamp
-		$timestamp = strtotime($date);
 
 		if (!$timestamp) {
 
@@ -74,9 +78,10 @@ class Date {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @return String The readable format of the Date object.
 	 * @since 0.2.0
+	 * @since 0.2.1 Calculate readable always into GMT/UTC.
 	 */
 	public function asReadable() {
-		return date("Y-m-d\TH:i:s.000\Z", $this->timestamp);
+		return gmdate("Y-m-d\TH:i:s.000\Z", $this->timestamp);
 	}
 
 	/**

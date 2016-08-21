@@ -356,6 +356,19 @@ class InputValidator {
 	}
 
 	/**
+	 * Checks whether a parameter is a timestamp.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param int $parameter Timestamp to check.
+	 * @return boolean True if the parameter is a timestamp, false if not.
+	 * @since 0.2.1
+	 */
+	public static function isTimestamp($parameter) {
+
+		return self::isInt($parameter);
+	}
+
+	/**
 	 * Checks whether a parameter match a regex.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
