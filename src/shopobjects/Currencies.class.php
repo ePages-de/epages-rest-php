@@ -138,16 +138,19 @@ class Currencies {
 	 * @since 0.1.0 Save timestamp of the last request.
  	 * @since 0.1.0 Add configured used Currency.
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.2.1 Implement REST client fixes.
 	 */
 	private static function load() {
 
 		// if request method is blocked
 		if (!RESTClient::setRequestMethod(HTTPRequestMethod::GET)) {
 
+			self::errorSet("RESTC-9");
 			return;
 		}
 
-		$content = RESTClient::send(self::RESTPATH);
+		RESTClient::send(self::RESTPATH);
+		$content = RESTClient::getJSONContent();
 
 		// if respond is empty or there are no default AND items element
 		if (InputValidator::isEmptyArrayKey($content, "default") ||

@@ -113,6 +113,7 @@ trait Information {
 	 * @since 0.0.1 Use HTTPRequestMethod enum.
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
+	 * @since 0.2.1 Implement REST client fixes.
 	 */
 	private function load() {
 
@@ -125,7 +126,8 @@ trait Information {
 			return;
 		}
 
-		$content = RESTClient::sendWithLocalization(self::RESTPATH, Locales::getLocale());
+		RESTClient::sendWithLocalization(self::RESTPATH, Locales::getLocale());
+		$content = RESTClient::getJSONContent();
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {

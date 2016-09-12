@@ -170,13 +170,14 @@ class ProductFilter {
 	 * This function returns the products by using the product filter.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
+	 * @return Product[] Returns an array of products.
 	 * @since 0.0.0
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
 	 * @since 0.1.2 Add error reporting.
 	 * @since 0.1.3 Get all results.
 	 * @since 0.2.0 Set error message for empty responses to notify.
-	 * @return Product[] Returns an array of products.
+	 * @since 0.2.1 Implement REST client fixes.
 	 */
 	public function getProducts() {
 
@@ -191,7 +192,8 @@ class ProductFilter {
 			return;
 		}
 
-		$content = RESTClient::send(self::RESTPATH . "?" . $parameter);
+		RESTClient::send(self::RESTPATH . "?" . $parameter);
+		$content = RESTClient::getJSONContent();
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {

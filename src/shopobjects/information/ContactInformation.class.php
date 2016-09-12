@@ -241,6 +241,7 @@ class ContactInformation {
 	 * @since 0.1.0 Use a default Locale.
 	 * @since 0.1.1 Unstatic every attributes.
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.2.1 Implement REST client fixes.
 	 */
 	private function load() {
 
@@ -251,7 +252,8 @@ class ContactInformation {
 			return;
 		}
 
-		$content = RESTClient::sendWithLocalization(self::RESTPATH, Locales::getLocale());
+		RESTClient::sendWithLocalization(self::RESTPATH, Locales::getLocale());
+		$content = RESTClient::getJSONContent();
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {

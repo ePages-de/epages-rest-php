@@ -848,6 +848,7 @@ class Order {
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @since 0.1.3
+	 * @since 0.2.1 Implement REST client fixes.
 	 */
 	private function load() {
 
@@ -858,7 +859,8 @@ class Order {
 			return;
 		}
 
-		$content = RESTClient::sendWithLocalization(self::RESTPATH . "/" . $this->orderId, Locales::getLocale());
+		RESTClient::sendWithLocalization(self::RESTPATH . "/" . $this->orderId, Locales::getLocale());
+		$content = RESTClient::getJSONContent();
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
@@ -1057,6 +1059,7 @@ class Order {
 	 * @param String $path The path to this attribute.
 	 * @param String $value The new attribute value.
 	 * @since 0.2.0
+	 * @since 0.2.1 Implement REST client fixes.
 	 */
 	private function setAttribute($path, $value) {
 
@@ -1068,7 +1071,8 @@ class Order {
 		}
 
 		$parameter = array("op" => "add", "path" => $path, "value" => $value);
-		$orderParameter = RESTClient::send(self::RESTPATH . "/" . $this->orderId, $parameter);
+		RESTClient::send(self::RESTPATH . "/" . $this->orderId, $parameter);
+		$orderParameter = RESTClient::getJSONContent();
 
 		// update the order
 		$this->parseData($orderParameter);
@@ -1080,6 +1084,7 @@ class Order {
 	 * @author David Pauli <contact@david-pauli.de>
 	 * @param String $path The path to this attribute.
 	 * @since 0.2.0
+	 * @since 0.2.1 Implement REST client fixes.
 	 */
 	private function unsetAttribute($path) {
 
@@ -1091,10 +1096,11 @@ class Order {
 		}
 
 		$parameter = array("op" => "remove", "path" => $path);
-		$productParameter = RESTClient::send(self::RESTPATH, $parameter);
+		RESTClient::send(self::RESTPATH, $parameter);
+		$orderParameter = RESTClient::getJSONContent();
 
 		// update the product
-		$this->parseData($productParameter);
+		$this->parseData($orderParameter);
 	}
 }
 ?>

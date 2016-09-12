@@ -204,9 +204,10 @@ class OrderFilter {
 	 * This function returns the orders by using the order filter.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
+	 * @return Order[] Returns an array of orders.
 	 * @since 0.1.3
 	 * @since 0.2.0 Set error message for empty responses to notify.
-	 * @return Order[] Returns an array of orders.
+	 * @since 0.2.1 Implement REST client fixes.
 	 */
 	public function getOrders() {
 
@@ -221,7 +222,8 @@ class OrderFilter {
 			return;
 		}
 
-		$content = RESTClient::send(self::RESTPATH . "?" . $parameter);
+		RESTClient::send(self::RESTPATH . "?" . $parameter);
+		$content = RESTClient::getJSONContent();
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {

@@ -255,6 +255,7 @@ class ProductSlideshow {
 	 * @since 0.1.1 Fix bug with nonsetted product URL and delete reload functionality.
 	 * @since 0.1.1 Use unstatic variables.
 	 * @since 0.1.2 Add error reporting.
+	 * @since 0.2.1 Implement REST client fixes.
 	 */
 	private function load($productID) {
 
@@ -273,7 +274,8 @@ class ProductSlideshow {
 			return;
 		}
 
-		$content = RESTClient::send("products/" . $productID . "/" . self::RESTPATH);
+		RESTClient::send("products/" . $productID . "/" . self::RESTPATH);
+		$content = RESTClient::getJSONContent();
 
 		// if respond is empty
 		if (InputValidator::isEmpty($content)) {
