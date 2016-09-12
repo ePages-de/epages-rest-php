@@ -118,7 +118,7 @@ class InputValidator {
 	 * Checks whether the parameter is an existing file.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
-	 * @param float $parameter File with path to check.
+	 * @param String $parameter File with path to check.
 	 * @return boolean True if the parameter is an existing file, false if not.
 	 * @since 0.2.0
 	 */
