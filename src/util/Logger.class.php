@@ -204,7 +204,7 @@ class Logger {
 
 			$stacktrace .= "function " . $stackentry['function'] . "(";
 			$stacktrace .= implode(",", $stackentry['args']);
-			$stacktrace .= ") called at " . $stackentry["file"] . " line " . $stackentry["line"];
+			$stacktrace .= ") called at ". $stackentry["file"] . " line " . $stackentry["line"];
 			$stacktrace .= "\n";
 		}
 
@@ -224,7 +224,10 @@ class Logger {
 	private static function printMessage($message, $showStacktrace = false) {
 
 		// build output
-		$output = $_SERVER['REMOTE_ADDR'] . " - ";
+		$output = "";
+		if (!InputValidator::isEmptyArrayKey($_SERVER, 'REMOTE_ADDR')) {
+			$output = $_SERVER['REMOTE_ADDR'] . " - ";
+		}
 		$output .= "[" . date("d/M/Y:H:i:s O") . "] ";
 
 		// print message, if it is array or string

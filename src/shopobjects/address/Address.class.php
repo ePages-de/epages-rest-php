@@ -69,10 +69,12 @@ class Address {
 	 */
 	public function __construct($addressParameter) {
 
+		self::errorReset();
+		
 		// if parameter is no array
 		if (!InputValidator::isArray($addressParameter)) {
-
-			$this->errorSet("D-1");
+		
+			self::errorSet("A-1");
 			Logger::error("ep6\Address\nThe address parameter " . $addressParameter . " is no array.");
 			return;
 		}
@@ -227,6 +229,19 @@ class Address {
 
 		self::errorReset();
 		return $this->company;
+	}
+
+	/**
+	 * Returns the country.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @return String The country.
+	 * @since 0.2.1
+	 */
+	public function getCountry() {
+
+		self::errorReset();
+		return $this->country;
 	}
 
 	/**
@@ -409,6 +424,19 @@ class Address {
 	}
 
 	/**
+	 * Sets the country.
+	 *
+	 * @author David Pauli <contact@david-pauli.de>
+	 * @param String $country The country.
+	 * @since 0.2.1
+	 */
+	public function setCountry($country) {
+
+		self::errorReset();
+		$this->country = $country;
+	}
+
+	/**
 	 * Sets the email address.
 	 *
 	 * @author David Pauli <contact@david-pauli.de>
@@ -454,10 +482,10 @@ class Address {
 	 * @param String $salutation The salutation.
 	 * @since 0.2.0
 	 */
-	public function setSalutation($saluation) {
+	public function setSalutation($salutation) {
 
 		self::errorReset();
-		$this->salutation = $lastName;
+		$this->salutation = $salutation;
 	}
 
 	/**

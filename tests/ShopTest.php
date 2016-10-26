@@ -5,12 +5,49 @@ namespace ep6;
 class ShopTest extends \PHPUnit_Framework_TestCase {
 
 	public $shop;
+	
+	protected function setUp()
+    {
+		Logger::setLogLevel(LogLevel::NONE);
+    }
+
+	/**
+	 * @group shopobjects
+	 */
+    function testInvalidShop()
+    {
+		// GIVEN / WHEN
+		$this->shop = new Shop("invalidDomain", "shopName");
+		
+		// THEN
+		$this->assertTrue($this->shop->error());
+		$this->assertEquals($this->shop->errorNumber(), "S-1");
+    }
+
+	/**
+	 * @group shopobjects
+	 */
+    function testGetShopProperties()
+    {
+		// GIVEN / WHEN
+		$this->givenShop();
+		
+		// THEN
+		$this->assertNotNull($this->shop->getBackofficeURL());
+		$this->assertNotNull($this->shop->getLogo());
+		$this->assertNotNull($this->shop->getName());
+		$this->assertNotNull($this->shop->getStorefrontURL());
+    }
 
 	/**
 	 * @group shopobjects
 	 */
     function testShopLocales()
     {
+		// GIVEN / WHEN
+		$this->givenShop();
+		
+		// THEN
         $this->assertEquals("en_GB", $this->shop->getDefaultLocale());
         $this->assertContains("de_DE", $this->shop->getLocales());
     }
@@ -20,6 +57,10 @@ class ShopTest extends \PHPUnit_Framework_TestCase {
 	 */
     function testShopCurrencies()
     {
+		// GIVEN / WHEN
+		$this->givenShop();
+		
+		// THEN
         $this->assertEquals("GBP", $this->shop->getDefaultCurrency());
         $this->assertContains("EUR", $this->shop->getCurrencies());
     }
@@ -27,68 +68,37 @@ class ShopTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @group shopobjects
 	 */
-    function testShopContactInformation()
+    function testUsedCurrency()
     {
-        $contactInformation = $this->shop->getContactInformation();
-		$this->assertEquals("Contact information", $contactInformation->getName());
-		$this->assertEquals("Contact information", $contactInformation->getNavigationCaption());
-		$this->assertEquals("David David", $contactInformation->getContactPerson());
-		$this->assertEquals("000000", $contactInformation->getPhone());
-		$this->assertEquals("bepeppered@gmail.com", $contactInformation->getEmail());
+		// GIVEN
+		$this->givenShop();
+		
+		// WHEN
+		$this->shop->setUsedCurrency("EUR");
+		
+		// THEN
+        $this->assertEquals("EUR", $this->shop->getUsedCurrency());
     }
 
 	/**
 	 * @group shopobjects
 	 */
-    function testShopPrivacyPolicyInformation()
+    function testUsedLocale()
     {
-        $privacyPolicyInformation = $this->shop->getPrivacyPolicyInformation();
-		$this->assertEquals("Privacy policy", $privacyPolicyInformation->getName());
-		$this->assertEquals("Privacy policy", $privacyPolicyInformation->getNavigationCaption());
+		// GIVEN
+		$this->givenShop();
+		
+		// WHEN
+		$this->shop->setUsedLocale("en_GB");
+		
+		// THEN
+        $this->assertEquals("en_GB", $this->shop->getUsedLocale());
     }
-
-	/**
-	 * @group shopobjects
-	 */
-    function testShopRightsOfWithdrawalInformation()
-    {
-        $rightsOfWithdrawalInformation = $this->shop->getRightsOfWithdrawalInformation();
-		$this->assertEquals("Right of withdrawal", $rightsOfWithdrawalInformation->getName());
-		$this->assertEquals("Right of withdrawal", $rightsOfWithdrawalInformation->getNavigationCaption());
-    }
-
-	/**
-	 * @group shopobjects
-	 */
-    function testShopShippingInformation()
-    {
-        $shippingInformation = $this->shop->getShippingInformation();
-		$this->assertEquals("Shipping terms", $shippingInformation->getName());
-		$this->assertEquals("Delivery", $shippingInformation->getNavigationCaption());
-    }
-
-	/**
-	 * @group shopobjects
-	 */
-    function testShopTermsAndConditionInformation()
-    {
-        $termsAndConditionInformation = $this->shop->getTermsAndConditionInformation();
-		$this->assertEquals("Terms and Conditions", $termsAndConditionInformation->getName());
-		$this->assertEquals("Terms and Conditions", $termsAndConditionInformation->getNavigationCaption());
-		$this->assertEquals("You adapt this text via the preview or data sheet view under the \"Content/Categories\" menu item of your Administration.", $termsAndConditionInformation->getDescription());
-    }
-
-	/**
-	 * @beforeClass
-	 */
-	function setUp() {
-		Logger::setLogLevel(LogLevel::NONE);
+	
+	function givenShop() {
 		$this->shop = new Shop("sandbox.epages.com", "EpagesDevD20150929T075829R63", "icgToyl45PKhmkz6E2PUQOriaCoE5Wzq", true);
 	}
-
-	/**
-	 * @afterClass
-	 */
+	
 	function cleanUp() {
 		unset($this->shop);
 	}

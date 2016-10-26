@@ -88,7 +88,7 @@ class Shop {
 	private $isssl = true;
 
 	/** @var Image|null The logo of the shop. */
-	private $logo = null;
+	private $logoURL = null;
 
 	/** @var String|null The name of the shop. */
 	private $name = null;
@@ -130,14 +130,14 @@ class Shop {
 	 * @since 0.1.2 Add error reporting.
 	 * @since 0.1.3 Load shop attributes.
 	 */
-	function __construct($host, $shop, $authToken, $isssl = true) {
+	function __construct($host, $shop, $authToken = null, $isssl = true) {
 
 		if (!InputValidator::isHost($host) ||
 			!InputValidator::isShop($shop)) {
 
 			Logger::warning("ep6\Shop\nHost (" . $host . ") or Shop (" . $shop . ") are not valid.");
 			$error = !InputValidator::isHost($host) ? "S-1" : "S-2";
-			self::setError($error);
+			self::errorSet($error);
 			return;
 		}
 
@@ -182,9 +182,9 @@ class Shop {
 
 		return "<strong>Name:</strong> " . $this->name . "<br/>" .
 			"<strong>Slogan:</strong> " . $this->slogan . "<br/>" .
-			"<strong>Logo:</strong> " . $this->logo . "<br/>" .
-			"<strong>Storefront URL:</strong> " . $this->storefrontUrl . "<br/>" .
-			"<strong>Backoffice URL:</strong> " . $this->backofficeUrl . "<br/>";
+			"<strong>Logo:</strong> " . $this->logoURL . "<br/>" .
+			"<strong>Storefront URL:</strong> " . $this->storefrontURL . "<br/>" .
+			"<strong>Backoffice URL:</strong> " . $this->backofficeURL . "<br/>";
 	}
 
 	/**
@@ -316,7 +316,7 @@ class Shop {
 
 		self::errorReset();
 		$this->reload();
-		return $this->logo;
+		return $this->logoURL;
 	}
 
 	/**
@@ -485,9 +485,9 @@ class Shop {
 
 		$this->name = null;
 		$this->slogan = null;
-		$this->logoUrl = null;
-		$this->sfUrl = null;
-		$this->mboUrl = null;
+		$this->logoURL = null;
+		$this->storefrontURL = null;
+		$this->backofficeURL = null;
 	}
 
 	/**
@@ -560,7 +560,8 @@ class Shop {
 			return;
 		}
 
-		$content = RESTClient::send();
+		RESTClient::send();
+		$content = RESTClient::getJSONContent();
 
 		// if respond has no name, slogan, logoUrl, sfUrl and mboUrl
 		if (InputValidator::isExistsArrayKey($content, "name") ||
@@ -580,7 +581,7 @@ class Shop {
 		// save the attributes
 		$this->name = $content['name'];
 		$this->slogan = $content['slogan'];
-		$this->logo = new Image($content['logoUrl']);
+		$this->logoURL = new Image($content['logoUrl']);
 		$this->storefrontURL = new URL($content['sfUrl']);
 		$this->backofficeURL = new URL($content['mboUrl']);
 
@@ -602,7 +603,7 @@ class Shop {
 		// if the value is empty
 		if (!InputValidator::isEmpty($this->name) &&
 			!InputValidator::isEmpty($this->slogan) &&
-			!InputValidator::isEmpty($this->logo) &&
+			!InputValidator::isEmpty($this->logoURL) &&
 			!InputValidator::isEmpty($this->storefrontURL) &&
 			!InputValidator::isEmpty($this->backofficeURL) &&
 			$this->NEXT_REQUEST_TIMESTAMP > $timestamp) {

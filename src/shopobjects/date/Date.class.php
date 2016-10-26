@@ -33,6 +33,8 @@ class Date {
 	 */
 	public function __construct($date) {
 
+		self::errorReset();
+
 		// if parameter is no string
 		if (InputValidator::isTimestamp($date)) {
 			$timestamp = $date;
@@ -93,7 +95,7 @@ class Date {
 	 */
 	public function getTimestamp() {
 
-		$this->errorReset();
+		self::errorReset();
 		return $this->timestamp;
 	}
 }

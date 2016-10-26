@@ -3,6 +3,11 @@
 namespace ep6;
 
 class InputValidatorTest extends \PHPUnit_Framework_TestCase {
+	
+	protected function setUp()
+    {
+		Logger::setLogLevel(LogLevel::NONE);
+    }
 
 	/**
 	 * @group utility
@@ -89,6 +94,15 @@ class InputValidatorTest extends \PHPUnit_Framework_TestCase {
         $this->assertFalse(InputValidator::isFloat(null));
         $this->assertTrue(InputValidator::isFloat(1.2));
         $this->assertTrue(InputValidator::isFloat(-1.2));
+    }
+
+	/**
+	 * @group utility
+	 */
+    function testIsFormatterType()
+    {
+        $this->assertFalse(InputValidator::isFormatterType("NotAFormatterType"));
+        $this->assertTrue(InputValidator::isFormatterType("IMAGE"));
     }
 
 	/**
@@ -276,6 +290,15 @@ class InputValidatorTest extends \PHPUnit_Framework_TestCase {
         $this->assertFalse(InputValidator::isString(3));
         $this->assertFalse(InputValidator::isString(null));
         $this->assertFalse(InputValidator::isString(1.2));
+    }
+
+	/**
+	 * @group utility
+	 */
+    function testIsTimestamp()
+    {
+        $this->assertFalse(InputValidator::isTimestamp("NoTimestamp"));
+        $this->assertTrue(InputValidator::isTimestamp(1234567890));
     }
 
 }

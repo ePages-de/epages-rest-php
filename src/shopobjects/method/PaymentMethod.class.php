@@ -33,11 +33,13 @@ class PaymentMethod {
 	 */
 	public function __construct($paymentMethodParameter) {
 
+		self::errorReset();
+
 		// if parameter is no string
 		if (!InputValidator::isArray($paymentMethodParameter)) {
-
-			$this->errorSet("SM-1");
-			Logger::error("ep6\PaymentMethod\nThe parameter payment method paramater " . $paymentMethodParameter . " is no array.");
+		
+			$this->errorSet("PM-1");
+			Logger::error("ep6\PaymentMethod\nThe payment method parameter " . $paymentMethodParameter . " is no array.");
 			return;
 		}
 
@@ -75,9 +77,9 @@ class PaymentMethod {
 	 * @return String The payment method ID.
 	 * @since 0.1.3
 	 */
-	public function getPaymentMethodID() {
+	public function getID() {
 
-		$this->errorReset();
+		self::errorReset();
 		return $this->paymentMethodId;
 	}
 
@@ -90,7 +92,7 @@ class PaymentMethod {
 	 */
 	public function getName() {
 
-		$this->errorReset();
+		self::errorReset();
 		return $this->name;
 	}
 }

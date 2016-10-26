@@ -28,7 +28,7 @@ class RESTClient {
 	const PATHTOREST = "rs/shops";
 
 	/** @var String The user agent. */
-	const USER_AGENT = "ePages REST SDk";
+	const USER_AGENT = "ePages REST SDK";
 
 	/** @var int The time in ms the shop object should wait until the next request. */
 	public static $NEXT_RESPONSE_WAIT_TIME = 600;
@@ -82,13 +82,13 @@ class RESTClient {
 	public static function connect($host, $shop, $authToken = null, $isssl = true) {
 
 		self::errorReset();
+		self::disconnect();
 
 		// check parameters
 		if (!InputValidator::isHost($host) ||
 			!InputValidator::isShop($shop)) {
 
 			Logger::warning("ep6\RESTClient\nHost (" . $host . ") or Shop (" . $shop . ") are not valid.");
-			self::disconnect();
 			$error = !InputValidator::isHost($host) ? "RESTC-1" : "RESTC-2";
 			self::errorSet($error);
 			return false;
@@ -253,18 +253,6 @@ class RESTClient {
 	public static function getJSONContent() {
 
 		return JSONHandler::parseJSON(self::$CONTENT);
-	}
-
-	/**
-	 * Gets the Location header of response.
-	 *
-	 * @author David Pauli <contact@david-pauli.de>
-	 * @return String The Location header of last response.
-	 * @since 0.2.1
-	 */
-	public static function getLocation() {
-
-		return self::$LOCATION;
 	}
 
 	/**
@@ -539,6 +527,7 @@ class RESTClient {
 		self::$CONTENT_TYPE = null;
 		self::$DATE = null;
 		self::$HTTP_RESPONSE_CODE = 0;
+		self::$HEADERS = array();
 	}
 
 	/**

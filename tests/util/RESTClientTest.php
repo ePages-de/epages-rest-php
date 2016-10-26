@@ -3,18 +3,86 @@
 namespace ep6;
 
 class RESTClientTest extends \PHPUnit_Framework_TestCase {
+	
+	protected function setUp()
+    {
+		Logger::setLogLevel(LogLevel::NONE);
+    }
 
 	/**
 	 * @group utility
 	 */
     function testConnection()
     {
+		// GIVEN / WHEN / THEN
         $this->assertTrue(RESTClient::connect("www.google.de", "Shopname"));
         $this->assertTrue(RESTClient::connect("www.google.de", "Shopname", "AuthToken"));
         $this->assertFalse(RESTClient::connect("ThisIsNODomain", "Shopname", "AuthToken"));
         $this->assertTrue(RESTClient::connect("www.google.de", "Shopname", "AuthToken", true));
         $this->assertTrue(RESTClient::connect("www.google.de", "Shopname", "AuthToken", false));
+		$this->assertTrue(RESTClient::disconnect());
     }
+	
+	/**
+	 * @group utility
+	 */
+	function testGetContent() {
+		// GIVEN
+		RESTClient::connect("sandbox.epages.com", "EpagesDevD20150929T075829R63");
+		
+		// WHEN
+		RESTClient::send("legal");
+		
+		// THEN
+		$this->assertTrue(RESTClient::isResponseOk());
+		$this->assertNotNull(RESTClient::getContent());
+		$this->assertNotNull(RESTClient::getJSONContent());
+	}
+	
+	/**
+	 * @group utility
+	 */
+	function testGetContentWithLocalization() {
+		// GIVEN
+		RESTClient::connect("sandbox.epages.com", "EpagesDevD20150929T075829R63");
+		
+		// WHEN
+		RESTClient::sendWithLocalization("legal", "de_DE");
+		
+		// THEN
+		$this->assertTrue(RESTClient::isResponseOk());
+		$this->assertNotNull(RESTClient::getContent());
+		$this->assertNotNull(RESTClient::getJSONContent());
+	}
+	
+	/**
+	 * @group utility
+	 */
+	function testGetCookie() {
+		// GIVEN
+		RESTClient::connect("sandbox.epages.com", "EpagesDevD20150929T075829R63");
+		
+		// WHEN
+		RESTClient::setCookie("testKey", "testValue");
+		
+		// THEN
+		$this->assertNotEmpty(RESTClient::getCookies());
+		$this->assertEquals(RESTClient::getCookie("testKey"), "testValue");
+	}
+	
+	/**
+	 * @group utility
+	 */
+	function testGetHeader() {
+		// GIVEN
+		RESTClient::connect("sandbox.epages.com", "EpagesDevD20150929T075829R63");
+		
+		// WHEN
+		RESTClient::send("legal");
+		
+		// THEN
+		$this->assertNotNull(RESTClient::getHeader("Date"));
+	}
 
 	/**
 	 * @group utility
@@ -38,24 +106,23 @@ class RESTClientTest extends \PHPUnit_Framework_TestCase {
     {
         RESTClient::connect("sandbox.epages.com", "EpagesDevD20150929T075829R63", "icgToyl45PKhmkz6E2PUQOriaCoE5Wzq", true);
         RESTClient::setRequestMethod("GET");
-        $this->assertNull(RESTClient::send("locales", "NoArray"));
+        RESTClient::send("locales", "NoArray");
 		$this->assertTrue(RESTClient::error());
 		$this->assertEquals("RESTC-5", RESTClient::errorNumber());
 
 		RESTClient::disconnect();
-		$this->assertNull(RESTClient::send("locales"));
+		RESTClient::send("locales");
 		$this->assertTrue(RESTClient::error());
 		$this->assertEquals("RESTC-6", RESTClient::errorNumber());
 
 		RESTClient::connect("sandbox.epages.com", "EpagesDevD20150929T075829R63", "icgToyl45PKhmkz6E2PUQOriaCoE5Wzq", true);
         RESTClient::setRequestMethod("GET");
-        $this->assertNull(RESTClient::send("NoValidRessource"));
-		$this->assertTrue(RESTClient::error());
-		$this->assertEquals("RESTC-7", RESTClient::errorNumber());
+        RESTClient::send("NoValidRessource");
+		$this->assertFalse(RESTClient::isResponseOk());
+		$this->assertFalse(RESTClient::isResponseFound());
 
-        $this->assertNotNull(RESTClient::send());
-        $this->assertFalse(RESTClient::error());
-		$this->assertNull(RESTClient::errorNumber());
+        RESTClient::send();
+		$this->assertTrue(RESTClient::isResponseOk());
     }
 
 	/**
@@ -65,43 +132,43 @@ class RESTClientTest extends \PHPUnit_Framework_TestCase {
     {
         RESTClient::connect("sandbox.epages.com", "EpagesDevD20150929T075829R63", "icgToyl45PKhmkz6E2PUQOriaCoE5Wzq", true);
         RESTClient::setRequestMethod("GET");
-        $this->assertNull(RESTClient::sendWithLocalization("locale", "NoLocale"));
+        RESTClient::sendWithLocalization("locale", "NoLocale");
 		$this->assertTrue(RESTClient::error());
 		$this->assertEquals("RESTC-3", RESTClient::errorNumber());
 
-        $this->assertNull(RESTClient::sendWithLocalization("locales", "NoLocale", "NoArray"));
+        RESTClient::sendWithLocalization("locales", "NoLocale", "NoArray");
 		$this->assertTrue(RESTClient::error());
 		$this->assertEquals("RESTC-3", RESTClient::errorNumber());
 
-        $this->assertNull(RESTClient::sendWithLocalization("locales", "en_GB", "NoArray"));
+        RESTClient::sendWithLocalization("locales", "en_GB", "NoArray");
 		$this->assertTrue(RESTClient::error());
 		$this->assertEquals("RESTC-5", RESTClient::errorNumber());
 
 		RESTClient::disconnect();
-		$this->assertNull(RESTClient::sendWithLocalization("locales", "NoLocale"));
+		RESTClient::sendWithLocalization("locales", "NoLocale");
 		$this->assertTrue(RESTClient::error());
 		$this->assertEquals("RESTC-3", RESTClient::errorNumber());
 
 		RESTClient::disconnect();
-		$this->assertNull(RESTClient::sendWithLocalization("locales", "en_GB"));
+		RESTClient::sendWithLocalization("locales", "en_GB");
 		$this->assertTrue(RESTClient::error());
 		$this->assertEquals("RESTC-6", RESTClient::errorNumber());
 
 		RESTClient::connect("sandbox.epages.com", "EpagesDevD20150929T075829R63", "icgToyl45PKhmkz6E2PUQOriaCoE5Wzq", true);
         RESTClient::setRequestMethod("GET");
-        $this->assertNull(RESTClient::sendWithLocalization("NoValidRessource", "en_GB"));
-		$this->assertTrue(RESTClient::error());
-		$this->assertEquals("RESTC-7", RESTClient::errorNumber());
+        RESTClient::sendWithLocalization("NoValidRessource", "en_GB");
+		$this->assertFalse(RESTClient::isResponseOk());
+		$this->assertFalse(RESTClient::isResponseFound());
 
-        $this->assertNull(RESTClient::sendWithLocalization("NoValidRessource", "NoLocale"));
+        RESTClient::sendWithLocalization("NoValidRessource", "NoLocale");
 		$this->assertTrue(RESTClient::error());
 		$this->assertEquals("RESTC-3", RESTClient::errorNumber());
 
-        $this->assertNull(RESTClient::sendWithLocalization("locales", "de_DE", "noArray"));
+        RESTClient::sendWithLocalization("locales", "de_DE", "noArray");
 		$this->assertTrue(RESTClient::error());
 		$this->assertEquals("RESTC-5", RESTClient::errorNumber());
 
-        $this->assertNotNull(RESTClient::sendWithLocalization("locales", "de_DE"));
+        RESTClient::sendWithLocalization("locales", "de_DE");
 		$this->assertFalse(RESTClient::error());
 		$this->assertNull(RESTClient::errorNumber());
     }

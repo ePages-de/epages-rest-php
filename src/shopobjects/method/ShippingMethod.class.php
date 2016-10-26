@@ -33,11 +33,13 @@ class ShippingMethod {
 	 */
 	public function __construct($shippingMethodParameter) {
 
+		self::errorReset();
+
 		// if parameter is no string
 		if (!InputValidator::isArray($shippingMethodParameter)) {
 
 			$this->errorSet("SM-1");
-			Logger::error("ep6\ShippingMethod\nThe parameter shipping method paramater " . $shippingMethodParameter . " is no array.");
+			Logger::error("ep6\ShippingMethod\nThe shipping method parameter " . $shippingMethodParameter . " is no array.");
 			return;
 		}
 
@@ -75,9 +77,9 @@ class ShippingMethod {
 	 * @return String The shipping method ID.
 	 * @since 0.1.3
 	 */
-	public function getShippingMethodID() {
+	public function getID() {
 
-		$this->errorReset();
+		self::errorReset();
 		return $this->shippingMethodId;
 	}
 
@@ -90,7 +92,7 @@ class ShippingMethod {
 	 */
 	public function getName() {
 
-		$this->errorReset();
+		self::errorReset();
 		return $this->name;
 	}
 }
