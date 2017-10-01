@@ -1,13 +1,44 @@
 <?php
-require_once("library/epages-rest-php.phar");
+/**
+ * The SDK comes with a good Logger, which also can used from outside. The Logger has will be configured via
+ * Configuration and can lock into a file or the screen.
+ *
+ * Use the Logger in the static way.
+ */
 
-// Set the logger to the wished log level.
-// Default is: NOTIFICATION, so all messages will be print.
-ep6\Logger::setLogLevel("ERROR");
+use EpSDK\Configuration\Configuration;
+use EpSDK\Utility\Logger\Logger;
+use EpSDK\Utility\Logger\LogLevel;
+use EpSDK\Utility\Logger\LogOutput;
 
-// Print an error message.
-ep6\Logger::notify("Notify this message");
+/**
+ * Configure the Logger.
+ *
+ * The Logger can be configured via JSON file or array.
+ */
+Configuration::addConfigurationFromFile('dir/and/filename.json');   // configure via JSON
+Configuration::setConfiguration(
+    [
+        'Logger'   =>   [
+            'level'     =>  LogLevel::ERROR,
+            'output'    =>  LogOutput::SCREEN,
+            'file'      =>  '/path/to/file.log' // optional if you want to lock to output file
+        ]
+    ]
+);
 
-// To print an error message without being restricted by the log level you can use following code.
-ep6\Logger::force("This message will be printed every time!");
-?>
+/**
+ * Log in code.
+ *
+ * There are three different log functions, which are controllable via Configuration.
+ */
+Logger::error('Some error message.');       // also prints the stack trace
+Logger::warning('Some warning message.');
+Logger::notify('Just a notification');
+
+/**
+ * Use Logger in development.
+ *
+ * There is a log function which every time prints (on screen or file). Use this to see variables on developing.
+ */
+Logger::force('This message will be printed.');
