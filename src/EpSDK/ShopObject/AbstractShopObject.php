@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace EpSDK\ShopObject;
 
 use EpSDK\Configuration\Configuration;
@@ -59,8 +60,11 @@ abstract class AbstractShopObject
             $this->preConstruct();
         }
 
-        // Initialize the Connector.
-        $this->connector = Configuration::getConfiguration('Connector')[\get_class($this)];
+        // Initialize the Connector
+        if (empty(Configuration::get('Connector')[\get_class($this)])) {
+            include __DIR__ .  '/loadConnectors.php';
+        }
+        $this->connector = Configuration::get('Connector')[\get_class($this)];
 
         foreach ($queryParameters as $parameter => $value) {
             $this->addQueryParameter($parameter, $value);

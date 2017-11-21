@@ -2,45 +2,27 @@
 
 This is the PHP REST SDK to easily connect to an ePages shop.
 You can use it as a developer to develop apps for ePages.
-Just sign up for the [ePages Developer Program](http://www.epages.cloud/developer/) and create a free developer test shop.
+Just sign up for the [ePages Developer Program](https://developer.epages.com/) and create a free developer test shop.
 
 ## Requirements
 
 To use this SDK, you'll need:
 
-* at least **PHP 5.5**
+* at least **PHP 7.0**
 
 All dependencies comes automatically with the client and could be updated via composer.
 
-## Installation
+## Installation via composer
 
-### Via composer
-Its recommended to get the client via **Composer**.
+Its easy to get the client via **Composer**.
 Just search for [epages/rest-sdk](https://packagist.org/packages/epages/rest-sdk) and put this to you composer.yml file:
 
 ```php
 {
    "require": {
-      "php": ">=5.4.0",
       "epages/rest-sdk": ">=0.2"
     }
 }
-```
-
-### Direct download
-To use the client directly without getting composer just download the **.phar** archive and include it.
-
-```
-wget https://raw.githubusercontent.com/ePages-de/epages-rest-php/master/build/epages-rest-php.phar -O epages-rest-php.phar
-```
-
-It is also possible to download the PHP file archive manually.
-Check for the latest **.phar** release in the [releases area](https://github.com/ePages-de/epages-rest-php/releases).
-
-To use the SDK, you simply have to include it.
-**Warning:** It is not recommended to do this in live system!
-```php
-require_once("libraries/epages-rest-php.phar");
 ```
 
 ## Configuration
@@ -48,15 +30,16 @@ You can configure it with putting a **config.json** into you main directory.
 Just copy the **config.example.json** from GitHub or create a new one:
 ```javascript
 {
-    "logging":
-    {
-        "level":        "NONE",
-        "output":       "SCREEN",
-        "outputfile":   null
+    "Client": {
+        "host": "www.some.host",
+        "shop": "shopName",
+        "isSSL": true,
+        "userAgent": "UserAgent",
+        "token": "TheTokenIfExists"
     },
-    "formatting":
-    {
-        "format":   "HTML"
+    "Logger": {
+        "level": "ERROR",
+        "output": "SCREEN"
     }
 }
 ```
@@ -115,24 +98,24 @@ $products = $productFilter->getProducts();
 // print the products
 foreach ($products as $product) {
 
-	echo "<h2>" . htmlentities($product->getName()) . "</h2>";
-	echo "<p>";
-	echo "<img style=\"float:left\" src=\"" . $product->getSmallImage()->getOriginURL() . "\"/>";
-	echo "<strong>ProductID:</strong> " . $product->getID() . "<br/>";
-	echo "<strong>Description:</strong> " . htmlentities($product->getDescription()) . "<br/><br/>";
-	echo "<strong>This product is ";
-	if (!$product->isForSale()) {
-		echo "NOT ";
-	}
-	echo "for sale and is ";
-	if ($product->isSpecialOffer()) {
-		echo "<u>a</u> ";
-	}
-	else {
-		echo "not a ";
-	}
-	echo "special offer.</strong>";
-	echo "</p><hr style=\"clear:both\"/>";
+    echo "<h2>" . htmlentities($product->getName()) . "</h2>";
+    echo "<p>";
+    echo "<img style=\"float:left\" src=\"" . $product->getSmallImage()->getOriginURL() . "\"/>";
+    echo "<strong>ProductID:</strong> " . $product->getID() . "<br/>";
+    echo "<strong>Description:</strong> " . htmlentities($product->getDescription()) . "<br/><br/>";
+    echo "<strong>This product is ";
+    if (!$product->isForSale()) {
+        echo "NOT ";
+    }
+    echo "for sale and is ";
+    if ($product->isSpecialOffer()) {
+        echo "<u>a</u> ";
+    }
+    else {
+        echo "not a ";
+    }
+    echo "special offer.</strong>";
+    echo "</p><hr style=\"clear:both\"/>";
 }
 ```
 

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace EpSDK\Configuration;
 
 use EpSDK\Exception\JSONDecodingException;
@@ -28,7 +30,7 @@ class Configuration
      * @throws  JSONDecodingException   Thrown if the file cannot be found or is no valid JSON.
      * @since   0.4.0
      */
-    public static function addConfigurationFromFile(string $pathToFile): bool
+    public static function addFromFile(string $pathToFile): bool
     {
         $configurationArray = \json_decode(\file_get_contents($pathToFile), true);
         if (null === $configurationArray) {
@@ -37,7 +39,7 @@ class Configuration
         }
         /** @var array $configurationArray */
         foreach ($configurationArray as $module => $configuration) {
-            self::extendConfiguration($configuration, $module);
+            self::extend($configuration, $module);
         }
         return true;
     }
@@ -50,12 +52,12 @@ class Configuration
      * @return  bool
      * @since   0.4.0
      */
-    public static function extendConfiguration(array $configuration, string $module): bool
+    public static function extend(array $configuration, string $module): bool
     {
         if (isset(self::$configuration[$module])) {
             self::$configuration[$module] = \array_merge(self::$configuration[$module], $configuration);
         } else {
-            self::setConfiguration($configuration, $module);
+            self::set($configuration, $module);
         }
         return true;
     }
@@ -67,12 +69,11 @@ class Configuration
      * @return  array
      * @since   0.4.0
      */
-    public static function getConfiguration(string $module = null): array
+    public static function get(string $module = null): array
     {
-        if (null === $module) {
-            return self::$configuration;
-        }
-        return self::$configuration[$module] ?? [];
+        return null === $module
+            ? self::$configuration
+            : self::$configuration[$module] ?? [];
     }
 
     /**
@@ -102,7 +103,7 @@ class Configuration
      * @return  bool
      * @since   0.4.0
      */
-    public static function setConfiguration(array $configuration, string $module = null): bool
+    public static function set(array $configuration, string $module = null): bool
     {
         if (null === $module) {
             self::$configuration = $configuration;
@@ -115,10 +116,11 @@ class Configuration
     /**
      * Reset the configuration.
      *
+     * @param   string  $module
      * @return  bool
      * @since   0.4.0
      */
-    public static function resetConfiguration(string $module = null): bool
+    public static function reset(string $module = null): bool
     {
         if (null !== $module) {
             unset(self::$configuration[$module]);

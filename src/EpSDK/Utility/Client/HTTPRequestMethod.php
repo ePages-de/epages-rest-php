@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace EpSDK\Utility\Client;
 
 /**
@@ -15,9 +16,9 @@ namespace EpSDK\Utility\Client;
  */
 abstract class HTTPRequestMethod
 {
-    const GET = 'GET';
-    const POST = 'POST';
-    const PUT = 'PUT';
+    const GET    = 'GET';
+    const POST   = 'POST';
+    const PUT    = 'PUT';
     const DELETE = 'DELETE';
-    const PATCH = 'PATCH';
+    const PATCH  = 'PATCH';
 }

@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace EpSDK\Connector;
 
 use EpSDK\HelperObject\HTML;
@@ -23,17 +24,17 @@ class ProductConnector extends AbstractConnector
 {
     /** @var array */
     protected $arrayAttributeTypes = [
-        'images'    =>  Image::class
+        'images' => Image::class
     ];
 
     /** @var array All attributes and their types. */
     protected $attributeTypes = [
-        'shortDescription'  =>  HTML::class,
-        'description'       =>  HTML::class,
-        'priceInfo'         =>  PriceInfo::class,
-        'deliveryWeight'    =>  Weight::class,
-        'availabilityText'  =>  HTML::class,
-        'sfUrl'             =>  URL::class
+        'shortDescription' => HTML::class,
+        'description'      => HTML::class,
+        'priceInfo'        => PriceInfo::class,
+        'deliveryWeight'   => Weight::class,
+        'availabilityText' => HTML::class,
+        'sfUrl'            => URL::class
     ];
 
     /** @var string */

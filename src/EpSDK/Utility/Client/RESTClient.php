@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace EpSDK\Utility\Client;
 
 use EpSDK\Configuration\Configuration;
@@ -37,7 +38,7 @@ class RESTClient
      */
     public static function get(string $pathToResource, array $allowedStatusCodes = [HTTPStatusCode::OK]): array
     {
-        $configuration = Configuration::getConfiguration('Client');
+        $configuration = Configuration::get('Client');
         if (empty($configuration)) {
             throw new ConfigurationNotFoundException('Cannot find configuration for RESTClient.');
         }
@@ -91,7 +92,7 @@ class RESTClient
         string $pathToResource,
         array $allowedStatusCodes = [HTTPStatusCode::NO_CONTENT]
     ): bool {
-        $configuration = Configuration::getConfiguration('Client');
+        $configuration = Configuration::get('Client');
         if (empty($configuration)) {
             throw new ConfigurationNotFoundException('Cannot find configuration for RESTClient.');
         }
@@ -145,7 +146,7 @@ class RESTClient
         array $object,
         array $allowedStatusCodes = [HTTPStatusCode::OK]
     ): array {
-        $configuration = Configuration::getConfiguration('Client');
+        $configuration = Configuration::get('Client');
         if (empty($configuration)) {
             throw new ConfigurationNotFoundException('Cannot find configuration for RESTClient.');
         }
@@ -201,7 +202,7 @@ class RESTClient
         array $object,
         array $allowedStatusCodes = [HTTPStatusCode::CREATED]
     ): array {
-        $configuration = Configuration::getConfiguration('Client');
+        $configuration = Configuration::get('Client');
         if (empty($configuration)) {
             throw new ConfigurationNotFoundException('Cannot find configuration for RESTClient.');
         }

@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace EpSDK\Connector;
 
 use EpSDK\Constants;
@@ -191,7 +192,7 @@ class AbstractConnector
                 $numberOfItems = \count($items);
                 if ($numberOfItems === $maximumNumberOfElements) {
                     $retry = false;
-                } elseif($numberOfItems > $maximumNumberOfElements) {
+                } elseif ($numberOfItems > $maximumNumberOfElements) {
                     $items = \array_slice($items, $maximumNumberOfElements);
                     $retry = false;
                 } else {

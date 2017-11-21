@@ -17,7 +17,7 @@ use EpSDK\Configuration\Configuration;
  *
  * This can throw a JSONDecodingException. If everything works correct this function will return the value true.
  */
-Configuration::addConfigurationFromFile('/path/to/a/JSON/file');
+Configuration::addFromFile('/path/to/a/JSON/file');
 
 /**
  * Solution 2.1: Define it via array.
@@ -25,7 +25,7 @@ Configuration::addConfigurationFromFile('/path/to/a/JSON/file');
  * To connect to more different shops in one script call (e.g. having Crons) there is also the possibility to load
  * Configuration via array.
  */
-Configuration::setConfiguration([
+Configuration::set([
     'Client'    =>  [
         'host'      =>  'www.example.com',
         'shop'      =>  'MyCoolShop',
@@ -40,7 +40,7 @@ Configuration::setConfiguration([
  *
  * There is also the possibility to only right a specific module with adding the Configuration with array.
  */
-Configuration::setConfiguration(
+Configuration::set(
     [
         'host'      =>  'www.example.com',
         'shop'      =>  'MyCoolShop',
@@ -55,7 +55,7 @@ Configuration::setConfiguration(
  * If you want to change some Client configuration, like host, but not change the other Client Configurations you can
  * extend the Configuration.
  */
-Configuration::extendConfiguration(
+Configuration::extend(
     [
         'host'      =>  'www.example.org'
     ],
@@ -67,5 +67,5 @@ Configuration::extendConfiguration(
  *
  * To delete the static Configuration settings just use the reset function.
  */
-Configuration::resetConfiguration();            // Reset complete Configuration
-Configuration::resetConfiguration('Client');    // Only reset the Client configuration
+Configuration::reset();            // Reset complete Configuration
+Configuration::reset('Client');    // Only reset the Client configuration

@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace EpSDK\Utility\Client;
 
 /**
@@ -15,9 +16,9 @@ namespace EpSDK\Utility\Client;
  */
 abstract class HTTPStatusCode
 {
-    const OK                =   200;
-    const CREATED           =   201;
-    const NO_CONTENT        =   204;
-    const FOUND             =   302;
-    const TOO_MANY_REQUEST  =   429;
+    const OK               = 200;
+    const CREATED          = 201;
+    const NO_CONTENT       = 204;
+    const FOUND            = 302;
+    const TOO_MANY_REQUEST = 429;
 }

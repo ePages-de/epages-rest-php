@@ -1,49 +1,7 @@
-<phpunit bootstrap="src/Shop.class.php" colors="always">
- 	<testsuites>
-		<testsuite name="RESTClient Test">
-			<file>tests/util/RESTClientTest.php</file>
-		</testsuite>
-		<testsuite name="Shop Test">
-			<file>tests/ShopTest.php</file>
-		</testsuite>
-		<testsuite name="InputValidator Test">
-			<file>tests/util/InputValidatorTest.php</file>
-		</testsuite>
-		<testsuite name="Contact Information Test">
-			<file>tests/shopobjects/information/ContactInformationTest.php</file>
-		</testsuite>
-		<testsuite name="Privacy Policy Information Test">
-			<file>tests/shopobjects/information/PrivacyPolicyInformationTest.php</file>
-		</testsuite>
-		<testsuite name="Right Of Withdrawal Information Test">
-			<file>tests/shopobjects/information/RightOfWithdrawalInformationTest.php</file>
-		</testsuite>
-		<testsuite name="Shipping Information Test">
-			<file>tests/shopobjects/information/ShippingInformationTest.php</file>
-		</testsuite>
-		<testsuite name="Terms And Condition Information Test">
-			<file>tests/shopobjects/information/TermsAndConditionInformationTest.php</file>
-		</testsuite>
-		<testsuite name="Address Test">
-			<file>tests/shopobjects/address/AddressTest.php</file>
-		</testsuite>
-		<testsuite name="Date Test">
-			<file>tests/shopobjects/date/DateTest.php</file>
-		</testsuite>
-		<testsuite name="Payment Method Test">
-			<file>tests/shopobjects/method/PaymentMethodTest.php</file>
-		</testsuite>
-		<testsuite name="Shipping Method Test">
-			<file>tests/shopobjects/method/ShippingMethodTest.php</file>
-		</testsuite>
-		<testsuite name="Shipping Method Test">
-			<file>tests/shopobjects/order/OrderTest.php</file>
-		</testsuite>
-	</testsuites>
-	<groups>
-		<include>
-			<group>utility</group>
-			<group>shopobjects</group>
-		</include>
-	</groups>
+<phpunit bootstrap="vendor/autoload.php" colors="always">
+    <testsuites>
+        <testsuite name="Configuration Test">
+            <file>tests/EpSDKTest/Configuration/ConfigurationTest.php</file>
+        </testsuite>
+    </testsuites>
 </phpunit>

@@ -16,8 +16,8 @@ use EpSDK\Utility\Logger\LogOutput;
  *
  * The Logger can be configured via JSON file or array.
  */
-Configuration::addConfigurationFromFile('dir/and/filename.json');   // configure via JSON
-Configuration::setConfiguration(
+Configuration::addFromFile('dir/and/filename.json');   // configure via JSON
+Configuration::set(
     [
         'Logger'   =>   [
             'level'     =>  LogLevel::ERROR,

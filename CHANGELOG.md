@@ -1,3 +1,6 @@
+# 0.4.0
+- Complete ReDesign.
+
 # 0.2.0 (15.08.2016)
 
 ## Enhancements
@@ -11,7 +14,7 @@
 
 ## Bugfixes
 - #122 Move InformationTrait file.
-- #143 Delete InputValidator::isRESTCommand function.
+- #143 Delete ::isRESTCommand function.
 - #156 Fix using other shop locale.
 
 ## Features

@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace EpSDK\ShopObject;
 
 use EpSDK\Constants;
@@ -35,7 +36,7 @@ class Product extends AbstractShopObject
     /** @var array */
     protected $queryParams = [
         Constants::OBJECT_PARAMETER_LOCALIZATION    =>  null,
-        Constants::OBJECT_PARAMETER_CURERNCY        =>  null
+        Constants::OBJECT_PARAMETER_CURRENCY        =>  null
     ];
 
     /** @var array Allowed request methods of this object. */

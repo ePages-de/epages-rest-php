@@ -18,16 +18,16 @@ class ProductList extends AbstractShopObjectList
 {
     /** @var array */
     protected $queryParams = [
-        'locale'            =>  null,
-        'currency'          =>  null,
-        'page'              =>  1,
-        'resultsPerPage'    =>  10,
-        'direction'         =>  null,
-        'sort'              =>  'name',
-        'q'                 =>  null,
-        'categoryId'        =>  null,
-        'id'                =>  null,
-        'includeInvisible'  =>  null
+        'locale'           => null,
+        'currency'         => null,
+        'page'             => 1,
+        'resultsPerPage'   => 10,
+        'direction'        => null,
+        'sort'             => 'name',
+        'q'                => null,
+        'categoryId'       => null,
+        'id'               => null,
+        'includeInvisible' => null
     ];
 
     /** @var array Allowed request methods of this object. */

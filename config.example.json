@@ -1,33 +1,13 @@
 {
-    "logging":
-    {
-        "level":        "NOTIFICATION",
-        "output":       "SCREEN",
-        "outputfile":   null
+    "Client": {
+        "host": "www.some.host",
+        "shop": "shopName",
+        "isSSL": true,
+        "userAgent": "UserAgent",
+        "token": "TheTokenIfExists"
     },
-    "formatting":
-    {
-        "image":
-        {
-            "formatters": ["IMAGE", "NEWLINE"],
-            "classes": ["testClass1", "testClass2"],
-            "id": "testID",
-            "attributes":
-            {
-                "testAttribute1": "testValue1",
-                "testAttribute2": "testValue2"
-            }
-        },
-        "bold":
-        {
-            "formatters": ["BOLD", "NEWLINE"],
-            "classes": ["testClass1", "testClass2"],
-            "id": "testID",
-            "attributes":
-            {
-                "testAttribute1": "testValue1",
-                "testAttribute2": "testValue2"
-            }
-        }
+    "Logger": {
+        "level": "ERROR",
+        "output": "SCREEN"
     }
 }

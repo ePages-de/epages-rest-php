@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace EpSDK\Utility\Logger;
 
 use EpSDK\Configuration\Configuration;
@@ -26,7 +27,7 @@ class Logger
 
     private static function reloadConfiguration()
     {
-        $configuration = Configuration::getConfiguration('Logger');
+        $configuration = Configuration::get('Logger');
         self::$level = $configuration['level'] ?? LogLevel::ERROR;
         self::$output = $configuration['output'] ?? LogOutput::SCREEN;
         self::$outputFile = $configuration['outputFile'] ?? null;

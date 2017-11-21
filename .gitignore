@@ -1,5 +1,5 @@
 index.php
-tools
-logs
 config.json
 .idea
+composer.lock
+vendor
